@@ -1,4 +1,4 @@
-import {Admin, AdminData} from '@/interfaces/admin.interface';
+import { Admin, AdminData } from '@/interfaces/admin.interface';
 
 const backendUrl: string | undefined = process.env.NEXT_PUBLIC_BACKEND_URL;
 
@@ -21,7 +21,6 @@ export async function login(
     });
     if (response.ok) {
       const adminData: AdminData = await response.json();
-      console.log('admin datas: ', adminData)
       return adminData;
     } else {
       throw new Error('Error while connecting: ' + response.statusText);
