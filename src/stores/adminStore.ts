@@ -8,6 +8,7 @@ interface State {
   setToken: (newToken: string | null) => void;
   saveAdminDataInLocalStorage: () => void;
   setAdminData: (admin: AdminData['admin']) => void;
+  logoutAdmin: () => void;
 }
 const useAdminStore = create<State>((set, get) => ({
   admin: null,
@@ -23,6 +24,11 @@ const useAdminStore = create<State>((set, get) => ({
   setAdminData: (admin) => {
     set({ admin });
     get().saveAdminDataInLocalStorage();
+  },
+  logoutAdmin: () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('admin');
+    set({ admin: null, token: null, isLogged: false });
   },
 }));
 
