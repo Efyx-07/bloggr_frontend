@@ -1,4 +1,4 @@
-import { Admin, AdminData } from '@/interfaces/admin.interface';
+import { Admin } from '@/interfaces/admin.interface';
 
 const backendUrl: string | undefined = process.env.NEXT_PUBLIC_BACKEND_URL;
 
@@ -7,7 +7,7 @@ const backendUrl: string | undefined = process.env.NEXT_PUBLIC_BACKEND_URL;
 export async function login(
   email: Admin['email'],
   password: Admin['password'],
-): Promise<AdminData> {
+): Promise<Admin> {
   try {
     const response: Response = await fetch(`${backendUrl}/admins/login`, {
       method: 'POST',
@@ -20,7 +20,7 @@ export async function login(
       }),
     });
     if (response.ok) {
-      const adminData: AdminData = await response.json();
+      const adminData: Admin = await response.json();
       return adminData;
     } else {
       throw new Error('Error while connecting: ' + response.statusText);

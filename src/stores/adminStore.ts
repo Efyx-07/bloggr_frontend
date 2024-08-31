@@ -1,13 +1,13 @@
 import { create } from 'zustand';
-import { AdminData } from '@/interfaces/admin.interface';
+import { Admin } from '@/interfaces/admin.interface';
 
 interface State {
-  admin: AdminData['admin'] | null;
+  admin: Admin | null;
   token: string | null;
   isLogged: boolean;
   setToken: (newToken: string | null) => void;
   saveAdminDataInLocalStorage: () => void;
-  setAdminData: (admin: AdminData['admin']) => void;
+  setAdminData: (admin: Admin) => void;
   logoutAdmin: () => void;
 }
 const useAdminStore = create<State>((set, get) => ({

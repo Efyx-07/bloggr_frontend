@@ -1,7 +1,7 @@
 'use client';
 
 import { FormEvent, useState } from 'react';
-import { Admin, AdminData } from '@/interfaces/admin.interface';
+import { Admin } from '@/interfaces/admin.interface';
 import validateLoginData from '@/utils/validateLoginData';
 import { login } from '@/services/admin.service';
 import useAdminStore from '@/stores/adminStore';
@@ -19,8 +19,8 @@ export default function LoginForm() {
     e.preventDefault();
     if (!validateLoginData(email, password)) return;
     try {
-      const adminData: AdminData = await login(email, password);
-      adminStore.setAdminData(adminData.admin);
+      const adminData: Admin = await login(email, password);
+      adminStore.setAdminData(adminData);
       const token: string | undefined = adminData.token;
       if (token) localStorage.setItem('token', token);
       router.push('/articles');

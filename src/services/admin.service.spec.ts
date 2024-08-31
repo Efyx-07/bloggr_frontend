@@ -1,4 +1,4 @@
-import { Admin, AdminData } from '@/interfaces/admin.interface';
+import { Admin } from '@/interfaces/admin.interface';
 import { login } from './admin.service';
 
 // Mock du fetch
@@ -13,16 +13,14 @@ describe('login', () => {
 
   // Teste le scénario succès
   it('should successfully login the admin and return data', async () => {
-    const mockResponse: AdminData = {
+    const mockResponse: Admin = {
       success: true,
       message: 'successfully logged',
       token: 'token',
-      admin: {
-        id: 1,
-        email: 'admin@admin.com',
-        firstName: 'first',
-        lastName: 'last',
-      },
+      id: 1,
+      email: 'admin@admin.com',
+      firstName: 'first',
+      lastName: 'last',
     };
 
     (fetch as jest.Mock).mockResolvedValueOnce({
