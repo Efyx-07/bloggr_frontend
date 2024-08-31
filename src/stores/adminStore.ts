@@ -3,9 +3,9 @@ import { Admin } from '@/interfaces/admin.interface';
 
 interface State {
   admin: Admin | null;
-  token: string | null;
+  token: Admin['token'];
   isLogged: boolean;
-  setToken: (newToken: string | null) => void;
+  setToken: (newToken: Admin['token']) => void;
   saveAdminDataInLocalStorage: () => void;
   setAdminData: (admin: Admin) => void;
   logoutAdmin: () => void;

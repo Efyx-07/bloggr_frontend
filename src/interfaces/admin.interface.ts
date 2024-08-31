@@ -6,7 +6,7 @@ export interface Admin {
   password?: string;
   success?: boolean;
   message?: string;
-  token?: string;
+  token?: string | null;
 }
 
 /*

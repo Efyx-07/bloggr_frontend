@@ -21,7 +21,7 @@ export default function LoginForm() {
     try {
       const adminData: Admin = await login(email, password);
       adminStore.setAdminData(adminData);
-      const token: string | undefined = adminData.token;
+      const token: Admin['token'] = adminData.token;
       if (token) localStorage.setItem('token', token);
       router.push('/articles');
     } catch (error) {
