@@ -4,11 +4,14 @@ import { login } from './admin.service';
 // Mock du fetch
 global.fetch = jest.fn();
 
+// Test du service de login
+// ===========================================================================================
 describe('login', () => {
   afterEach(() => {
-    jest.resetAllMocks(); // Reset the mock after each test
+    jest.resetAllMocks(); // Réinitialise les mocks après chaque test
   });
 
+  // Teste le scénario succès
   it('should successfully login the admin and return data', async () => {
     const mockResponse: AdminData = {
       success: true,
@@ -43,5 +46,20 @@ describe('login', () => {
       },
     );
     expect(result).toEqual(mockResponse);
+  });
+
+  // Teste le scénario echec
+  it('should handle failed login due to a server error', async () => {
+    (fetch as jest.Mock).mockResolvedValueOnce({
+      ok: false,
+      statusText: 'Server error',
+    });
+
+    const email: Admin['email'] = 'admin@admin.com';
+    const password: Admin['password'] = 'password123';
+
+    await expect(login(email, password)).rejects.toThrow(
+      'Error while connecting: Server error',
+    );
   });
 });
