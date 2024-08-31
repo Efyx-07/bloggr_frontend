@@ -27,6 +27,10 @@ export default function Navigator() {
       onClick: () => router.push('/nouvel-article'),
     },
     {
+      name: 'Compte',
+      onClick: () => router.push('/compte'),
+    },
+    {
       name: 'Me déconnecter',
       onClick: logoutAdmin,
     },

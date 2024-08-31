@@ -8,6 +8,7 @@ import useAdminStore from '@/stores/adminStore';
 import { useRouter } from 'next/navigation';
 import InputField from './InputField';
 import FormButton from './FormButton';
+import './Form.scss';
 
 export default function LoginForm() {
   const [email, setEmail] = useState<Admin['email']>('');

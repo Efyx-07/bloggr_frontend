@@ -1,3 +1,5 @@
+import './InputField.scss';
+
 interface InputFieldProps {
   name: string;
   label: string;

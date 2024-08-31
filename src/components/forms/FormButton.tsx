@@ -1,3 +1,5 @@
+import './Button.scss';
+
 interface FormButtonProps {
   type: 'submit' | 'reset' | 'button' | undefined;
   name: string;
