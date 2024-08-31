@@ -2,7 +2,7 @@ interface InputFieldProps {
   name: string;
   label: string;
   type: string;
-  value: string;
+  value: string | undefined;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 

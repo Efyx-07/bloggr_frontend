@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { Admin, AdminData } from '@/interfaces/admin.interface';
+import { AdminData } from '@/interfaces/admin.interface';
 
 interface State {
   admin: AdminData['admin'] | null;
