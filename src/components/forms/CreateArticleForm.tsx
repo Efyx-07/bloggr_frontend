@@ -3,20 +3,22 @@
 import './Form.scss';
 import { FormEvent, useState } from 'react';
 import { Article } from '@/interfaces/article.interface';
+import { createArticle } from '@/services/articles.service';
+import { useRouter } from 'next/navigation';
 import FormButton from './FormButton';
 import InputField from './InputField';
-import { createArticle } from '@/services/articles.service';
 
 export default function CreateArticleForm() {
   const [title, setTitle] = useState<Article['title']>('');
   const [imageUrl, setImageUrl] = useState<Article['imageUrl']>('');
   const [body, setBody] = useState<Article['body']>('');
+  const router = useRouter();
 
   const handleCreateArticle = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       const articleData: Article = await createArticle(title, imageUrl, body);
-      console.log('nouvel article créé: ', articleData);
+      router.push('/articles');
     } catch (error) {
       console.error('Failed to create article', error);
     }
