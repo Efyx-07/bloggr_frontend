@@ -1,9 +1,15 @@
+import MainLayout from '../_layouts/MainLayout';
+import UpdatePasswordForm from '@/components/Forms/UpdatePasswordForm';
+
 export default function AccountSettings() {
   return (
-    <div className="page">
-      <div className="content">
-        <h1>Compte</h1>
+    <MainLayout>
+      <div className="page">
+        <div className="content">
+          <h1>Compte</h1>
+          <UpdatePasswordForm />
+        </div>
       </div>
-    </div>
+    </MainLayout>
   );
 }

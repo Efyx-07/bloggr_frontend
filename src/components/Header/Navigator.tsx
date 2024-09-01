@@ -1,16 +1,12 @@
+import './Navigator.scss';
 import { MouseEventHandler } from 'react';
 import { useRouter } from 'next/navigation';
-import useAdminStore from '@/stores/adminStore';
-import './Navigator.scss';
+import useLogoutAdmin from '@/hooks/useLogoutAdmin';
 
 export default function Navigator() {
   const router = useRouter();
-  const adminStore = useAdminStore();
 
-  const logoutAdmin = (): void => {
-    adminStore.logoutAdmin();
-    router.push('/');
-  };
+  const logoutAdmin = useLogoutAdmin();
 
   interface Navitem {
     name: string;
