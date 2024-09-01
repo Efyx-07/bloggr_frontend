@@ -1,8 +1,6 @@
 import { Admin } from '@/interfaces/admin.interface';
 import { backendUrl } from '@/config';
 
-//const backendUrl: string | undefined = process.env.NEXT_PUBLIC_BACKEND_URL;
-
 // Connecte l'Admin avec son email et son mot de passe, retourne les datas admin en réponse
 // ===========================================================================================
 export async function login(
