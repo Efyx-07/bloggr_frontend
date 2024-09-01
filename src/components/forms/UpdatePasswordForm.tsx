@@ -21,8 +21,6 @@ export default function UpdatePasswordForm() {
     if (!token) return;
     const adminId: number = decodeTokenAndGetAdminId(token);
 
-    console.log(currentPassword, newPassword, token, '...', adminId);
-
     try {
       await updatePassword(token, adminId, currentPassword, newPassword);
       logoutAdmin();
