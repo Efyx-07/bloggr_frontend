@@ -2,6 +2,8 @@ import { Admin } from '@/interfaces/admin.interface';
 
 const backendUrl: string | undefined = process.env.NEXT_PUBLIC_BACKEND_URL;
 
+// Met à jour le mot de passe Admin et retourne un message de succès
+// ===========================================================================================
 export async function updatePassword(
   token: Admin['token'],
   adminId: Admin['id'],
@@ -28,6 +30,6 @@ export async function updatePassword(
       throw new Error('Error while updating password: ' + response.statusText);
     }
   } catch (error) {
-    throw new Error('Error while connecting: ' + error);
+    throw new Error('Error while updating password: ' + error);
   }
 }
