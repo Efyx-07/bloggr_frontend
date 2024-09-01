@@ -1,5 +1,6 @@
 'use client';
 
+import './Form.scss';
 import { FormEvent, useState } from 'react';
 import { Admin } from '@/interfaces/admin.interface';
 import validateLoginData from '@/utils/validateLoginData';
@@ -8,7 +9,6 @@ import useAdminStore from '@/stores/adminStore';
 import { useRouter } from 'next/navigation';
 import InputField from './InputField';
 import FormButton from './FormButton';
-import './Form.scss';
 
 export default function LoginForm() {
   const [email, setEmail] = useState<Admin['email']>('');
@@ -16,7 +16,9 @@ export default function LoginForm() {
   const adminStore = useAdminStore();
   const router = useRouter();
 
-  const adminLogin = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
+  const handleAdminLogin = async (
+    e: FormEvent<HTMLFormElement>,
+  ): Promise<void> => {
     e.preventDefault();
     if (!validateLoginData(email, password)) return;
     try {
@@ -31,7 +33,7 @@ export default function LoginForm() {
   };
 
   return (
-    <form onSubmit={adminLogin}>
+    <form onSubmit={handleAdminLogin}>
       <InputField
         name="Email"
         label="Votre email"
