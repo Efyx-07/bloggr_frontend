@@ -1,6 +1,5 @@
 import { Admin } from '@/interfaces/admin.interface';
-
-const backendUrl: string | undefined = process.env.NEXT_PUBLIC_BACKEND_URL;
+import { backendUrl } from '@/config';
 
 // Met à jour le mot de passe Admin et retourne un message de succès
 // ===========================================================================================

@@ -1,5 +1,6 @@
 import { Admin } from '@/interfaces/admin.interface';
 import { login } from './admin.service';
+import { backendUrl } from '@/config';
 
 // Mock du fetch
 global.fetch = jest.fn();
@@ -33,16 +34,13 @@ describe('login', () => {
 
     const result = await login(email, password);
 
-    expect(fetch).toHaveBeenCalledWith(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}/admins/login`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
+    expect(fetch).toHaveBeenCalledWith(`${backendUrl}/admins/login`, {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
       },
-    );
+      body: JSON.stringify({ email, password }),
+    });
     expect(result).toEqual(mockResponse);
   });
 

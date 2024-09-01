@@ -1,5 +1,6 @@
 import { Admin } from '@/interfaces/admin.interface';
 import { updatePassword } from './update-password.service';
+import { backendUrl } from '@/config';
 
 // Mock du fetch
 global.fetch = jest.fn();
@@ -33,7 +34,7 @@ describe('update-password', () => {
     );
 
     expect(fetch).toHaveBeenCalledWith(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}/passwords/update-password`,
+      `${backendUrl}/passwords/update-password`,
       {
         method: 'PUT',
         headers: {
