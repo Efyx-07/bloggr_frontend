@@ -1,38 +1,52 @@
-/*'use client';
-
+import './Tiptap.scss';
+import { useCallback, useEffect } from 'react';
 import { useEditor, EditorContent } from '@tiptap/react';
+import Heading from '@tiptap/extension-heading';
 import StarterKit from '@tiptap/starter-kit';
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import Bold from '@tiptap/extension-bold';
+import Italic from '@tiptap/extension-italic';
+import Link from '@tiptap/extension-link';
 
-interface TiptapProps {
-  content: string;
-  setContent: Dispatch<SetStateAction<string>>;
-}
-
-const Tiptap: React.FC<TiptapProps> = ({ content, setContent }) => {
-  // Etat pour gérer l'initialisation côté client
-  const [isClient, setIsClient] = useState<boolean>(false);
-
-  // Effet pour définir isClient à true après le premier montage du composant
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  // Initialise l'éditeur uniquement après le premier rendu côté client
+const Tiptap: React.FC = () => {
   const editor = useEditor({
-    extensions: [StarterKit],
-    content: content,
-    onUpdate: ({ editor }) => {
-      setContent(editor.getHTML());
-    },
+    extensions: [
+      StarterKit,
+      Bold,
+      Italic,
+      Link.configure({
+        openOnClick: true,
+        autolink: true,
+        defaultProtocol: 'https',
+      }),
+      Heading.configure({
+        levels: [1, 2, 3],
+      }),
+    ],
+    content: '',
   });
 
-  // Le composant ne rend rien tant que isClient est faux
-  if (!isClient) {
-    return null;
-  }
+  const setLink = useCallback(() => {
+    const previousUrl = editor?.getAttributes('link').href;
+    const url = window.prompt('URL', previousUrl);
+    // cancelled
+    if (url === null) {
+      return;
+    }
+    // empty
+    if (url === '') {
+      editor?.chain().focus().extendMarkRange('link').unsetLink().run();
 
-  // Effet pour nettoyer l'éditeur lorsqu'il est démonté
+      return;
+    }
+    // update link
+    editor
+      ?.chain()
+      .focus()
+      .extendMarkRange('link')
+      .setLink({ href: url })
+      .run();
+  }, [editor]);
+
   useEffect(() => {
     return () => {
       if (editor) {
@@ -41,7 +55,108 @@ const Tiptap: React.FC<TiptapProps> = ({ content, setContent }) => {
     };
   }, [editor]);
 
-  return <EditorContent editor={editor} />;
+  if (!editor) {
+    return null;
+  }
+
+  return (
+    <div className="tiptap-container">
+      <div className="tiptap-toolbar">
+        {/* BOLD */}
+        <div className="control-group">
+          <div className="button-group">
+            <button
+              onClick={() => editor?.chain().focus().toggleBold().run()}
+              className={editor?.isActive('bold') ? 'is-active' : ''}
+            >
+              Toggle bold
+            </button>
+            <button
+              onClick={() => editor?.chain().focus().setBold().run()}
+              disabled={editor?.isActive('bold')}
+            >
+              Set bold
+            </button>
+            <button
+              onClick={() => editor?.chain().focus().unsetBold().run()}
+              disabled={!editor?.isActive('bold')}
+            >
+              Unset bold
+            </button>
+          </div>
+        </div>
+        {/* ITALIC */}
+        <div className="control-group">
+          <div className="button-group">
+            <button
+              onClick={() => editor?.chain().focus().toggleItalic().run()}
+              className={editor?.isActive('italic') ? 'is-active' : ''}
+            >
+              Toggle italic
+            </button>
+            <button
+              onClick={() => editor?.chain().focus().setItalic().run()}
+              disabled={editor?.isActive('italic')}
+            >
+              Set italic
+            </button>
+            <button
+              onClick={() => editor?.chain().focus().unsetItalic().run()}
+              disabled={!editor?.isActive('italic')}
+            >
+              Unset italic
+            </button>
+          </div>
+        </div>
+        {/* LINK */}
+        <div className="control-group">
+          <div className="button-group">
+            <button
+              onClick={setLink}
+              className={editor.isActive('link') ? 'is-active' : ''}
+            >
+              Set link
+            </button>
+            <button
+              onClick={() => editor.chain().focus().unsetLink().run()}
+              disabled={!editor.isActive('link')}
+            >
+              Unset link
+            </button>
+          </div>
+        </div>
+        {/* HEADING */}
+        <div className="control-group">
+          <div className="button-group">
+            <button
+              onClick={() =>
+                editor?.chain().focus().toggleHeading({ level: 1 }).run()
+              }
+            >
+              H1
+            </button>
+            <button
+              onClick={() =>
+                editor?.chain().focus().toggleHeading({ level: 2 }).run()
+              }
+            >
+              H2
+            </button>
+            <button
+              onClick={() =>
+                editor?.chain().focus().toggleHeading({ level: 3 }).run()
+              }
+            >
+              H3
+            </button>
+          </div>
+        </div>
+      </div>
+      <div className="tiptap-editor">
+        <EditorContent editor={editor} />
+      </div>
+    </div>
+  );
 };
 
-export default Tiptap;*/
+export default Tiptap;

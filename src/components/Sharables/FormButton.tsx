@@ -6,5 +6,9 @@ interface FormButtonProps {
 }
 
 export default function FormButton({ type, name }: FormButtonProps) {
-  return <button type={type}>{name}</button>;
+  return (
+    <button className="primary-button" type={type}>
+      {name}
+    </button>
+  );
 }

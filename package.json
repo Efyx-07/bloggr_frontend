@@ -14,6 +14,10 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand"
   },
   "dependencies": {
+    "@tiptap/extension-bold": "^2.6.6",
+    "@tiptap/extension-heading": "^2.6.6",
+    "@tiptap/extension-italic": "^2.6.6",
+    "@tiptap/extension-link": "^2.6.6",
     "@tiptap/pm": "^2.6.6",
     "@tiptap/react": "^2.6.6",
     "@tiptap/starter-kit": "^2.6.6",
