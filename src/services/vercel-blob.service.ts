@@ -10,7 +10,7 @@ export async function loadBlob(
     throw new Error('No file selected');
   }
   const compressedFile: File = await compressImage(selectedFile);
-  const response = await fetch(`/api/file?filename=${compressedFile.name}`, {
+  const response = await fetch(`../api/file?filename=${compressedFile.name}`, {
     method: 'POST',
     body: compressedFile,
   });
@@ -22,7 +22,7 @@ export async function loadBlob(
 // ===========================================================================================
 export async function deleteFromVercelBlob(url: string): Promise<void> {
   try {
-    const response = await fetch(`/api/file`, {
+    const response = await fetch(`../api/file`, {
       method: 'DELETE',
       body: JSON.stringify({
         url,
