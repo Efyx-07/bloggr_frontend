@@ -1,28 +1,32 @@
 import './Tiptap.scss';
 import { useCallback, useEffect } from 'react';
 import { useEditor, EditorContent } from '@tiptap/react';
-import Heading from '@tiptap/extension-heading';
 import StarterKit from '@tiptap/starter-kit';
-import Bold from '@tiptap/extension-bold';
-import Italic from '@tiptap/extension-italic';
 import Link from '@tiptap/extension-link';
 
-const Tiptap: React.FC = () => {
+interface TipTapProps {
+  name: string;
+  value: string | undefined;
+  required?: boolean;
+  onChange: (value: string) => void;
+}
+
+const Tiptap: React.FC<TipTapProps> = ({ name, value, required, onChange }) => {
   const editor = useEditor({
     extensions: [
       StarterKit,
-      Bold,
-      Italic,
       Link.configure({
         openOnClick: true,
         autolink: true,
         defaultProtocol: 'https',
       }),
-      Heading.configure({
-        levels: [1, 2, 3],
-      }),
     ],
-    content: '',
+    content: value || '<p></p>',
+    immediatelyRender: false,
+    onUpdate: ({ editor }) => {
+      const html = editor.getHTML();
+      onChange(html);
+    },
   });
 
   const setLink = useCallback(() => {
@@ -154,6 +158,12 @@ const Tiptap: React.FC = () => {
       </div>
       <div className="tiptap-editor">
         <EditorContent editor={editor} />
+        <input
+          type="hidden"
+          name={name}
+          value={editor?.getHTML() || ''}
+          required={required}
+        />
       </div>
     </div>
   );

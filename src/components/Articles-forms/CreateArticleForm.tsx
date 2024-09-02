@@ -64,7 +64,6 @@ export default function CreateArticleForm() {
 
   return (
     <form onSubmit={handleCreateArticle}>
-      <Tiptap />
       <InputField
         type="text"
         name="title"
@@ -102,13 +101,19 @@ export default function CreateArticleForm() {
           />
         )}
       </div>
-      <InputField
+      <Tiptap
+        value={body}
+        onChange={(value: string) => setBody(value)} // Mise à jour de l'état avec le nouveau contenu
+        name="body"
+        required
+      />
+      {/* <InputField
         type="text"
         name="body"
         label="Corps de l'article"
         value={body}
         onChange={(e) => setBody(e.target.value)}
-      />
+      /> */}
       <FormButton type="submit" name="Créer l'article" />
     </form>
   );
