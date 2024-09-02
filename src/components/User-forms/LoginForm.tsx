@@ -1,6 +1,6 @@
 'use client';
 
-import './Form.scss';
+import './UserForm.scss';
 import { FormEvent, useState } from 'react';
 import { Admin } from '@/interfaces/admin.interface';
 import validateLoginData from '@/utils/validateLoginData';
@@ -8,7 +8,7 @@ import { login } from '@/services/admin.service';
 import useAdminStore from '@/stores/adminStore';
 import { useRouter } from 'next/navigation';
 import InputField from './InputField';
-import FormButton from './FormButton';
+import FormButton from '../Sharables/FormButton';
 
 export default function LoginForm() {
   const [email, setEmail] = useState<Admin['email']>('');

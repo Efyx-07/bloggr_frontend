@@ -1,14 +1,13 @@
 'use client';
 
-import './Form.scss';
 import { FormEvent, useEffect, useRef, useState } from 'react';
 import { Article } from '@/interfaces/article.interface';
 import { createArticle } from '@/services/articles.service';
 import { useRouter } from 'next/navigation';
 import { loadBlob } from '@/services/vercel-blob.service';
 import Image from 'next/image';
-import FormButton from './FormButton';
-import InputField from './InputField';
+import FormButton from '../Sharables/FormButton';
+import InputField from '../User-forms/InputField';
 import FileInputField from './FileInputField';
 
 export default function CreateArticleForm() {

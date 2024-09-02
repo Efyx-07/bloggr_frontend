@@ -1,4 +1,4 @@
-import LoginForm from '@/components/forms/LoginForm';
+import LoginForm from '@/components/User-forms/LoginForm';
 import '../assets/sass/page.scss';
 
 export default function LoginPage() {

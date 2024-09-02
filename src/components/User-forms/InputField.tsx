@@ -1,4 +1,3 @@
-import { RefObject } from 'react';
 import './InputField.scss';
 
 interface InputFieldProps {

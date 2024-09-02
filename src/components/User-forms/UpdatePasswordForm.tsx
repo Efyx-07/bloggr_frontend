@@ -1,8 +1,8 @@
 'use client';
 
-import './Form.scss';
+import './UserForm.scss';
 import { FormEvent, useState } from 'react';
-import FormButton from './FormButton';
+import FormButton from '../Sharables/FormButton';
 import InputField from './InputField';
 import { Admin } from '@/interfaces/admin.interface';
 import { updatePassword } from '@/services/update-password.service';
