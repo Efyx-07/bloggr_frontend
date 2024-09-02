@@ -5,9 +5,7 @@ interface InputFieldProps {
   type: string;
   name: string;
   label: string;
-  value?: string | undefined;
-  id?: string;
-  ref?: RefObject<HTMLInputElement>;
+  value: string | undefined;
   required?: boolean;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
@@ -17,8 +15,6 @@ export default function InputField({
   name,
   label,
   value,
-  id,
-  ref,
   required,
   onChange,
 }: InputFieldProps) {
@@ -29,8 +25,6 @@ export default function InputField({
         type={type}
         name={name}
         value={value}
-        id={id}
-        ref={ref}
         required={required}
         onChange={onChange}
       />
