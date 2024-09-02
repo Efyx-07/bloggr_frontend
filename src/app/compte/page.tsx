@@ -1,5 +1,5 @@
 import MainLayout from '../_layouts/MainLayout';
-import UpdatePasswordForm from '@/components/Forms/UpdatePasswordForm';
+import UpdatePasswordForm from '@/components/forms/UpdatePasswordForm';
 
 export default function AccountSettings() {
   return (

@@ -1,5 +1,5 @@
 import MainLayout from '../_layouts/MainLayout';
-import CreateArticleForm from '@/components/Forms/CreateArticleForm';
+import CreateArticleForm from '@/components/forms/CreateArticleForm';
 
 export default function NewArticlePage() {
   return (
