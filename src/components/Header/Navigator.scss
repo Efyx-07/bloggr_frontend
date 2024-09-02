@@ -1,12 +1,12 @@
 nav {
-    display: flex;
-    gap: 2rem;
+  display: flex;
+  gap: 2rem;
 
-    .nav-item {
-        cursor: pointer;
+  .nav-item {
+    cursor: pointer;
 
-        &:hover {
-            color: red;
-        }
+    &:hover {
+      color: red;
     }
+  }
 }
