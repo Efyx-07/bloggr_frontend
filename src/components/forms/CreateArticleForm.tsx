@@ -17,7 +17,7 @@ export default function CreateArticleForm() {
   const handleCreateArticle = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const articleData: Article = await createArticle(title, imageUrl, body);
+      await createArticle(title, imageUrl, body);
       router.push('/articles');
     } catch (error) {
       console.error('Failed to create article', error);

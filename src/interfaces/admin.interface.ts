@@ -8,11 +8,3 @@ export interface Admin {
   message?: string;
   token?: string | null;
 }
-
-/*
-export interface AdminData {
-  success?: boolean;
-  message?: string;
-  token?: string;
-  admin: Admin;
-}*/
