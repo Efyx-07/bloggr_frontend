@@ -3,8 +3,8 @@ export interface Article {
   title: string;
   imageUrl: string;
   body: string;
-  creationDate: Date;
-  lastUpdate: Date;
+  creationDate: Date | string;
+  lastUpdate: Date | string;
 }
 
 export interface ArticleData {
