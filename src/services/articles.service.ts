@@ -81,3 +81,23 @@ export async function updateArticleById(
     throw new Error('Failed to update article: ' + error);
   }
 }
+
+// Supprime un article par son id,, retourne un message de succès
+// ===========================================================================================
+export async function deleteArticleById(
+  id: Article['id'],
+): Promise<{ message: string }> {
+  try {
+    const response = await fetch(`${backendUrl}/articles/${id}`, {
+      method: 'DELETE',
+    });
+    if (response.ok) {
+      const data = response.json();
+      return data;
+    } else {
+      throw new Error('Failed to delete article: ' + response.statusText);
+    }
+  } catch (error) {
+    throw new Error('Failed to delete article: ' + error);
+  }
+}

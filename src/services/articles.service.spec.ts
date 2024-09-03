@@ -5,6 +5,7 @@ import {
 } from '@/interfaces/article.interface';
 import {
   createArticle,
+  deleteArticleById,
   fetchArticles,
   updateArticleById,
 } from './articles.service';
@@ -180,5 +181,44 @@ describe('updateArticleById', () => {
     await expect(
       updateArticleById(articleId, title, imageUrl, body),
     ).rejects.toThrow('Failed to update article: Error: Network error');
+  });
+});
+
+// Test du service de deleteArticleById
+// ===========================================================================================
+describe('deleteArticleById', () => {
+  afterEach(() => {
+    jest.resetAllMocks(); // Réinitialise les mocks après chaque test
+  });
+
+  // Teste le scénario succès
+  it('should delete the article and return a success message', async () => {
+    const articleId = 1;
+    const mockResponse: { message: string } = {
+      message: `Article ${articleId} successfully deleted`,
+    };
+
+    (fetch as jest.Mock).mockResolvedValueOnce({
+      ok: true,
+      json: async () => mockResponse,
+    });
+
+    const result = await deleteArticleById(articleId);
+
+    expect(fetch).toHaveBeenCalledWith(`${backendUrl}/articles/${articleId}`, {
+      method: 'DELETE',
+    });
+    expect(result).toEqual(mockResponse);
+  });
+
+  // Teste le scénario echec
+  it('should handle failed deleteArticle due to a server error', async () => {
+    (fetch as jest.Mock).mockRejectedValueOnce(new Error('Network error'));
+
+    const articleId = 1;
+
+    await expect(deleteArticleById(articleId)).rejects.toThrow(
+      'Failed to delete article: Error: Network error',
+    );
   });
 });
