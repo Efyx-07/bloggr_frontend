@@ -44,14 +44,6 @@ export default function ImageInputField({
           required={required}
           onChange={onChange}
         />
-        // <input
-        //   type="file"
-        //   name="imageUrl"
-        //   id="imageUrl"
-        //   ref={inputRef}
-        //   required={required}
-        //   onChange={onChange}
-        // />
       )}
     </div>
   );
