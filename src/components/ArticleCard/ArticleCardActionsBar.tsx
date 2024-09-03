@@ -1,5 +1,6 @@
 import { Article } from '@/interfaces/article.interface';
 import { useRouter } from 'next/navigation';
+import DeleteButton from './DeleteButton';
 
 interface ArticleCardActionsBarProps {
   article: Article;
@@ -16,7 +17,7 @@ export default function ArticleCardActionsBar({
       <button onClick={() => router.push(`/modifier-article/${article.id}`)}>
         Modifier
       </button>
-      <button>Supprimer</button>
+      <DeleteButton selectedArticle={article} />
     </div>
   );
 }
