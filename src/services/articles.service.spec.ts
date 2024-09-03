@@ -1,5 +1,9 @@
-import { Article, ArticleData } from '@/interfaces/article.interface';
-import { createArticle } from './articles.service';
+import {
+  Article,
+  ArticleData,
+  ArticleResponseData,
+} from '@/interfaces/article.interface';
+import fetchArticles, { createArticle } from './articles.service';
 import { backendUrl } from '@/config';
 
 // Mock du fetch
@@ -72,3 +76,37 @@ describe('createArticle', () => {
 
 // Test du service de fetch
 // ===========================================================================================
+describe('fetchArticles', () => {
+  it('should fetch the articles and return an articles array', async () => {
+    const mockResponse: ArticleResponseData = {
+      articles: [
+        {
+          id: 1,
+          title: 'Article title',
+          imageUrl: 'https://article-image.com',
+          body: `Corps de l'article`,
+          creationDate: '01012024',
+          lastUpdate: '01012024',
+        },
+        {
+          id: 2,
+          title: 'Article title2',
+          imageUrl: 'https://article-image2.com',
+          body: `Corps de l'article2`,
+          creationDate: '01012024',
+          lastUpdate: '01012024',
+        },
+      ],
+    };
+
+    (fetch as jest.Mock).mockResolvedValueOnce({
+      ok: true,
+      json: async () => mockResponse,
+    });
+
+    const result = await fetchArticles();
+
+    expect(fetch).toHaveBeenCalledWith(`${backendUrl}/articles`);
+    expect(result).toEqual(mockResponse.articles);
+  });
+});

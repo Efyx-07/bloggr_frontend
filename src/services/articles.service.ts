@@ -44,7 +44,7 @@ export default async function fetchArticles(): Promise<Article[]> {
       throw new Error('Error while fetching the articles');
     }
     const data: ArticleResponseData = await response.json();
-    const articles = data.articles;
+    const articles: Article[] = data.articles;
     return articles;
   } catch (error) {
     throw new Error('Error while fetching the articles' + error);
