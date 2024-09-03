@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import MainLayout from '../_layouts/MainLayout';
 import fetchArticles from '@/services/articles.service';
 import { Article } from '@/interfaces/article.interface';
+import ArticleCard from '@/components/ArticleCard';
 
 export default function ArticlesPage() {
   const {
@@ -22,7 +23,11 @@ export default function ArticlesPage() {
       <div className="page">
         <div className="content">
           <h1>Article</h1>
-          {articles?.map((article) => <p key={article.id}>{article.title}</p>)}
+          <div className="article-cards-container">
+            {articles?.map((article) => (
+              <ArticleCard key={article.id} article={article} />
+            ))}
+          </div>
         </div>
       </div>
     </MainLayout>
