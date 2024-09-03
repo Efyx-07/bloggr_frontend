@@ -1,4 +1,5 @@
 'use client';
+import './ArticlePage.scss';
 import { useQuery } from '@tanstack/react-query';
 import MainLayout from '../_layouts/MainLayout';
 import fetchArticles from '@/services/articles.service';
