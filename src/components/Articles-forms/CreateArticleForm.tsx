@@ -103,17 +103,10 @@ export default function CreateArticleForm() {
       </div>
       <Tiptap
         value={body}
-        onChange={(value: string) => setBody(value)} // Mise à jour de l'état avec le nouveau contenu
+        onChange={(value: string) => setBody(value)}
         name="body"
         required
       />
-      {/* <InputField
-        type="text"
-        name="body"
-        label="Corps de l'article"
-        value={body}
-        onChange={(e) => setBody(e.target.value)}
-      /> */}
       <FormButton type="submit" name="Créer l'article" />
     </form>
   );
