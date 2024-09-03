@@ -7,7 +7,7 @@ import validateLoginData from '@/utils/validateLoginData';
 import { login } from '@/services/admin.service';
 import useAdminStore from '@/stores/adminStore';
 import { useRouter } from 'next/navigation';
-import InputField from './InputField';
+import InputField from '../Form-fields/InputField';
 import PrimaryButton from '../Sharables/Buttons/PrimaryButton';
 
 export default function LoginForm() {

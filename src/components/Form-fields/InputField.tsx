@@ -1,18 +1,18 @@
 import './InputField.scss';
 
 interface InputFieldProps {
+  label: string;
   type: string;
   name: string;
-  label: string;
   value: string | undefined;
   required?: boolean;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export default function InputField({
+  label,
   type,
   name,
-  label,
   value,
   required,
   onChange,

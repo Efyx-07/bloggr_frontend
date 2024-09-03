@@ -5,10 +5,10 @@ import { deleteFromVercelBlob, loadBlob } from '@/services/vercel-blob.service';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
 import { FormEvent, useEffect, useRef, useState } from 'react';
-import InputField from '../User-forms/InputField';
+import InputField from '../Form-fields/InputField';
 import Image from 'next/image';
-import FileInputField from './FileInputField';
-import Tiptap from './Tiptap';
+import FileInputField from '../Form-fields/FileInputField';
+import Tiptap from '../Form-fields/Tiptap';
 import PrimaryButton from '../Sharables/Buttons/PrimaryButton';
 
 interface UpdateArticleFormProps {

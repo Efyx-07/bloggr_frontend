@@ -6,11 +6,10 @@ import { Article } from '@/interfaces/article.interface';
 import { createArticle } from '@/services/articles.service';
 import { useRouter } from 'next/navigation';
 import { loadBlob } from '@/services/vercel-blob.service';
-import Image from 'next/image';
 import PrimaryButton from '../Sharables/Buttons/PrimaryButton';
-import InputField from '../User-forms/InputField';
-import FileInputField from './FileInputField';
-import Tiptap from './Tiptap';
+import InputField from '../Form-fields/InputField';
+import ImageInputField from '../Form-fields/ImageInputField';
+import Tiptap from '../Form-fields/Tiptap';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 export default function CreateArticleForm() {
@@ -45,12 +44,14 @@ export default function CreateArticleForm() {
     },
   });
 
-  const handleFileChange = () => {
-    if (inputFileRef.current?.files) {
-      const file = inputFileRef.current.files[0];
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
       setSelectedFile(file);
       const objectUrl = URL.createObjectURL(file);
       setPreviewUrl(objectUrl);
+    } else {
+      setPreviewUrl(null);
     }
   };
 
@@ -89,42 +90,20 @@ export default function CreateArticleForm() {
   return (
     <form onSubmit={handleCreateArticle}>
       <InputField
+        label="Titre de l'article"
         type="text"
         name="title"
-        label="Titre de l'article"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
-      <div className="image-input-container">
-        <p>Image de l&apos;article</p>
-        {previewUrl ? (
-          <div className="preview-container">
-            <Image
-              className="img"
-              src={previewUrl}
-              width={250}
-              height={250}
-              alt="Product preview"
-              priority
-            />
-            <button
-              className="remove-btn"
-              type="button"
-              onClick={deletePreview}
-            >
-              Remove
-            </button>
-          </div>
-        ) : (
-          <FileInputField
-            name="imageUrl"
-            id="imageUrl"
-            ref={inputFileRef}
-            required={true}
-            onChange={handleFileChange}
-          />
-        )}
-      </div>
+      <ImageInputField
+        label={"Image de l'article"}
+        previewUrl={previewUrl}
+        onClick={deletePreview}
+        onChange={handleFileChange}
+        inputRef={inputFileRef}
+        required={true}
+      />
       <p>Corps de l&apos;article</p>
       <Tiptap
         value={body}
