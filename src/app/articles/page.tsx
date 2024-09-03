@@ -1,7 +1,7 @@
 'use client';
 import { useQuery } from '@tanstack/react-query';
 import MainLayout from '../_layouts/MainLayout';
-import fetchAllArticles from '@/services/articles.service';
+import fetchArticles from '@/services/articles.service';
 import { Article } from '@/interfaces/article.interface';
 
 export default function ArticlesPage() {
@@ -11,7 +11,7 @@ export default function ArticlesPage() {
     isLoading,
   } = useQuery<Article[]>({
     queryKey: ['articles'],
-    queryFn: fetchAllArticles,
+    queryFn: fetchArticles,
   });
 
   if (isLoading) return <p>Loading...</p>;

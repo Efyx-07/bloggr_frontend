@@ -37,7 +37,7 @@ export async function createArticle(
 
 // Récupère tous les articles, retourne un tableau d'article en réponse
 // ===========================================================================================
-export default async function fetchAllArticles(): Promise<Article[]> {
+export default async function fetchArticles(): Promise<Article[]> {
   try {
     const response = await fetch(`${backendUrl}/articles`);
     if (!response.ok) {
