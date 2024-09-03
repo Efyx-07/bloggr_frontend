@@ -1,9 +1,11 @@
 'use client';
 
+import MainLayout from '@/app/_layouts/MainLayout';
 import { useParams } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query';
 import { Article } from '@/interfaces/article.interface';
 import { fetchArticles } from '@/services/articles.service';
+import UpdateArticleForm from '@/components/Articles-forms/UpdateArticleForm';
 
 export default function UpdateArticlePage() {
   const { articleId } = useParams();
@@ -29,10 +31,21 @@ export default function UpdateArticlePage() {
   }
 
   return (
-    <div className="page">
-      <div className="content">
-        <h1>Modifier article {selectedArticle?.title}</h1>
-      </div>
-    </div>
+    <>
+      <MainLayout>
+        <div className="page">
+          <div className="content">
+            {selectedArticle ? (
+              <>
+                <h1>Modifier article {selectedArticle?.title}</h1>
+                <UpdateArticleForm selectedArticle={selectedArticle} />
+              </>
+            ) : (
+              <p>No article found</p>
+            )}
+          </div>
+        </div>
+      </MainLayout>
+    </>
   );
 }
