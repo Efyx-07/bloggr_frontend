@@ -21,7 +21,7 @@ export default function ArticleCard({ article }: ArticleCardProps) {
         />
       </div>
       <p>{article.title}</p>
-      <ArticleCardActionsBar />
+      <ArticleCardActionsBar article={article} />
     </div>
   );
 }
