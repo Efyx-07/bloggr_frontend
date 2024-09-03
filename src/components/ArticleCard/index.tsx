@@ -1,6 +1,7 @@
 import './ArticleCard.scss';
 import { Article } from '@/interfaces/article.interface';
 import Image from 'next/image';
+import ArticleCardActionsBar from './ArticleCardActionsBar';
 
 interface ArticleCardProps {
   article: Article;
@@ -20,6 +21,7 @@ export default function ArticleCard({ article }: ArticleCardProps) {
         />
       </div>
       <p>{article.title}</p>
+      <ArticleCardActionsBar />
     </div>
   );
 }
