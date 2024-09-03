@@ -58,7 +58,7 @@ export async function updateArticleById(
   title: Article['title'],
   imageUrl: Article['imageUrl'],
   body: Article['body'],
-): Promise<void> {
+): Promise<{ message: string }> {
   try {
     const response = await fetch(`${backendUrl}/articles/${id}`, {
       method: 'PUT',
@@ -75,9 +75,9 @@ export async function updateArticleById(
       const data = await response.json();
       return data;
     } else {
-      throw new Error('failed to update article infos: ' + response.statusText);
+      throw new Error('Failed to update article: ' + response.statusText);
     }
   } catch (error) {
-    throw new Error('failed to update article infos: ' + error);
+    throw new Error('Failed to update article: ' + error);
   }
 }
