@@ -9,7 +9,7 @@ import InputField from '../User-forms/InputField';
 import Image from 'next/image';
 import FileInputField from './FileInputField';
 import Tiptap from './Tiptap';
-import FormButton from '../Sharables/FormButton';
+import PrimaryButton from '../Sharables/Buttons/PrimaryButton';
 
 interface UpdateArticleFormProps {
   selectedArticle: Article;
@@ -129,7 +129,7 @@ export default function UpdateArticleForm({
         name="body"
         required
       />
-      <FormButton type="submit" name="Modifier l'article" />
+      <PrimaryButton type="submit" name="Modifier l'article" />
     </form>
   );
 }

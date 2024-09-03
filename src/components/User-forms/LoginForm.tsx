@@ -8,7 +8,7 @@ import { login } from '@/services/admin.service';
 import useAdminStore from '@/stores/adminStore';
 import { useRouter } from 'next/navigation';
 import InputField from './InputField';
-import FormButton from '../Sharables/FormButton';
+import PrimaryButton from '../Sharables/Buttons/PrimaryButton';
 
 export default function LoginForm() {
   const [email, setEmail] = useState<Admin['email']>('');
@@ -48,7 +48,7 @@ export default function LoginForm() {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <FormButton type="submit" name="Me connecter" />
+      <PrimaryButton type="submit" name="Me connecter" />
     </form>
   );
 }

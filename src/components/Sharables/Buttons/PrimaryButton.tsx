@@ -1,4 +1,4 @@
-import './FormButton.scss';
+import './PrimaryButton.scss';
 
 interface FormButtonProps {
   type: 'submit' | 'reset' | 'button' | undefined;

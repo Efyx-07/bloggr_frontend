@@ -2,7 +2,7 @@
 
 import './UserForm.scss';
 import { FormEvent, useState } from 'react';
-import FormButton from '../Sharables/FormButton';
+import PrimaryButton from '../Sharables/Buttons/PrimaryButton';
 import InputField from './InputField';
 import { Admin } from '@/interfaces/admin.interface';
 import { updatePassword } from '@/services/update-password.service';
@@ -53,7 +53,7 @@ export default function UpdatePasswordForm() {
         value={newPassword}
         onChange={(e) => setNewPassword(e.target.value)}
       />
-      <FormButton type="submit" name="Modifier" />
+      <PrimaryButton type="submit" name="Modifier" />
     </form>
   );
 }

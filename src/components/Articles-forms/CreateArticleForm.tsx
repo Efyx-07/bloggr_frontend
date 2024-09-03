@@ -7,7 +7,7 @@ import { createArticle } from '@/services/articles.service';
 import { useRouter } from 'next/navigation';
 import { loadBlob } from '@/services/vercel-blob.service';
 import Image from 'next/image';
-import FormButton from '../Sharables/FormButton';
+import PrimaryButton from '../Sharables/Buttons/PrimaryButton';
 import InputField from '../User-forms/InputField';
 import FileInputField from './FileInputField';
 import Tiptap from './Tiptap';
@@ -132,7 +132,7 @@ export default function CreateArticleForm() {
         name="body"
         required
       />
-      <FormButton type="submit" name="Créer l'article" />
+      <PrimaryButton type="submit" name="Créer l'article" />
     </form>
   );
 }
