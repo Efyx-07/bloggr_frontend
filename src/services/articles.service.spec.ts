@@ -77,6 +77,11 @@ describe('createArticle', () => {
 // Test du service de fetch
 // ===========================================================================================
 describe('fetchArticles', () => {
+  afterEach(() => {
+    jest.resetAllMocks(); // Réinitialise les mocks après chaque test
+  });
+
+  // Teste le scénario succès
   it('should fetch the articles and return an articles array', async () => {
     const mockResponse: ArticleResponseData = {
       articles: [
@@ -108,5 +113,14 @@ describe('fetchArticles', () => {
 
     expect(fetch).toHaveBeenCalledWith(`${backendUrl}/articles`);
     expect(result).toEqual(mockResponse.articles);
+  });
+
+  // Teste le scénario echec
+  it('should handle failed fetching articles due to a server error', async () => {
+    (fetch as jest.Mock).mockRejectedValueOnce(new Error('Network error'));
+
+    await expect(fetchArticles()).rejects.toThrow(
+      'Error while fetching articles: Error: Network error',
+    );
   });
 });
