@@ -11,6 +11,7 @@ import FormButton from '../Sharables/FormButton';
 import InputField from '../User-forms/InputField';
 import FileInputField from './FileInputField';
 import Tiptap from './Tiptap';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 export default function CreateArticleForm() {
   const [title, setTitle] = useState<Article['title']>('');
@@ -21,6 +22,28 @@ export default function CreateArticleForm() {
   const [body, setBody] = useState<Article['body']>('');
   const inputFileRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
+  const queryClient = useQueryClient();
+
+  const mutation = useMutation({
+    mutationFn: async (newArticle: {
+      title: Article['title'];
+      imageUrl: Article['imageUrl'];
+      body: Article['body'];
+    }) => {
+      await createArticle(
+        newArticle.title,
+        newArticle.imageUrl,
+        newArticle.body,
+      );
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['articles'] });
+      router.push('/articles');
+    },
+    onError: (error: any) => {
+      console.error('Failed to create article', error);
+    },
+  });
 
   const handleFileChange = () => {
     if (inputFileRef.current?.files) {
@@ -35,7 +58,9 @@ export default function CreateArticleForm() {
     setPreviewUrl(null);
   };
 
-  const handleCreateArticle = async (e: FormEvent<HTMLFormElement>) => {
+  const handleCreateArticle = async (
+    e: FormEvent<HTMLFormElement>,
+  ): Promise<void> => {
     e.preventDefault();
 
     if (!selectedFile) return;
@@ -43,8 +68,7 @@ export default function CreateArticleForm() {
       const newBlob = await loadBlob(selectedFile);
       if (newBlob) {
         const imageUrl = newBlob.url;
-        await createArticle(title, imageUrl, body);
-        router.push('/articles');
+        mutation.mutate({ title, imageUrl, body });
       } else {
         console.error('Failed to upload blob');
       }
