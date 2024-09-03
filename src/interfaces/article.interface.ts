@@ -10,3 +10,7 @@ export interface Article {
 export interface ArticleData {
   article: Article;
 }
+
+export interface ArticleResponseData {
+  articles: Article[];
+}

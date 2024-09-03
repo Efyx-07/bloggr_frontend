@@ -1,4 +1,8 @@
-import { Article, ArticleData } from '@/interfaces/article.interface';
+import {
+  Article,
+  ArticleData,
+  ArticleResponseData,
+} from '@/interfaces/article.interface';
 import { backendUrl } from '@/config';
 
 // Crée un article, retourne les datas article en réponse
@@ -28,5 +32,21 @@ export async function createArticle(
     }
   } catch (error) {
     throw new Error('Failed to create article: ' + error);
+  }
+}
+
+// Récupère tous les articles, retourne un tableau d'article en réponse
+// ===========================================================================================
+export default async function fetchAllArticles(): Promise<Article[]> {
+  try {
+    const response = await fetch(`${backendUrl}/articles`);
+    if (!response.ok) {
+      throw new Error('Error while fetching the articles');
+    }
+    const data: ArticleResponseData = await response.json();
+    const articles = data.articles;
+    return articles;
+  } catch (error) {
+    throw new Error('Error while fetching the articles' + error);
   }
 }

@@ -101,6 +101,7 @@ export default function CreateArticleForm() {
           />
         )}
       </div>
+      <p>Corps de l&apos;article</p>
       <Tiptap
         value={body}
         onChange={(value: string) => setBody(value)}
