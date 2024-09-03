@@ -1,5 +1,6 @@
 .article-cards-container {
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   gap: 2rem;
 }
