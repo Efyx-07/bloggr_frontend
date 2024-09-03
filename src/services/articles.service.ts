@@ -53,4 +53,31 @@ export async function fetchArticles(): Promise<Article[]> {
 
 // Met à jour un article, retourne un message de succès
 // ===========================================================================================
-export default function updateArticleById() {}
+export async function updateArticleById(
+  id: Article['id'],
+  title: Article['title'],
+  imageUrl: Article['imageUrl'],
+  body: Article['body'],
+): Promise<void> {
+  try {
+    const response = await fetch(`${backendUrl}/articles/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        title,
+        imageUrl,
+        body,
+      }),
+    });
+    if (response.ok) {
+      const data = await response.json();
+      return data;
+    } else {
+      throw new Error('failed to update article infos: ' + response.statusText);
+    }
+  } catch (error) {
+    throw new Error('failed to update article infos: ' + error);
+  }
+}
