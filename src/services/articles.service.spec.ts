@@ -3,7 +3,7 @@ import {
   ArticleData,
   ArticleResponseData,
 } from '@/interfaces/article.interface';
-import fetchArticles, { createArticle } from './articles.service';
+import { createArticle, fetchArticles } from './articles.service';
 import { backendUrl } from '@/config';
 
 // Mock du fetch

@@ -37,7 +37,7 @@ export async function createArticle(
 
 // Récupère tous les articles, retourne un tableau d'article en réponse
 // ===========================================================================================
-export default async function fetchArticles(): Promise<Article[]> {
+export async function fetchArticles(): Promise<Article[]> {
   try {
     const response = await fetch(`${backendUrl}/articles`);
     if (!response.ok) {
@@ -50,3 +50,7 @@ export default async function fetchArticles(): Promise<Article[]> {
     throw new Error('Error while fetching articles: ' + error);
   }
 }
+
+// Met à jour un article, retourne un message de succès
+// ===========================================================================================
+export default function updateArticleById() {}
