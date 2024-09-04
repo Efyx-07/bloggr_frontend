@@ -95,7 +95,7 @@ export default function CreateArticleForm() {
         name="title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        required={true}
+        required
       />
       <ImageInputField
         label={"Image de l'article"}
@@ -103,7 +103,7 @@ export default function CreateArticleForm() {
         onClick={deletePreview}
         onChange={handleFileChange}
         inputRef={inputFileRef}
-        required={true}
+        required
       />
       <TextEditorField
         label="Corps de l'article"

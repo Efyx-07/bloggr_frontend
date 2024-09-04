@@ -6,10 +6,9 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
 import { FormEvent, useEffect, useRef, useState } from 'react';
 import InputField from '../Form-fields/InputField';
-import Image from 'next/image';
-import FileInputField from '../Form-fields/FileInputField';
-import Tiptap from '../Form-fields/Tiptap';
 import PrimaryButton from '../Sharables/Buttons/PrimaryButton';
+import ImageInputField from '../Form-fields/ImageInputField';
+import TextEditorField from '../Form-fields/TextEditorField';
 
 interface UpdateArticleFormProps {
   selectedArticle: Article;
@@ -86,47 +85,26 @@ export default function UpdateArticleForm({
   return (
     <form onSubmit={handleUpdateArticle}>
       <InputField
+        label="Titre de l'article"
         type="text"
         name="title"
-        label="Titre de l'article"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
+        required
       />
-      <div className="image-input-container">
-        <p>Image de l&apos;article</p>
-        {previewUrl ? (
-          <div className="preview-container">
-            <Image
-              className="img"
-              src={previewUrl}
-              width={250}
-              height={250}
-              alt="Product preview"
-              priority
-            />
-            <button
-              className="remove-btn"
-              type="button"
-              onClick={deletePreview}
-            >
-              Remove
-            </button>
-          </div>
-        ) : (
-          <FileInputField
-            name="imageUrl"
-            id="imageUrl"
-            ref={inputFileRef}
-            required={true}
-            onChange={handleFileChange}
-          />
-        )}
-      </div>
-      <p>Corps de l&apos;article</p>
-      <Tiptap
+      <ImageInputField
+        label={"Image de l'article"}
+        previewUrl={previewUrl}
+        onClick={deletePreview}
+        onChange={handleFileChange}
+        inputRef={inputFileRef}
+        required
+      />
+      <TextEditorField
+        label="Corps de l'article"
+        name="body"
         value={body}
         onChange={(value: string) => setBody(value)}
-        name="body"
         required
       />
       <PrimaryButton type="submit" name="Modifier l'article" />
