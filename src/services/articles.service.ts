@@ -1,8 +1,4 @@
-import {
-  Article,
-  ArticleData,
-  ArticleResponseData,
-} from '@/interfaces/article.interface';
+import { Article } from '@/interfaces/article.interface';
 import { backendUrl } from '@/config';
 
 // Crée un article, retourne les datas article en réponse
@@ -25,7 +21,7 @@ export async function createArticle(
       }),
     });
     if (response.ok) {
-      const articleData: ArticleData = await response.json();
+      const articleData: { article: Article } = await response.json();
       return articleData.article;
     } else {
       throw new Error('Failed to create article: ' + response.statusText);
@@ -43,11 +39,27 @@ export async function fetchArticles(): Promise<Article[]> {
     if (!response.ok) {
       throw new Error('Error while fetching articles');
     }
-    const data: ArticleResponseData = await response.json();
+    const data: { articles: Article[] } = await response.json();
     const articles: Article[] = data.articles;
     return articles;
   } catch (error) {
     throw new Error('Error while fetching articles: ' + error);
+  }
+}
+
+// Récupère un article par son ID, retourne l'article en réponse
+// ===========================================================================================
+export async function fetchArticleById(id: Article['id']): Promise<Article> {
+  try {
+    const response = await fetch(`${backendUrl}/articles/${id}`);
+    if (!response.ok) {
+      throw new Error(`Error while fetching article ${id}`);
+    }
+    const data: { article: Article } = await response.json();
+    const article: Article = data.article;
+    return article;
+  } catch (error) {
+    throw new Error('Error while fetching article: ' + error);
   }
 }
 

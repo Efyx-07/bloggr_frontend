@@ -6,11 +6,3 @@ export interface Article {
   creationDate: Date | string;
   lastUpdate: Date | string;
 }
-
-export interface ArticleData {
-  article: Article;
-}
-
-export interface ArticleResponseData {
-  articles: Article[];
-}

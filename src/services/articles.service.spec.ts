@@ -1,8 +1,4 @@
-import {
-  Article,
-  ArticleData,
-  ArticleResponseData,
-} from '@/interfaces/article.interface';
+import { Article } from '@/interfaces/article.interface';
 import {
   createArticle,
   deleteArticleById,
@@ -23,7 +19,7 @@ describe('createArticle', () => {
 
   // Teste le scénario succès
   it('should create an article successfully and return the article details', async () => {
-    const mockResponse: ArticleData = {
+    const mockResponse: { article: Article } = {
       article: {
         id: 1,
         title: 'Article title',
@@ -88,7 +84,7 @@ describe('fetchArticles', () => {
 
   // Teste le scénario succès
   it('should fetch the articles and return an articles array', async () => {
-    const mockResponse: ArticleResponseData = {
+    const mockResponse: { articles: Article[] } = {
       articles: [
         {
           id: 1,
