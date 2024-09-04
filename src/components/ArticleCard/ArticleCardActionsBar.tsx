@@ -13,7 +13,9 @@ export default function ArticleCardActionsBar({
 
   return (
     <div className="actions-bar">
-      <button>Voir</button>
+      <button onClick={() => router.push(`/article/${article.id}`)}>
+        Voir
+      </button>
       <button onClick={() => router.push(`/modifier-article/${article.id}`)}>
         Modifier
       </button>
