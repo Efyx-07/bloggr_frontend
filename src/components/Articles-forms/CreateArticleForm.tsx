@@ -2,6 +2,7 @@
 
 import '../User-forms/UserForm.scss';
 import { FormEvent, useEffect, useRef, useState } from 'react';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { Article } from '@/interfaces/article.interface';
 import { createArticle } from '@/services/articles.service';
 import { useRouter } from 'next/navigation';
@@ -9,8 +10,7 @@ import { loadBlob } from '@/services/vercel-blob.service';
 import PrimaryButton from '../Sharables/Buttons/PrimaryButton';
 import InputField from '../Form-fields/InputField';
 import ImageInputField from '../Form-fields/ImageInputField';
-import Tiptap from '../Form-fields/Tiptap';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import TextEditorField from '../Form-fields/TextEditorField';
 
 export default function CreateArticleForm() {
   const [title, setTitle] = useState<Article['title']>('');
@@ -95,6 +95,7 @@ export default function CreateArticleForm() {
         name="title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
+        required={true}
       />
       <ImageInputField
         label={"Image de l'article"}
@@ -104,11 +105,11 @@ export default function CreateArticleForm() {
         inputRef={inputFileRef}
         required={true}
       />
-      <p>Corps de l&apos;article</p>
-      <Tiptap
+      <TextEditorField
+        label="Corps de l'article"
+        name="body"
         value={body}
         onChange={(value: string) => setBody(value)}
-        name="body"
         required
       />
       <PrimaryButton type="submit" name="Créer l'article" />
