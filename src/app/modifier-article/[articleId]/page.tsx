@@ -4,24 +4,20 @@ import MainLayout from '@/app/_layouts/MainLayout';
 import { useParams } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query';
 import { Article } from '@/interfaces/article.interface';
-import { fetchArticles } from '@/services/articles.service';
+import { fetchArticleById } from '@/services/articles.service';
 import UpdateArticleForm from '@/components/Articles-forms/UpdateArticleForm';
 
 export default function UpdateArticlePage() {
   const { articleId } = useParams();
 
   const {
-    data: articles,
+    data: article,
     error,
     isLoading,
-  } = useQuery<Article[]>({
-    queryKey: ['articles'],
-    queryFn: fetchArticles,
+  } = useQuery<Article>({
+    queryKey: ['article', articleId],
+    queryFn: () => fetchArticleById(Number(articleId)),
   });
-
-  const selectedArticle: Article | undefined = articles?.find(
-    (article) => article.id === Number(articleId),
-  );
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -35,10 +31,10 @@ export default function UpdateArticlePage() {
       <MainLayout>
         <div className="page">
           <div className="content">
-            {selectedArticle ? (
+            {article ? (
               <>
-                <h1>Modifier article {selectedArticle?.title}</h1>
-                <UpdateArticleForm selectedArticle={selectedArticle} />
+                <h1>Modifier article {article?.title}</h1>
+                <UpdateArticleForm selectedArticle={article} />
               </>
             ) : (
               <p>No article found</p>

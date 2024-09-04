@@ -4,24 +4,20 @@ import MainLayout from '@/app/_layouts/MainLayout';
 import { useParams } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query';
 import { Article } from '@/interfaces/article.interface';
-import { fetchArticles } from '@/services/articles.service';
+import { fetchArticleById } from '@/services/articles.service';
 import Image from 'next/image';
 
 export default function ArticlePage() {
   const { articleId } = useParams();
 
   const {
-    data: articles,
+    data: article,
     error,
     isLoading,
-  } = useQuery<Article[]>({
-    queryKey: ['articles'],
-    queryFn: fetchArticles,
+  } = useQuery<Article>({
+    queryKey: ['article', articleId],
+    queryFn: () => fetchArticleById(Number(articleId)),
   });
-
-  const selectedArticle: Article | undefined = articles?.find(
-    (article) => article.id === Number(articleId),
-  );
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -35,22 +31,20 @@ export default function ArticlePage() {
       <MainLayout>
         <div className="page">
           <div className="content">
-            {selectedArticle ? (
+            {article ? (
               <>
                 <div className="image-container">
                   <Image
                     className="img"
-                    src={selectedArticle.imageUrl}
+                    src={article.imageUrl}
                     width={480}
                     height={320}
-                    alt={selectedArticle.title}
+                    alt={article.title}
                     priority
                   />
                 </div>
-                <h1>{selectedArticle.title}</h1>
-                <div
-                  dangerouslySetInnerHTML={{ __html: selectedArticle.body }}
-                />
+                <h1>{article.title}</h1>
+                <div dangerouslySetInnerHTML={{ __html: article.body }} />
               </>
             ) : (
               <p>No article found</p>
