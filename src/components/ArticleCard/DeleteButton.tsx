@@ -10,6 +10,8 @@ interface DeleteButtonProps {
 export default function DeleteButton({ selectedArticle }: DeleteButtonProps) {
   const queryClient = useQueryClient();
 
+  // Création d'une mutation pour supprimer l'image de Vercel blob et supprimer l'article
+  // ===========================================================================================
   const mutation = useMutation({
     mutationFn: async () => {
       await deleteFromVercelBlob(selectedArticle.imageUrl);
@@ -23,6 +25,8 @@ export default function DeleteButton({ selectedArticle }: DeleteButtonProps) {
     },
   });
 
+  // Supprime l'article
+  // ===========================================================================================
   const handleDeleteArticle = () => {
     mutation.mutate();
   };

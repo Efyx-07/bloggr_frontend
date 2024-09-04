@@ -12,6 +12,8 @@ interface TipTapProps {
 }
 
 const Tiptap: React.FC<TipTapProps> = ({ name, value, required, onChange }) => {
+  // Configure l'editor
+  // ===========================================================================================
   const editor = useEditor({
     extensions: [
       StarterKit,
@@ -29,6 +31,8 @@ const Tiptap: React.FC<TipTapProps> = ({ name, value, required, onChange }) => {
     },
   });
 
+  // Configure l'extension link
+  // ===========================================================================================
   const setLink = useCallback(() => {
     const previousUrl = editor?.getAttributes('link').href;
     const url = window.prompt('URL', previousUrl);
@@ -51,6 +55,8 @@ const Tiptap: React.FC<TipTapProps> = ({ name, value, required, onChange }) => {
       .run();
   }, [editor]);
 
+  // Nettoie l'editor au démontage du composant
+  // ===========================================================================================
   useEffect(() => {
     return () => {
       if (editor) {

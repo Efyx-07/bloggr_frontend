@@ -13,6 +13,8 @@ export default function UpdatePasswordForm() {
   const [newPassword, setNewPassword] = useState<Admin['password']>('');
   const logoutAdmin = useLogoutAdmin();
 
+  // Soumet le formulaire pour mettre à jour le password
+  // ===========================================================================================
   const updateAdminPassword = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -22,6 +24,7 @@ export default function UpdatePasswordForm() {
     const adminId: number = decodeTokenAndGetAdminId(token);
 
     try {
+      // Met à jour le password avec le service et déconnecte l'Admin
       await updatePassword(token, adminId, currentPassword, newPassword);
       logoutAdmin();
     } catch (error) {
@@ -29,7 +32,8 @@ export default function UpdatePasswordForm() {
     }
   };
 
-  // Fonction pour décoder le token et récuperer adminId
+  // Décode le token et récupère adminId
+  // ===========================================================================================
   const decodeTokenAndGetAdminId = (token: string) => {
     const tokenParts: string[] = token.split('.');
     const tokenPayload = JSON.parse(atob(tokenParts[1]));

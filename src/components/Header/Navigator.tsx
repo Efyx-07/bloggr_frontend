@@ -5,7 +5,6 @@ import useLogoutAdmin from '@/hooks/useLogoutAdmin';
 
 export default function Navigator() {
   const router = useRouter();
-
   const logoutAdmin = useLogoutAdmin();
 
   interface Navitem {
@@ -13,6 +12,8 @@ export default function Navigator() {
     onClick: MouseEventHandler<HTMLDivElement>;
   }
 
+  // Liste les items
+  // ===========================================================================================
   const navitems: Navitem[] = [
     {
       name: 'Mes articles',

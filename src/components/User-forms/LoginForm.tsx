@@ -16,12 +16,15 @@ export default function LoginForm() {
   const adminStore = useAdminStore();
   const router = useRouter();
 
+  // Soumet le formulaire pour connexion de l'Admin
+  // ===========================================================================================
   const handleAdminLogin = async (
     e: FormEvent<HTMLFormElement>,
   ): Promise<void> => {
     e.preventDefault();
     if (!validateLoginData(email, password)) return;
     try {
+      // Connecte l'admin avec le service, gère les datas et navigue vers la page articles
       const adminData: Admin = await login(email, password);
       adminStore.setAdminData(adminData);
       const token: Admin['token'] = adminData.token;
