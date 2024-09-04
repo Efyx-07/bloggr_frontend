@@ -23,12 +23,15 @@ export default function CreateArticleForm() {
   const router = useRouter();
   const queryClient = useQueryClient();
 
+  // Création d'une mutation pour créer un nouvel article
+  // ===========================================================================================
   const mutation = useMutation({
     mutationFn: async (newArticle: {
       title: Article['title'];
       imageUrl: Article['imageUrl'];
       body: Article['body'];
     }) => {
+      // Crée l'article avec le service article
       await createArticle(
         newArticle.title,
         newArticle.imageUrl,
@@ -44,6 +47,8 @@ export default function CreateArticleForm() {
     },
   });
 
+  // Gère le changement du champ Image
+  // ===========================================================================================
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
@@ -55,10 +60,14 @@ export default function CreateArticleForm() {
     }
   };
 
+  // Efface la preview
+  // ===========================================================================================
   const deletePreview = (): void => {
     setPreviewUrl(null);
   };
 
+  // Soumet le formulaire pour la création de l'article
+  // ===========================================================================================
   const handleCreateArticle = async (
     e: FormEvent<HTMLFormElement>,
   ): Promise<void> => {
@@ -79,6 +88,7 @@ export default function CreateArticleForm() {
   };
 
   // Utilise useEffect pour supprimer l'URL de la preview au démontage du compoosant
+  // ===========================================================================================
   useEffect(() => {
     return () => {
       if (previewUrl) {

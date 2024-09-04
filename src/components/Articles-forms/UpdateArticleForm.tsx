@@ -27,6 +27,8 @@ export default function UpdateArticleForm({
   const router = useRouter();
   const queryClient = useQueryClient();
 
+  // Création d'une mutation pour mettre à jour un article
+  // ===========================================================================================
   const mutation = useMutation({
     mutationFn: async () => {
       let imageUrl = previewUrl || '';
@@ -41,8 +43,7 @@ export default function UpdateArticleForm({
           throw new Error('Failed to upload new image');
         }
       }
-
-      // Met à jour l'article
+      // Met à jour l'article avec le service article
       await updateArticleById(selectedArticle.id, title, imageUrl, body);
     },
     onSuccess: () => {
@@ -54,6 +55,8 @@ export default function UpdateArticleForm({
     },
   });
 
+  // Gère le changement du champ Image
+  // ===========================================================================================
   const handleFileChange = () => {
     if (inputFileRef.current?.files) {
       const file = inputFileRef.current.files[0];
@@ -63,10 +66,14 @@ export default function UpdateArticleForm({
     }
   };
 
+  // Efface la preview
+  // ===========================================================================================
   const deletePreview = (): void => {
     setPreviewUrl(null);
   };
 
+  // Soumet le formulaire pour la création de l'article
+  // ===========================================================================================
   const handleUpdateArticle = async (
     e: FormEvent<HTMLFormElement>,
   ): Promise<void> => {
@@ -74,6 +81,8 @@ export default function UpdateArticleForm({
     mutation.mutate();
   };
 
+  // Utilise useEffect pour supprimer l'URL de la preview au démontage du compoosant
+  // ===========================================================================================
   useEffect(() => {
     return () => {
       if (previewUrl) {
