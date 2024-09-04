@@ -2,6 +2,7 @@ import { Article } from '@/interfaces/article.interface';
 import {
   createArticle,
   deleteArticleById,
+  fetchArticleById,
   fetchArticles,
   updateArticleById,
 } from './articles.service';
@@ -122,6 +123,47 @@ describe('fetchArticles', () => {
 
     await expect(fetchArticles()).rejects.toThrow(
       'Error while fetching articles: Error: Network error',
+    );
+  });
+});
+
+// Test du service de fetchArticleById
+// ===========================================================================================
+describe('fetchArticleById', () => {
+  afterEach(() => {
+    jest.resetAllMocks(); // Réinitialise les mocks après chaque test
+  });
+
+  // Teste le scénario succès
+  it('should fetch an articles by its ID and return the article', async () => {
+    const mockResponse: { article: Article } = {
+      article: {
+        id: 1,
+        title: 'Article title',
+        imageUrl: 'https://article-image.com',
+        body: `Corps de l'article`,
+        creationDate: '01012024',
+        lastUpdate: '01012024',
+      },
+    };
+
+    (fetch as jest.Mock).mockResolvedValueOnce({
+      ok: true,
+      json: async () => mockResponse,
+    });
+
+    const result = await fetchArticleById(1);
+
+    expect(fetch).toHaveBeenCalledWith(`${backendUrl}/articles/1`);
+    expect(result).toEqual(mockResponse.article);
+  });
+
+  // Teste le scénario echec
+  it('should handle failed fetching article due to a server error', async () => {
+    (fetch as jest.Mock).mockRejectedValueOnce(new Error('Network error'));
+
+    await expect(fetchArticleById(1)).rejects.toThrow(
+      'Error while fetching article: Error: Network error',
     );
   });
 });
