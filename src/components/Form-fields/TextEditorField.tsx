@@ -1,4 +1,4 @@
-import Tiptap from './Tiptap';
+import CKEditorComponent from './CKEditorComponent';
 
 interface TextEditorFieldProps {
   label: string;
@@ -18,7 +18,7 @@ export default function TextEditorField({
   return (
     <div className="text-editor-field">
       <label>{label}</label>
-      <Tiptap
+      <CKEditorComponent
         name={name}
         value={value}
         onChange={onChange}

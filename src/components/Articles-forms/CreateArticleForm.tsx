@@ -11,6 +11,7 @@ import PrimaryButton from '../Sharables/Buttons/PrimaryButton';
 import InputField from '../Form-fields/InputField';
 import ImageInputField from '../Form-fields/ImageInputField';
 import TextEditorField from '../Form-fields/TextEditorField';
+import CKEditorComponent from '../Form-fields/CKEditorComponent';
 
 export default function CreateArticleForm() {
   const [title, setTitle] = useState<Article['title']>('');
