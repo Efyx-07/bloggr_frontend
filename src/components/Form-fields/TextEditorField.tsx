@@ -1,4 +1,9 @@
-import CKEditorComponent from './CKEditorComponent';
+import dynamic from 'next/dynamic';
+
+const CKEditorComponent = dynamic(
+  () => import('@/components/Form-fields/CKEditorComponent'),
+  { ssr: false },
+);
 
 interface TextEditorFieldProps {
   label: string;
