@@ -6,7 +6,6 @@ import { compressImage } from '@/utils/compressImage';
 export async function loadBlob(
   selectedFile: File | null,
 ): Promise<PutBlobResult> {
-  console.log('loadblob reached');
   if (!selectedFile) {
     throw new Error('No file selected');
   }
