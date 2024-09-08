@@ -6,40 +6,21 @@ import { useRouter } from 'next/navigation';
 import { login } from '@/services/admin.service';
 import validateLoginData from '@/utils/validateLoginData';
 
+jest.mock('@/stores/adminStore');
 jest.mock('next/navigation', () => ({
   useRouter: jest.fn(),
 }));
+jest.mock('@/utils/validateLoginData');
+jest.mock('@/services/admin.service');
 
-jest.mock('@/stores/adminStore', () => ({
-  __esModule: true,
-  default: jest.fn(),
-}));
-
-jest.mock('@/services/admin.service', () => ({
-  login: jest.fn(),
-}));
-
-jest.mock('@/utils/validateLoginData', () => ({
-  __esModule: true,
-  default: jest.fn(),
-}));
-
-describe('loginForm', () => {
-  let mockRouter: { push: jest.Mock };
-  let mockAdminStore: { setAdminData: jest.Mock };
-
+describe('LoginForm', () => {
   beforeEach(() => {
-    mockRouter = {
+    (useAdminStore as unknown as jest.Mock).mockReturnValue({
+      login: jest.fn(),
+    });
+    (useRouter as jest.Mock).mockReturnValue({
       push: jest.fn(),
-    };
-    (useRouter as jest.Mock).mockReturnValue(mockRouter);
-
-    mockAdminStore = {
-      setAdminData: jest.fn(),
-    };
-    (useAdminStore as unknown as jest.Mock).mockReturnValue(mockAdminStore);
-
-    jest.clearAllMocks();
+    });
   });
 
   it('rend le formulaire correctement', () => {
@@ -92,10 +73,8 @@ describe('loginForm', () => {
 
     await waitFor(() => {
       expect(login).toHaveBeenCalledWith('test@example.com', 'password123');
-      expect(mockAdminStore.setAdminData).toHaveBeenCalledWith({
-        token: 'fake-token',
-      });
-      expect(mockRouter.push).toHaveBeenCalledWith('/articles');
+      expect(localStorage.setItem).toHaveBeenCalledWith('token', 'fake-token');
+      expect(useRouter().push).toHaveBeenCalledWith('/articles');
     });
 
     expect(localStorage.getItem('token')).toBe('fake-token');
