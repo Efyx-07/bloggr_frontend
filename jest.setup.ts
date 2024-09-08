@@ -22,3 +22,6 @@ beforeAll(() => {
     writable: true,
   });
 });
+
+// Mock `console.error` to suppress error messages during tests
+jest.spyOn(console, 'error').mockImplementation(() => {});
