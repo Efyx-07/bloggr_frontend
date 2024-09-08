@@ -28,6 +28,8 @@ describe('LoginForm', () => {
     jest.clearAllMocks();
   });
 
+  // Test rendu composant
+  // ===========================================================================================
   it('should renders the form with email and password fields', () => {
     render(<LoginForm />);
     expect(screen.getByLabelText(/Votre email/i)).toBeInTheDocument();
@@ -37,6 +39,8 @@ describe('LoginForm', () => {
     ).toBeInTheDocument();
   });
 
+  // Test scenario succès
+  // ===========================================================================================
   it('should handle form submission succesfully', async () => {
     const mockAdminData = {
       email: 'admin@example.com',
@@ -64,6 +68,8 @@ describe('LoginForm', () => {
     });
   });
 
+  // Test scenario echec
+  // ===========================================================================================
   it('should display an error if login fails', async () => {
     (login as jest.Mock).mockRejectedValue(new Error('Login failed'));
 

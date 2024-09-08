@@ -17,6 +17,8 @@ describe('UpdatePasswordForm', () => {
     jest.clearAllMocks();
   });
 
+  // Test rendu composant
+  // ===========================================================================================
   it('should renders form with current-password and new-password fields', () => {
     render(<UpdatePasswordForm />);
     expect(
@@ -28,6 +30,8 @@ describe('UpdatePasswordForm', () => {
     ).toBeInTheDocument();
   });
 
+  // Test scenario succès
+  // ===========================================================================================
   it('should handles form submission successfully', async () => {
     const mockCurrentPassword = 'currentPassword';
     const mockNewPassword = 'newPassword';
@@ -62,6 +66,8 @@ describe('UpdatePasswordForm', () => {
     });
   });
 
+  // Test scénario echec
+  // ===========================================================================================
   it('should display an error if form submission fails', async () => {
     const mockToken = 'mock-token';
     const mockAdminId = 1;
