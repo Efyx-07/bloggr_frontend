@@ -7,6 +7,7 @@ import InputField from '../Form-fields/InputField';
 import { Admin } from '@/interfaces/admin.interface';
 import { updatePassword } from '@/services/update-password.service';
 import useLogoutAdmin from '@/hooks/useLogoutAdmin';
+import decodeTokenAndGetAdminId from '@/utils/decodeTokenAndGetAdminId';
 
 export default function UpdatePasswordForm() {
   const [currentPassword, setCurrentPassword] = useState<Admin['password']>('');
@@ -30,15 +31,6 @@ export default function UpdatePasswordForm() {
     } catch (error) {
       console.error('Error during updating password: ', error);
     }
-  };
-
-  // Décode le token et récupère adminId
-  // ===========================================================================================
-  const decodeTokenAndGetAdminId = (token: string) => {
-    const tokenParts: string[] = token.split('.');
-    const tokenPayload = JSON.parse(atob(tokenParts[1]));
-    const adminId: number = tokenPayload.adminId;
-    return adminId;
   };
 
   return (
