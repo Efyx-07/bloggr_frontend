@@ -101,6 +101,7 @@ export default function CreateArticleForm() {
   return (
     <form onSubmit={handleCreateArticle}>
       <InputField
+        id="title"
         label="Titre de l'article"
         type="text"
         name="title"

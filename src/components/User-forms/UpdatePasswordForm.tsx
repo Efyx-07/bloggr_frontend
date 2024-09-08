@@ -44,6 +44,7 @@ export default function UpdatePasswordForm() {
   return (
     <form onSubmit={updateAdminPassword}>
       <InputField
+        id="current-password"
         name="currentPassword"
         label="Votre mot de passe actuel"
         type="password"
@@ -51,6 +52,7 @@ export default function UpdatePasswordForm() {
         onChange={(e) => setCurrentPassword(e.target.value)}
       />
       <InputField
+        id="new-password"
         name="newPassword"
         label="Nouveau mot de passe"
         type="password"

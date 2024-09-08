@@ -94,6 +94,7 @@ export default function UpdateArticleForm({
   return (
     <form onSubmit={handleUpdateArticle}>
       <InputField
+        id="title"
         label="Titre de l'article"
         type="text"
         name="title"
