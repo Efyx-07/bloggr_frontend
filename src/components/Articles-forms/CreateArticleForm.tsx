@@ -1,6 +1,6 @@
 'use client';
 
-import '../User-forms/UserForm.scss';
+import '@/assets/sass/UserForm.scss';
 import { FormEvent, useEffect, useRef, useState } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { Article } from '@/interfaces/article.interface';

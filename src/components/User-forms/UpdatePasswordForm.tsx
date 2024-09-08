@@ -1,6 +1,6 @@
 'use client';
 
-import './UserForm.scss';
+import '@/assets/sass/UserForm.scss';
 import { FormEvent, useState } from 'react';
 import PrimaryButton from '../Sharables/Buttons/PrimaryButton';
 import InputField from '../Form-fields/InputField';
