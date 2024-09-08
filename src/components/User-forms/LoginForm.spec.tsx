@@ -75,7 +75,6 @@ describe('LoginForm', () => {
 
     render(<LoginForm />);
 
-    // Simulate form input
     fireEvent.change(screen.getByLabelText(/Votre email/i), {
       target: { value: 'wrong@example.com' },
     });
@@ -83,10 +82,8 @@ describe('LoginForm', () => {
       target: { value: 'wrongpassword' },
     });
 
-    // Submit form
     fireEvent.click(screen.getByRole('button', { name: /Me connecter/i }));
 
-    // Wait for async actions
     await waitFor(() => {
       expect(login).toHaveBeenCalledWith('wrong@example.com', 'wrongpassword');
       expect(mockSetAdminData).not.toHaveBeenCalled();
