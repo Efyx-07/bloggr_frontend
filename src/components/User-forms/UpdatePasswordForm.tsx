@@ -26,8 +26,17 @@ export default function UpdatePasswordForm() {
 
     try {
       // Met à jour le password avec le service et déconnecte l'Admin
-      await updatePassword(token, adminId, currentPassword, newPassword);
-      logoutAdmin();
+      const result = await updatePassword(
+        token,
+        adminId,
+        currentPassword,
+        newPassword,
+      );
+      if (result) {
+        logoutAdmin();
+      } else {
+        console.error('Error during updating password');
+      }
     } catch (error) {
       console.error('Error during updating password: ', error);
     }

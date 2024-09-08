@@ -28,7 +28,7 @@ describe('UpdatePasswordForm', () => {
     ).toBeInTheDocument();
   });
 
-  it('shouldhandles form submission successfully', async () => {
+  it('should handles form submission successfully', async () => {
     const mockCurrentPassword = 'currentPassword';
     const mockNewPassword = 'newPassword';
     const mockToken = 'mock-token';
@@ -43,15 +43,12 @@ describe('UpdatePasswordForm', () => {
 
     render(<UpdatePasswordForm />);
 
-    // Simuler l'entrée de l'utilisateur
     fireEvent.change(screen.getByLabelText(/Votre mot de passe actuel/i), {
       target: { value: mockCurrentPassword },
     });
     fireEvent.change(screen.getByLabelText(/Nouveau mot de passe/i), {
       target: { value: mockNewPassword },
     });
-
-    // Soumettre le formulaire
     fireEvent.click(screen.getByRole('button', { name: /Modifier/i }));
 
     await waitFor(() => {
@@ -62,6 +59,41 @@ describe('UpdatePasswordForm', () => {
         mockNewPassword,
       );
       expect(mockLogoutAdmin).toHaveBeenCalled();
+    });
+  });
+
+  it('should display an error if form submission fails', async () => {
+    const mockToken = 'mock-token';
+    const mockAdminId = 1;
+    const mockError = new Error('Update failed');
+
+    localStorage.setItem('token', mockToken);
+    (decodeTokenAndGetAdminId as unknown as jest.Mock).mockReturnValue(
+      mockAdminId,
+    );
+    (useLogoutAdmin as jest.Mock).mockReturnValue(mockLogoutAdmin);
+    (updatePassword as jest.Mock).mockResolvedValue(undefined);
+
+    render(<UpdatePasswordForm />);
+
+    fireEvent.change(screen.getByLabelText(/Votre mot de passe actuel/i), {
+      target: { value: 'wrongPassword' },
+    });
+    fireEvent.change(screen.getByLabelText(/Nouveau mot de passe/i), {
+      target: { value: 'wrongNewPassword' },
+    });
+    fireEvent.click(screen.getByRole('button', { name: /Modifier/i }));
+
+    await waitFor(() => {
+      expect(mockUpdatePassword).toHaveBeenCalledWith(
+        mockToken,
+        mockAdminId,
+        'wrongPassword',
+        'wrongNewPassword',
+      );
+      expect(console.error).toHaveBeenCalledWith(
+        'Error during updating password',
+      );
     });
   });
 });
