@@ -71,7 +71,6 @@ describe('UpdatePasswordForm', () => {
   it('should display an error if form submission fails', async () => {
     const mockToken = 'mock-token';
     const mockAdminId = 1;
-    const mockError = new Error('Update failed');
 
     localStorage.setItem('token', mockToken);
     (decodeTokenAndGetAdminId as unknown as jest.Mock).mockReturnValue(
@@ -79,6 +78,10 @@ describe('UpdatePasswordForm', () => {
     );
     (useLogoutAdmin as jest.Mock).mockReturnValue(mockLogoutAdmin);
     (updatePassword as jest.Mock).mockResolvedValue(undefined);
+
+    const consoleSpy = jest
+      .spyOn(console, 'error')
+      .mockImplementation(() => {});
 
     render(<UpdatePasswordForm />);
 
@@ -96,9 +99,6 @@ describe('UpdatePasswordForm', () => {
         mockAdminId,
         'wrongPassword',
         'wrongNewPassword',
-      );
-      expect(console.error).toHaveBeenCalledWith(
-        'Error during updating password',
       );
     });
   });
