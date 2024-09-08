@@ -1,6 +1,7 @@
 import './InputField.scss';
 
 interface InputFieldProps {
+  id: string;
   label: string;
   type: string;
   name: string;
@@ -10,6 +11,7 @@ interface InputFieldProps {
 }
 
 export default function InputField({
+  id,
   label,
   type,
   name,
@@ -19,8 +21,9 @@ export default function InputField({
 }: InputFieldProps) {
   return (
     <div className="input-container">
-      <label htmlFor={name}>{label}</label>
+      <label htmlFor={id}>{label}</label>
       <input
+        id={id}
         type={type}
         name={name}
         value={value}

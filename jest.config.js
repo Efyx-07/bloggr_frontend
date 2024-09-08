@@ -5,7 +5,6 @@ module.exports = {
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
     '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
-    '\\.(css|less|scss|sass)$': '<rootDir>/__mocks__/styleMock.js',
   },
   transform: {
     '^.+\\.(ts|tsx)$': 'ts-jest',

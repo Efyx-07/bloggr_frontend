@@ -38,6 +38,7 @@ export default function LoginForm() {
   return (
     <form onSubmit={handleAdminLogin}>
       <InputField
+        id="name"
         name="Email"
         label="Votre email"
         type="email"
@@ -45,6 +46,7 @@ export default function LoginForm() {
         onChange={(e) => setEmail(e.target.value)}
       />
       <InputField
+        id="password"
         name="Password"
         label="Votre mot de passe"
         type="password"
