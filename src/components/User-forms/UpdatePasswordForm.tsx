@@ -7,7 +7,7 @@ import InputField from '../Form-fields/InputField';
 import { Admin } from '@/interfaces/admin.interface';
 import { updatePassword } from '@/services/update-password.service';
 import useLogoutAdmin from '@/hooks/useLogoutAdmin';
-import decodeTokenAndGetAdminId from '@/utils/decodeTokenAndGetAdminId';
+import { decodeTokenAndGetAdminId } from '@/utils/decodeTokenAndGetAdminId';
 
 export default function UpdatePasswordForm() {
   const [currentPassword, setCurrentPassword] = useState<Admin['password']>('');
