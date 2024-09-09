@@ -1,23 +1,18 @@
 import React from 'react';
 
-console.log('CKEditor mock used');
-// Le composant CKEditor mocké
 export const CKEditor = ({
-  id,
-  name,
-  value,
   onChange,
+  data,
 }: {
-  id: string;
-  name: string;
-  value: string;
-  onChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
-}) => (
-  <textarea
-    data-testid="ckeditor"
-    id={id}
-    name={name}
-    value={value}
-    onChange={onChange}
-  />
-);
+  onChange: (event: any, editor: any) => void;
+  data: string;
+}) => {
+  console.log('CKEditor mock utilisé');
+  return (
+    <textarea
+      data-testid="ckeditor"
+      value={data}
+      onChange={(e) => onChange(null, { getData: () => e.target.value })}
+    />
+  );
+};

@@ -1,10 +1,9 @@
-import 'jest-environment-jsdom';
+import '@testing-library/jest-dom'; // Assurez-vous que cette ligne est présente
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import CreateArticleForm from './CreateArticleForm';
 import { useRouter } from 'next/navigation';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { loadBlob } from '@/services/vercel-blob.service';
-import { createArticle } from '@/services/articles.service';
 
 // Mocks
 jest.mock('next/navigation', () => ({
@@ -18,7 +17,6 @@ jest.mock('@/services/vercel-blob.service', () => ({
   loadBlob: jest.fn(),
 }));
 jest.mock('@ckeditor/ckeditor5-react', () => {
-  console.log('CKEditor mock used'); // Ajoutez ceci pour déboguer
   return {
     CKEditor: ({
       onChange,
@@ -63,7 +61,6 @@ describe('CreateArticleForm', () => {
   });
 
   // Test rendu composant
-  // ===========================================================================================
   it('should render form fields correctly', () => {
     render(<CreateArticleForm />);
     expect(screen.getByLabelText(/Titre de l'article/i)).toBeInTheDocument();
@@ -75,7 +72,6 @@ describe('CreateArticleForm', () => {
   });
 
   // Test scenario succès
-  // ===========================================================================================
   it('soumet le formulaire avec des données valides', async () => {
     const file = new File(['image'], 'image.png', { type: 'image/png' });
 
@@ -85,8 +81,6 @@ describe('CreateArticleForm', () => {
     });
 
     render(<CreateArticleForm />);
-
-    screen.debug();
 
     // Remplir le champ titre
     fireEvent.change(screen.getByLabelText(/Titre de l'article/i), {
