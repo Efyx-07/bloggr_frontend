@@ -38,7 +38,7 @@ export default function LoginForm() {
   return (
     <form onSubmit={handleAdminLogin}>
       <InputField
-        id="name"
+        id="email"
         name="Email"
         label="Votre email"
         type="email"

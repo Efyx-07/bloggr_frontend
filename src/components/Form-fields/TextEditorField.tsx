@@ -6,6 +6,7 @@ const CKEditorComponent = dynamic(
 );
 
 interface TextEditorFieldProps {
+  id: string;
   label: string;
   name: string;
   value: string;
@@ -14,6 +15,7 @@ interface TextEditorFieldProps {
 }
 
 export default function TextEditorField({
+  id,
   label,
   name,
   value,
@@ -22,8 +24,9 @@ export default function TextEditorField({
 }: TextEditorFieldProps) {
   return (
     <div className="text-editor-field">
-      <label>{label}</label>
+      <label htmlFor={id}>{label}</label>
       <CKEditorComponent
+        id={id}
         name={name}
         value={value}
         onChange={onChange}

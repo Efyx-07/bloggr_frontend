@@ -15,6 +15,7 @@ import {
 import 'ckeditor5/ckeditor5.css';
 
 interface CKEditorComponentProps {
+  id: string;
   name: string;
   value: string | undefined;
   required?: boolean;
@@ -22,6 +23,7 @@ interface CKEditorComponentProps {
 }
 
 const CKEditorComponent: React.FC<CKEditorComponentProps> = ({
+  id,
   name,
   value,
   required,
@@ -56,7 +58,13 @@ const CKEditorComponent: React.FC<CKEditorComponentProps> = ({
           },
         }}
       />
-      <input type="hidden" name={name} value={value} required={required} />
+      <input
+        type="hidden"
+        id={id}
+        name={name}
+        value={value}
+        required={required}
+      />
     </div>
   );
 };

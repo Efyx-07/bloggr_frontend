@@ -4,10 +4,11 @@
     "jsx": "react-jsx",
     "esModuleInterop": true,
     "isolatedModules": true,
-    "module": "CommonJS",
-    "target": "ES2015",
-    "moduleResolution": "node"
+    "module": "commonjs",
+    "target": "es2015",
+    "moduleResolution": "node",
+    "skipLibCheck": true
   },
-  "include": ["**/*.ts", "**/*.tsx"],
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
   "exclude": ["node_modules"]
 }

@@ -109,6 +109,7 @@ export default function CreateArticleForm() {
         required
       />
       <ImageInputField
+        id="imageUrl"
         label={"Image de l'article"}
         previewUrl={previewUrl}
         onClick={deletePreview}
@@ -117,6 +118,7 @@ export default function CreateArticleForm() {
         required
       />
       <TextEditorField
+        id="body"
         label="Corps de l'article"
         name="body"
         value={body}

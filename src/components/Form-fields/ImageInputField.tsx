@@ -3,6 +3,7 @@ import Image from 'next/image';
 import FileInputField from './FileInputField';
 
 interface ImageInputFieldProps {
+  id: string;
   label: string;
   previewUrl: string | null;
   onClick: MouseEventHandler<HTMLButtonElement>;
@@ -12,6 +13,7 @@ interface ImageInputFieldProps {
 }
 
 export default function ImageInputField({
+  id,
   label,
   previewUrl,
   onClick,
@@ -21,7 +23,7 @@ export default function ImageInputField({
 }: ImageInputFieldProps) {
   return (
     <div className="image-input-field">
-      <label>{label}</label>
+      <label htmlFor={id}>{label}</label>
       {previewUrl ? (
         <div className="image-preview-container">
           <Image
@@ -39,7 +41,7 @@ export default function ImageInputField({
       ) : (
         <FileInputField
           name="imageUrl"
-          id="imageUrl"
+          id={id}
           ref={inputRef}
           required={required}
           onChange={onChange}
