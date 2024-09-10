@@ -1,0 +1,9 @@
+:root {
+    --primary: 200, 100%, 50%; /* HSL */
+    --primary-foreground: 0, 0%, 100%; /* HSL pour la couleur de texte */
+  }
+
+  button {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+}

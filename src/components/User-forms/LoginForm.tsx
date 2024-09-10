@@ -8,6 +8,7 @@ import { login } from '@/services/admin.service';
 import useAdminStore from '@/stores/adminStore';
 import { useRouter } from 'next/navigation';
 import InputField from '../Form-fields/InputField';
+import { Button } from '@/components/ui/button';
 import PrimaryButton from '../Sharables/Buttons/PrimaryButton';
 
 export default function LoginForm() {
@@ -53,7 +54,9 @@ export default function LoginForm() {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <PrimaryButton type="submit" name="Me connecter" />
+      <Button type="submit" variant="default">
+        Me connecter
+      </Button>
     </form>
   );
 }
