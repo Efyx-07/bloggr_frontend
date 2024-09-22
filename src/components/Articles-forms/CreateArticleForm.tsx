@@ -3,7 +3,7 @@
 import '@/assets/sass/UserForm.scss';
 import { FormEvent, useEffect, useRef, useState } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { Article } from '@/interfaces/article.interface';
+import { Article, Keyword } from '@/interfaces/article.interface';
 import { createArticle } from '@/services/articles.service';
 import { useRouter } from 'next/navigation';
 import { loadBlob } from '@/services/vercel-blob.service';
@@ -19,6 +19,8 @@ export default function CreateArticleForm() {
   );
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [body, setBody] = useState<Article['body']>('');
+  const [keywords, setKeywords] = useState<Keyword[]>([]);
+  const [newKeyword, setNewKeyword] = useState<string>('');
   const inputFileRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
   const queryClient = useQueryClient();
@@ -30,12 +32,14 @@ export default function CreateArticleForm() {
       title: Article['title'];
       imageUrl: Article['imageUrl'];
       body: Article['body'];
+      keywords: Article['keywords'];
     }) => {
       // Crée l'article avec le service article
       await createArticle(
         newArticle.title,
         newArticle.imageUrl,
         newArticle.body,
+        newArticle.keywords,
       );
     },
     onSuccess: () => {
@@ -66,6 +70,21 @@ export default function CreateArticleForm() {
     setPreviewUrl(null);
   };
 
+  // Ajoute un mot-clé
+  // ===========================================================================================
+  const handleAddKeyword = () => {
+    if (newKeyword && !keywords.some((k) => k.name === newKeyword)) {
+      setKeywords([...keywords, { name: newKeyword }]);
+      setNewKeyword('');
+    }
+  };
+
+  // Supprime un mot-clé
+  // ===========================================================================================
+  const handleRemoveKeyword = (keywordToRemove: string) => {
+    setKeywords(keywords.filter((keyword) => keyword.name !== keywordToRemove));
+  };
+
   // Soumet le formulaire pour la création de l'article
   // ===========================================================================================
   const handleCreateArticle = async (
@@ -78,7 +97,7 @@ export default function CreateArticleForm() {
       const newBlob = await loadBlob(selectedFile);
       if (newBlob) {
         const imageUrl = newBlob.url;
-        mutation.mutate({ title, imageUrl, body });
+        mutation.mutate({ title, imageUrl, body, keywords });
       } else {
         console.error('Failed to upload blob');
       }
@@ -97,6 +116,7 @@ export default function CreateArticleForm() {
     };
   }, [previewUrl]);
 
+  // ===========================================================================================
   return (
     <form onSubmit={handleCreateArticle}>
       <InputField
@@ -125,6 +145,33 @@ export default function CreateArticleForm() {
         onChange={(value: string) => setBody(value)}
         required
       />
+      <div className="keywords-field">
+        <InputField
+          id="new-keyword"
+          label="Ajouter un mot-clé"
+          type="text"
+          name="newKeyword"
+          value={newKeyword}
+          onChange={(e) => setNewKeyword(e.target.value)}
+        />
+        <button type="button" onClick={handleAddKeyword}>
+          Ajouter
+        </button>
+
+        <div className="keywords-list">
+          {keywords.map((keyword) => (
+            <div className="keyword-container" key={keyword.name}>
+              <p>{keyword.name}</p>
+              <button
+                type="button"
+                onClick={() => handleRemoveKeyword(keyword.name)}
+              >
+                Retirer
+              </button>
+            </div>
+          ))}
+        </div>
+      </div>
       <PrimaryButton type="submit" name="Créer l'article" />
     </form>
   );

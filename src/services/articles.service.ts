@@ -7,6 +7,7 @@ export async function createArticle(
   title: Article['title'],
   imageUrl: Article['imageUrl'],
   body: Article['body'],
+  keywords: Article['keywords'],
 ): Promise<Article> {
   try {
     const response = await fetch(`${backendUrl}/articles/create-article`, {
@@ -18,6 +19,7 @@ export async function createArticle(
         title,
         imageUrl,
         body,
+        keywords,
       }),
     });
     if (response.ok) {

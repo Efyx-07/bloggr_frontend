@@ -5,4 +5,10 @@ export interface Article {
   body: string;
   creationDate: Date | string;
   lastUpdate: Date | string;
+  keywords: Keyword[];
+}
+
+export interface Keyword {
+  id?: number;
+  name: string;
 }
