@@ -70,10 +70,13 @@ export default function CreateArticleForm() {
     setPreviewUrl(null);
   };
 
-  // Ajoute un mot-clé
+  // Ajoute un mot-clé s'il n'est pas déjà présent dans la liste
   // ===========================================================================================
   const handleAddKeyword = () => {
-    if (newKeyword && !keywords.some((k) => k.name === newKeyword)) {
+    if (
+      newKeyword &&
+      !keywords.some((keyword) => keyword.name === newKeyword)
+    ) {
       setKeywords([...keywords, { name: newKeyword }]);
       setNewKeyword('');
     }
