@@ -1,6 +1,6 @@
 'use client';
 
-import '@/assets/sass/UserForm.scss';
+import '@/styles/UserForm.scss';
 import { FormEvent, useEffect, useRef, useState } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { Article, Keyword } from '@/interfaces/article.interface';
@@ -73,12 +73,16 @@ export default function CreateArticleForm() {
   // Ajoute un mot-clé s'il n'est pas déjà présent dans la liste
   // ===========================================================================================
   const handleAddKeyword = () => {
+    const keywordPattern = /^[^\s]+$/;
     if (
       newKeyword &&
+      keywordPattern.test(newKeyword) &&
       !keywords.some((keyword) => keyword.name === newKeyword)
     ) {
       setKeywords([...keywords, { name: newKeyword }]);
       setNewKeyword('');
+    } else {
+      alert('Un mot clé doit être un seul mot sans espace !');
     }
   };
 
