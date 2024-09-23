@@ -1,3 +1,4 @@
+import './ImageInputField.scss';
 import { ChangeEventHandler, MouseEventHandler, RefObject } from 'react';
 import Image from 'next/image';
 import FileInputField from './FileInputField';
@@ -26,16 +27,18 @@ export default function ImageInputField({
       <label htmlFor={id}>{label}</label>
       {previewUrl ? (
         <div className="image-preview-container">
-          <Image
-            className="img"
-            src={previewUrl}
-            width={300}
-            height={200}
-            alt="Article preview"
-            priority
-          />
-          <button className="remove-btn" type="button" onClick={onClick}>
-            Remove
+          <div className="image-container">
+            <Image
+              className="img"
+              src={previewUrl}
+              width={300}
+              height={200}
+              alt="Article preview"
+              priority
+            />
+          </div>
+          <button className="remove-button" type="button" onClick={onClick}>
+            Supprimer
           </button>
         </div>
       ) : (
@@ -46,7 +49,7 @@ export default function ImageInputField({
               src="/skeleton-image.png"
               width={300}
               height={200}
-              alt="Article preview"
+              alt=""
               priority
             />
           </div>
