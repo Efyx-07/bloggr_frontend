@@ -1,8 +1,11 @@
+@import '../../styles/colors.scss';
+
 header {
   width: 100%;
   height: 4rem;
   padding: 0 1rem;
-  border-bottom: solid 1px black;
+  background: $whiteRelief;
+  border-bottom: solid 1px $black;
   display: flex;
   align-items: center;
   justify-content: space-between;
