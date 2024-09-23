@@ -2,12 +2,10 @@
 
 .form-container {
   width: 100%;
-  //max-width: 50rem;
   padding: 2rem;
   background: $whiteRelief;
   color: $black;
-  //box-shadow: 10px 10px $black;
-  //border: solid 1px $black;
+  border-radius: 1rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
