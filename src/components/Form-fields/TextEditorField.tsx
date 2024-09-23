@@ -23,7 +23,7 @@ export default function TextEditorField({
   required,
 }: TextEditorFieldProps) {
   return (
-    <div className="text-editor-field">
+    <div className="input-container text-editor-field ">
       <label htmlFor={id}>{label}</label>
       <CKEditorComponent
         id={id}

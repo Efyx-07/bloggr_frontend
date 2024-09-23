@@ -22,15 +22,15 @@ export default function ImageInputField({
   required,
 }: ImageInputFieldProps) {
   return (
-    <div className="image-input-field">
+    <div className="input-container image-input-field">
       <label htmlFor={id}>{label}</label>
       {previewUrl ? (
         <div className="image-preview-container">
           <Image
             className="img"
             src={previewUrl}
-            width={250}
-            height={250}
+            width={300}
+            height={200}
             alt="Article preview"
             priority
           />
@@ -39,13 +39,25 @@ export default function ImageInputField({
           </button>
         </div>
       ) : (
-        <FileInputField
-          name="imageUrl"
-          id={id}
-          ref={inputRef}
-          required={required}
-          onChange={onChange}
-        />
+        <>
+          <div className="skeleton-image-container">
+            <Image
+              className="img"
+              src="/skeleton-image.png"
+              width={300}
+              height={200}
+              alt="Article preview"
+              priority
+            />
+          </div>
+          <FileInputField
+            name="imageUrl"
+            id={id}
+            ref={inputRef}
+            required={required}
+            onChange={onChange}
+          />
+        </>
       )}
     </div>
   );

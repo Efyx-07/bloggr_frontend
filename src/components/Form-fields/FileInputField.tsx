@@ -1,4 +1,5 @@
-import React, { forwardRef } from 'react';
+import './FileInputField.scss';
+import { forwardRef } from 'react';
 
 interface FileInputProps {
   name: string;
@@ -11,6 +12,7 @@ const FileInputField = forwardRef<HTMLInputElement, FileInputProps>(
   function FileInputField({ name, id, required, onChange }, ref) {
     return (
       <input
+        className="file-input"
         type="file"
         name={name}
         id={id}

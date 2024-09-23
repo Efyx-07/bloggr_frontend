@@ -1,11 +1,13 @@
+@import '../../../styles/colors.scss';
+
 .primary-button {
   width: 100%;
   max-width: 9rem;
   height: 2.5rem;
   border: none;
-  background: black;
+  background: $black;
   border-radius: .25rem;
-  color: white;
+  color: $whiteRelief;
   align-self: flex-end;
   font-size: 1rem;
   cursor: pointer;

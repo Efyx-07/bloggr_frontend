@@ -23,6 +23,7 @@ export default function InputField({
     <div className="input-container">
       <label htmlFor={id}>{label}</label>
       <input
+        className="text-input"
         id={id}
         type={type}
         name={name}
