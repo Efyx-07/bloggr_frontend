@@ -46,7 +46,7 @@ export default function ImageInputField({
           <div className="skeleton-image-container">
             <Image
               className="img"
-              src="/skeleton-image.png"
+              src="https://placehold.co/3000x2000/1D1D1D/f8f8f8.png"
               width={300}
               height={200}
               alt=""

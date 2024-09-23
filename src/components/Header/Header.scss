@@ -2,17 +2,23 @@
 
 header {
   width: 100%;
-  //height: 4rem;
-  padding: 1rem;
-  //background: $whiteRelief;
-  //border-bottom: solid 1px rgba($whiteBackground, .25);
+  height: 5rem;
   display: flex;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
 
-  .site-name {
-    font-size: 3rem;
-    color: transparent;
-    -webkit-text-stroke: 1px rgba($whiteRelief, .75);
+  .content {
+    width: 100%;
+    max-width: 75rem;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+
+    .site-name {
+      font-size: 3rem;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba($whiteRelief, .75);
+    }
   }
 }

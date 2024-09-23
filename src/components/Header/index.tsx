@@ -8,8 +8,10 @@ export default function Header() {
 
   return (
     <header>
-      <h1 className="site-name">{siteName}</h1>
-      <Navigator />
+      <div className="content">
+        <h1 className="site-name">{siteName}</h1>
+        <Navigator />
+      </div>
     </header>
   );
 }
