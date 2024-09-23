@@ -7,10 +7,12 @@ import { Article, Keyword } from '@/interfaces/article.interface';
 import { createArticle } from '@/services/articles.service';
 import { useRouter } from 'next/navigation';
 import { loadBlob } from '@/services/vercel-blob.service';
+import { Icon } from '@iconify/react';
 import PrimaryButton from '../Sharables/Buttons/PrimaryButton';
 import InputField from '../Form-fields/InputField';
 import ImageInputField from '../Form-fields/ImageInputField';
 import TextEditorField from '../Form-fields/TextEditorField';
+import KeywordsField from '../Form-fields/KeywordsField';
 
 export default function CreateArticleForm() {
   const [title, setTitle] = useState<Article['title']>('');
@@ -152,19 +154,16 @@ export default function CreateArticleForm() {
         onChange={(value: string) => setBody(value)}
         required
       />
+      <KeywordsField
+        id="new-keyword"
+        label="Ajouter un mot-clé"
+        type="text"
+        name="newKeyword"
+        value={newKeyword}
+        onChange={(e) => setNewKeyword(e.target.value)}
+        onClick={handleAddKeyword}
+      />
       <div className="keywords-field">
-        <InputField
-          id="new-keyword"
-          label="Ajouter un mot-clé"
-          type="text"
-          name="newKeyword"
-          value={newKeyword}
-          onChange={(e) => setNewKeyword(e.target.value)}
-        />
-        <button type="button" onClick={handleAddKeyword}>
-          Ajouter
-        </button>
-
         <div className="keywords-list">
           {keywords.map((keyword) => (
             <div className="keyword-container" key={keyword.name}>
