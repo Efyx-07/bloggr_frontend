@@ -1,56 +1,56 @@
 @import '../../styles/colors.scss';
 
 .input-container {
-    .input-keyword-container {
-        display: flex;
-        align-items: center;
-        gap: .5rem;
+  .input-keyword-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 
-        .icon-container {
-            border: solid 1px rgba($black, .25);
-            height: 2.25rem;
-            width: 100%;
-            max-width: 2.25rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 100%;
-            cursor: pointer; 
+    .icon-container {
+      border: solid 1px rgba($black, 0.25);
+      height: 2.25rem;
+      width: 100%;
+      max-width: 2.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 100%;
+      cursor: pointer;
 
-            &:hover {
-                background: $hoverWhite;
-            }
+      &:hover {
+        background: $hoverWhite;
+      }
 
-            .plus-icon {
-                color: $black;
-                font-size: 1.5rem;
-            }
-        }
+      .plus-icon {
+        color: $black;
+        font-size: 1.5rem;
+      }
     }
+  }
 
-    .keywords-list {
-        display: flex;
-        gap: .5rem;
+  .keywords-list {
+    display: flex;
+    gap: 0.5rem;
 
-        .keyword-container {
-            border: solid 1px rgba($black, .5);
-            padding: .25rem;
-            display: flex;
-            align-items: center;
-            gap: .5rem;
+    .keyword-container {
+      border: solid 1px rgba($black, 0.5);
+      padding: 0.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
 
-            &:hover {
-                background: $hoverWhite;
-            }
+      &:hover {
+        background: $hoverWhite;
+      }
 
-            .keyword-name {
-                font-size: .8rem;
-            }
+      .keyword-name {
+        font-size: 0.8rem;
+      }
 
-            .remove-icon {
-                font-size: .8rem;
-                cursor: pointer;
-            }
-        }
+      .remove-icon {
+        font-size: 0.8rem;
+        cursor: pointer;
+      }
     }
+  }
 }

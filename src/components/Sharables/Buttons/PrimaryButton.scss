@@ -1,18 +1,30 @@
 @import '../../../styles/colors.scss';
 
-.primary-button {
+.form-button {
   width: 100%;
   max-width: 9rem;
   height: 2.5rem;
-  border: none;
-  background: $black;
   border-radius: 0.25rem;
-  color: $whiteRelief;
-  align-self: flex-end;
   font-size: 1rem;
   cursor: pointer;
+}
+
+.primary {
+  border: none;
+  background: $black;
+  color: $whiteRelief;
 
   &:hover {
     background: red;
+  }
+}
+
+.secondary {
+  border: solid 1px $black;
+  background: transparent;
+  color: $black;
+
+  &:hover {
+    background: $hoverWhite;
   }
 }

@@ -5,8 +5,9 @@
   max-width: 40rem;
   padding: 2rem;
   background: $whiteRelief;
-  box-shadow: 10px 10px $black;
-  border: solid 1px $black;
+  //box-shadow: 10px 10px $black;
+  box-shadow: 5px 5px 5px rgba($black, .25);
+  //border: solid 1px $black;
   display: flex;
   flex-direction: column;
   gap: 2rem;

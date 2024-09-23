@@ -1,13 +1,13 @@
 import './PrimaryButton.scss';
 
-interface FormButtonProps {
+interface PrimaryButtonProps {
   type: 'submit' | 'reset' | 'button' | undefined;
   name: string;
 }
 
-export default function FormButton({ type, name }: FormButtonProps) {
+export default function PrimaryButton({ type, name }: PrimaryButtonProps) {
   return (
-    <button className="primary-button" type={type}>
+    <button className="form-button primary" type={type}>
       {name}
     </button>
   );

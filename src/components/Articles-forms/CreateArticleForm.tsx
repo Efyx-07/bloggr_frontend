@@ -8,6 +8,7 @@ import { createArticle } from '@/services/articles.service';
 import { useRouter } from 'next/navigation';
 import { loadBlob } from '@/services/vercel-blob.service';
 import PrimaryButton from '../Sharables/Buttons/PrimaryButton';
+import SecondaryButton from '../Sharables/Buttons/SecondaryButton';
 import InputField from '../Form-fields/InputField';
 import ImageInputField from '../Form-fields/ImageInputField';
 import TextEditorField from '../Form-fields/TextEditorField';
@@ -93,6 +94,15 @@ export default function CreateArticleForm() {
     setKeywords(keywords.filter((keyword) => keyword.name !== keywordToRemove));
   };
 
+  // Réinitialise le formulaire
+  // ===========================================================================================
+  const resetForm = () => {
+    setTitle('');
+    setPreviewUrl(null);
+    setBody('');
+    setKeywords([]);
+  };
+
   // Soumet le formulaire pour la création de l'article
   // ===========================================================================================
   const handleCreateArticle = async (
@@ -127,44 +137,49 @@ export default function CreateArticleForm() {
   // ===========================================================================================
   return (
     <form onSubmit={handleCreateArticle}>
-      <InputField
-        id="title"
-        label="Titre de l'article"
-        type="text"
-        name="title"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        required
-      />
-      <ImageInputField
-        id="imageUrl"
-        label={"Image de l'article"}
-        previewUrl={previewUrl}
-        onClick={deletePreview}
-        onChange={handleFileChange}
-        inputRef={inputFileRef}
-        required
-      />
-      <TextEditorField
-        id="body"
-        label="Corps de l'article"
-        name="body"
-        value={body}
-        onChange={(value: string) => setBody(value)}
-        required
-      />
-      <KeywordsField
-        id="new-keyword"
-        label="Ajouter un mot-clé"
-        type="text"
-        name="newKeyword"
-        value={newKeyword}
-        onChange={(e) => setNewKeyword(e.target.value)}
-        onClick={handleAddKeyword}
-        keywords={keywords}
-        onRemoveKeyword={handleRemoveKeyword}
-      />
-      <PrimaryButton type="submit" name="Créer l'article" />
+      <div className="fields-container">
+        <InputField
+          id="title"
+          label="Titre de l'article"
+          type="text"
+          name="title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          required
+        />
+        <ImageInputField
+          id="imageUrl"
+          label={"Image de l'article"}
+          previewUrl={previewUrl}
+          onClick={deletePreview}
+          onChange={handleFileChange}
+          inputRef={inputFileRef}
+          required
+        />
+        <TextEditorField
+          id="body"
+          label="Corps de l'article"
+          name="body"
+          value={body}
+          onChange={(value: string) => setBody(value)}
+          required
+        />
+        <KeywordsField
+          id="new-keyword"
+          label="Ajouter un mot-clé"
+          type="text"
+          name="newKeyword"
+          value={newKeyword}
+          onChange={(e) => setNewKeyword(e.target.value)}
+          onClick={handleAddKeyword}
+          keywords={keywords}
+          onRemoveKeyword={handleRemoveKeyword}
+        />
+      </div>
+      <div className="buttons-container">
+        <SecondaryButton type="reset" name="Annuler" onClick={resetForm} />
+        <PrimaryButton type="submit" name="Créer l'article" />
+      </div>
     </form>
   );
 }

@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write .",
+    "format:scss": "prettier --write **/*.scss",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
