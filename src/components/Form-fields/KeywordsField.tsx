@@ -47,7 +47,7 @@ export default function KeywordsField({
           <div className="keyword-container" key={keyword.name}>
             <p className="keyword-name">{keyword.name}</p>
             <Icon
-              icon="streamline:delete-1"
+              icon="mdi:remove-bold"
               className="remove-icon"
               onClick={() => onRemoveKeyword(keyword.name)}
             />
