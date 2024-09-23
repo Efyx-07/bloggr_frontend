@@ -7,7 +7,6 @@ import { Article, Keyword } from '@/interfaces/article.interface';
 import { createArticle } from '@/services/articles.service';
 import { useRouter } from 'next/navigation';
 import { loadBlob } from '@/services/vercel-blob.service';
-import { Icon } from '@iconify/react';
 import PrimaryButton from '../Sharables/Buttons/PrimaryButton';
 import InputField from '../Form-fields/InputField';
 import ImageInputField from '../Form-fields/ImageInputField';
@@ -162,22 +161,9 @@ export default function CreateArticleForm() {
         value={newKeyword}
         onChange={(e) => setNewKeyword(e.target.value)}
         onClick={handleAddKeyword}
+        keywords={keywords}
+        onRemoveKeyword={handleRemoveKeyword}
       />
-      <div className="keywords-field">
-        <div className="keywords-list">
-          {keywords.map((keyword) => (
-            <div className="keyword-container" key={keyword.name}>
-              <p>{keyword.name}</p>
-              <button
-                type="button"
-                onClick={() => handleRemoveKeyword(keyword.name)}
-              >
-                Retirer
-              </button>
-            </div>
-          ))}
-        </div>
-      </div>
       <PrimaryButton type="submit" name="Créer l'article" />
     </form>
   );

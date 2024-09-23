@@ -1,6 +1,7 @@
 import './KeywordsField.scss';
 import { Icon } from '@iconify/react';
 import { MouseEventHandler } from 'react';
+import { Keyword } from '@/interfaces/article.interface';
 
 interface KeywordsFieldProps {
   id: string;
@@ -10,6 +11,8 @@ interface KeywordsFieldProps {
   value: string | undefined;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onClick: MouseEventHandler<HTMLDivElement>;
+  keywords: Keyword[];
+  onRemoveKeyword: (keywordToRemove: Keyword['name']) => void;
 }
 
 export default function KeywordsField({
@@ -20,6 +23,8 @@ export default function KeywordsField({
   value,
   onChange,
   onClick,
+  keywords,
+  onRemoveKeyword,
 }: KeywordsFieldProps) {
   return (
     <div className="input-container">
@@ -36,6 +41,18 @@ export default function KeywordsField({
         <div className="icon-container" onClick={onClick}>
           <Icon icon="ic:baseline-plus" className="plus-icon" />
         </div>
+      </div>
+      <div className="keywords-list">
+        {keywords.map((keyword) => (
+          <div className="keyword-container" key={keyword.name}>
+            <p className="keyword-name">{keyword.name}</p>
+            <Icon
+              icon="streamline:delete-1"
+              className="remove-icon"
+              onClick={() => onRemoveKeyword(keyword.name)}
+            />
+          </div>
+        ))}
       </div>
     </div>
   );
