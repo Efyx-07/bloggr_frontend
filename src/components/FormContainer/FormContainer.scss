@@ -3,11 +3,13 @@
 .form-container {
   width: 100%;
   padding: 2rem;
-  background: $whiteRelief;
+  border: solid 1px $whiteLighted;
   color: $black;
-  border: solid .5rem $hoverWhite;
-  border-radius: 1rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
+
+  h2 {
+    color: $whiteRelief;
+  }
 }
