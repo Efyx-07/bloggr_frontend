@@ -1,6 +1,6 @@
 import { Article } from '@/interfaces/article.interface';
-import PrimaryButton from '../Sharables/Buttons/PrimaryButton';
 import SecondaryButton from '../Sharables/Buttons/SecondaryButton';
+import DeleteButton from '../ArticleCard/DeleteButton';
 import './ModalDeleteArticle.scss';
 
 interface ModalDeleteArticleProps {
@@ -26,7 +26,7 @@ export default function ModalDeleteArticle({
         </div>
         <div className="buttons-container">
           <SecondaryButton type="reset" name="Annuler" onClick={closeModal} />
-          <PrimaryButton type="submit" name="Confirmer" />
+          <DeleteButton selectedArticle={selectedArticle} />
         </div>
       </div>
     </div>

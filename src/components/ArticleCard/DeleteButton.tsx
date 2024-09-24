@@ -2,16 +2,13 @@ import { Article } from '@/interfaces/article.interface';
 import { deleteArticleById } from '@/services/articles.service';
 import { deleteFromVercelBlob } from '@/services/vercel-blob.service';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import PrimaryButton from '../Sharables/Buttons/PrimaryButton';
 
 interface DeleteButtonProps {
   selectedArticle: Article;
-  className: string;
 }
 
-export default function DeleteButton({
-  selectedArticle,
-  className,
-}: DeleteButtonProps) {
+export default function DeleteButton({ selectedArticle }: DeleteButtonProps) {
   const queryClient = useQueryClient();
 
   // Création d'une mutation pour supprimer l'image de Vercel blob et supprimer l'article
@@ -36,8 +33,10 @@ export default function DeleteButton({
   };
 
   return (
-    <button className={className} onClick={handleDeleteArticle}>
-      Supprimer
-    </button>
+    <PrimaryButton
+      type="button"
+      name="Confirmer"
+      onClick={handleDeleteArticle}
+    />
   );
 }

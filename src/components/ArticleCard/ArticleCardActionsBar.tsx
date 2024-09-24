@@ -30,9 +30,8 @@ export default function ArticleCardActionsBar({
         <CardButton
           className="card-button"
           onClick={openDeleteModal}
-          label="Open"
+          label="Supprimer"
         />
-        <DeleteButton className="card-button" selectedArticle={article} />
         <CardButton
           className="card-button"
           onClick={() => router.push(`/modifier-article/${article.id}`)}
