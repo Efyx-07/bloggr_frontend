@@ -1,0 +1,36 @@
+@import '../../styles/colors.scss';
+
+.modal-overlay {
+    background: rgba($black, .5);
+    width: 100vw;
+    height: 100dvh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .modal-delete-article {
+        width: 24rem;
+        height: 14rem;
+        background: $whiteBackground;
+        color: $black;
+        border-radius: 1rem;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        h3 {
+            text-align: center;
+            font-size: 1.5rem;
+        }
+
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+            gap: .5rem;
+        }
+    }
+}

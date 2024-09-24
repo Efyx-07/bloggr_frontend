@@ -7,6 +7,7 @@ import { fetchArticles } from '@/services/articles.service';
 import { Article } from '@/interfaces/article.interface';
 import ArticleCard from '@/components/ArticleCard';
 import LoadingPage from '@/components/LoadingPage';
+import ModalDeleteArticle from '@/components/ModalDeleteArticle';
 
 export default function ArticlesPage() {
   const {
@@ -31,6 +32,7 @@ export default function ArticlesPage() {
             ))}
           </div>
         </div>
+        <ModalDeleteArticle />
       </div>
     </MainLayout>
   );
