@@ -26,6 +26,7 @@ describe('UpdateArticleForm', () => {
       body: 'Test Body',
       creationDate: new Date().toISOString(),
       lastUpdate: new Date().toISOString(),
+      keywords: [{ id: 1, name: 'key1' }],
     };
     render(<UpdateArticleForm selectedArticle={mockSelectedArticle} />);
     expect(screen.getByLabelText(/Titre de l'article/i)).toBeInTheDocument();
