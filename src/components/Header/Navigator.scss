@@ -1,12 +1,18 @@
+@import '../../styles/colors.scss';
+
 nav {
   display: flex;
+  flex-direction: column;
   gap: 2rem;
 
   .nav-item {
+    color: $black;
+    font-size: 1.5rem;
+    font-weight: 600;
     cursor: pointer;
 
     &:hover {
-      color: red;
+      color: $hoverAccent;
     }
   }
 }
