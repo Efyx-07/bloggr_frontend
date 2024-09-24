@@ -1,5 +1,5 @@
 import '@/styles/UserForm.scss';
-import { Article } from '@/interfaces/article.interface';
+import { Article, Keyword } from '@/interfaces/article.interface';
 import { updateArticleById } from '@/services/articles.service';
 import { deleteFromVercelBlob, loadBlob } from '@/services/vercel-blob.service';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
@@ -9,6 +9,7 @@ import InputField from '../Form-fields/InputField';
 import PrimaryButton from '../Sharables/Buttons/PrimaryButton';
 import ImageInputField from '../Form-fields/ImageInputField';
 import TextEditorField from '../Form-fields/TextEditorField';
+import KeywordsField from '../Form-fields/KeywordsField';
 
 interface UpdateArticleFormProps {
   selectedArticle: Article;
@@ -23,6 +24,8 @@ export default function UpdateArticleForm({
   );
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [body, setBody] = useState<Article['body']>(selectedArticle.body);
+  const [keywords, setKeywords] = useState<Keyword[]>(selectedArticle.keywords);
+  const [newKeyword, setNewKeyword] = useState<Keyword['name']>('');
   const inputFileRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
   const queryClient = useQueryClient();
@@ -44,7 +47,13 @@ export default function UpdateArticleForm({
         }
       }
       // Met à jour l'article avec le service article
-      await updateArticleById(selectedArticle.id, title, imageUrl, body);
+      await updateArticleById(
+        selectedArticle.id,
+        title,
+        imageUrl,
+        body,
+        keywords,
+      );
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['articles'] });
@@ -72,6 +81,28 @@ export default function UpdateArticleForm({
     setPreviewUrl(null);
   };
 
+  // Ajoute un mot-clé s'il n'est pas déjà présent dans la liste
+  // ===========================================================================================
+  const handleAddKeyword = () => {
+    const keywordPattern = /^[^\s]+$/;
+    if (
+      newKeyword &&
+      keywordPattern.test(newKeyword) &&
+      !keywords.some((keyword) => keyword.name === newKeyword)
+    ) {
+      setKeywords([...keywords, { name: newKeyword }]);
+      setNewKeyword('');
+    } else {
+      alert('Un mot clé doit être un seul mot sans espace !');
+    }
+  };
+
+  // Supprime un mot-clé
+  // ===========================================================================================
+  const handleRemoveKeyword = (keywordToRemove: string) => {
+    setKeywords(keywords.filter((keyword) => keyword.name !== keywordToRemove));
+  };
+
   // Soumet le formulaire pour la création de l'article
   // ===========================================================================================
   const handleUpdateArticle = async (
@@ -81,7 +112,7 @@ export default function UpdateArticleForm({
     mutation.mutate();
   };
 
-  // Utilise useEffect pour supprimer l'URL de la preview au démontage du compoosant
+  // Utilise useEffect pour supprimer l'URL de la preview au démontage du composant
   // ===========================================================================================
   useEffect(() => {
     return () => {
@@ -118,6 +149,17 @@ export default function UpdateArticleForm({
         value={body}
         onChange={(value: string) => setBody(value)}
         required
+      />
+      <KeywordsField
+        id="new-keyword"
+        label="Ajouter un mot-clé"
+        type="text"
+        name="newKeyword"
+        value={newKeyword}
+        onChange={(e) => setNewKeyword(e.target.value)}
+        onClick={handleAddKeyword}
+        keywords={keywords}
+        onRemoveKeyword={handleRemoveKeyword}
       />
       <PrimaryButton type="submit" name="Modifier l'article" />
     </form>

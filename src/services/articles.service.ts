@@ -72,6 +72,7 @@ export async function updateArticleById(
   title: Article['title'],
   imageUrl: Article['imageUrl'],
   body: Article['body'],
+  keywords: Article['keywords'],
 ): Promise<{ message: string }> {
   try {
     const response = await fetch(`${backendUrl}/articles/${id}`, {
@@ -83,6 +84,7 @@ export async function updateArticleById(
         title,
         imageUrl,
         body,
+        keywords,
       }),
     });
     if (response.ok) {

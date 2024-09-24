@@ -22,7 +22,7 @@ export default function CreateArticleForm() {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [body, setBody] = useState<Article['body']>('');
   const [keywords, setKeywords] = useState<Keyword[]>([]);
-  const [newKeyword, setNewKeyword] = useState<string>('');
+  const [newKeyword, setNewKeyword] = useState<Keyword['name']>('');
   const inputFileRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
   const queryClient = useQueryClient();
@@ -124,7 +124,7 @@ export default function CreateArticleForm() {
     }
   };
 
-  // Utilise useEffect pour supprimer l'URL de la preview au démontage du compoosant
+  // Utilise useEffect pour supprimer l'URL de la preview au démontage du composant
   // ===========================================================================================
   useEffect(() => {
     return () => {
