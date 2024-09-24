@@ -1,9 +1,13 @@
 import './MobileMenuIcon.scss';
 import { Icon } from '@iconify/react';
 
-export default function MobileMenuIcon() {
+interface MobileMenuIconProps {
+  toggleMenu: () => void;
+}
+
+export default function MobileMenuIcon({ toggleMenu }: MobileMenuIconProps) {
   return (
-    <div className="mobile-icon-container">
+    <div className="mobile-icon-container" onClick={toggleMenu}>
       <Icon icon="tabler:menu-3" className="mobile-icon" />
     </div>
   );

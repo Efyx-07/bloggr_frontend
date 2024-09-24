@@ -1,5 +1,9 @@
 @import '../../styles/colors.scss';
 
+.hidden {
+    transform: translateX(100%);
+}
+
 .burger-menu {
     background: $whiteBackground;
     position: fixed;
@@ -11,6 +15,7 @@
     padding: 1rem 1rem 1rem 2rem;
     display: grid;
     grid-template-rows: repeat(3, 1fr);
+    transition: transform .2s ease;
 
     .burger-menu-head {
         display: flex;
@@ -24,6 +29,15 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            cursor: pointer;
+
+            &:hover {
+                border-color: $hoverAccent;
+            }
+
+            &:hover > .close-icon {
+                color: $hoverAccent;
+            }
     
             .close-icon {
                 color: $black;

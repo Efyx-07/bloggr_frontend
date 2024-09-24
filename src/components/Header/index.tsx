@@ -1,6 +1,7 @@
 'use client';
 
 import './Header.scss';
+import { useState } from 'react';
 import { Chivo } from 'next/font/google';
 import MobileMenuIcon from './MobileMenuIcon';
 import BurgerMenu from './BurgerMenu';
@@ -11,6 +12,7 @@ const font = Chivo({
 });
 
 export default function Header() {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const siteName = '.Bloggr';
 
   return (
@@ -18,10 +20,10 @@ export default function Header() {
       <header>
         <div className="content">
           <h1 className={`${font.className} site-name`}>{siteName}</h1>
-          <MobileMenuIcon />
+          <MobileMenuIcon toggleMenu={() => setIsOpen(!isOpen)} />
         </div>
       </header>
-      <BurgerMenu />
+      <BurgerMenu isOpen={isOpen} toggleMenu={() => setIsOpen(!isOpen)} />
     </>
   );
 }

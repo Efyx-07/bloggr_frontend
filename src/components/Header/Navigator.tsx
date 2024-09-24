@@ -3,7 +3,11 @@ import { MouseEventHandler } from 'react';
 import { useRouter } from 'next/navigation';
 import useLogoutAdmin from '@/hooks/useLogoutAdmin';
 
-export default function Navigator() {
+interface NavigatorProps {
+  toggleMenu: () => void;
+}
+
+export default function Navigator({ toggleMenu }: NavigatorProps) {
   const router = useRouter();
   const logoutAdmin = useLogoutAdmin();
 
@@ -17,15 +21,24 @@ export default function Navigator() {
   const navitems: Navitem[] = [
     {
       name: 'Mes articles',
-      onClick: () => router.push('/articles'),
+      onClick: () => {
+        router.push('/articles');
+        toggleMenu();
+      },
     },
     {
       name: 'Nouvel article',
-      onClick: () => router.push('/nouvel-article'),
+      onClick: () => {
+        router.push('/nouvel-article');
+        toggleMenu();
+      },
     },
     {
       name: 'Compte',
-      onClick: () => router.push('/compte'),
+      onClick: () => {
+        router.push('/compte');
+        toggleMenu();
+      },
     },
     {
       name: 'Me déconnecter',
