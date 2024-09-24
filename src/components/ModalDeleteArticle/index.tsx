@@ -1,20 +1,31 @@
+import { Article } from '@/interfaces/article.interface';
 import PrimaryButton from '../Sharables/Buttons/PrimaryButton';
 import SecondaryButton from '../Sharables/Buttons/SecondaryButton';
 import './ModalDeleteArticle.scss';
 
-export default function ModalDeleteArticle() {
+interface ModalDeleteArticleProps {
+  selectedArticle: Article;
+  isModalOpen: boolean;
+  closeModal: () => void;
+}
+
+export default function ModalDeleteArticle({
+  selectedArticle,
+  isModalOpen,
+  closeModal,
+}: ModalDeleteArticleProps) {
   return (
-    <div className="modal-overlay">
+    <div className={`modal-overlay ${!isModalOpen ? 'hidden' : ''}`}>
       <div className="modal-delete-article">
         <div className="modal-head">
-          <p>X</p>
+          <p onClick={closeModal}>X</p>
         </div>
         <div className="text-container">
           <p>Etes-vous sûr de vouloir supprimer cet article ?</p>
-          <h3>Article name</h3>
+          <h3>{selectedArticle.title}</h3>
         </div>
         <div className="buttons-container">
-          <SecondaryButton type="reset" name="Annuler" onClick={() => {}} />
+          <SecondaryButton type="reset" name="Annuler" onClick={closeModal} />
           <PrimaryButton type="submit" name="Confirmer" />
         </div>
       </div>
