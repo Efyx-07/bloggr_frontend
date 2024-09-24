@@ -1,12 +1,12 @@
 @import '../../styles/colors.scss';
 
 .date-infos {
-    display: flex;
-    gap: .5rem;
+  display: flex;
+  gap: 0.5rem;
 
-    p {
-        font-size: .7rem;
-        font-weight: 200;
-        opacity: .5;
-    }
+  p {
+    font-size: 0.7rem;
+    font-weight: 200;
+    opacity: 0.5;
+  }
 }
