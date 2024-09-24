@@ -1,5 +1,7 @@
+import './ArticleCardActionsBar.scss';
 import { Article } from '@/interfaces/article.interface';
 import { useRouter } from 'next/navigation';
+import CardButton from './CardButton';
 import DeleteButton from './DeleteButton';
 
 interface ArticleCardActionsBarProps {
@@ -13,13 +15,17 @@ export default function ArticleCardActionsBar({
 
   return (
     <div className="actions-bar">
-      <button onClick={() => router.push(`/article/${article.id}`)}>
-        Voir
-      </button>
-      <button onClick={() => router.push(`/modifier-article/${article.id}`)}>
-        Modifier
-      </button>
-      <DeleteButton selectedArticle={article} />
+      <DeleteButton className="card-button" selectedArticle={article} />
+      <CardButton
+        className="card-button"
+        onClick={() => router.push(`/modifier-article/${article.id}`)}
+        label="Modifier"
+      />
+      <CardButton
+        className="card-button"
+        onClick={() => router.push(`/article/${article.id}`)}
+        label="Voir"
+      />
     </div>
   );
 }

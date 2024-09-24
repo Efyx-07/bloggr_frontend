@@ -5,9 +5,13 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 interface DeleteButtonProps {
   selectedArticle: Article;
+  className: string;
 }
 
-export default function DeleteButton({ selectedArticle }: DeleteButtonProps) {
+export default function DeleteButton({
+  selectedArticle,
+  className,
+}: DeleteButtonProps) {
   const queryClient = useQueryClient();
 
   // Création d'une mutation pour supprimer l'image de Vercel blob et supprimer l'article
@@ -31,5 +35,9 @@ export default function DeleteButton({ selectedArticle }: DeleteButtonProps) {
     mutation.mutate();
   };
 
-  return <button onClick={handleDeleteArticle}>Supprimer</button>;
+  return (
+    <button className={className} onClick={handleDeleteArticle}>
+      Supprimer
+    </button>
+  );
 }

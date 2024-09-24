@@ -1,0 +1,16 @@
+@import '../../styles/colors.scss';
+
+.actions-bar {
+    display: flex;
+    justify-content: flex-end;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: .5rem;
+
+    .card-button {
+        padding: .5rem 1rem;
+        background: transparent;
+        color: $whiteRelief;
+        border: solid 1px $whiteLighted;
+    }
+}

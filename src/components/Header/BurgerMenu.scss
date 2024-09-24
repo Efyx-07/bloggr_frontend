@@ -2,60 +2,60 @@
 @import '../../styles/breakpoints.scss';
 
 .hidden {
-    transform: translateX(100%);
+  transform: translateX(100%);
 }
 
 .burger-menu {
-    background: $whiteBackground;
-    position: fixed;
-    z-index: 99;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100dvh;
-    padding: 1rem 1rem 1rem 2rem;
-    display: grid;
-    grid-template-rows: repeat(3, 1fr);
-    transition: transform .2s ease;
+  background: $whiteBackground;
+  position: fixed;
+  z-index: 99;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100dvh;
+  padding: 1rem 1rem 1rem 2rem;
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  transition: transform 0.2s ease;
 
-    .burger-menu-head {
-        display: flex;
-        justify-content: flex-end;
+  .burger-menu-head {
+    display: flex;
+    justify-content: flex-end;
 
-        .close-icon-container {
-            border: solid 1px $black;
-            width: 2rem;
-            height: 2rem;
-            border-radius: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
+    .close-icon-container {
+      border: solid 1px $black;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
 
-            &:hover {
-                border-color: $hoverAccent;
-            }
+      &:hover {
+        border-color: $hoverAccent;
+      }
 
-            &:hover > .close-icon {
-                color: $hoverAccent;
-            }
-    
-            .close-icon {
-                color: $black;
-                font-size: 2rem;
-            }
-        }
+      &:hover > .close-icon {
+        color: $hoverAccent;
+      }
+
+      .close-icon {
+        color: $black;
+        font-size: 2rem;
+      }
     }
+  }
 }
 
 @media (min-width: $sm) {
-    .burger-menu {
-        max-width: 50vw;
-    }
+  .burger-menu {
+    max-width: 50vw;
+  }
 }
 
 @media (min-width: $lgInter) {
-    .burger-menu {
-        max-width: 25vw;
-    }
+  .burger-menu {
+    max-width: 25vw;
+  }
 }

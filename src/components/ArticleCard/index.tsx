@@ -15,16 +15,18 @@ export default function ArticleCard({ article }: ArticleCardProps) {
         <Image
           className="img"
           src={article.imageUrl}
-          //width={3000}
-          //height={2000}
           alt={article.title}
           priority
           fill
         />
       </div>
-      <ArticleDate article={article} />
-      <p>{article.title}</p>
-      <ArticleCardActionsBar article={article} />
+      <div className="bottom-part">
+        <div className="infos-container">
+          <h3>{article.title}</h3>
+          <ArticleDate article={article} />
+        </div>
+        <ArticleCardActionsBar article={article} />
+      </div>
     </div>
   );
 }

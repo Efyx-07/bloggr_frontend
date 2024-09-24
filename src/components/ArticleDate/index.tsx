@@ -1,3 +1,4 @@
+import './ArticleDate.scss';
 import { Article } from '@/interfaces/article.interface';
 import { format, formatDistanceToNow } from 'date-fns';
 
@@ -18,10 +19,13 @@ export default function ArticleDate({ article }: ArticleDateProps) {
 
   return (
     <div className="date-infos">
+      <p className="creation-date">créé: {formatDate(creationDate)}</p>
       {creationDate.getTime() !== lastUpdate.getTime() && (
-        <p className="last-update">dernière maj: {timeAgo(lastUpdate)}</p>
+        <>
+          <p>/</p>
+          <p className="last-update">maj: {timeAgo(lastUpdate)}</p>
+        </>
       )}
-      <p className="creation-date">créé le: {formatDate(creationDate)}</p>
     </div>
   );
 }
