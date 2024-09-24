@@ -6,6 +6,7 @@ import MainLayout from '../_layouts/MainLayout';
 import { fetchArticles } from '@/services/articles.service';
 import { Article } from '@/interfaces/article.interface';
 import ArticleCard from '@/components/ArticleCard';
+import LoadingPage from '@/components/LoadingPage';
 
 export default function ArticlesPage() {
   const {
@@ -17,7 +18,7 @@ export default function ArticlesPage() {
     queryFn: fetchArticles,
   });
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <LoadingPage />;
   if (error) return <p>An error occurred: {error.message}</p>;
 
   return (

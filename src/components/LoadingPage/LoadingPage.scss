@@ -1,0 +1,13 @@
+@import '../../styles/colors.scss';
+
+.loading-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: $black;
+  width: 100vw;
+  height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
