@@ -11,6 +11,7 @@ interface ArticleCardProps {
 export default function ArticleCard({ article }: ArticleCardProps) {
   return (
     <div className="article-card">
+      <h3>{article.title}</h3>
       <div className="image-container">
         <Image
           className="img"
@@ -22,7 +23,6 @@ export default function ArticleCard({ article }: ArticleCardProps) {
       </div>
       <div className="bottom-part">
         <div className="infos-container">
-          <h3>{article.title}</h3>
           <ArticleDate article={article} />
         </div>
         <ArticleCardActionsBar article={article} />

@@ -2,6 +2,7 @@ import { Article } from '@/interfaces/article.interface';
 import SecondaryButton from '../Sharables/Buttons/SecondaryButton';
 import DeleteButton from '../ArticleCard/DeleteButton';
 import './ModalDeleteArticle.scss';
+import { Icon } from '@iconify/react';
 
 interface ModalDeleteArticleProps {
   selectedArticle: Article;
@@ -18,7 +19,9 @@ export default function ModalDeleteArticle({
     <div className={`modal-overlay ${!isModalOpen ? 'hidden' : ''}`}>
       <div className="modal-delete-article">
         <div className="modal-head">
-          <p onClick={closeModal}>X</p>
+          <div className="close-icon-container">
+            <Icon icon="ei:close" className="close-icon" onClick={closeModal} />
+          </div>
         </div>
         <div className="text-container">
           <p>Etes-vous sûr de vouloir supprimer cet article ?</p>
