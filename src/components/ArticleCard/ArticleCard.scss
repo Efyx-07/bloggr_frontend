@@ -3,13 +3,13 @@
 .article-card {
   padding: 1rem;
   width: 100%;
-  max-width: 30rem;
   border: solid 1px $whiteLighted;
 
   .image-container {
     display: inline-block;
     position: relative;
     width: 100%;
+    aspect-ratio: 3 / 2;
     overflow: hidden;
 
     .img {

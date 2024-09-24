@@ -24,7 +24,6 @@ export default function ArticlesPage() {
     <MainLayout>
       <div className="page">
         <div className="content">
-          <h1>Article</h1>
           <div className="article-cards-container">
             {articles?.map((article) => (
               <ArticleCard key={article.id} article={article} />

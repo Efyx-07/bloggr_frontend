@@ -15,10 +15,11 @@ export default function ArticleCard({ article }: ArticleCardProps) {
         <Image
           className="img"
           src={article.imageUrl}
-          width={480}
-          height={320}
+          //width={3000}
+          //height={2000}
           alt={article.title}
           priority
+          fill
         />
       </div>
       <ArticleDate article={article} />
