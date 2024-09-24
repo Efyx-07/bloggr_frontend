@@ -33,7 +33,7 @@ describe('UpdateArticleForm', () => {
     expect(screen.getByText(/Image de l'article/i)).toBeInTheDocument();
     expect(screen.getByText(/Corps de l'article/i)).toBeInTheDocument();
     expect(
-      screen.getByRole('button', { name: /Modifier l'article/i }),
+      screen.getByRole('button', { name: /Mettre à jour/i }),
     ).toBeInTheDocument();
   });
 });
