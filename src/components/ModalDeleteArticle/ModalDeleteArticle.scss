@@ -12,24 +12,33 @@
     align-items: center;
 
     .modal-delete-article {
-        width: 24rem;
-        height: 14rem;
+        width: 27rem;
         background: $whiteBackground;
         color: $black;
-        border-radius: 1rem;
-        padding: 2rem;
+        padding: 1rem 1rem 1rem 1.5rem;
+        border-radius: .5rem;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        gap: 1.5rem;
 
-        h3 {
-            text-align: center;
-            font-size: 1.5rem;
+        .modal-head {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .text-container {
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
+
+            h3 {
+                font-size: 1.25rem;
+            }
         }
 
         .buttons-container {
             display: flex;
-            justify-content: center;
+            justify-content: flex-end;
             gap: .5rem;
         }
     }
