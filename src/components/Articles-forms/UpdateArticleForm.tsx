@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation';
 import { FormEvent, useEffect, useRef, useState } from 'react';
 import InputField from '../Form-fields/InputField';
 import PrimaryButton from '../Sharables/Buttons/PrimaryButton';
+import SecondaryButton from '../Sharables/Buttons/SecondaryButton';
 import ImageInputField from '../Form-fields/ImageInputField';
 import TextEditorField from '../Form-fields/TextEditorField';
 import KeywordsField from '../Form-fields/KeywordsField';
@@ -57,12 +58,18 @@ export default function UpdateArticleForm({
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['articles'] });
-      router.push('/articles');
+      navToArticlesPage();
     },
     onError: (error: any) => {
       console.error('Failed to update product:', error);
     },
   });
+
+  // Navigue vers la page Articles
+  // ===========================================================================================
+  const navToArticlesPage = () => {
+    router.push('/articles');
+  };
 
   // Gère le changement du champ Image
   // ===========================================================================================
@@ -122,6 +129,16 @@ export default function UpdateArticleForm({
     };
   }, [previewUrl]);
 
+  // Utilise useEffect pour mettre à jour les données au montage du composant
+  // ===========================================================================================
+  useEffect(() => {
+    setTitle(selectedArticle.title);
+    setPreviewUrl(selectedArticle.imageUrl);
+    setBody(selectedArticle.body);
+    setKeywords(selectedArticle.keywords);
+  }, [selectedArticle]);
+
+  // ===========================================================================================
   return (
     <form onSubmit={handleUpdateArticle}>
       <InputField
@@ -161,7 +178,14 @@ export default function UpdateArticleForm({
         keywords={keywords}
         onRemoveKeyword={handleRemoveKeyword}
       />
-      <PrimaryButton type="submit" name="Modifier l'article" />
+      <div className="buttons-container">
+        <SecondaryButton
+          type="reset"
+          name="Annuler"
+          onClick={navToArticlesPage}
+        />
+        <PrimaryButton type="submit" name="Mettre à jour" />
+      </div>
     </form>
   );
 }
