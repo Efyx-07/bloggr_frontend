@@ -8,7 +8,10 @@ interface FormContainerProps {
 export default function FormContainer({ title, children }: FormContainerProps) {
   return (
     <div className="form-container">
-      <h2>• {title} •</h2>
+      <div className="form-head">
+        <h2>{title}</h2>
+        <div className="separator"></div>
+      </div>
       {children}
     </div>
   );

@@ -2,13 +2,11 @@
 
 .file-input {
   font-size: 1rem;
-  color: $whiteRelief;
 
   &::file-selector-button {
     width: 10rem;
     height: 2rem;
-    color: $whiteRelief;
-    border: solid 1px $whiteLighted;
+    border: solid 1px $blackLighted;
     background: transparent;
     margin-right: 1rem;
     cursor: pointer;
