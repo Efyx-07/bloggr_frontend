@@ -100,7 +100,9 @@ export default function UpdateArticleForm({
       setKeywords([...keywords, { name: newKeyword }]);
       setNewKeyword('');
     } else {
-      alert('Un mot clé doit être un seul mot sans espace !');
+      alert(
+        `Un même mot-clé ne peut être renseigné qu'une seule fois et doit être un seul mot sans espace !`,
+      );
     }
   };
 
