@@ -2,7 +2,7 @@ import { Article } from '@/interfaces/article.interface';
 import { deleteArticleById } from '@/services/articles.service';
 import { deleteFromVercelBlob } from '@/services/vercel-blob.service';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import PrimaryButton from '../Sharables/Buttons/PrimaryButton';
+import ModalPrimaryButton from '../Sharables/Buttons/ModalPrimaryButton';
 
 interface DeleteButtonProps {
   selectedArticle: Article;
@@ -33,7 +33,7 @@ export default function DeleteButton({ selectedArticle }: DeleteButtonProps) {
   };
 
   return (
-    <PrimaryButton
+    <ModalPrimaryButton
       type="button"
       name="Confirmer"
       onClick={handleDeleteArticle}

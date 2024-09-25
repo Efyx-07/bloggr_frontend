@@ -2,7 +2,6 @@ import './ArticleCardActionsBar.scss';
 import { Article } from '@/interfaces/article.interface';
 import { useRouter } from 'next/navigation';
 import CardButton from './CardButton';
-import DeleteButton from './DeleteButton';
 import ModalDeleteArticle from '../ModalDeleteArticle';
 import { useState } from 'react';
 
