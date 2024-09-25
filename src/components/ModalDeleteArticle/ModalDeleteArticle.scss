@@ -1,74 +1,74 @@
 @import '../../styles/colors.scss';
 
 .hidden {
-    visibility: hidden;
+  visibility: hidden;
 }
 
 .modal-overlay {
-    background: rgba($black, .5);
-    width: 100vw;
-    height: 100dvh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 999;
+  background: rgba($black, 0.5);
+  width: 100vw;
+  height: 100dvh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .modal-delete-article {
+    width: 27rem;
+    background: $whiteBackground;
+    color: $black;
+    padding: 1rem 1rem 1rem 1.5rem;
+    border-radius: 0.5rem;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
 
-    .modal-delete-article {
-        width: 27rem;
-        background: $whiteBackground;
-        color: $black;
-        padding: 1rem 1rem 1rem 1.5rem;
-        border-radius: .5rem;
+    .modal-head {
+      display: flex;
+      justify-content: flex-end;
+
+      .close-icon-container {
+        border: solid 1px $black;
+        width: 1.25rem;
+        height: 1.25rem;
+        border-radius: 100%;
         display: flex;
-        flex-direction: column;
-        gap: 2rem;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
 
-        .modal-head {
-            display: flex;
-            justify-content: flex-end;
-
-            .close-icon-container {
-                border: solid 1px $black;
-                width: 1.25rem;
-                height: 1.25rem;
-                border-radius: 100%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                cursor: pointer;
-          
-                &:hover {
-                  border-color: $hoverAccent;
-                }
-          
-                &:hover > .close-icon {
-                  color: $hoverAccent;
-                }
-          
-                .close-icon {
-                  color: $black;
-                  font-size: 1.25rem;
-                }
-            }
+        &:hover {
+          border-color: $hoverAccent;
         }
 
-        .text-container {
-            display: flex;
-            flex-direction: column;
-            gap: .5rem;
-
-            h3 {
-                font-size: 1.25rem;
-            }
+        &:hover > .close-icon {
+          color: $hoverAccent;
         }
 
-        .buttons-container {
-            display: flex;
-            justify-content: flex-end;
-            gap: .5rem;
+        .close-icon {
+          color: $black;
+          font-size: 1.25rem;
         }
+      }
     }
+
+    .text-container {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      h3 {
+        font-size: 1.25rem;
+      }
+    }
+
+    .buttons-container {
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.5rem;
+    }
+  }
 }
