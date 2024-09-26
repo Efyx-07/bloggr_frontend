@@ -13,12 +13,12 @@ header {
     padding: 0 1rem;
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: center;
 
     .site-name {
-      font-size: 3rem;
+      font-size: clamp(2rem, 5vw, 2.75rem);
       color: transparent;
-      -webkit-text-stroke: 1px rgba($whiteRelief, 0.75);
+      -webkit-text-stroke: 1px rgba($whiteRelief, .75);
     }
   }
 }
