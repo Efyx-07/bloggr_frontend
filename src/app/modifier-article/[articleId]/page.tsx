@@ -1,7 +1,6 @@
 'use client';
 
 import '../../../styles/page.scss';
-import MainLayout from '@/app/_layouts/MainLayout';
 import { useParams } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query';
 import { Article } from '@/interfaces/article.interface';
@@ -29,22 +28,18 @@ export default function UpdateArticlePage() {
   }
 
   return (
-    <>
-      <MainLayout>
-        <div className="page">
-          <div className="content">
-            {article ? (
-              <>
-                <FormContainer title={`Modifier article: ${article?.title}`}>
-                  <UpdateArticleForm selectedArticle={article} />
-                </FormContainer>
-              </>
-            ) : (
-              <p>No article found</p>
-            )}
-          </div>
-        </div>
-      </MainLayout>
-    </>
+    <div className="page">
+      <div className="content">
+        {article ? (
+          <>
+            <FormContainer title={`Modifier article: ${article?.title}`}>
+              <UpdateArticleForm selectedArticle={article} />
+            </FormContainer>
+          </>
+        ) : (
+          <p>No article found</p>
+        )}
+      </div>
+    </div>
   );
 }
