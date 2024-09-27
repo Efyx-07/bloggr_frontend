@@ -1,10 +1,12 @@
 'use client';
 
+import '../../../styles/page.scss';
 import { useParams } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query';
 import { Article } from '@/interfaces/article.interface';
 import { fetchArticleById } from '@/services/articles.service';
 import Image from 'next/image';
+import LoadingPage from '@/components/LoadingPage';
 
 export default function ArticlePage() {
   const { articleId } = useParams();
@@ -18,12 +20,8 @@ export default function ArticlePage() {
     queryFn: () => fetchArticleById(Number(articleId)),
   });
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-  if (error) {
-    return <div>Error loading products</div>;
-  }
+  if (isLoading) return <LoadingPage />;
+  if (error) return <p>An error occurred: {error.message}</p>;
 
   return (
     <div className="page">
