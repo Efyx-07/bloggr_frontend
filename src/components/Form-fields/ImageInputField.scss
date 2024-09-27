@@ -18,7 +18,8 @@
 
   .image-preview-container .image-container,
   .skeleton-image-container {
-    width: 18.75rem;
+    width: 100%;
+    max-width: 18.75rem;
     height: 12.5rem;
     display: block;
     position: relative;

@@ -26,6 +26,7 @@ export default function BurgerMenu({ isOpen, toggleMenu }: BurgerMenuProps) {
       <ModalLogout
         isModalLogoutOpen={isModalLogoutOpen}
         toggleModal={() => setIsModalLogoutOpen(!isModalLogoutOpen)}
+        toggleMenu={toggleMenu}
       />
     </div>
   );
