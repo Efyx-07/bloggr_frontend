@@ -1,5 +1,5 @@
 import './LoadingPage.scss';
-import LoadingSpinner from '../Sharables/Buttons/LoadingSpinner';
+import LoadingSpinner from '../Sharables/Spinners/LoadingSpinner';
 
 export default function LoadingPage() {
   return (
