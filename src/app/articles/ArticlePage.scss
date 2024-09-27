@@ -1,14 +1,20 @@
 @import '../../styles/breakpoints.scss';
+@import '../../styles/mixin.scss';
 
-.article-cards-container {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+.articles-page-content {
+  @include page-content-style;
+  justify-content: flex-start;
+
+  .article-cards-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
 }
 
 @media (min-width: $smInter) {
-  .article-cards-container {
+  .articles-page-content .article-cards-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
@@ -16,7 +22,7 @@
 }
 
 @media (min-width: $lgInter) {
-  .article-cards-container {
+  .articles-page-content .article-cards-container {
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
   }

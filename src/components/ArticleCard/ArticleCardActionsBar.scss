@@ -16,6 +16,7 @@
 
     &:hover {
       background: $hoverAccent;
+      border-color: $hoverAccent;
       color: $whiteRelief;
     }
   }

@@ -1,6 +1,7 @@
 'use client';
-import './ArticlePage.scss';
+
 import '../../styles/page.scss';
+import './ArticlePage.scss';
 import { useQuery } from '@tanstack/react-query';
 import { fetchArticles } from '@/services/articles.service';
 import { Article } from '@/interfaces/article.interface';
@@ -24,7 +25,7 @@ export default function ArticlesPage() {
 
   return (
     <div className="page">
-      <div className="content">
+      <div className="articles-page-content">
         <HeadTitle title="Mes articles" />
         {articles && articles.length > 0 ? (
           <div className="article-cards-container">
