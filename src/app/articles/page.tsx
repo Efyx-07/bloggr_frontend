@@ -25,14 +25,18 @@ export default function ArticlesPage() {
 
   return (
     <div className="page">
-      <div className="articles-page-content">
-        <HeadTitle title="Mes articles" />
+      <div
+        className={`${articles && articles.length > 0 ? 'articles-page-content' : 'content'}`}
+      >
         {articles && articles.length > 0 ? (
-          <div className="article-cards-container">
-            {articles?.map((article) => (
-              <ArticleCard key={article.id} article={article} />
-            ))}
-          </div>
+          <>
+            <HeadTitle title="Mes articles" />
+            <div className="article-cards-container">
+              {articles?.map((article) => (
+                <ArticleCard key={article.id} article={article} />
+              ))}
+            </div>
+          </>
         ) : (
           <NoArticle />
         )}
