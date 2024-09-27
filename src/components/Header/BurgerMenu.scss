@@ -6,7 +6,8 @@
 }
 
 .burger-menu {
-  background: $whiteBackground;
+  background: $whiteRelief;
+  box-shadow: -5px 0 15px $blackLighted;
   position: fixed;
   z-index: 99;
   top: 0;
