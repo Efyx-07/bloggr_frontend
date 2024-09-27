@@ -10,6 +10,11 @@ import ArticleCard from '@/components/ArticleCard';
 import LoadingPage from '@/components/LoadingPage';
 import NoArticle from '@/components/NoArticle';
 
+// Inverse l'ordre des articles pour obtenir le récent en 1er
+const reverseArticles = (articles: readonly Article[]) => {
+  return [...articles].reverse();
+};
+
 export default function ArticlesPage() {
   const {
     data: articles,
@@ -23,6 +28,9 @@ export default function ArticlesPage() {
   if (isLoading) return <LoadingPage />;
   if (error) return <p>An error occurred: {error.message}</p>;
 
+  const reversedArticles: Article[] | undefined =
+    articles && articles.length > 0 ? reverseArticles(articles) : undefined;
+
   return (
     <div className="page">
       <div
@@ -32,7 +40,7 @@ export default function ArticlesPage() {
           <>
             <HeadTitle title="Mes articles" />
             <div className="article-cards-container">
-              {articles?.map((article) => (
+              {reversedArticles?.map((article) => (
                 <ArticleCard key={article.id} article={article} />
               ))}
             </div>
