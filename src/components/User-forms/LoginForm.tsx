@@ -24,10 +24,10 @@ export default function LoginForm() {
     e.preventDefault();
     if (!validateLoginData(email, password)) return;
     try {
+      const result: Admin = await login(email, password);
       // Connecte l'admin avec le service, gère les datas et navigue vers la page articles
-      const adminData: Admin = await login(email, password);
-      adminStore.setAdminData(adminData);
-      const token: Admin['token'] = adminData.token;
+      adminStore.setAdminData(result);
+      const token: Admin['token'] = result.token;
       if (token) localStorage.setItem('token', token);
       router.push('/articles');
     } catch (error) {
