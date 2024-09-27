@@ -1,11 +1,10 @@
 @import '../../styles/colors.scss';
+@import '../../styles/mixin.scss';
 
 .article-card {
   padding: 1rem;
   width: 100%;
-  border: solid 1px $whiteLighted;
-  display: flex;
-  flex-direction: column;
+  @include container-style;
   gap: 1rem;
 
   .image-container {
@@ -27,7 +26,7 @@
   .bottom-part {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1rem;
 
     .infos-container {
       display: flex;

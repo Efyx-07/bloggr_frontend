@@ -10,12 +10,13 @@
   .card-button {
     padding: 0.5rem 1rem;
     background: transparent;
-    color: $whiteRelief;
-    border: solid 1px $whiteLighted;
+    border: solid 1px $blackLighted;
+    font-weight: 600;
     cursor: pointer;
 
     &:hover {
       background: $hoverAccent;
+      color: $whiteRelief;
     }
   }
 }

@@ -1,13 +1,11 @@
 @import '../../styles/colors.scss';
+@import '../../styles/mixin.scss';
 
 .form-container {
   width: 100%;
   max-width: 50rem;
   padding: 2rem;
-  background: $whiteBackground;
-  color: $black;
-  display: flex;
-  flex-direction: column;
+  @include container-style;
   gap: 3rem;
 
   .form-head {
