@@ -53,7 +53,9 @@ export default function LoginForm() {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <PrimaryButton type="submit" name="Me connecter" />
+      <div className="buttons-container">
+        <PrimaryButton type="submit" name="Me connecter" />
+      </div>
     </form>
   );
 }

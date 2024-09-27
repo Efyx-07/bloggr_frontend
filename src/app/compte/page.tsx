@@ -1,3 +1,4 @@
+import '../../styles/page.scss';
 import MainLayout from '../_layouts/MainLayout';
 import UpdatePasswordForm from '@/components/User-forms/UpdatePasswordForm';
 
