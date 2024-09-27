@@ -1,7 +1,7 @@
 @import '../../styles/colors.scss';
 
 .mobile-icon-container .mobile-icon {
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 5vw, 2rem);
   color: rgba($whiteRelief, 0.75);
   cursor: pointer;
 
