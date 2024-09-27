@@ -1,8 +1,8 @@
 import './SiteName.scss';
 import { siteName } from '@/config';
-import { Chivo } from 'next/font/google';
+import { Permanent_Marker } from 'next/font/google';
 
-const font = Chivo({
+const font = Permanent_Marker({
   weight: '400',
   subsets: ['latin'],
 });

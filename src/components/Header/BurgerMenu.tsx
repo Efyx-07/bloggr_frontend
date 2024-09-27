@@ -15,8 +15,8 @@ export default function BurgerMenu({ isOpen, toggleMenu }: BurgerMenuProps) {
   return (
     <div className={`burger-menu ${!isOpen ? 'hidden' : ''}`}>
       <div className="burger-menu-head">
-        <div className="close-icon-container">
-          <Icon icon="ei:close" className="close-icon" onClick={toggleMenu} />
+        <div className="close-icon-container" onClick={toggleMenu}>
+          <Icon icon="fa:close" className="close-icon" />
         </div>
       </div>
       <Navigator

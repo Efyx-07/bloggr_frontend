@@ -14,7 +14,9 @@ export default function Header() {
   return (
     <>
       <header>
-        <div className="content">
+        <div
+          className={`content ${pathName === '/' ? 'on-login-content' : ''}`}
+        >
           <SiteName />
           {/* Cache l'icone du menu sur la page de connexion */}
           {pathName !== '/' && (
