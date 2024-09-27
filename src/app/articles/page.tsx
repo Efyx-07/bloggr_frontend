@@ -4,6 +4,7 @@ import '../../styles/page.scss';
 import { useQuery } from '@tanstack/react-query';
 import { fetchArticles } from '@/services/articles.service';
 import { Article } from '@/interfaces/article.interface';
+import HeadTitle from '@/components/Sharables/Others/HeadTitle';
 import ArticleCard from '@/components/ArticleCard';
 import LoadingPage from '@/components/LoadingPage';
 import NoArticle from '@/components/NoArticle';
@@ -24,6 +25,7 @@ export default function ArticlesPage() {
   return (
     <div className="page">
       <div className="content">
+        <HeadTitle title="Mes articles" />
         {articles && articles.length > 0 ? (
           <div className="article-cards-container">
             {articles?.map((article) => (
