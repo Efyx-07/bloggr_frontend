@@ -51,7 +51,9 @@ export default function UpdatePasswordForm() {
         value={newPassword}
         onChange={(e) => setNewPassword(e.target.value)}
       />
-      <PrimaryButton type="submit" name="Modifier" />
+      <div className="buttons-container">
+        <PrimaryButton type="submit" name="Modifier" />
+      </div>
     </form>
   );
 }
