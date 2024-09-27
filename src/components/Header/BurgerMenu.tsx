@@ -1,6 +1,7 @@
 import './BurgerMenu.scss';
 import { Icon } from '@iconify/react';
 import Navigator from './Navigator';
+import ModalLogout from '../ModalLogout';
 
 interface BurgerMenuProps {
   isOpen: boolean;
@@ -16,6 +17,7 @@ export default function BurgerMenu({ isOpen, toggleMenu }: BurgerMenuProps) {
         </div>
       </div>
       <Navigator toggleMenu={toggleMenu} />
+      <ModalLogout />
     </div>
   );
 }
