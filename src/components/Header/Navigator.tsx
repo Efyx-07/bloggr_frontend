@@ -5,9 +5,10 @@ import useLogoutAdmin from '@/hooks/useLogoutAdmin';
 
 interface NavigatorProps {
   toggleMenu: () => void;
+  toggleModal: () => void;
 }
 
-export default function Navigator({ toggleMenu }: NavigatorProps) {
+export default function Navigator({ toggleMenu, toggleModal }: NavigatorProps) {
   const router = useRouter();
   const logoutAdmin = useLogoutAdmin();
 
@@ -42,7 +43,7 @@ export default function Navigator({ toggleMenu }: NavigatorProps) {
     },
     {
       name: 'Me déconnecter',
-      onClick: logoutAdmin,
+      onClick: toggleModal,
     },
   ];
   return (

@@ -2,6 +2,7 @@ import './BurgerMenu.scss';
 import { Icon } from '@iconify/react';
 import Navigator from './Navigator';
 import ModalLogout from '../ModalLogout';
+import { useState } from 'react';
 
 interface BurgerMenuProps {
   isOpen: boolean;
@@ -9,6 +10,8 @@ interface BurgerMenuProps {
 }
 
 export default function BurgerMenu({ isOpen, toggleMenu }: BurgerMenuProps) {
+  const [isModalLogoutOpen, setIsModalLogoutOpen] = useState<boolean>(false);
+
   return (
     <div className={`burger-menu ${!isOpen ? 'hidden' : ''}`}>
       <div className="burger-menu-head">
@@ -16,8 +19,14 @@ export default function BurgerMenu({ isOpen, toggleMenu }: BurgerMenuProps) {
           <Icon icon="ei:close" className="close-icon" onClick={toggleMenu} />
         </div>
       </div>
-      <Navigator toggleMenu={toggleMenu} />
-      <ModalLogout />
+      <Navigator
+        toggleMenu={toggleMenu}
+        toggleModal={() => setIsModalLogoutOpen(!isModalLogoutOpen)}
+      />
+      <ModalLogout
+        isModalLogoutOpen={isModalLogoutOpen}
+        toggleModal={() => setIsModalLogoutOpen(!isModalLogoutOpen)}
+      />
     </div>
   );
 }
