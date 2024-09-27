@@ -5,10 +5,12 @@ import './ArticlePage.scss';
 import { useQuery } from '@tanstack/react-query';
 import { fetchArticles } from '@/services/articles.service';
 import { Article } from '@/interfaces/article.interface';
+import { useRouter } from 'next/navigation';
 import HeadTitle from '@/components/Sharables/Others/HeadTitle';
 import ArticleCard from '@/components/ArticleCard';
 import LoadingPage from '@/components/LoadingPage';
 import NoArticle from '@/components/NoArticle';
+import PrimaryButton from '@/components/Sharables/Buttons/PrimaryButton';
 
 // Inverse l'ordre des articles pour obtenir le récent en 1er
 const reverseArticles = (articles: readonly Article[]) => {
@@ -16,6 +18,7 @@ const reverseArticles = (articles: readonly Article[]) => {
 };
 
 export default function ArticlesPage() {
+  const router = useRouter();
   const {
     data: articles,
     error,
@@ -38,7 +41,13 @@ export default function ArticlesPage() {
       >
         {articles && articles.length > 0 ? (
           <>
-            <HeadTitle title="Mes articles" />
+            <HeadTitle title="Mes articles">
+              <PrimaryButton
+                type="button"
+                name="Nouvel article"
+                onClick={() => router.push('/nouvel-article')}
+              />
+            </HeadTitle>
             <div className="article-cards-container">
               {reversedArticles?.map((article) => (
                 <ArticleCard key={article.id} article={article} />
