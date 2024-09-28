@@ -13,6 +13,7 @@
     width: 100%;
     aspect-ratio: 3 / 2;
     overflow: hidden;
+    border: solid 1px $black;
 
     .img {
       display: block;

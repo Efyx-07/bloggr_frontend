@@ -20,7 +20,7 @@ export default function ModalDeleteArticle({
       <div className="modal-delete-article">
         <div className="modal-head">
           <div className="close-icon-container">
-            <Icon icon="ei:close" className="close-icon" onClick={closeModal} />
+            <Icon icon="fa:close" className="close-icon" onClick={closeModal} />
           </div>
         </div>
         <div className="text-container">

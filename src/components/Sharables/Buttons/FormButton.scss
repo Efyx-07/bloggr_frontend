@@ -13,21 +13,29 @@
 }
 
 .primary {
-  border: none;
-  background: $black;
-  color: $whiteRelief;
+  border: solid 1px $black;
+  background: $whiteRelief;
+  color: $black;
+  box-shadow: 5px 5px $black;
+  font-weight: 600;
 
   &:hover {
     background: $hoverAccent;
+    color: $whiteRelief;
+    border-color: $hoverAccent;
   }
 }
 
 .secondary {
   border: solid 1px $black;
-  background: transparent;
+  background: $hoverWhite;
   color: $black;
+  box-shadow: 5px 5px $black;
+  font-weight: 600;
 
   &:hover {
-    background: $hoverWhite;
+    background: $hoverAccent;
+    color: $whiteRelief;
+    border-color: $hoverAccent;
   }
 }
