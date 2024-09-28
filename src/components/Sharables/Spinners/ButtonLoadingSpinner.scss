@@ -21,10 +21,10 @@
     position: absolute;
     width: 1.25rem;
     height: 1.25rem;
-    border: 2px solid $whiteBackground;
+    border: 2px solid $black;
     border-radius: 50%;
     animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    border-color: $whiteBackground transparent transparent transparent;
+    border-color: $black transparent transparent transparent;
   }
   .lds-ring div:nth-child(1) {
     animation-delay: -0.45s;

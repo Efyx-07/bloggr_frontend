@@ -9,10 +9,12 @@ import useAdminStore from '@/stores/adminStore';
 import { useRouter } from 'next/navigation';
 import InputField from '../Form-fields/InputField';
 import PrimaryButton from '../Sharables/Buttons/PrimaryButton';
+import ButtonLoadingSpinner from '../Sharables/Spinners/ButtonLoadingSpinner';
 
 export default function LoginForm() {
   const [email, setEmail] = useState<Admin['email']>('');
   const [password, setPassword] = useState<Admin['password']>('');
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const adminStore = useAdminStore();
   const router = useRouter();
 
@@ -22,6 +24,7 @@ export default function LoginForm() {
     e: FormEvent<HTMLFormElement>,
   ): Promise<void> => {
     e.preventDefault();
+    setIsLoading(true);
     if (!validateLoginData(email, password)) return;
     try {
       const result: Admin = await login(email, password);
@@ -32,6 +35,7 @@ export default function LoginForm() {
       router.push('/articles');
     } catch (error) {
       console.error('Error while connecting: ', error);
+      setIsLoading(false);
     }
   };
 
@@ -54,7 +58,11 @@ export default function LoginForm() {
         onChange={(e) => setPassword(e.target.value)}
       />
       <div className="buttons-container">
-        <PrimaryButton type="submit" name="Me connecter" />
+        {isLoading ? (
+          <ButtonLoadingSpinner />
+        ) : (
+          <PrimaryButton type="submit" name="Me connecter" />
+        )}
       </div>
     </form>
   );
