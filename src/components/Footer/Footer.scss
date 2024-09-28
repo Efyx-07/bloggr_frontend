@@ -6,11 +6,10 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: $black;
+  background: $whiteRelief;
 
   p {
     font-size: 0.9rem;
-    font-weight: 200;
-    color: $hoverWhite;
+    color: $black;
   }
 }
