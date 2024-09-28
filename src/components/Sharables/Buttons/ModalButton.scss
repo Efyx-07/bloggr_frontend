@@ -8,23 +8,3 @@
   font-size: 1rem;
   cursor: pointer;
 }
-
-.primary {
-  border: none;
-  background: $black;
-  color: $whiteRelief;
-
-  &:hover {
-    background: $hoverAccent;
-  }
-}
-
-.secondary {
-  border: solid 1px $black;
-  background: transparent;
-  color: $black;
-
-  &:hover {
-    background: $hoverWhite;
-  }
-}

@@ -1,5 +1,18 @@
 @import '../../../styles/colors.scss';
 
+@mixin common-button-style {
+  border: solid 1px $black;
+  color: $black;
+  box-shadow: 5px 5px $black;
+  font-weight: 600;
+  transition: transform .05s ease, box-shadow .08s ease;
+
+  &:hover {
+    transform: translate(4px, 5px);
+    box-shadow: 0 0;
+  }
+}
+
 .form-button {
   width: 100%;
   max-width: 9rem;
@@ -13,29 +26,11 @@
 }
 
 .primary {
-  border: solid 1px $black;
   background: $whiteRelief;
-  color: $black;
-  box-shadow: 5px 5px $black;
-  font-weight: 600;
-
-  &:hover {
-    background: $hoverAccent;
-    color: $whiteRelief;
-    border-color: $hoverAccent;
-  }
+  @include common-button-style;
 }
 
 .secondary {
-  border: solid 1px $black;
   background: $hoverWhite;
-  color: $black;
-  box-shadow: 5px 5px $black;
-  font-weight: 600;
-
-  &:hover {
-    background: $hoverAccent;
-    color: $whiteRelief;
-    border-color: $hoverAccent;
-  }
+  @include common-button-style;
 }
