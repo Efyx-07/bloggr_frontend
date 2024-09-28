@@ -24,6 +24,7 @@ export default function CreateArticleForm() {
   const [keywords, setKeywords] = useState<Keyword[]>([]);
   const [newKeyword, setNewKeyword] = useState<Keyword['name']>('');
   const inputFileRef = useRef<HTMLInputElement>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
   const queryClient = useQueryClient();
 
@@ -111,7 +112,7 @@ export default function CreateArticleForm() {
     e: FormEvent<HTMLFormElement>,
   ): Promise<void> => {
     e.preventDefault();
-
+    setIsLoading(true);
     if (!selectedFile) return;
     try {
       const newBlob = await loadBlob(selectedFile);
@@ -122,6 +123,7 @@ export default function CreateArticleForm() {
         console.error('Failed to upload blob');
       }
     } catch (error) {
+      setIsLoading(false);
       console.error('Failed to create article', error);
     }
   };
@@ -180,7 +182,11 @@ export default function CreateArticleForm() {
       </div>
       <div className="buttons-container">
         <SecondaryButton type="reset" name="Annuler" onClick={resetForm} />
-        <PrimaryButton type="submit" name="Créer l'article" />
+        <PrimaryButton
+          type="submit"
+          name="Créer l'article"
+          isLoading={isLoading}
+        />
       </div>
     </form>
   );

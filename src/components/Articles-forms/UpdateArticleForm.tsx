@@ -28,6 +28,7 @@ export default function UpdateArticleForm({
   const [keywords, setKeywords] = useState<Keyword[]>(selectedArticle.keywords);
   const [newKeyword, setNewKeyword] = useState<Keyword['name']>('');
   const inputFileRef = useRef<HTMLInputElement>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
   const queryClient = useQueryClient();
 
@@ -118,6 +119,7 @@ export default function UpdateArticleForm({
     e: FormEvent<HTMLFormElement>,
   ): Promise<void> => {
     e.preventDefault();
+    setIsLoading(true);
     mutation.mutate();
   };
 
@@ -186,7 +188,11 @@ export default function UpdateArticleForm({
           name="Annuler"
           onClick={navToArticlesPage}
         />
-        <PrimaryButton type="submit" name="Mettre à jour" />
+        <PrimaryButton
+          type="submit"
+          name="Mettre à jour"
+          isLoading={isLoading}
+        />
       </div>
     </form>
   );

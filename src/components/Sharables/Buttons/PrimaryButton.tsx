@@ -1,16 +1,19 @@
 import './FormButton.scss';
 import { useState } from 'react';
+import ButtonLoadingSpinner from '../Spinners/ButtonLoadingSpinner';
 
 interface PrimaryButtonProps {
   type: 'submit' | 'reset' | 'button' | undefined;
   name: string;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  isLoading?: boolean;
 }
 
 export default function PrimaryButton({
   type,
   name,
   onClick,
+  isLoading,
 }: PrimaryButtonProps) {
   const [clicked, setClicked] = useState<boolean>(false);
 
@@ -29,7 +32,7 @@ export default function PrimaryButton({
       type={type}
       onClick={handleClick}
     >
-      {name}
+      {isLoading ? <ButtonLoadingSpinner /> : <p>{name}</p>}
     </button>
   );
 }
