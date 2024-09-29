@@ -8,9 +8,12 @@ import { fetchArticleById } from '@/services/articles.service';
 import FormContainer from '@/components/FormContainer';
 import UpdateArticleForm from '@/components/Articles-forms/UpdateArticleForm';
 import LoadingPage from '@/components/LoadingPage';
+import { loadingPageDelay } from '@/config';
+import { useState } from 'react';
 
 export default function UpdateArticlePage() {
   const { articleId } = useParams();
+  const [isContentVisible, setIsContentVisible] = useState<boolean>(false);
 
   const {
     data: article,
@@ -24,19 +27,29 @@ export default function UpdateArticlePage() {
   if (isLoading) return <LoadingPage />;
   if (error) return <p>An error occurred: {error.message}</p>;
 
+  setTimeout(() => {
+    setIsContentVisible(true);
+  }, loadingPageDelay);
+
   return (
-    <div className="page">
-      <div className="content">
-        {article ? (
-          <>
-            <FormContainer title={`Modifier article: ${article?.title}`}>
-              <UpdateArticleForm selectedArticle={article} />
-            </FormContainer>
-          </>
-        ) : (
-          <p>No article found</p>
-        )}
-      </div>
-    </div>
+    <>
+      {isContentVisible ? (
+        <div className="page">
+          <div className="content">
+            {article ? (
+              <>
+                <FormContainer title={`Modifier article: ${article?.title}`}>
+                  <UpdateArticleForm selectedArticle={article} />
+                </FormContainer>
+              </>
+            ) : (
+              <p>No article found</p>
+            )}
+          </div>
+        </div>
+      ) : (
+        <LoadingPage />
+      )}
+    </>
   );
 }
