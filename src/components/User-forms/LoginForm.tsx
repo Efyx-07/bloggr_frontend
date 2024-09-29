@@ -1,6 +1,6 @@
 'use client';
 
-import '../../styles/UserForm.scss';
+import '../../styles/form.scss';
 import { FormEvent, useState } from 'react';
 import { Admin } from '@/interfaces/admin.interface';
 import validateLoginData from '@/utils/validateLoginData';

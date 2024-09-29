@@ -69,7 +69,7 @@ export default function ArticlesPage() {
           </div>
         </div>
       ) : (
-        <LoadingPage mention="Chargement des articles" />
+        <LoadingPage mention="Chargement des articles..." />
       )}
     </>
   );

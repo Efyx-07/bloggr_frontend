@@ -48,7 +48,7 @@ export default function UpdateArticlePage() {
           </div>
         </div>
       ) : (
-        <LoadingPage />
+        <LoadingPage mention={`Modifier: ${article?.title}`} />
       )}
     </>
   );

@@ -1,4 +1,4 @@
-import '@/styles/UserForm.scss';
+import '@/styles/form.scss';
 import { Article, Keyword } from '@/interfaces/article.interface';
 import { updateArticleById } from '@/services/articles.service';
 import { deleteFromVercelBlob, loadBlob } from '@/services/vercel-blob.service';
