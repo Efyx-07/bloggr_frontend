@@ -8,8 +8,11 @@ interface LoadingPageProps {
 export default function LoadingPage({ mention }: LoadingPageProps) {
   return (
     <div className="loading-page">
-      <p className="loading-page-mention">{mention}</p>
-      <LoadingSpinner />
+      {mention ? (
+        <p className="loading-page-mention">{mention}</p>
+      ) : (
+        <LoadingSpinner />
+      )}
     </div>
   );
 }

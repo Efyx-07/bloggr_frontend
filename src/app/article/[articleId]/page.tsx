@@ -56,7 +56,7 @@ export default function ArticlePage() {
           </div>
         </div>
       ) : (
-        <LoadingPage />
+        <LoadingPage mention={`Accès à l'article: ${article?.title}...`} />
       )}
     </>
   );

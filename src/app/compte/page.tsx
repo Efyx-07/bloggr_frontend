@@ -25,7 +25,7 @@ export default function AccountSettings() {
           </div>
         </div>
       ) : (
-        <LoadingPage />
+        <LoadingPage mention="Accès aux paramètres du compte..." />
       )}
     </>
   );

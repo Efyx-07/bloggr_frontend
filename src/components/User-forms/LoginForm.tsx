@@ -47,6 +47,7 @@ export default function LoginForm() {
         type="email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
+        required
       />
       <InputField
         id="password"
@@ -55,6 +56,7 @@ export default function LoginForm() {
         type="password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
+        required
       />
       <div className="buttons-container">
         <PrimaryButton

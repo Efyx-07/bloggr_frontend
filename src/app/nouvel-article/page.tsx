@@ -25,7 +25,7 @@ export default function NewArticlePage() {
           </div>
         </div>
       ) : (
-        <LoadingPage mention="Accès nouvel article" />
+        <LoadingPage mention="Accès nouvel article..." />
       )}
     </>
   );

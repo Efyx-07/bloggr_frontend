@@ -25,7 +25,7 @@ export default function LoginPage() {
           </div>
         </div>
       ) : (
-        <LoadingPage mention="Accès à la page de connexion" />
+        <LoadingPage mention="Accès à la page de connexion..." />
       )}
     </>
   );

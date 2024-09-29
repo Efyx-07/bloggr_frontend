@@ -15,20 +15,21 @@ export default function PrimaryButton({
   onClick,
   isLoading,
 }: PrimaryButtonProps) {
-  const [clicked, setClicked] = useState<boolean>(false);
+  const [isClicked, setIsClicked] = useState<boolean>(false);
 
   // Modifie l'événement onClick pour gérer à la fois le clic interne et externe
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setClicked(true);
+    setIsClicked(true);
 
     // Appelle la fonction onClick passée en prop si elle existe
     if (onClick) {
       onClick(event);
     }
   };
+
   return (
     <button
-      className={`form-button primary ${clicked ? 'clicked' : ''}`}
+      className={`form-button primary ${isClicked ? 'clicked' : ''}`}
       type={type}
       onClick={handleClick}
     >
