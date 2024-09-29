@@ -9,7 +9,8 @@
     transform 0.05s ease,
     box-shadow 0.08s ease;
 
-  &:hover, &.clicked {
+  &:hover,
+  &.clicked {
     transform: translate(4px, 5px);
     box-shadow: 0 0;
   }
