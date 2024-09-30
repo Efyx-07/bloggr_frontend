@@ -11,7 +11,7 @@ export default function NoArticle() {
       <h2>Il n&apos;y a aucun article pour l&apos;instant...</h2>
       <div
         className="action-container"
-        onClick={() => router.push('/nouvel-article')}
+        onClick={() => router.push('/dashboard/nouvel-article')}
       >
         <p className="action-text">Créez votre 1er article</p>
         <Icon icon="maki:arrow" className="action-icon" />

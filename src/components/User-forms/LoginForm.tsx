@@ -31,7 +31,7 @@ export default function LoginForm() {
       adminStore.setAdminData(result);
       const token: Admin['token'] = result.token;
       if (token) localStorage.setItem('token', token);
-      router.push('/articles');
+      router.push('/dashboard/articles');
     } catch (error) {
       setIsLoading(false);
       console.error('Error while connecting: ', error);

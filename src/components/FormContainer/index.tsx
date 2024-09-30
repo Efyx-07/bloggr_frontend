@@ -12,7 +12,7 @@ interface FormContainerProps {
 export default function FormContainer({ title, children }: FormContainerProps) {
   const pathName = usePathname();
   const loginPathname = pathName === '/';
-  const comptePathname = pathName === '/compte';
+  const comptePathname = pathName === '/dashboard/compte';
   return (
     <div
       className={`form-container ${loginPathname || comptePathname ? 'user-form-container' : ''}`}

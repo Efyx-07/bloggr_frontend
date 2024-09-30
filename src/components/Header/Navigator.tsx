@@ -23,21 +23,21 @@ export default function Navigator({ toggleMenu, toggleModal }: NavigatorProps) {
     {
       name: 'Mes articles',
       onClick: () => {
-        router.push('/articles');
+        router.push('/dashboard/articles');
         toggleMenu();
       },
     },
     {
       name: 'Nouvel article',
       onClick: () => {
-        router.push('/nouvel-article');
+        router.push('/dashboard/nouvel-article');
         toggleMenu();
       },
     },
     {
       name: 'Compte',
       onClick: () => {
-        router.push('/compte');
+        router.push('/dashboard/compte');
         toggleMenu();
       },
     },

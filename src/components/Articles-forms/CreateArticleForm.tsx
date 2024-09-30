@@ -47,7 +47,7 @@ export default function CreateArticleForm() {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['articles'] });
-      router.push('/articles');
+      router.push('/dashboard/articles');
     },
     onError: (error: any) => {
       console.error('Failed to create article', error);

@@ -69,7 +69,7 @@ export default function UpdateArticleForm({
   // Navigue vers la page Articles
   // ===========================================================================================
   const navToArticlesPage = () => {
-    router.push('/articles');
+    router.push('/dashboard/articles');
   };
 
   // Gère le changement du champ Image

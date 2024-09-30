@@ -35,12 +35,14 @@ export default function ArticleCardActionsBar({
         />
         <CardButton
           className="card-button"
-          onClick={() => router.push(`/modifier-article/${article.id}`)}
+          onClick={() =>
+            router.push(`/dashboard/modifier-article/${article.id}`)
+          }
           label="Modifier"
         />
         <CardButton
           className="card-button"
-          onClick={() => router.push(`/article/${article.id}`)}
+          onClick={() => router.push(`/dashboard/article/${article.id}`)}
           label="Voir"
         />
       </div>

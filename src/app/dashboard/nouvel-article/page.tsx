@@ -1,6 +1,6 @@
 'use client';
 
-import '../../styles/page.scss';
+import '@/styles/page.scss';
 import FormContainer from '@/components/FormContainer';
 import CreateArticleForm from '@/components/Articles-forms/CreateArticleForm';
 import LoadingPage from '@/components/LoadingPage';

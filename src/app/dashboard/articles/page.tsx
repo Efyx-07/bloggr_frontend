@@ -1,6 +1,6 @@
 'use client';
 
-import '../../styles/page.scss';
+import '@/styles/page.scss';
 import './ArticlePage.scss';
 import { useQuery } from '@tanstack/react-query';
 import { fetchArticles } from '@/services/articles.service';
@@ -54,7 +54,7 @@ export default function ArticlesPage() {
                   <PrimaryButton
                     type="button"
                     name="Nouvel article"
-                    onClick={() => router.push('/nouvel-article')}
+                    onClick={() => router.push('/dashboard/nouvel-article')}
                   />
                 </HeadTitle>
                 <div className="article-cards-container">
