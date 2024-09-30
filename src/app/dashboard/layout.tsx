@@ -1,4 +1,4 @@
-import AuthGuard from './auth-guard';
+import LoggedOutAuthGuard from './auth-gard';
 
 export default function DashboardLayout({
   children,
@@ -7,7 +7,7 @@ export default function DashboardLayout({
 }>) {
   return (
     <>
-      <AuthGuard>{children}</AuthGuard>
+      <LoggedOutAuthGuard>{children}</LoggedOutAuthGuard>
     </>
   );
 }
