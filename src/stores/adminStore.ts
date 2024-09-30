@@ -32,8 +32,11 @@ const useAdminStore = create<State>((set, get) => ({
     set({ admin: null, token: null, isLogged: false });
   },
   checkIsLoggedStatus: () => {
-    const token = localStorage.getItem('token');
-    return !!token;
+    if (typeof window !== 'undefined') {
+      const token = localStorage.getItem('token');
+      return !!token;
+    }
+    return false;
   },
 }));
 
