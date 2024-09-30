@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import useAdminStore from '@/stores/adminStore';
 
@@ -9,17 +9,22 @@ export default function LoggedOutAuthGuard({
 }: {
   children: React.ReactNode;
 }) {
-  const { isLogged, checkIsLoggedStatus } = useAdminStore();
+  const { checkIsLoggedStatus } = useAdminStore();
+  const [isCheckingLogin, setIsCheckingLogin] = useState<boolean>(true);
   const router = useRouter();
-  const isLoggedFromLocalStorage = checkIsLoggedStatus();
 
   useEffect(() => {
+    const isLoggedFromLocalStorage = checkIsLoggedStatus();
     // Si l'utilisateur n'est pas connecté, redirige vers la page de connexion
-    if (!isLoggedFromLocalStorage) router.replace('/');
-  }, [isLogged, checkIsLoggedStatus, isLoggedFromLocalStorage, router]);
+    if (!isLoggedFromLocalStorage) {
+      router.replace('/');
+    } else {
+      setIsCheckingLogin(false);
+    }
+  }, [checkIsLoggedStatus, router]);
 
   // Tant que l'utilisateur n'est pas identifié, ne rien rendre
-  if (!isLoggedFromLocalStorage) return null;
+  if (isCheckingLogin) return null;
 
   // Sinon, rend le contenu protégé
   return <>{children}</>;
