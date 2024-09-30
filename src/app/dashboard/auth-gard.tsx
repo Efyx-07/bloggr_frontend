@@ -18,7 +18,7 @@ export default function LoggedOutAuthGuard({
       // Si l'utilisateur n'est pas connecté, redirige vers la page de connexion
       router.replace('/');
     }
-  }, [isLogged, isLoggedFromLocalStorage, router]);
+  }, [isLogged, checkIsLoggedStatus, isLoggedFromLocalStorage, router]);
 
   // Tant que l'utilisateur n'est pas identifié, ne rien rendre
   if (!isLoggedFromLocalStorage) {
