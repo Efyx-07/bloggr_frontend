@@ -14,16 +14,12 @@ export default function LoggedOutAuthGuard({
   const isLoggedFromLocalStorage = checkIsLoggedStatus();
 
   useEffect(() => {
-    if (!isLoggedFromLocalStorage) {
-      // Si l'utilisateur n'est pas connecté, redirige vers la page de connexion
-      router.replace('/');
-    }
+    // Si l'utilisateur n'est pas connecté, redirige vers la page de connexion
+    if (!isLoggedFromLocalStorage) router.replace('/');
   }, [isLogged, checkIsLoggedStatus, isLoggedFromLocalStorage, router]);
 
   // Tant que l'utilisateur n'est pas identifié, ne rien rendre
-  if (!isLoggedFromLocalStorage) {
-    return null;
-  }
+  if (!isLoggedFromLocalStorage) return null;
 
   // Sinon, rend le contenu protégé
   return <>{children}</>;
