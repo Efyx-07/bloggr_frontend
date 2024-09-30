@@ -1,9 +1,9 @@
 @import '../../styles/colors.scss';
 @import '../../styles/breakpoints.scss';
 
-.hidden {
+/*.hidden {
   transform: translateX(100%);
-}
+}*/
 
 .burger-menu {
   background: $whiteRelief;
@@ -60,4 +60,12 @@
   .burger-menu {
     max-width: 25vw;
   }
+}
+
+.burger-menu.open {
+  transform: translateX(0);
+}
+
+.burger-menu.hidden {
+  transform: translateX(100%);
 }

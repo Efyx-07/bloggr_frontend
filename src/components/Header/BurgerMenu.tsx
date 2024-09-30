@@ -13,7 +13,7 @@ export default function BurgerMenu({ isOpen, toggleMenu }: BurgerMenuProps) {
   const [isModalLogoutOpen, setIsModalLogoutOpen] = useState<boolean>(false);
 
   return (
-    <div className={`burger-menu ${!isOpen ? 'hidden' : ''}`}>
+    <div className={`burger-menu ${!isOpen ? 'hidden' : 'open'}`}>
       <div className="burger-menu-head">
         <div className="close-icon-container" onClick={toggleMenu}>
           <Icon icon="fa:close" className="close-icon" />
