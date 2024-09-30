@@ -4,11 +4,12 @@ import React from 'react';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import {
   ClassicEditor,
+  Paragraph,
+  Heading,
   Bold,
   Essentials,
   Italic,
   Link,
-  Paragraph,
   Undo,
   Alignment,
 } from 'ckeditor5';
@@ -40,9 +41,27 @@ const CKEditorComponent: React.FC<CKEditorComponentProps> = ({
         }}
         config={{
           toolbar: {
-            items: ['undo', 'redo', '|', 'bold', 'italic', 'link', 'alignment'],
+            items: [
+              'undo',
+              'redo',
+              '|',
+              'heading',
+              'bold',
+              'italic',
+              'link',
+              'alignment',
+            ],
           },
-          plugins: [Bold, Essentials, Italic, Link, Paragraph, Undo, Alignment],
+          plugins: [
+            Bold,
+            Essentials,
+            Italic,
+            Link,
+            Heading,
+            Paragraph,
+            Undo,
+            Alignment,
+          ],
           link: {
             decorators: {
               openInNewTab: {
