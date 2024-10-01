@@ -3,6 +3,7 @@ import './InputField.scss';
 interface InputFieldProps {
   id: string;
   label: string;
+  requirement?: string;
   type: string;
   name: string;
   value: string | undefined;
@@ -13,6 +14,7 @@ interface InputFieldProps {
 export default function InputField({
   id,
   label,
+  requirement,
   type,
   name,
   value,
@@ -22,6 +24,7 @@ export default function InputField({
   return (
     <div className="input-container">
       <label htmlFor={id}>{label}</label>
+      {requirement && <p className="requirement">{requirement}</p>}
       <input
         className="text-input"
         id={id}

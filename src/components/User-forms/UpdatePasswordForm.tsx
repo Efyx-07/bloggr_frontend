@@ -49,6 +49,7 @@ export default function UpdatePasswordForm() {
         id="new-password"
         name="newPassword"
         label="Nouveau mot de passe"
+        requirement="(au moins 8 car. dont: 1 maj., 1 min., 1chiffre, 1 car. spécial)"
         type="password"
         value={newPassword}
         onChange={(e) => setNewPassword(e.target.value)}
