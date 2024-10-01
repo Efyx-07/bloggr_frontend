@@ -13,6 +13,7 @@ import InputField from '../Form-fields/InputField';
 import ImageInputField from '../Form-fields/ImageInputField';
 import TextEditorField from '../Form-fields/TextEditorField';
 import KeywordsField from '../Form-fields/KeywordsField';
+import FormErrorAlert from '../Sharables/FormErrorAlert';
 
 export default function CreateArticleForm() {
   const [title, setTitle] = useState<Article['title']>('');
@@ -25,6 +26,8 @@ export default function CreateArticleForm() {
   const [newKeyword, setNewKeyword] = useState<Keyword['name']>('');
   const inputFileRef = useRef<HTMLInputElement>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isClicked, setIsClicked] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<boolean>(false);
   const router = useRouter();
   const queryClient = useQueryClient();
 
@@ -50,6 +53,9 @@ export default function CreateArticleForm() {
       router.push('/dashboard/articles');
     },
     onError: (error: any) => {
+      setIsLoading(false);
+      setErrorMessage(true);
+      setIsClicked(false);
       console.error('Failed to create article', error);
     },
   });
@@ -99,13 +105,17 @@ export default function CreateArticleForm() {
 
   // Réinitialise le formulaire
   // ===========================================================================================
-  const resetForm = () => {
+  const handleResetForm = () => {
     setTitle('');
     setPreviewUrl(null);
     setBody('');
     setKeywords([]);
   };
 
+  const handleResetFormAndErrorMessage = () => {
+    handleResetForm();
+    setErrorMessage(false);
+  };
   // Soumet le formulaire pour la création de l'article
   // ===========================================================================================
   const handleCreateArticle = async (
@@ -113,6 +123,7 @@ export default function CreateArticleForm() {
   ): Promise<void> => {
     e.preventDefault();
     setIsLoading(true);
+    setIsClicked(true);
     if (!selectedFile) return;
     try {
       const newBlob = await loadBlob(selectedFile);
@@ -123,8 +134,7 @@ export default function CreateArticleForm() {
         console.error('Failed to upload blob');
       }
     } catch (error) {
-      setIsLoading(false);
-      console.error('Failed to create article', error);
+      console.error('Failed to upload blob', error);
     }
   };
 
@@ -179,14 +189,27 @@ export default function CreateArticleForm() {
           keywords={keywords}
           onRemoveKeyword={handleRemoveKeyword}
         />
-      </div>
-      <div className="buttons-container">
-        <SecondaryButton type="reset" name="Annuler" onClick={resetForm} />
-        <PrimaryButton
-          type="submit"
-          name="Créer l'article"
-          isLoading={isLoading}
-        />
+        {errorMessage ? (
+          <FormErrorAlert
+            errorMention="Erreur lors de la création de l'article"
+            onButtonClick={handleResetFormAndErrorMessage}
+            buttonMention="Rééssayer"
+          />
+        ) : (
+          <div className="buttons-container">
+            <SecondaryButton
+              type="reset"
+              name="Annuler"
+              onClick={handleResetForm}
+            />
+            <PrimaryButton
+              type="submit"
+              name="Créer l'article"
+              isLoading={isLoading}
+              isClicked={isClicked}
+            />
+          </div>
+        )}
       </div>
     </form>
   );
