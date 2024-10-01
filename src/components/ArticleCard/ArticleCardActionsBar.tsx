@@ -17,13 +17,9 @@ export default function ArticleCardActionsBar({
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const router = useRouter();
 
-  const openDeleteModal = () => {
-    setIsModalOpen(true);
-  };
+  const openDeleteModal = () => setIsModalOpen(true);
 
-  const closeDeleteModal = () => {
-    setIsModalOpen(false);
-  };
+  const closeDeleteModal = () => setIsModalOpen(false);
 
   return (
     <>

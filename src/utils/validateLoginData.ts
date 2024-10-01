@@ -8,8 +8,7 @@ export default async function validateLoginData(
   email: Admin['email'],
   password: Admin['password'],
 ): Promise<boolean> {
-  if (email && typeof password === 'string') {
+  if (email && typeof password === 'string')
     return emailRegex.test(email) && passwordRegex.test(password);
-  }
   return false;
 }

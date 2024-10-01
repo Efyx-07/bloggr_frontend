@@ -6,9 +6,7 @@ import { compressImage } from '@/utils/compressImage';
 export async function loadBlob(
   selectedFile: File | null,
 ): Promise<PutBlobResult> {
-  if (!selectedFile) {
-    throw new Error('No file selected');
-  }
+  if (!selectedFile) throw new Error('No file selected');
   const compressedFile: File = await compressImage(selectedFile);
   const response = await fetch(`/api/file?filename=${compressedFile.name}`, {
     method: 'POST',
@@ -28,13 +26,11 @@ export async function deleteFromVercelBlob(url: string): Promise<void> {
         url,
       }),
     });
-    if (response.ok) {
-      return;
-    } else {
+    if (response.ok) return;
+    else
       throw new Error(
         'Failed to delete image from Vercel blob' + response.statusText,
       );
-    }
   } catch (error) {
     throw new Error('Failed to delete image from Vercel blob' + error);
   }

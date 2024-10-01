@@ -1,7 +1,6 @@
 import './Navigator.scss';
 import { MouseEventHandler } from 'react';
 import { useRouter } from 'next/navigation';
-import useLogoutAdmin from '@/hooks/useLogoutAdmin';
 
 interface NavigatorProps {
   toggleMenu: () => void;
@@ -10,7 +9,6 @@ interface NavigatorProps {
 
 export default function Navigator({ toggleMenu, toggleModal }: NavigatorProps) {
   const router = useRouter();
-  const logoutAdmin = useLogoutAdmin();
 
   interface Navitem {
     name: string;

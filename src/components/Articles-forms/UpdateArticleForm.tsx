@@ -45,11 +45,8 @@ export default function UpdateArticleForm({
         // Efface l'ancienne image de vercel blob si une nouvelle est choisie
         await deleteFromVercelBlob(selectedArticle.imageUrl);
         const newBlob = await loadBlob(selectedFile);
-        if (newBlob) {
-          imageUrl = newBlob.url;
-        } else {
-          throw new Error('Failed to upload new image');
-        }
+        if (newBlob) imageUrl = newBlob.url;
+        else throw new Error('Failed to upload new image');
       }
       // Met à jour l'article avec le service article
       await updateArticleById(
@@ -74,9 +71,7 @@ export default function UpdateArticleForm({
 
   // Navigue vers la page Articles
   // ===========================================================================================
-  const navToArticlesPage = () => {
-    router.push('/dashboard/articles');
-  };
+  const navToArticlesPage = () => router.push('/dashboard/articles');
 
   // Gère le changement du champ Image
   // ===========================================================================================
@@ -91,9 +86,7 @@ export default function UpdateArticleForm({
 
   // Efface la preview
   // ===========================================================================================
-  const deletePreview = (): void => {
-    setPreviewUrl(null);
-  };
+  const deletePreview = (): void => setPreviewUrl(null);
 
   // Ajoute un mot-clé s'il n'est pas déjà présent dans la liste
   // ===========================================================================================
@@ -115,9 +108,8 @@ export default function UpdateArticleForm({
 
   // Supprime un mot-clé
   // ===========================================================================================
-  const handleRemoveKeyword = (keywordToRemove: string) => {
+  const handleRemoveKeyword = (keywordToRemove: string) =>
     setKeywords(keywords.filter((keyword) => keyword.name !== keywordToRemove));
-  };
 
   // Réinitialise le formulaire dans son état d'origine
   // ===========================================================================================
@@ -148,9 +140,7 @@ export default function UpdateArticleForm({
   // ===========================================================================================
   useEffect(() => {
     return () => {
-      if (previewUrl) {
-        URL.revokeObjectURL(previewUrl);
-      }
+      if (previewUrl) URL.revokeObjectURL(previewUrl);
     };
   }, [previewUrl]);
 

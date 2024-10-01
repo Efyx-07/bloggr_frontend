@@ -75,9 +75,7 @@ export default function CreateArticleForm() {
 
   // Efface la preview
   // ===========================================================================================
-  const deletePreview = (): void => {
-    setPreviewUrl(null);
-  };
+  const deletePreview = (): void => setPreviewUrl(null);
 
   // Ajoute un mot-clé s'il n'est pas déjà présent dans la liste
   // ===========================================================================================
@@ -99,9 +97,8 @@ export default function CreateArticleForm() {
 
   // Supprime un mot-clé
   // ===========================================================================================
-  const handleRemoveKeyword = (keywordToRemove: string) => {
+  const handleRemoveKeyword = (keywordToRemove: string) =>
     setKeywords(keywords.filter((keyword) => keyword.name !== keywordToRemove));
-  };
 
   // Réinitialise le formulaire
   // ===========================================================================================
@@ -142,9 +139,7 @@ export default function CreateArticleForm() {
   // ===========================================================================================
   useEffect(() => {
     return () => {
-      if (previewUrl) {
-        URL.revokeObjectURL(previewUrl);
-      }
+      if (previewUrl) URL.revokeObjectURL(previewUrl);
     };
   }, [previewUrl]);
 

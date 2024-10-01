@@ -28,9 +28,7 @@ export default function DeleteButton({ selectedArticle }: DeleteButtonProps) {
 
   // Supprime l'article
   // ===========================================================================================
-  const handleDeleteArticle = () => {
-    mutation.mutate();
-  };
+  const handleDeleteArticle = () => mutation.mutate();
 
   return (
     <ModalPrimaryButton
