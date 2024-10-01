@@ -25,13 +25,11 @@ function AuthGuard({
 
   useEffect(() => {
     const isLoggedFromLocalStorage = checkIsLoggedStatus();
-    if (shouldBeLoggedIn && !isLoggedFromLocalStorage) {
+    if (shouldBeLoggedIn && !isLoggedFromLocalStorage)
       router.replace(redirectPath);
-    } else if (!shouldBeLoggedIn && isLoggedFromLocalStorage) {
+    else if (!shouldBeLoggedIn && isLoggedFromLocalStorage)
       router.replace(redirectPath);
-    } else {
-      setIsCheckingLogin(false);
-    }
+    else setIsCheckingLogin(false);
   }, [checkIsLoggedStatus, shouldBeLoggedIn, redirectPath, router]);
 
   if (isCheckingLogin) return <LoadingPage mention="Chargement..." />;
