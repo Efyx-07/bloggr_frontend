@@ -18,6 +18,7 @@ export default function ArticleCard({ article }: ArticleCardProps) {
           src={article.imageUrl}
           alt={article.title}
           priority
+          sizes="100%"
           fill
         />
       </div>
