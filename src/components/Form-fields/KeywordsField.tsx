@@ -29,6 +29,9 @@ export default function KeywordsField({
   return (
     <div className="input-container">
       <label htmlFor={id}>{label}</label>
+      <p className="requirement">
+        Choisir un à plusieurs mots-clé pour le réferencement de l&apos;article
+      </p>
       <div className="input-keyword-container">
         <input
           className="text-input"
