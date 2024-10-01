@@ -33,7 +33,7 @@ const useAdminStore = create<State>((set, get) => ({
   },
   // Ne s'éxécute que côté client !!!
   checkIsLoggedStatus: () => {
-    if (typeof window !== 'undefined') {
+    if (window?.localStorage) {
       const token = localStorage.getItem('token');
       return !!token;
     }
