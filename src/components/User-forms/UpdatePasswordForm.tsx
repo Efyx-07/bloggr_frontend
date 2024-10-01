@@ -8,11 +8,14 @@ import { Admin } from '@/interfaces/admin.interface';
 import { updatePassword } from '@/services/update-password.service';
 import useLogoutAdmin from '@/hooks/useLogoutAdmin';
 import { decodeTokenAndGetAdminId } from '@/utils/decodeTokenAndGetAdminId';
+import FormErrorAlert from '../Sharables/FormErrorAlert';
 
 export default function UpdatePasswordForm() {
   const [currentPassword, setCurrentPassword] = useState<Admin['password']>('');
   const [newPassword, setNewPassword] = useState<Admin['password']>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isClicked, setIsClicked] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<boolean>(false);
   const logoutAdmin = useLogoutAdmin();
 
   // Soumet le formulaire pour mettre à jour le password
@@ -20,6 +23,7 @@ export default function UpdatePasswordForm() {
   const updateAdminPassword = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
+    setIsClicked(true);
     // Récupère le token du local storage et le décode pour récupérer adminId
     const token = localStorage.getItem('token');
     if (!token) return;
@@ -31,8 +35,18 @@ export default function UpdatePasswordForm() {
       logoutAdmin();
     } catch (error) {
       setIsLoading(false);
+      setErrorMessage(true);
+      setIsClicked(false);
       console.error('Error during updating password: ', error);
     }
+  };
+
+  // Reinitialise le formulaire en cas d'erreur
+  // ===========================================================================================
+  const handleResetForm = () => {
+    setErrorMessage(false);
+    setCurrentPassword('');
+    setNewPassword('');
   };
 
   return (
@@ -54,9 +68,22 @@ export default function UpdatePasswordForm() {
         value={newPassword}
         onChange={(e) => setNewPassword(e.target.value)}
       />
-      <div className="buttons-container">
-        <PrimaryButton type="submit" name="Modifier" isLoading={isLoading} />
-      </div>
+      {errorMessage ? (
+        <FormErrorAlert
+          errorMention="Mot de passe invalide ou erreur serveur"
+          onButtonClick={handleResetForm}
+          buttonMention="Rééssayer"
+        />
+      ) : (
+        <div className="buttons-container">
+          <PrimaryButton
+            type="submit"
+            name="Modifier"
+            isLoading={isLoading}
+            isClicked={isClicked}
+          />
+        </div>
+      )}
     </form>
   );
 }
