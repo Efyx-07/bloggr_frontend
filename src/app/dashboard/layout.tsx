@@ -1,4 +1,4 @@
-import LoggedOutAuthGuard from './auth-gard';
+import { LoggedOutAuthGuard } from '@/auth-guards';
 
 export default function DashboardLayout({
   children,
