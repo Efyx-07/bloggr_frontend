@@ -11,6 +11,7 @@ import SecondaryButton from '../Sharables/Buttons/SecondaryButton';
 import ImageInputField from '../Form-fields/ImageInputField';
 import TextEditorField from '../Form-fields/TextEditorField';
 import KeywordsField from '../Form-fields/KeywordsField';
+import FormErrorAlert from '../Sharables/FormErrorAlert';
 
 interface UpdateArticleFormProps {
   selectedArticle: Article;
@@ -29,6 +30,8 @@ export default function UpdateArticleForm({
   const [newKeyword, setNewKeyword] = useState<Keyword['name']>('');
   const inputFileRef = useRef<HTMLInputElement>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isClicked, setIsClicked] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<boolean>(false);
   const router = useRouter();
   const queryClient = useQueryClient();
 
@@ -62,6 +65,9 @@ export default function UpdateArticleForm({
       navToArticlesPage();
     },
     onError: (error: any) => {
+      setIsLoading(false);
+      setErrorMessage(true);
+      setIsClicked(false);
       console.error('Failed to update product:', error);
     },
   });
@@ -113,6 +119,20 @@ export default function UpdateArticleForm({
     setKeywords(keywords.filter((keyword) => keyword.name !== keywordToRemove));
   };
 
+  // Réinitialise le formulaire dans son état d'origine
+  // ===========================================================================================
+  const handleResetForm = () => {
+    setTitle(selectedArticle.title);
+    setPreviewUrl(selectedArticle.imageUrl);
+    setBody(selectedArticle.body);
+    setKeywords(selectedArticle.keywords);
+  };
+
+  const handleResetFormAndErrorMessage = () => {
+    handleResetForm();
+    setErrorMessage(false);
+  };
+
   // Soumet le formulaire pour la création de l'article
   // ===========================================================================================
   const handleUpdateArticle = async (
@@ -120,6 +140,7 @@ export default function UpdateArticleForm({
   ): Promise<void> => {
     e.preventDefault();
     setIsLoading(true);
+    setIsClicked(true);
     mutation.mutate();
   };
 
@@ -182,18 +203,27 @@ export default function UpdateArticleForm({
         keywords={keywords}
         onRemoveKeyword={handleRemoveKeyword}
       />
-      <div className="buttons-container">
-        <SecondaryButton
-          type="reset"
-          name="Annuler"
-          onClick={navToArticlesPage}
+      {errorMessage ? (
+        <FormErrorAlert
+          errorMention="Erreur lors de la mise à jour de l'article"
+          onButtonClick={handleResetFormAndErrorMessage}
+          buttonMention="Rééssayer"
         />
-        <PrimaryButton
-          type="submit"
-          name="Mettre à jour"
-          isLoading={isLoading}
-        />
-      </div>
+      ) : (
+        <div className="buttons-container">
+          <SecondaryButton
+            type="reset"
+            name="Annuler"
+            onClick={handleResetForm}
+          />
+          <PrimaryButton
+            type="submit"
+            name="Mettre à jour"
+            isLoading={isLoading}
+            isClicked={isClicked}
+          />
+        </div>
+      )}
     </form>
   );
 }
