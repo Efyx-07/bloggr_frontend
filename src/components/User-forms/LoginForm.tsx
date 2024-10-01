@@ -9,11 +9,14 @@ import useAdminStore from '@/stores/adminStore';
 import { useRouter } from 'next/navigation';
 import InputField from '../Form-fields/InputField';
 import PrimaryButton from '../Sharables/Buttons/PrimaryButton';
+import FormErrorAlert from '../Sharables/FormErrorAlert';
 
 export default function LoginForm() {
   const [email, setEmail] = useState<Admin['email']>('');
   const [password, setPassword] = useState<Admin['password']>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isClicked, setIsClicked] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<boolean>(false);
   const adminStore = useAdminStore();
   const router = useRouter();
 
@@ -24,6 +27,7 @@ export default function LoginForm() {
   ): Promise<void> => {
     e.preventDefault();
     setIsLoading(true);
+    setIsClicked(true);
     if (!validateLoginData(email, password)) return;
     try {
       const result: Admin = await login(email, password);
@@ -34,8 +38,18 @@ export default function LoginForm() {
       router.push('/dashboard/articles');
     } catch (error) {
       setIsLoading(false);
+      setErrorMessage(true);
+      setIsClicked(false);
       console.error('Error while connecting: ', error);
     }
+  };
+
+  // Reinitialise le formulaire en cas d'erreur
+  // ===========================================================================================
+  const handleResetForm = () => {
+    setErrorMessage(false);
+    setEmail('');
+    setPassword('');
   };
 
   return (
@@ -58,13 +72,22 @@ export default function LoginForm() {
         onChange={(e) => setPassword(e.target.value)}
         required
       />
-      <div className="buttons-container">
-        <PrimaryButton
-          type="submit"
-          name="Me connecter"
-          isLoading={isLoading}
+      {errorMessage ? (
+        <FormErrorAlert
+          errorMention="Identifiants invalides"
+          onButtonClick={handleResetForm}
+          buttonMention="Rééssayer"
         />
-      </div>
+      ) : (
+        <div className="buttons-container">
+          <PrimaryButton
+            type="submit"
+            name="Me connecter"
+            isLoading={isLoading}
+            isClicked={isClicked}
+          />
+        </div>
+      )}
     </form>
   );
 }

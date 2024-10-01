@@ -25,3 +25,18 @@
     padding: 3rem 2rem;
   }
 }
+
+@mixin small-button-style {
+  padding: 0.5rem 1rem;
+  background: transparent;
+  border: solid 1px $blackLighted;
+  border-radius: 0.25rem;
+  font-weight: 600;
+  cursor: pointer;
+
+  &:hover {
+    background: $hoverAccent;
+    border-color: $hoverAccent;
+    color: $whiteRelief;
+  }
+}

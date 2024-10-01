@@ -1,0 +1,20 @@
+@import '@/styles/colors.scss';
+@import '@/styles/mixin.scss';
+
+
+.error-container {
+  width: 100%;
+  justify-content: flex-end;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  .error-mention {
+    color: $hoverAccent;
+    font-size: 0.9rem;
+  }
+
+  .error-button {
+    @include small-button-style;
+  }
+}
