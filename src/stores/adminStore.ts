@@ -31,7 +31,7 @@ const useAdminStore = create<State>((set, get) => ({
     localStorage.removeItem('admin');
     set({ admin: null, token: null, isLogged: false });
   },
-  // Ne s'éxécute que côté client
+  // Ne s'éxécute que côté client !!!
   checkIsLoggedStatus: () => {
     if (typeof window !== 'undefined') {
       const token = localStorage.getItem('token');
