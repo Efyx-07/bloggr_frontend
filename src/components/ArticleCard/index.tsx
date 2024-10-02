@@ -3,7 +3,6 @@ import { Article } from '@/interfaces/article.interface';
 import Image from 'next/image';
 import ArticleCardActionsBar from './ArticleCardActionsBar';
 import ArticleDate from '../ArticleDate';
-import Separator from '../Sharables/Others/Separator';
 
 interface ArticleCardProps {
   article: Article;
@@ -33,7 +32,6 @@ export default function ArticleCard({ article }: ArticleCardProps) {
             }}
           />
         </div>
-        <Separator />
         <ArticleCardActionsBar article={article} />
       </div>
     </div>
