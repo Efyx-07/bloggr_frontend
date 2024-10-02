@@ -15,14 +15,18 @@ import { loadingPageDelay } from '@/config';
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
 
+// Import dynamique des composants
+// ================================================================================================
 const DynamicArticleCard = dynamic(() => import('@/components/ArticleCard'), {
   loading: () => <FakeArticleCard />,
 });
 
 // Inverse l'ordre des articles pour obtenir le récent en 1er
+// ================================================================================================
 const reverseArticles = (articles: readonly Article[]) => {
   return [...articles].reverse();
 };
+// ================================================================================================
 
 export default function ArticlesPage() {
   const [isContentVisible, setIsContentVisible] = useState<boolean>(false);

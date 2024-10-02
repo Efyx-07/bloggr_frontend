@@ -1,15 +1,14 @@
 'use client';
 
 import '@/styles/page.scss';
-import FormContainer from '@/components/FormContainer';
-import CreateArticleForm from '@/components/Articles-forms/CreateArticleForm';
 import FakeArticleForm from '@/components/FakeComponents/FakeArticleForm';
 import LoadingPage from '@/components/LoadingPage';
 import { loadingPageDelay } from '@/config';
-import LoadingSpinner from '@/components/Sharables/Spinners/LoadingSpinner';
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
 
+// Import dynamique des composants
+// ================================================================================================
 const DynamicFormContainer = dynamic(
   () => import('@/components/FormContainer'),
   {
@@ -19,6 +18,7 @@ const DynamicFormContainer = dynamic(
 const DynamicCreateArticleForm = dynamic(
   () => import('@/components/Articles-forms/CreateArticleForm'),
 );
+// ================================================================================================
 
 export default function NewArticlePage() {
   const [isContentVisible, setIsContentVisible] = useState<boolean>(false);

@@ -5,11 +5,24 @@ import { useParams } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query';
 import { Article } from '@/interfaces/article.interface';
 import { fetchArticleById } from '@/services/articles.service';
-import FormContainer from '@/components/FormContainer';
-import UpdateArticleForm from '@/components/Articles-forms/UpdateArticleForm';
 import LoadingPage from '@/components/LoadingPage';
 import { loadingPageDelay } from '@/config';
 import { useState } from 'react';
+import dynamic from 'next/dynamic';
+import FakeArticleForm from '@/components/FakeComponents/FakeArticleForm';
+
+// Import dynamique des composants
+// ================================================================================================
+const DynamicFormContainer = dynamic(
+  () => import('@/components/FormContainer'),
+  {
+    loading: () => <FakeArticleForm />,
+  },
+);
+const DynamicUpdateArticleForm = dynamic(
+  () => import('@/components/Articles-forms/UpdateArticleForm'),
+);
+// ================================================================================================
 
 export default function UpdateArticlePage() {
   const { articleId } = useParams();
@@ -38,9 +51,11 @@ export default function UpdateArticlePage() {
           <div className="content">
             {article ? (
               <>
-                <FormContainer title={`Modifier article: ${article?.title}`}>
-                  <UpdateArticleForm selectedArticle={article} />
-                </FormContainer>
+                <DynamicFormContainer
+                  title={`Modifier article: ${article?.title}`}
+                >
+                  <DynamicUpdateArticleForm selectedArticle={article} />
+                </DynamicFormContainer>
               </>
             ) : (
               <p>No article found</p>
