@@ -9,6 +9,7 @@ import Image from 'next/image';
 import LoadingPage from '@/components/LoadingPage';
 import { loadingPageDelay } from '@/config';
 import { useState } from 'react';
+import ArticleFull from '@/components/ArticleFull';
 
 export default function ArticlePage() {
   const { articleId } = useParams();
@@ -37,18 +38,7 @@ export default function ArticlePage() {
           <div className="content">
             {article ? (
               <>
-                <div className="image-container">
-                  <Image
-                    className="img"
-                    src={article.imageUrl}
-                    width={480}
-                    height={320}
-                    alt={article.title}
-                    priority
-                  />
-                </div>
-                <h1>{article.title}</h1>
-                <div dangerouslySetInnerHTML={{ __html: article.body }} />
+                <ArticleFull article={article} />
               </>
             ) : (
               <p>No article found</p>
