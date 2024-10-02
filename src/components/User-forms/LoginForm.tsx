@@ -7,7 +7,6 @@ import validateLoginData from '@/utils/validateLoginData';
 import { login } from '@/services/admin.service';
 import useAdminStore from '@/stores/adminStore';
 import { useRouter } from 'next/navigation';
-import { Icon } from '@iconify/react';
 import InputField from '../Form-fields/InputField';
 import PasswordField from '../Form-fields/PasswordField';
 import PrimaryButton from '../Sharables/Buttons/PrimaryButton';

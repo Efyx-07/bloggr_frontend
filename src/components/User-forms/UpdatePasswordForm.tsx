@@ -3,7 +3,6 @@
 import '../../styles/form.scss';
 import { FormEvent, useState } from 'react';
 import PrimaryButton from '../Sharables/Buttons/PrimaryButton';
-import InputField from '../Form-fields/InputField';
 import { Admin } from '@/interfaces/admin.interface';
 import { updatePassword } from '@/services/update-password.service';
 import useLogoutAdmin from '@/hooks/useLogoutAdmin';
