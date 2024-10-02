@@ -16,16 +16,24 @@
   }
 }
 
-.form-button {
+.form-button, .modal-button {
   width: 100%;
-  max-width: 9rem;
-  height: 2.5rem;
   border-radius: 0.25rem;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 1rem;
   cursor: pointer;
+}
+
+.form-button {
+  max-width: 9rem;
+  height: 2.5rem;
+}
+
+.modal-button {
+  max-width: 7rem;
+  height: 2.25rem;
 }
 
 .primary {

@@ -1,6 +1,6 @@
 import { Article } from '@/interfaces/article.interface';
 import ModalSecondaryButton from '../Sharables/Buttons/ModalSecondaryButton';
-import DeleteButton from '../ArticleCard/DeleteButton';
+import DeleteButton from './DeleteButton';
 import './ModalDeleteArticle.scss';
 import { Icon } from '@iconify/react';
 
