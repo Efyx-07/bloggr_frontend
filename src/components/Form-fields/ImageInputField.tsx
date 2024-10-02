@@ -26,7 +26,7 @@ export default function ImageInputField({
     <div className="input-container image-input-field">
       <label htmlFor={id}>{label}</label>
       <p className="requirement">
-        Pour un rendu idéal, opter pour une image au format 3:2
+        Pour un rendu optimal, choisir une image au format 3:2
       </p>
       {previewUrl ? (
         <div className="image-preview-container">

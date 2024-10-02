@@ -1,14 +1,17 @@
-@import '../../styles/colors.scss';
+@import '@/styles/colors.scss';
+@import '@/styles/mixin.scss';
 
 .no-article {
-  display: flex;
-  flex-direction: column;
+  @include container-style;
   align-items: center;
   text-align: center;
-  color: $black;
   gap: 1rem;
+  width: 100%;
+  max-width: 30rem;
+  padding: 2rem;
 
   .action-container {
+    color: $black;
     display: flex;
     align-items: center;
     gap: 0.5rem;
