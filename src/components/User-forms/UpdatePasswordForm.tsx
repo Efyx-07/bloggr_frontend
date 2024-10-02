@@ -9,14 +9,27 @@ import { updatePassword } from '@/services/update-password.service';
 import useLogoutAdmin from '@/hooks/useLogoutAdmin';
 import { decodeTokenAndGetAdminId } from '@/utils/decodeTokenAndGetAdminId';
 import FormErrorAlert from '../Sharables/FormErrorAlert';
+import PasswordField from '../Form-fields/PasswordField';
 
 export default function UpdatePasswordForm() {
   const [currentPassword, setCurrentPassword] = useState<Admin['password']>('');
   const [newPassword, setNewPassword] = useState<Admin['password']>('');
+  const [isCurrentPasswordVisible, setIsCurrentPasswordVisible] =
+    useState<boolean>(false);
+  const [isNewPasswordVisible, setIsNewPasswordVisible] =
+    useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isClicked, setIsClicked] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<boolean>(false);
   const logoutAdmin = useLogoutAdmin();
+
+  // Gère la visibilité des mots de passe
+  // ===========================================================================================
+  const toggleCurrentPasswordVisibility = () =>
+    setIsCurrentPasswordVisible((prev) => !prev);
+
+  const toggleNewPasswordVisibility = () =>
+    setIsNewPasswordVisible((prev) => !prev);
 
   // Soumet le formulaire pour mettre à jour le password
   // ===========================================================================================
@@ -51,22 +64,28 @@ export default function UpdatePasswordForm() {
 
   return (
     <form onSubmit={updateAdminPassword}>
-      <InputField
+      <PasswordField
         id="current-password"
         name="currentPassword"
         label="Votre mot de passe actuel"
-        type="password"
+        type={isCurrentPasswordVisible ? 'text' : 'password'}
         value={currentPassword}
         onChange={(e) => setCurrentPassword(e.target.value)}
+        required
+        onClick={toggleCurrentPasswordVisibility}
+        isPasswordVisible={isCurrentPasswordVisible}
       />
-      <InputField
+      <PasswordField
         id="new-password"
         name="newPassword"
         label="Nouveau mot de passe"
         requirement="(au moins 8 car. dont: 1 maj., 1 min., 1chiffre, 1 car. spécial)"
-        type="password"
+        type={isNewPasswordVisible ? 'text' : 'password'}
         value={newPassword}
         onChange={(e) => setNewPassword(e.target.value)}
+        required
+        onClick={toggleNewPasswordVisibility}
+        isPasswordVisible={isNewPasswordVisible}
       />
       {errorMessage ? (
         <FormErrorAlert
