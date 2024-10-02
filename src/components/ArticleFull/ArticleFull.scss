@@ -2,16 +2,18 @@
 @import '@/styles/mixin.scss';
 
 .article-full {
-    @include container-style;
     padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 2rem;
 
     .image-container {
         display: inline-block;
         position: relative;
         width: 100%;
-        max-width: 40rem;
-        aspect-ratio: 3 / 2;
+        max-width: 50rem;
+        aspect-ratio: 16 / 9;
         overflow: hidden;
     
         .img {

@@ -1,11 +1,11 @@
 'use client';
 
 import '@/styles/page.scss';
+import './ArticlePage.scss';
 import { useParams } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query';
 import { Article } from '@/interfaces/article.interface';
 import { fetchArticleById } from '@/services/articles.service';
-import Image from 'next/image';
 import LoadingPage from '@/components/LoadingPage';
 import { loadingPageDelay } from '@/config';
 import { useState } from 'react';
@@ -34,7 +34,7 @@ export default function ArticlePage() {
   return (
     <>
       {isContentVisible ? (
-        <div className="page">
+        <div className="page article-page">
           <div className="content">
             {article ? (
               <>
