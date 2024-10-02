@@ -6,6 +6,12 @@
   cursor: pointer;
 
   &:hover {
-    color: $hoverAccent;
+    color: $black;
+  }
+}
+
+.mobile-icon-container .mobile-icon.scrolled {
+  &:hover {
+    color: $blue;
   }
 }
