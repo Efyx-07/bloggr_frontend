@@ -7,18 +7,25 @@ import validateLoginData from '@/utils/validateLoginData';
 import { login } from '@/services/admin.service';
 import useAdminStore from '@/stores/adminStore';
 import { useRouter } from 'next/navigation';
+import { Icon } from '@iconify/react';
 import InputField from '../Form-fields/InputField';
+import PasswordField from '../Form-fields/PasswordField';
 import PrimaryButton from '../Sharables/Buttons/PrimaryButton';
 import FormErrorAlert from '../Sharables/FormErrorAlert';
 
 export default function LoginForm() {
   const [email, setEmail] = useState<Admin['email']>('');
   const [password, setPassword] = useState<Admin['password']>('');
+  const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isClicked, setIsClicked] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<boolean>(false);
   const adminStore = useAdminStore();
   const router = useRouter();
+
+  // Gère la visibilité du mot de passe
+  // ===========================================================================================
+  const togglePasswordVisibility = () => setIsPasswordVisible((prev) => !prev);
 
   // Soumet le formulaire pour connexion de l'Admin
   // ===========================================================================================
@@ -30,8 +37,8 @@ export default function LoginForm() {
     setIsClicked(true);
     if (!validateLoginData(email, password)) return;
     try {
-      const result: Admin = await login(email, password);
       // Connecte l'admin avec le service, gère les datas et navigue vers la page articles
+      const result: Admin = await login(email, password);
       adminStore.setAdminData(result);
       const token: Admin['token'] = result.token;
       if (token) localStorage.setItem('token', token);
@@ -63,14 +70,16 @@ export default function LoginForm() {
         onChange={(e) => setEmail(e.target.value)}
         required
       />
-      <InputField
+      <PasswordField
         id="password"
         name="Password"
         label="Votre mot de passe"
-        type="password"
+        type={isPasswordVisible ? 'text' : 'password'}
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         required
+        onClick={togglePasswordVisibility}
+        isPasswordVisible={isPasswordVisible}
       />
       {errorMessage ? (
         <FormErrorAlert
