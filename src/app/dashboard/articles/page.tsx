@@ -21,6 +21,8 @@ const reverseArticles = (articles: readonly Article[]) => {
 
 export default function ArticlesPage() {
   const [isContentVisible, setIsContentVisible] = useState<boolean>(false);
+  const [isButtonLoading, setIsButtonLoading] = useState<boolean>(false);
+  const [isClicked, setIsClicked] = useState<boolean>(false);
   const router = useRouter();
   const {
     data: articles,
@@ -36,6 +38,12 @@ export default function ArticlesPage() {
 
   const reversedArticles: Article[] | undefined =
     articles && articles.length > 0 ? reverseArticles(articles) : undefined;
+
+  const handleNavToNouvelArticle = () => {
+    router.push('/dashboard/nouvel-article');
+    setIsButtonLoading(true);
+    setIsClicked(true);
+  };
 
   setTimeout(() => {
     setIsContentVisible(true);
@@ -54,7 +62,9 @@ export default function ArticlesPage() {
                   <PrimaryButton
                     type="button"
                     name="Nouvel article"
-                    onClick={() => router.push('/dashboard/nouvel-article')}
+                    onClick={handleNavToNouvelArticle}
+                    isLoading={isButtonLoading}
+                    isClicked={isClicked}
                   />
                 </HeadTitle>
                 <div className="article-cards-container">
