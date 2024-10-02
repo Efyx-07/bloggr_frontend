@@ -1,0 +1,11 @@
+@import '../../styles/colors.scss';
+
+.fake-article-form {
+    width: 100%;
+    max-width: 50rem;
+    height: 100dvh;
+    background: $whiteLighted;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
