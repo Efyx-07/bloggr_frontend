@@ -15,6 +15,8 @@ export default function ArticleCardActionsBar({
   article,
 }: ArticleCardActionsBarProps) {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [isLoadingModify, setIsLoadingModify] = useState<boolean>(false);
+  const [isLoadingView, setIsLoadingView] = useState<boolean>(false);
   const router = useRouter();
 
   const openDeleteModal = () => setIsModalOpen(true);
@@ -31,15 +33,21 @@ export default function ArticleCardActionsBar({
         />
         <CardButton
           className="card-button"
-          onClick={() =>
-            router.push(`/dashboard/modifier-article/${article.id}`)
-          }
+          onClick={() => {
+            router.push(`/dashboard/modifier-article/${article.id}`);
+            setIsLoadingModify(true);
+          }}
           label="Modifier"
+          isLoading={isLoadingModify}
         />
         <CardButton
           className="card-button"
-          onClick={() => router.push(`/dashboard/article/${article.id}`)}
+          onClick={() => {
+            router.push(`/dashboard/article/${article.id}`);
+            setIsLoadingView(true);
+          }}
           label="Voir"
+          isLoading={isLoadingView}
         />
       </div>
       <ModalDeleteArticle
