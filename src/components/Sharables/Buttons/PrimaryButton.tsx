@@ -1,4 +1,4 @@
-import './FormButton.scss';
+import './MainButton.scss';
 import ButtonLoadingSpinner from '../Spinners/ButtonLoadingSpinner';
 
 interface PrimaryButtonProps {

@@ -1,5 +1,5 @@
 import { MouseEventHandler } from 'react';
-import './FormButton.scss';
+import './MainButton.scss';
 
 interface SecondaryButtonProps {
   type: 'submit' | 'reset' | 'button' | undefined;

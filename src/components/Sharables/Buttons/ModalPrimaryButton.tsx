@@ -1,5 +1,5 @@
 import ButtonLoadingSpinner from '../Spinners/ButtonLoadingSpinner';
-import './FormButton.scss';
+import './MainButton.scss';
 
 interface ModalPrimaryButtonProps {
   type: 'submit' | 'reset' | 'button' | undefined;

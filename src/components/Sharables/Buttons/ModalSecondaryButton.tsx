@@ -1,5 +1,5 @@
 import { MouseEventHandler } from 'react';
-import './ModalButton.scss';
+import './MainButton.scss';
 
 interface ModalSecondaryButtonProps {
   type: 'submit' | 'reset' | 'button' | undefined;
