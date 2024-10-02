@@ -7,9 +7,14 @@ import { usePathname } from 'next/navigation';
 interface FormContainerProps {
   title: string;
   children: React.ReactNode;
+  additionalMention?: string;
 }
 
-export default function FormContainer({ title, children }: FormContainerProps) {
+export default function FormContainer({
+  title,
+  children,
+  additionalMention,
+}: FormContainerProps) {
   const pathName = usePathname();
   const loginPathname = pathName === '/';
   const comptePathname = pathName === '/dashboard/compte';
@@ -18,6 +23,9 @@ export default function FormContainer({ title, children }: FormContainerProps) {
       className={`form-container ${loginPathname || comptePathname ? 'user-form-container' : ''}`}
     >
       <HeadTitle title={title} />
+      {additionalMention && (
+        <p className="additional-mention">{additionalMention}</p>
+      )}
       {children}
     </div>
   );

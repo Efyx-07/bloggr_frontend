@@ -7,7 +7,13 @@
   max-width: 50rem;
   padding: 1rem;
   @include container-style;
-  gap: 3rem;
+  gap: 2rem;
+
+  .additional-mention {
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: .75;
+  }
 
   @media (min-width: $smInter) {
     padding: 2rem;
