@@ -21,7 +21,7 @@ export default function AccountSettings() {
           <div className="content">
             <FormContainer
               title="Modifier votre mot de passe"
-              additionalMention="A la modification du mot de passe, vous serez redirigé vers la page de connexion."
+              additionalMention="Note: à la modification du mot de passe, vous serez redirigé vers la page de connexion."
             >
               <UpdatePasswordForm />
             </FormContainer>

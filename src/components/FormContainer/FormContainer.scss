@@ -10,9 +10,11 @@
   gap: 2rem;
 
   .additional-mention {
-    font-size: 0.9rem;
+    width: 100%;
+    border: solid 1px $black;
+    padding: 1rem;
+    font-size: 0.75rem;
     font-weight: 600;
-    opacity: 0.75;
   }
 
   @media (min-width: $smInter) {
