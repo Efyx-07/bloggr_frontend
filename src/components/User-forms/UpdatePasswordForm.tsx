@@ -7,8 +7,8 @@ import { Admin } from '@/interfaces/admin.interface';
 import { updatePassword } from '@/services/update-password.service';
 import useLogoutAdmin from '@/hooks/useLogoutAdmin';
 import { decodeTokenAndGetAdminId } from '@/utils/decodeTokenAndGetAdminId';
-import FormErrorAlert from '../Sharables/FormErrorAlert';
 import PasswordField from '../Form-fields/PasswordField';
+import FormErrorAlert from '../Sharables/FormErrorAlert';
 
 export default function UpdatePasswordForm() {
   const [currentPassword, setCurrentPassword] = useState<Admin['password']>('');

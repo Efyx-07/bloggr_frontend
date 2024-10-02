@@ -1,4 +1,5 @@
 import './PasswordField.scss';
+import './InputField.scss';
 import { Icon } from '@iconify/react';
 
 interface PasswordFieldProps {
