@@ -6,7 +6,7 @@ import FormContainer from '@/components/FormContainer';
 import LoadingPage from '@/components/LoadingPage';
 import { loadingPageDelay } from '@/config';
 import { useState } from 'react';
-import { LoggedInAuthGuard } from '@/auth-guards';
+import { AuthGuard } from '@/auth-guards';
 
 export default function LoginPage() {
   const [isContentVisible, setIsContentVisible] = useState<boolean>(false);
@@ -17,7 +17,7 @@ export default function LoginPage() {
 
   return (
     <>
-      <LoggedInAuthGuard>
+      <AuthGuard redirectPath="/dashboard/articles" shouldBeLoggedIn={false}>
         {isContentVisible ? (
           <div className="page">
             <div className="content">
@@ -29,7 +29,7 @@ export default function LoginPage() {
         ) : (
           <LoadingPage mention="Accès à la page d'accueil..." />
         )}
-      </LoggedInAuthGuard>
+      </AuthGuard>
     </>
   );
 }

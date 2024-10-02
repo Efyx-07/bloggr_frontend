@@ -9,7 +9,6 @@ interface State {
   saveAdminDataInLocalStorage: () => void;
   setAdminData: (admin: Admin) => void;
   logoutAdmin: () => void;
-  checkIsLoggedStatus: () => boolean;
 }
 const useAdminStore = create<State>((set, get) => ({
   admin: null,
@@ -30,14 +29,6 @@ const useAdminStore = create<State>((set, get) => ({
     localStorage.removeItem('token');
     localStorage.removeItem('admin');
     set({ admin: null, token: null, isLogged: false });
-  },
-  // Ne s'éxécute que côté client !!!
-  checkIsLoggedStatus: () => {
-    if (window?.localStorage) {
-      const token = localStorage.getItem('token');
-      return !!token;
-    }
-    return false;
   },
 }));
 

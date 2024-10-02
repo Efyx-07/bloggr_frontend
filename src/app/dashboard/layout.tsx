@@ -1,4 +1,4 @@
-import { LoggedOutAuthGuard } from '@/auth-guards';
+import { AuthGuard } from '@/auth-guards';
 
 export default function DashboardLayout({
   children,
@@ -7,7 +7,9 @@ export default function DashboardLayout({
 }>) {
   return (
     <>
-      <LoggedOutAuthGuard>{children}</LoggedOutAuthGuard>
+      <AuthGuard redirectPath="/" shouldBeLoggedIn={true}>
+        {children}
+      </AuthGuard>
     </>
   );
 }
