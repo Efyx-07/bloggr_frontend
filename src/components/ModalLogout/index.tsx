@@ -2,6 +2,7 @@ import './ModalLogout.scss';
 import ModalSecondaryButton from '../Sharables/Buttons/ModalSecondaryButton';
 import ModalPrimaryButton from '../Sharables/Buttons/ModalPrimaryButton';
 import useLogoutAdmin from '@/hooks/useLogoutAdmin';
+import { useEffect, useState } from 'react';
 
 interface ModalLogoutProps {
   isModalLogoutOpen: boolean;
@@ -13,13 +14,24 @@ export default function ModalLogout({
   toggleModal,
   toggleMenu,
 }: ModalLogoutProps) {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isClicked, setIsClicked] = useState<boolean>(false);
   const logoutAdmin = useLogoutAdmin();
 
   const logoutAdminAndCloseModals = () => {
+    setIsLoading(true);
+    setIsClicked(true);
     logoutAdmin();
     toggleModal();
     toggleMenu();
   };
+
+  useEffect(() => {
+    if (isModalLogoutOpen) {
+      setIsLoading(false);
+      setIsClicked(false);
+    }
+  }, [isModalLogoutOpen]);
 
   return (
     <div className={`modal-logout ${!isModalLogoutOpen ? 'hidden-modal' : ''}`}>
@@ -34,6 +46,8 @@ export default function ModalLogout({
           type="button"
           name="Confirmer"
           onClick={logoutAdminAndCloseModals}
+          isLoading={isLoading}
+          isClicked={isClicked}
         />
       </div>
     </div>
