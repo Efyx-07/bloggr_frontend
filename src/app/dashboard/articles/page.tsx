@@ -7,12 +7,17 @@ import { fetchArticles } from '@/services/articles.service';
 import { Article } from '@/interfaces/article.interface';
 import { useRouter } from 'next/navigation';
 import HeadTitle from '@/components/Sharables/Others/HeadTitle';
-import ArticleCard from '@/components/ArticleCard';
+import FakeArticleCard from '@/components/FakeComponents/FakeArticleCard';
 import LoadingPage from '@/components/LoadingPage';
 import NoArticle from '@/components/NoArticle';
 import PrimaryButton from '@/components/Sharables/Buttons/PrimaryButton';
 import { loadingPageDelay } from '@/config';
 import { useState } from 'react';
+import dynamic from 'next/dynamic';
+
+const DynamicArticleCard = dynamic(() => import('@/components/ArticleCard'), {
+  loading: () => <FakeArticleCard />,
+});
 
 // Inverse l'ordre des articles pour obtenir le récent en 1er
 const reverseArticles = (articles: readonly Article[]) => {
@@ -69,7 +74,7 @@ export default function ArticlesPage() {
                 </HeadTitle>
                 <div className="article-cards-container">
                   {reversedArticles?.map((article) => (
-                    <ArticleCard key={article.id} article={article} />
+                    <DynamicArticleCard key={article.id} article={article} />
                   ))}
                 </div>
               </>
