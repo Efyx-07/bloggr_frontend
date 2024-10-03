@@ -1,4 +1,5 @@
 @import './mixin.scss';
+@import './colors.scss';
 
 .page {
   width: 100%;
@@ -6,6 +7,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: $whiteBackground;
 
   .content {
     @include page-content-style;
