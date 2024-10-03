@@ -27,7 +27,10 @@ describe('createArticle', () => {
         imageUrl: 'https://article-image.com',
         body: `Corps de l'article`,
         creationDate: '01012024',
+        published: false,
+        publicationDate: null,
         lastUpdate: '01012024',
+        keywords: [{ name: 'k1' }],
       },
     };
 
@@ -39,8 +42,9 @@ describe('createArticle', () => {
     const title: Article['title'] = 'Article title';
     const imageUrl: Article['imageUrl'] = 'https://article-image.com';
     const body: Article['body'] = `Corps de l'article`;
+    const keywords: Article['keywords'] = [{ name: 'k1' }];
 
-    const result = await createArticle(title, imageUrl, body);
+    const result = await createArticle(title, imageUrl, body, keywords);
 
     expect(fetch).toHaveBeenCalledWith(
       `${backendUrl}/articles/create-article`,
@@ -53,6 +57,7 @@ describe('createArticle', () => {
           title,
           imageUrl,
           body,
+          keywords,
         }),
       },
     );
@@ -69,10 +74,11 @@ describe('createArticle', () => {
     const title: Article['title'] = 'Article title';
     const imageUrl: Article['imageUrl'] = 'https://article-image.com';
     const body: Article['body'] = `Corps de l'article`;
+    const keywords: Article['keywords'] = [{ name: 'k1' }];
 
-    await expect(createArticle(title, imageUrl, body)).rejects.toThrow(
-      'Failed to create article: Server error',
-    );
+    await expect(
+      createArticle(title, imageUrl, body, keywords),
+    ).rejects.toThrow('Failed to create article: Server error');
   });
 });
 
@@ -94,6 +100,9 @@ describe('fetchArticles', () => {
           body: `Corps de l'article`,
           creationDate: '01012024',
           lastUpdate: '01012024',
+          published: false,
+          publicationDate: null,
+          keywords: [{ name: 'k1' }],
         },
         {
           id: 2,
@@ -102,6 +111,9 @@ describe('fetchArticles', () => {
           body: `Corps de l'article2`,
           creationDate: '01012024',
           lastUpdate: '01012024',
+          published: false,
+          publicationDate: null,
+          keywords: [{ name: 'k1' }],
         },
       ],
     };
@@ -144,6 +156,9 @@ describe('fetchArticleById', () => {
         body: `Corps de l'article`,
         creationDate: '01012024',
         lastUpdate: '01012024',
+        published: false,
+        publicationDate: null,
+        keywords: [{ name: 'k1' }],
       },
     };
 
@@ -190,8 +205,15 @@ describe('updateArticleById', () => {
     const title: Article['title'] = 'Article title';
     const imageUrl: Article['imageUrl'] = 'https://article-image.com';
     const body: Article['body'] = `Corps de l'article`;
+    const keywords: Article['keywords'] = [{ name: 'k1' }];
 
-    const result = await updateArticleById(articleId, title, imageUrl, body);
+    const result = await updateArticleById(
+      articleId,
+      title,
+      imageUrl,
+      body,
+      keywords,
+    );
 
     expect(fetch).toHaveBeenCalledWith(`${backendUrl}/articles/${articleId}`, {
       method: 'PUT',
@@ -202,6 +224,7 @@ describe('updateArticleById', () => {
         title,
         imageUrl,
         body,
+        keywords,
       }),
     });
     expect(result).toEqual(mockResponse);
@@ -215,9 +238,10 @@ describe('updateArticleById', () => {
     const title: Article['title'] = 'Article title';
     const imageUrl: Article['imageUrl'] = 'https://article-image.com';
     const body: Article['body'] = `Corps de l'article`;
+    const keywords: Article['keywords'] = [{ name: 'k1' }];
 
     await expect(
-      updateArticleById(articleId, title, imageUrl, body),
+      updateArticleById(articleId, title, imageUrl, body, keywords),
     ).rejects.toThrow('Failed to update article: Error: Network error');
   });
 });

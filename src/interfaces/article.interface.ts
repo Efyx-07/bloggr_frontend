@@ -5,6 +5,8 @@ export interface Article {
   body: string;
   creationDate: Date | string;
   lastUpdate: Date | string;
+  published: boolean;
+  publicationDate: Date | null;
   keywords: Keyword[];
 }
 
