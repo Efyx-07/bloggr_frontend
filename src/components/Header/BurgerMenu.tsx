@@ -14,7 +14,7 @@ export default function BurgerMenu({ isOpen, toggleMenu }: BurgerMenuProps) {
   return (
     <div
       className={`
-        fixed top-0 right-0 z-99 
+        fixed top-0 right-0 z-50
         w-full sm:max-w-[50vw] lgInter:max-w-[25vw] 
         h-[100dvh]
         pt-[1rem] pr-[1rem] pb-[2rem] pl-[2rem]
