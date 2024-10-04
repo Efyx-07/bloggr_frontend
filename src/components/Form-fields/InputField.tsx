@@ -1,4 +1,4 @@
-import './InputField.scss';
+//import './InputField.scss';
 
 interface InputFieldProps {
   id: string;
@@ -22,11 +22,21 @@ export default function InputField({
   onChange,
 }: InputFieldProps) {
   return (
-    <div className="input-container">
-      <label htmlFor={id}>{label}</label>
-      {requirement && <p className="requirement">{requirement}</p>}
+    <div className="w-full flex flex-col gap-1">
+      <label htmlFor={id} className="font-bold">{label}</label>
+      {requirement && 
+        <p className="text-xs font-semibold opacity-75">
+          {requirement}
+        </p>
+      }
       <input
-        className="text-input"
+        className="
+          w-full h-[3rem] 
+          text-base 
+          pl-[1rem] 
+          border border-black25 focus:border-accent
+          outline-none
+        "
         id={id}
         type={type}
         name={name}
