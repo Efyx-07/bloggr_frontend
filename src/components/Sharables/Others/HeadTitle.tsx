@@ -1,4 +1,3 @@
-import './HeadTitle.scss';
 import Separator from './Separator';
 
 interface HeadTitleProps {
@@ -8,8 +7,8 @@ interface HeadTitleProps {
 
 export default function HeadTitle({ title, children }: HeadTitleProps) {
   return (
-    <div className="head-title">
-      <div className="title-children-container">
+    <div className="w-full flex flex-col gap-4">
+      <div className="flex flex-wrap items-center justify-between gap-2">
         <h2>{title}</h2>
         {children}
       </div>
