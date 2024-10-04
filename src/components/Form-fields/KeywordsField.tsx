@@ -1,4 +1,3 @@
-import './KeywordsField.scss';
 import { Icon } from '@iconify/react';
 import { MouseEventHandler } from 'react';
 import { Keyword } from '@/interfaces/article.interface';
@@ -27,32 +26,53 @@ export default function KeywordsField({
   onRemoveKeyword,
 }: KeywordsFieldProps) {
   return (
-    <div className="input-container">
-      <label htmlFor={id}>{label}</label>
-      <p className="requirement">
+    <div className="w-full flex flex-col gap-1">
+      <label htmlFor={id} className="font-bold">{label}</label>
+      <p className="text-xs font-semibold opacity-75">
         Choisir un à plusieurs mots-clé pour le réferencement de l&apos;article
       </p>
-      <div className="input-keyword-container">
+      <div className="flex items-center gap-1">
         <input
-          className="text-input"
+          className="
+            w-full h-[3rem] 
+            text-base 
+            pl-[1rem] 
+            border border-black25 focus:border-accent
+            outline-none
+          "
           id={id}
           type={type}
           name={name}
           value={value}
           onChange={onChange}
         />
-        <div className="icon-container" onClick={onClick}>
-          <Icon icon="ic:baseline-plus" className="plus-icon" />
+        <div 
+          onClick={onClick} 
+          className="
+            w-full max-w-[2.25rem] h-[2.25rem]
+            flex items-center justify-center
+            border border-black25 rounded-full
+            cursor-pointer
+          " 
+        >
+          <Icon icon="ic:baseline-plus" className="text-2xl" />
         </div>
       </div>
-      <div className="keywords-list">
+      <div className="flex gap-1">
         {keywords.map((keyword) => (
-          <div className="keyword-container" key={keyword.name}>
-            <p className="keyword-name">{keyword.name}</p>
+          <div 
+            key={keyword.name}
+            className="
+              flex items-center gap-1
+              p-[.25rem]
+              border border-black25 border-solid
+            "
+          >
+            <p className="text-sm">{keyword.name}</p>
             <Icon
               icon="mdi:remove-bold"
-              className="remove-icon"
               onClick={() => onRemoveKeyword(keyword.name)}
+              className="text-sm cursor-pointer"
             />
           </div>
         ))}
