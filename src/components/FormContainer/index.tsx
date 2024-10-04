@@ -20,7 +20,7 @@ export default function FormContainer({
   return (
     <div
       className={`
-        w-full max-w-[50rem] 
+        w-full
         p-[1rem] smInter:p-[2rem]
         bg-white
         border rounded-lg
