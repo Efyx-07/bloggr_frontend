@@ -1,7 +1,6 @@
 'use client';
 
-import './Header.scss';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import SiteName from '../Sharables/Others/SiteName';
 import MobileMenuIcon from './MobileMenuIcon';
@@ -13,9 +12,10 @@ export default function Header() {
 
   return (
     <>
-      <header>
+      <header className="w-full h-[5rem] bg-white flex justify-center items-center">
         <div
-          className={`content ${pathName === '/' ? 'on-login-content' : ''}`}
+          className={`w-full max-w-[90rem] px-[1rem] flex items-center 
+            ${pathName === '/' ? 'justify-center' : 'justify-between'} lgInter:px-[2rem]`}
         >
           <SiteName />
           {/* Cache l'icone du menu sur la page de connexion */}

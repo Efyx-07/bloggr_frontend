@@ -5,7 +5,7 @@ module.exports = {
     extend: {
       colors: {
         black: '#1d1d1d',
-        white: '#ffffff',
+        whiteRelief: '#ffffff',
         whiteBackground: '#f7f7f7',
         accent: '#e11e22',
         white25: 'rgba(255, 255, 255, 0.25)',
@@ -14,6 +14,14 @@ module.exports = {
         black10: 'rgba(29, 29, 29, 0.1)',
         errorColor: 'red',
       },
+      screens: {
+        s: '516px',
+        sm: '640px',
+        smInter: '770px',
+        lg: '950px',
+        lgInter: '1180px',
+        xxl: '1440px',
+      }
     },
   },
   plugins: [],
