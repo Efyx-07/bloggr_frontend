@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
-import SiteName from '../Sharables/Others/SiteName';
+import SiteName from './SiteName';
 import MobileMenuIcon from './MobileMenuIcon';
 import BurgerMenu from './BurgerMenu';
 

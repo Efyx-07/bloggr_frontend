@@ -4,7 +4,7 @@
 @mixin container-style {
   background: $whiteRelief;
   border: solid 1px $blackOverLighted;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   color: $black;
   display: flex;
   flex-direction: column;

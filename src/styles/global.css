@@ -5,3 +5,11 @@
 .site-name {
   font-size: clamp(2rem, 5vw, 2.75rem);
 }
+
+.custom-shadow {
+  box-shadow: -5px 0 15px rgba(29, 29, 29, 0.25);
+}
+
+.parent:hover > .close-icon {
+  @apply text-black;
+}

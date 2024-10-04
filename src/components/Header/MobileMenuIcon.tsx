@@ -1,4 +1,3 @@
-import './MobileMenuIcon.scss';
 import { Icon } from '@iconify/react';
 
 interface MobileMenuIconProps {
@@ -7,8 +6,12 @@ interface MobileMenuIconProps {
 
 export default function MobileMenuIcon({ toggleMenu }: MobileMenuIconProps) {
   return (
-    <div className="mobile-icon-container" onClick={toggleMenu}>
-      <Icon icon="material-symbols:menu" className="mobile-icon" />
-    </div>
+    <>
+      <Icon
+        icon="material-symbols:menu"
+        onClick={toggleMenu}
+        className="text-3xl text-accent hover:text-black cursor-pointer"
+      />
+    </>
   );
 }

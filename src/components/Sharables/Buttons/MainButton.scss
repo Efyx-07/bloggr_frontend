@@ -5,9 +5,8 @@
   color: $black;
   //box-shadow: 5px 5px $black;
   font-weight: 600;
-  transition:
-    transform 0.05s ease;
-    //box-shadow 0.08s ease;
+  transition: transform 0.05s ease;
+  //box-shadow 0.08s ease;
 
   &:hover,
   &.clicked {

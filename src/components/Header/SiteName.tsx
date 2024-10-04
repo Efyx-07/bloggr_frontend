@@ -7,5 +7,7 @@ const font = Fredoka({
 });
 
 export default function SiteName() {
-  return <h1 className={`${font.className} site-name text-accent`}>{siteName}</h1>;
+  return (
+    <h1 className={`${font.className} site-name text-accent`}>{siteName}</h1>
+  );
 }
