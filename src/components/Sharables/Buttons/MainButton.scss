@@ -1,17 +1,12 @@
 @import '../../../styles/colors.scss';
 
 @mixin common-button-style {
-  border: solid 1px $black;
-  color: $black;
-  //box-shadow: 5px 5px $black;
   font-weight: 600;
   transition: transform 0.05s ease;
-  //box-shadow 0.08s ease;
 
   &:hover,
   &.clicked {
     transform: translate(4px, 5px);
-    //box-shadow: 0 0;
   }
 }
 
@@ -37,11 +32,13 @@
 }
 
 .primary {
-  background: $whiteRelief;
+  background: $accent;
+  color: $whiteRelief;
   @include common-button-style;
 }
 
 .secondary {
-  background: $hoverWhite;
+  border: solid 1px $black;
+  color: $black;
   @include common-button-style;
 }
