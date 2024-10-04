@@ -1,4 +1,3 @@
-import './Navigator.scss';
 import { MouseEventHandler } from 'react';
 import { useRouter } from 'next/navigation';
 
@@ -45,9 +44,17 @@ export default function Navigator({ toggleMenu, toggleModal }: NavigatorProps) {
     },
   ];
   return (
-    <nav>
+    <nav className="flex flex-col gap-8" >
       {navitems.map((navItem) => (
-        <div className="nav-item" key={navItem.name} onClick={navItem.onClick}>
+        <div 
+          key={navItem.name} 
+          onClick={navItem.onClick} 
+          className="
+           text-black text-2xl font-semibold 
+           hover:text-accent
+           cursor-pointer
+          " 
+        >
           {navItem.name}
         </div>
       ))}
