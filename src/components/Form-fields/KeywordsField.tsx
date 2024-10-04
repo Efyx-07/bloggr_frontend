@@ -26,8 +26,10 @@ export default function KeywordsField({
   onRemoveKeyword,
 }: KeywordsFieldProps) {
   return (
-    <div className="w-full flex flex-col gap-1">
-      <label htmlFor={id} className="font-bold">{label}</label>
+    <div className="w-full flex flex-col gap-2">
+      <label htmlFor={id} className="font-bold">
+        {label}
+      </label>
       <p className="text-xs font-semibold opacity-75">
         Choisir un à plusieurs mots-clé pour le réferencement de l&apos;article
       </p>
@@ -46,21 +48,21 @@ export default function KeywordsField({
           value={value}
           onChange={onChange}
         />
-        <div 
-          onClick={onClick} 
+        <div
+          onClick={onClick}
           className="
             w-full max-w-[2.25rem] h-[2.25rem]
             flex items-center justify-center
             border border-black25 rounded-full
             cursor-pointer
-          " 
+          "
         >
           <Icon icon="ic:baseline-plus" className="text-2xl" />
         </div>
       </div>
       <div className="flex gap-1">
         {keywords.map((keyword) => (
-          <div 
+          <div
             key={keyword.name}
             className="
               flex items-center gap-1

@@ -22,13 +22,13 @@ export default function InputField({
   onChange,
 }: InputFieldProps) {
   return (
-    <div className="w-full flex flex-col gap-1">
-      <label htmlFor={id} className="font-bold">{label}</label>
-      {requirement && 
-        <p className="text-xs font-semibold opacity-75">
-          {requirement}
-        </p>
-      }
+    <div className="w-full flex flex-col gap-2">
+      <label htmlFor={id} className="font-bold">
+        {label}
+      </label>
+      {requirement && (
+        <p className="text-xs font-semibold opacity-75">{requirement}</p>
+      )}
       <input
         className="
           w-full h-[3rem] 

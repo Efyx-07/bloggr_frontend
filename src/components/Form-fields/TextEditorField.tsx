@@ -23,8 +23,10 @@ export default function TextEditorField({
   required,
 }: TextEditorFieldProps) {
   return (
-    <div className="w-full flex flex-col gap-1">
-      <label htmlFor={id} className="font-bold">{label}</label>
+    <div className="w-full flex flex-col gap-2">
+      <label htmlFor={id} className="font-bold">
+        {label}
+      </label>
       <CKEditorComponent
         id={id}
         name={name}

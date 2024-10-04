@@ -26,13 +26,13 @@ export default function PasswordField({
   isPasswordVisible,
 }: PasswordFieldProps) {
   return (
-    <div className="w-full flex flex-col gap-1">
-      <label htmlFor={id} className="font-bold">{label}</label>
-      {requirement && 
-        <p className="text-xs font-semibold opacity-75">
-          {requirement}
-        </p>
-      }
+    <div className="w-full flex flex-col gap-2">
+      <label htmlFor={id} className="font-bold">
+        {label}
+      </label>
+      {requirement && (
+        <p className="text-xs font-semibold opacity-75">{requirement}</p>
+      )}
       <div className="flex items-center">
         <input
           className="
@@ -49,8 +49,8 @@ export default function PasswordField({
           required={required}
           onChange={onChange}
         />
-        <div 
-          onClick={onClick} 
+        <div
+          onClick={onClick}
           className="
             w-12 h-12
             flex items-center justify-center

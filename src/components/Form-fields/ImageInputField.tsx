@@ -1,4 +1,3 @@
-import './ImageInputField.scss';
 import { ChangeEventHandler, MouseEventHandler, RefObject } from 'react';
 import Image from 'next/image';
 import FileInputField from './FileInputField';
@@ -23,16 +22,30 @@ export default function ImageInputField({
   required,
 }: ImageInputFieldProps) {
   return (
-    <div className="input-container image-input-field">
-      <label htmlFor={id}>{label}</label>
-      <p className="requirement">
+    <div className="w-full flex flex-col gap-2">
+      <label htmlFor={id} className="font-bold">
+        {label}
+      </label>
+      <p className="text-xs font-semibold opacity-75">
         Pour un rendu optimal, choisir une image au format 3:2
       </p>
       {previewUrl ? (
-        <div className="image-preview-container">
-          <div className="image-container">
+        <div className="flex flex-col gap-2">
+          <div
+            className="
+              w-full max-w-[18.75rem] h-[12.5rem]
+              block
+              relative
+              overflow-hidden
+            "
+          >
             <Image
-              className="img"
+              className="
+                inline-block
+                relative
+                w-full h-auto
+                object-cover
+              "
               src={previewUrl}
               width={300}
               height={200}
@@ -40,7 +53,16 @@ export default function ImageInputField({
               priority
             />
           </div>
-          <button className="remove-button" type="button" onClick={onClick}>
+          <button
+            type="button"
+            onClick={onClick}
+            className="
+              text-base
+              w-[10rem] h-[2rem]
+              border border-black25 border-solid
+              cursor-pointer
+            "
+          >
             Supprimer
           </button>
         </div>
