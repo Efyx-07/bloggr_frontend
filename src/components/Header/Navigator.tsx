@@ -44,16 +44,16 @@ export default function Navigator({ toggleMenu, toggleModal }: NavigatorProps) {
     },
   ];
   return (
-    <nav className="flex flex-col gap-8" >
+    <nav className="flex flex-col gap-8">
       {navitems.map((navItem) => (
-        <div 
-          key={navItem.name} 
-          onClick={navItem.onClick} 
+        <div
+          key={navItem.name}
+          onClick={navItem.onClick}
           className="
            text-black text-2xl font-semibold 
            hover:text-accent
            cursor-pointer
-          " 
+          "
         >
           {navItem.name}
         </div>

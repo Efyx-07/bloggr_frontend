@@ -1,6 +1,5 @@
 'use client';
 
-import './FormContainer.scss';
 import HeadTitle from '../Sharables/Others/HeadTitle';
 import { usePathname } from 'next/navigation';
 
@@ -20,11 +19,28 @@ export default function FormContainer({
   const comptePathname = pathName === '/dashboard/compte';
   return (
     <div
-      className={`form-container ${loginPathname || comptePathname ? 'user-form-container' : ''}`}
+      className={`
+        w-full max-w-[50rem] 
+        p-[1rem] smInter:p-[2rem]
+        bg-white
+        border rounded-lg
+        flex flex-col gap-8
+        ${loginPathname || comptePathname ? 'max-w-[30rem]' : 'max-w-[50rem]'}
+      `}
     >
       <HeadTitle title={title} />
       {additionalMention && (
-        <p className="additional-mention">{additionalMention}</p>
+        <p
+          className="
+            w-full 
+            p-[1rem]
+            border border-black border-solid 
+            text-xs 
+            font-semibold
+          "
+        >
+          {additionalMention}
+        </p>
       )}
       {children}
     </div>

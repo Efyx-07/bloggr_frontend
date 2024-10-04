@@ -24,8 +24,8 @@ export default function BurgerMenu({ isOpen, toggleMenu }: BurgerMenuProps) {
         ${!isOpen ? 'translate-x-full' : 'translate-x-0'}`}
     >
       <div className="flex justify-end">
-        <div 
-          onClick={toggleMenu} 
+        <div
+          onClick={toggleMenu}
           className="
             parent
             w-[2rem] h-[2rem]
@@ -34,10 +34,11 @@ export default function BurgerMenu({ isOpen, toggleMenu }: BurgerMenuProps) {
             flex justify-center items-center
             cursor-pointer
             hover:border-black
-          ">
-          <Icon 
-            icon="weui:close-outlined" 
-            className="close-icon text-2xl text-accent" 
+          "
+        >
+          <Icon
+            icon="weui:close-outlined"
+            className="close-icon text-2xl text-accent"
           />
         </div>
       </div>
