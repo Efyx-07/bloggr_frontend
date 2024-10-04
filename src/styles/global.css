@@ -14,8 +14,14 @@
   @apply text-black;
 }
 
+p,
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+
 h2 {
   font-size: clamp(1.25rem, 3vw, 1.5rem);
   font-weight: 500;
-  margin: 0;
 }
