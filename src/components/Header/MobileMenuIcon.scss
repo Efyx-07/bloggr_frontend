@@ -3,16 +3,10 @@
 .mobile-icon-container .mobile-icon {
   font-size: clamp(1.5rem, 5vw, 2rem);
   background: transparent;
-  color: $whiteRelief;
+  color: $accent;
   cursor: pointer;
 
   &:hover {
     color: $black;
-  }
-}
-
-.mobile-icon-container .mobile-icon.scrolled {
-  &:hover {
-    color: $blue;
   }
 }

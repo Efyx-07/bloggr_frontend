@@ -1,9 +1,9 @@
 import './SiteName.scss';
 import { siteName } from '@/config';
-import { Permanent_Marker } from 'next/font/google';
+import { Fredoka } from 'next/font/google';
 
-const font = Permanent_Marker({
-  weight: '400',
+const font = Fredoka({
+  weight: '500',
   subsets: ['latin'],
 });
 
