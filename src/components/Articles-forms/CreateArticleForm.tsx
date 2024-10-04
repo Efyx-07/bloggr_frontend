@@ -146,66 +146,64 @@ export default function CreateArticleForm() {
   // ===========================================================================================
   return (
     <form onSubmit={handleCreateArticle}>
-      <div className="fields-container">
-        <InputField
-          id="title"
-          label="Titre de l'article"
-          type="text"
-          name="title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          required
+      <InputField
+        id="title"
+        label="Titre de l'article"
+        type="text"
+        name="title"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+        required
+      />
+      <ImageInputField
+        id="imageUrl"
+        label={"Image de l'article"}
+        previewUrl={previewUrl}
+        onClick={deletePreview}
+        onChange={handleFileChange}
+        inputRef={inputFileRef}
+        required
+      />
+      <TextEditorField
+        id="body"
+        label="Corps de l'article"
+        name="body"
+        value={body}
+        onChange={(value: string) => setBody(value)}
+        required
+      />
+      <KeywordsField
+        id="new-keyword"
+        label="Ajouter un mot-clé"
+        type="text"
+        name="newKeyword"
+        value={newKeyword}
+        onChange={(e) => setNewKeyword(e.target.value)}
+        onClick={handleAddKeyword}
+        keywords={keywords}
+        onRemoveKeyword={handleRemoveKeyword}
+      />
+      {errorMessage ? (
+        <FormErrorAlert
+          errorMention="Erreur lors de la création de l'article"
+          onButtonClick={handleResetFormAndErrorMessage}
+          buttonMention="Rééssayer"
         />
-        <ImageInputField
-          id="imageUrl"
-          label={"Image de l'article"}
-          previewUrl={previewUrl}
-          onClick={deletePreview}
-          onChange={handleFileChange}
-          inputRef={inputFileRef}
-          required
-        />
-        <TextEditorField
-          id="body"
-          label="Corps de l'article"
-          name="body"
-          value={body}
-          onChange={(value: string) => setBody(value)}
-          required
-        />
-        <KeywordsField
-          id="new-keyword"
-          label="Ajouter un mot-clé"
-          type="text"
-          name="newKeyword"
-          value={newKeyword}
-          onChange={(e) => setNewKeyword(e.target.value)}
-          onClick={handleAddKeyword}
-          keywords={keywords}
-          onRemoveKeyword={handleRemoveKeyword}
-        />
-        {errorMessage ? (
-          <FormErrorAlert
-            errorMention="Erreur lors de la création de l'article"
-            onButtonClick={handleResetFormAndErrorMessage}
-            buttonMention="Rééssayer"
+      ) : (
+        <div className="buttons-container">
+          <SecondaryButton
+            type="reset"
+            name="Annuler"
+            onClick={handleResetForm}
           />
-        ) : (
-          <div className="buttons-container">
-            <SecondaryButton
-              type="reset"
-              name="Annuler"
-              onClick={handleResetForm}
-            />
-            <PrimaryButton
-              type="submit"
-              name="Créer l'article"
-              isLoading={isLoading}
-              isClicked={isClicked}
-            />
-          </div>
-        )}
-      </div>
+          <PrimaryButton
+            type="submit"
+            name="Créer l'article"
+            isLoading={isLoading}
+            isClicked={isClicked}
+          />
+        </div>
+      )}
     </form>
   );
 }
