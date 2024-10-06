@@ -1,4 +1,5 @@
 import { Icon } from '@iconify/react';
+import './field-common-styles.css';
 
 interface PasswordFieldProps {
   id: string;
@@ -26,22 +27,11 @@ export default function PasswordField({
   isPasswordVisible,
 }: PasswordFieldProps) {
   return (
-    <div className="w-full flex flex-col gap-2">
-      <label htmlFor={id} className="font-bold">
-        {label}
-      </label>
-      {requirement && (
-        <p className="text-xs font-semibold opacity-75">{requirement}</p>
-      )}
-      <div className="flex items-center">
+    <div className="field-container">
+      <label htmlFor={id}>{label}</label>
+      {requirement && <p className="requirement">{requirement}</p>}
+      <div className="input-container">
         <input
-          className="
-            w-full h-[3rem] 
-            text-base 
-            pl-[1rem] 
-            border border-black25 focus:border-accent
-            outline-none
-          "
           id={id}
           type={type}
           name={name}
@@ -49,19 +39,11 @@ export default function PasswordField({
           required={required}
           onChange={onChange}
         />
-        <div
-          onClick={onClick}
-          className="
-            w-12 h-12
-            flex items-center justify-center
-            border border-l-0 border-black25
-            cursor-pointer
-          "
-        >
+        <div onClick={onClick} className="eye-container">
           {isPasswordVisible ? (
-            <Icon icon="mdi:eye-off" className="text-xl text-black75" />
+            <Icon icon="mdi:eye-off" className="eye-icon" />
           ) : (
-            <Icon icon="mdi:eye" className="text-xl text-black75" />
+            <Icon icon="mdi:eye" className="eye-icon" />
           )}
         </div>
       </div>

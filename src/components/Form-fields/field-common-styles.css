@@ -1,0 +1,70 @@
+@tailwind utilities;
+
+.field-container {
+  @apply w-full flex flex-col gap-2;
+}
+
+label {
+  @apply font-bold;
+}
+
+.requirement {
+  @apply text-xs font-semibold opacity-75;
+}
+
+.input-container {
+  @apply flex items-center;
+}
+
+input {
+  @apply w-full h-[3rem] 
+    text-base 
+    pl-[1rem] 
+    border border-black25 focus:border-accent
+    outline-none;
+}
+
+/* Only Password fields 
+===========================================================================================*/
+.eye-container {
+  @apply w-12 h-12
+    flex items-center justify-center
+    border border-l-0 border-black25
+    cursor-pointer;
+}
+
+.eye-icon {
+  @apply text-xl text-black75;
+}
+
+/* Only Keywords fields 
+===========================================================================================*/
+.plus-container {
+  @apply w-full max-w-[2.25rem] h-[2.25rem]
+    flex items-center justify-center
+    border border-black25 rounded-full
+    cursor-pointer
+    hover:bg-accent hover:border-accent;
+}
+
+.plus-container:hover > .plus-icon {
+  @apply text-whiteRelief;
+}
+
+.field-keyword-container {
+  @apply flex items-center gap-1
+    p-[.25rem]
+    border border-black25 border-solid;
+}
+
+/* Only File input fields 
+===========================================================================================*/
+.file-input::file-selector-button,
+.delete-preview-button {
+  @apply w-40 h-8 
+  border border-black25 
+  bg-transparent 
+  mr-4 
+  cursor-pointer
+  hover:bg-accent hover:border-accent hover:text-whiteRelief;
+}

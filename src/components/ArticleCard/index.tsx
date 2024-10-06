@@ -24,13 +24,16 @@ export default function ArticleCard({ article }: ArticleCardProps) {
       <div className="bottom-part">
         <div className="infos-container">
           <h3>{article.title}</h3>
-          <ArticleDate article={article} />
-          <div
-            className="body-snippet"
-            dangerouslySetInnerHTML={{
-              __html: article.body.slice(0, 100) + ' ...',
-            }}
-          />
+          <div className="date-status">
+            <ArticleDate article={article} />
+            <div className="published-status">
+              {article.published ? (
+                <p>Publié</p>
+              ) : (
+                <p>En attente de publication</p>
+              )}
+            </div>
+          </div>
         </div>
         <ArticleCardActionsBar article={article} />
       </div>

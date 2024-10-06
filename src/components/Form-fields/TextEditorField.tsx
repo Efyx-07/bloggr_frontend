@@ -1,4 +1,5 @@
 import dynamic from 'next/dynamic';
+import './field-common-styles.css';
 
 const CKEditorComponent = dynamic(
   () => import('@/components/Form-fields/CKEditorComponent'),
@@ -23,10 +24,8 @@ export default function TextEditorField({
   required,
 }: TextEditorFieldProps) {
   return (
-    <div className="w-full flex flex-col gap-2">
-      <label htmlFor={id} className="font-bold">
-        {label}
-      </label>
+    <div className="field-container">
+      <label htmlFor={id}>{label}</label>
       <CKEditorComponent
         id={id}
         name={name}

@@ -6,16 +6,26 @@
   font-size: clamp(2rem, 5vw, 2.75rem);
 }
 
+.image-container {
+  @apply w-full
+  block
+  relative
+  overflow-hidden;
+}
+
+.image {
+  @apply inline-block
+  relative
+  w-full h-auto
+  object-cover;
+}
+
 .custom-shadow {
   box-shadow: -5px 0 15px rgba(29, 29, 29, 0.25);
 }
 
 .parent:hover > .close-icon {
   @apply text-black;
-}
-
-.file-input::file-selector-button {
-  @apply w-40 h-8 border border-black25 bg-transparent mr-4 cursor-pointer;
 }
 
 p,

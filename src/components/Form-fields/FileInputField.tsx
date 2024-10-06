@@ -11,7 +11,7 @@ const FileInputField = forwardRef<HTMLInputElement, FileInputProps>(
   function FileInputField({ name, id, required, onChange }, ref) {
     return (
       <input
-        className="file-input text-base"
+        className="file-input border-none pl-0 text-base"
         type="file"
         name={name}
         id={id}

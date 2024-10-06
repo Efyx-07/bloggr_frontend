@@ -12,14 +12,14 @@ export default function ArticleDate({ article }: ArticleDateProps) {
 
   const formatDate = (date: Date): string => format(date, 'yyyy-MM-dd');
   const timeAgo = (date: Date): string =>
-    formatDistanceToNow(date, { addSuffix: true });
+    formatDistanceToNow(date, { addSuffix: false });
 
   return (
     <div className="date-infos">
       <p className="creation-date">créé: {formatDate(creationDate)}</p>
       {creationDate.getTime() !== lastUpdate.getTime() && (
         <>
-          <p>/</p>
+          <p>|</p>
           <p className="last-update">maj: {timeAgo(lastUpdate)}</p>
         </>
       )}

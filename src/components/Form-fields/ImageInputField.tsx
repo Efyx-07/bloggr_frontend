@@ -1,6 +1,7 @@
 import { ChangeEventHandler, MouseEventHandler, RefObject } from 'react';
 import Image from 'next/image';
 import FileInputField from './FileInputField';
+import './field-common-styles.css';
 
 interface ImageInputFieldProps {
   id: string;
@@ -22,30 +23,16 @@ export default function ImageInputField({
   required,
 }: ImageInputFieldProps) {
   return (
-    <div className="w-full flex flex-col gap-2">
-      <label htmlFor={id} className="font-bold">
-        {label}
-      </label>
-      <p className="text-xs font-semibold opacity-75">
+    <div className="field-container">
+      <label htmlFor={id}>{label}</label>
+      <p className="requirement">
         Pour un rendu optimal, choisir une image au format 3:2
       </p>
       {previewUrl ? (
         <div className="flex flex-col gap-2">
-          <div
-            className="
-              w-full max-w-[18.75rem] h-[12.5rem]
-              block
-              relative
-              overflow-hidden
-            "
-          >
+          <div className="image-container max-w-[18.75rem] h-[12.5rem]">
             <Image
-              className="
-                inline-block
-                relative
-                w-full h-auto
-                object-cover
-              "
+              className="image"
               src={previewUrl}
               width={300}
               height={200}
@@ -56,12 +43,7 @@ export default function ImageInputField({
           <button
             type="button"
             onClick={onClick}
-            className="
-              text-base
-              w-[10rem] h-[2rem]
-              border border-black25 border-solid
-              cursor-pointer
-            "
+            className="delete-preview-button"
           >
             Supprimer
           </button>
