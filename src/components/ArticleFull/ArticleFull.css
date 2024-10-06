@@ -15,7 +15,7 @@
 
 .article-title {
   font-size: clamp(2rem, 8vw, 3rem);
-  @apply font-black;
+  @apply text-black font-black;
 }
 
 .keywords-container {
