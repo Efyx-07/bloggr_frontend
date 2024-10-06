@@ -1,0 +1,27 @@
+@tailwind utilities;
+
+.burger-menu {
+  @apply fixed top-0 right-0 z-50
+    w-full sm:max-w-[50vw] lgInter:max-w-[25vw] 
+    h-[100dvh]
+    pt-4 pr-4 pb-8 pl-8
+    bg-white
+    grid grid-rows-3 gap-8;
+}
+
+.custom-shadow {
+  box-shadow: -5px 0 15px rgba(29, 29, 29, 0.25);
+}
+
+.close-icon-container {
+  @apply w-8 h-8
+    border border-accent border-solid
+    rounded-full
+    flex justify-center items-center
+    cursor-pointer
+    hover:border-black;
+}
+
+.close-icon-container:hover > .close-icon {
+  @apply text-black;
+}
