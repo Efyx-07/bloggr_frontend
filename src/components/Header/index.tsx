@@ -12,13 +12,13 @@ export default function Header() {
 
   return (
     <>
-      <header 
+      <header
         className="
           w-full h-20 bg-white 
           flex justify-center items-center 
           sticky top-0 z-50
           "
-        >
+      >
         <div
           className={`
             w-full max-w-[90rem] 

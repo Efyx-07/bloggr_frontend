@@ -1,19 +1,32 @@
 'use client';
 
 import { Icon } from '@iconify/react';
+import { useEffect, useState } from 'react';
 
-export default function TopScroller () {
-    const scrollToTop = () => {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth",
-        });
+export default function TopScroller() {
+  const [isVisible, setIsVisible] = useState<boolean>(false);
+  const [isScrollable, setIsScrollable] = useState<boolean>(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const isWindowScrollable =
+        document.documentElement.scrollHeight > window.innerHeight;
+      setIsScrollable(isWindowScrollable);
+      setIsVisible(window.scrollY > 100);
     };
+    handleScroll();
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-    return (
-        <div 
-            onClick={scrollToTop}
-            className="
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  return (
+    <>
+      {isVisible && isScrollable && (
+        <div
+          onClick={scrollToTop}
+          className="
                 absolute right-0 w-10 h-10
                 bg-accent rounded-full
                 flex justify-center items-center
@@ -21,7 +34,9 @@ export default function TopScroller () {
                 cursor-pointer
             "
         >
-            <Icon icon="ep:arrow-up-bold" />
+          <Icon icon="ep:arrow-up-bold" />
         </div>
-    )
+      )}
+    </>
+  );
 }
