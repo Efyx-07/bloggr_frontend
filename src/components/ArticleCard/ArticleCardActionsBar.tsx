@@ -25,7 +25,12 @@ export default function ArticleCardActionsBar({
 
   return (
     <>
-      <div className="actions-bar">
+      <div
+        className="
+        flex flex-wrap gap-2
+        s:grid grid-cols-3
+      "
+      >
         <SmallButton onClick={openDeleteModal} label="Supprimer" />
         <SmallButton
           onClick={() => {
