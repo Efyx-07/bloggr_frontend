@@ -1,4 +1,3 @@
-import './ArticleCardActionsBar.scss';
 import { Article } from '@/interfaces/article.interface';
 import { useRouter } from 'next/navigation';
 import SmallButton from '../Sharables/Buttons/SmallButton';
