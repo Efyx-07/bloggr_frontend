@@ -30,14 +30,14 @@ export default function ImageInputField({
       </p>
       {previewUrl ? (
         <div className="flex flex-col gap-2">
-          <div className="image-container max-w-[18.75rem] h-[12.5rem]">
+          <div className="image-container preview-image-container-size">
             <Image
               className="image"
               src={previewUrl}
-              width={300}
-              height={200}
               alt="Article preview"
               priority
+              sizes="100%"
+              fill
             />
           </div>
           <button
@@ -50,14 +50,14 @@ export default function ImageInputField({
         </div>
       ) : (
         <>
-          <div className="skeleton-image-container">
+          <div className="image-container preview-image-container-size">
             <Image
-              className="img"
+              className="image"
               src="https://placehold.co/3000x2000/1D1D1D/f8f8f8.png"
-              width={300}
-              height={200}
               alt=""
               priority
+              sizes="100%"
+              fill
             />
           </div>
           <FileInputField
