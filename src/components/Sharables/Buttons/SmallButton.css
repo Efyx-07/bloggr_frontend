@@ -1,0 +1,14 @@
+@tailwind utilities;
+
+.small-button {
+  @apply w-full h-9
+    flex justify-center items-center
+    border border-black25 border-solid rounded
+    text-sm font-semibold
+    cursor-pointer
+    hover:bg-accent hover:text-whiteRelief hover:border-accent;
+}
+
+.limited-width {
+  @apply max-w-28;
+}

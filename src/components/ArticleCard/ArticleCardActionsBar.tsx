@@ -1,7 +1,7 @@
 import './ArticleCardActionsBar.scss';
 import { Article } from '@/interfaces/article.interface';
 import { useRouter } from 'next/navigation';
-import CardButton from './CardButton';
+import SmallButton from '../Sharables/Buttons/SmallButton';
 import ModalDeleteArticle from '../ModalDeleteArticle';
 import { useState } from 'react';
 
@@ -26,13 +26,8 @@ export default function ArticleCardActionsBar({
   return (
     <>
       <div className="actions-bar">
-        <CardButton
-          className="card-button"
-          onClick={openDeleteModal}
-          label="Supprimer"
-        />
-        <CardButton
-          className="card-button"
+        <SmallButton onClick={openDeleteModal} label="Supprimer" />
+        <SmallButton
           onClick={() => {
             router.push(`/dashboard/modifier-article/${article.id}`);
             setIsLoadingModify(true);
@@ -40,8 +35,7 @@ export default function ArticleCardActionsBar({
           label="Modifier"
           isLoading={isLoadingModify}
         />
-        <CardButton
-          className="card-button"
+        <SmallButton
           onClick={() => {
             router.push(`/dashboard/article/${article.id}`);
             setIsLoadingView(true);

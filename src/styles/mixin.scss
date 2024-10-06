@@ -26,14 +26,14 @@
 
 @mixin small-button-style {
   padding: 0 1rem;
-  height: 2.25rem;
+  //height: 2.25rem;
   background: transparent;
   border: solid 1px $blackLighted;
   border-radius: 0.25rem;
   font-weight: 600;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  //display: flex;
+  //justify-content: center;
+  //align-items: center;
   cursor: pointer;
 
   &:hover {
