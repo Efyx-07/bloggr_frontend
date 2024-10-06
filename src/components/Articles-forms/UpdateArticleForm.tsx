@@ -1,4 +1,3 @@
-import '@/styles/form.scss';
 import { Article, Keyword } from '@/interfaces/article.interface';
 import { updateArticleById } from '@/services/articles.service';
 import { deleteFromVercelBlob, loadBlob } from '@/services/vercel-blob.service';
@@ -200,7 +199,7 @@ export default function UpdateArticleForm({
           buttonMention="Rééssayer"
         />
       ) : (
-        <div className="buttons-container">
+        <div className="form-buttons-container">
           <SecondaryButton
             type="reset"
             name="Annuler"

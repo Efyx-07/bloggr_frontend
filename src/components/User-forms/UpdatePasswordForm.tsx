@@ -1,6 +1,5 @@
 'use client';
 
-import '../../styles/form.scss';
 import { FormEvent, useState } from 'react';
 import PrimaryButton from '../Sharables/Buttons/PrimaryButton';
 import { Admin } from '@/interfaces/admin.interface';
@@ -93,7 +92,7 @@ export default function UpdatePasswordForm() {
           buttonMention="Rééssayer"
         />
       ) : (
-        <div className="buttons-container">
+        <div className="form-buttons-container">
           <PrimaryButton
             type="submit"
             name="Modifier"

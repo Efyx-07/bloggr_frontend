@@ -1,6 +1,5 @@
 'use client';
 
-import '@/styles/form.scss';
 import { FormEvent, useEffect, useRef, useState } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { Article, Keyword } from '@/interfaces/article.interface';
@@ -190,7 +189,7 @@ export default function CreateArticleForm() {
           buttonMention="Rééssayer"
         />
       ) : (
-        <div className="buttons-container">
+        <div className="form-buttons-container">
           <SecondaryButton
             type="reset"
             name="Annuler"

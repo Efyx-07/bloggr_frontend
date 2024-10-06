@@ -1,6 +1,5 @@
 'use client';
 
-import '../../styles/form.scss';
 import { FormEvent, useState } from 'react';
 import { Admin } from '@/interfaces/admin.interface';
 import validateLoginData from '@/utils/validateLoginData';
@@ -87,7 +86,7 @@ export default function LoginForm() {
           buttonMention="Rééssayer"
         />
       ) : (
-        <div className="buttons-container">
+        <div className="form-buttons-container">
           <PrimaryButton
             type="submit"
             name="Me connecter"
