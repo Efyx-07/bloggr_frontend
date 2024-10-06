@@ -2,7 +2,6 @@
 
 import HeadTitle from '../Sharables/Others/HeadTitle';
 import { usePathname } from 'next/navigation';
-import './FormContainer.css';
 
 interface FormContainerProps {
   title: string;
@@ -21,13 +20,25 @@ export default function FormContainer({
   return (
     <div
       className={`
-        form-container
+        container-style
+        w-full
+        p-4 smInter:p-8
+        gap-8
         ${loginPathname || comptePathname ? 'max-w-[30rem]' : 'max-w-[50rem]'}
       `}
     >
       <HeadTitle title={title} />
       {additionalMention && (
-        <p className="additional-mention">{additionalMention}</p>
+        <p
+          className="
+            w-full
+            p-4
+            border border-black border-solid 
+            text-xs font-semibold
+        "
+        >
+          {additionalMention}
+        </p>
       )}
       {children}
     </div>
