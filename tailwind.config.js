@@ -22,9 +22,6 @@ module.exports = {
         lgInter: '1180px',
         xxl: '1440px',
       },
-      fontSize: {
-        'site-name': ['clamp(2rem, 5vw, 2.75rem)', { lineHeight: 'normal' }],
-      },
     },
   },
   plugins: [],
