@@ -1,4 +1,4 @@
-import ButtonLoadingSpinner from '../Spinners/ButtonLoadingSpinner';
+import LoadingSpinner from '../Spinners/LoadingSpinner';
 import './Button.css';
 
 interface ButtonProps {
@@ -26,7 +26,11 @@ export default function Button({
       type={type}
       onClick={onClick}
     >
-      {primary && isLoading ? <ButtonLoadingSpinner /> : <p>{name}</p>}
+      {primary && isLoading ? (
+        <LoadingSpinner className="medium-ring" />
+      ) : (
+        <p>{name}</p>
+      )}
     </button>
   );
 }

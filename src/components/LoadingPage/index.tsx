@@ -14,7 +14,7 @@ export default function LoadingPage({ mention }: LoadingPageProps) {
       flex flex-col justify-center items-center gap-4
     "
     >
-      {mention ? <p>{mention}</p> : <LoadingSpinner />}
+      {mention ? <p>{mention}</p> : <LoadingSpinner className="large-ring" />}
     </div>
   );
 }
