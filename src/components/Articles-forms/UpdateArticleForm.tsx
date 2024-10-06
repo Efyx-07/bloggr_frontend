@@ -199,7 +199,7 @@ export default function UpdateArticleForm({
           buttonMention="Rééssayer"
         />
       ) : (
-        <div className="form-buttons-container">
+        <div className="buttons-container">
           <SecondaryButton
             type="reset"
             name="Annuler"

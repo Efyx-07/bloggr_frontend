@@ -92,7 +92,7 @@ export default function UpdatePasswordForm() {
           buttonMention="Rééssayer"
         />
       ) : (
-        <div className="form-buttons-container">
+        <div className="buttons-container">
           <PrimaryButton
             type="submit"
             name="Modifier"

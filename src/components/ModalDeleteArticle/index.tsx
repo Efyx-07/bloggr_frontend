@@ -2,6 +2,7 @@ import { Article } from '@/interfaces/article.interface';
 import ModalSecondaryButton from '../Sharables/Buttons/ModalSecondaryButton';
 import DeleteButton from './DeleteButton';
 import { Icon } from '@iconify/react';
+import './ModalDeleteArticle.css';
 
 interface ModalDeleteArticleProps {
   selectedArticle: Article;
@@ -15,24 +16,13 @@ export default function ModalDeleteArticle({
   closeModal,
 }: ModalDeleteArticleProps) {
   return (
-    <div
-      className={`
-          fixed top-0 left-0 z-50
-          w-[100vw] h-[100dvh]
-          bg-black75
-          flex justify-center items-center
-          ${!isModalOpen ? 'invisible' : 'visible'}
-        `}
+    <div className={`
+        overlay 
+        transition-opacity duration-200 ease 
+        ${!isModalOpen ? 'invisible opacity-0' : 'visible opacity-100'}
+      `}
     >
-      <div
-        className="
-          w-full max-w-[27rem]
-          bg-white
-          border rounded-lg
-          flex flex-col gap-8
-          pt-4 pr-4 pb-6 pl-6
-        "
-      >
+      <div className="delete-modal">
         <div className="flex justify-end">
           <Icon
             icon="fa:close"
@@ -44,7 +34,7 @@ export default function ModalDeleteArticle({
           <p>Etes-vous sûr de vouloir supprimer cet article ?</p>
           <h2>{selectedArticle.title}</h2>
         </div>
-        <div className="flex justify-end gap-2">
+        <div className="buttons-container">
           <ModalSecondaryButton
             type="reset"
             name="Annuler"

@@ -51,13 +51,10 @@ form {
   flex flex-col gap-8;
 }
 
-.form-buttons-container {
+/* Buttons
+===========================================================================================*/
+.buttons-container {
   @apply w-full
   flex justify-end items-center gap-2;
 }
 
-/* Others
-===========================================================================================*/
-.parent:hover > .close-icon {
-  @apply text-black;
-}

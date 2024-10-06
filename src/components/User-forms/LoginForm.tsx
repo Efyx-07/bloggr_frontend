@@ -86,7 +86,7 @@ export default function LoginForm() {
           buttonMention="Rééssayer"
         />
       ) : (
-        <div className="form-buttons-container">
+        <div className="buttons-container">
           <PrimaryButton
             type="submit"
             name="Me connecter"
