@@ -1,4 +1,3 @@
-import './ArticleDate.scss';
 import { Article } from '@/interfaces/article.interface';
 import { format, formatDistanceToNow } from 'date-fns';
 
@@ -15,8 +14,8 @@ export default function ArticleDate({ article }: ArticleDateProps) {
     formatDistanceToNow(date, { addSuffix: false });
 
   return (
-    <div className="date-infos">
-      <p className="creation-date">créé: {formatDate(creationDate)}</p>
+    <div className="flex gap-1 text-xs">
+      <p>créé: {formatDate(creationDate)}</p>
       {creationDate.getTime() !== lastUpdate.getTime() && (
         <>
           <p>|</p>
