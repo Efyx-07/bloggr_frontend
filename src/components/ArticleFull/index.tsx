@@ -23,15 +23,18 @@ export default function ArticleFull({ article }: ArticleFullProps) {
       <div className="article-text-container">
         <div className="article-header">
           <h1 className="article-title">{article.title}</h1>
-          {article.keywords && (
-            <div className="keywords-container">
-              {article.keywords.map((keyword) => (
-                <p className="keyword" key={keyword.id}>
-                  {keyword.name}
-                </p>
-              ))}
-            </div>
-          )}
+          <div className='flex justify-between items-center'>
+            <p className='text-sm italic opacity-75'>Par Efyxdev, le 05 octobre 2024</p>
+            {article.keywords && (
+              <div className="keywords-container">
+                {article.keywords.map((keyword) => (
+                  <p className="keyword" key={keyword.id}>
+                    {keyword.name}
+                  </p>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
         <Separator />
         <div
