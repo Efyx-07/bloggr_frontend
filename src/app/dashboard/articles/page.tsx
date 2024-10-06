@@ -1,6 +1,5 @@
 'use client';
 
-import './ArticlePage.scss';
 import { useQuery } from '@tanstack/react-query';
 import { fetchArticles } from '@/services/articles.service';
 import { Article } from '@/interfaces/article.interface';
@@ -13,6 +12,7 @@ import PrimaryButton from '@/components/Sharables/Buttons/PrimaryButton';
 import { loadingPageDelay } from '@/config';
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
+import './ArticlesPage.css';
 
 // Import dynamique des composants
 // ================================================================================================
@@ -62,7 +62,7 @@ export default function ArticlesPage() {
       {isContentVisible ? (
         <div className="page">
           <div
-            className={`${articles && articles.length > 0 ? 'articles-page-content' : 'content'}`}
+            className={`${articles && articles.length > 0 ? 'content justify-start' : 'content'}`}
           >
             {articles && articles.length > 0 ? (
               <>

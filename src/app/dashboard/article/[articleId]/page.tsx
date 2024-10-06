@@ -1,6 +1,5 @@
 'use client';
 
-import './ArticlePage.scss';
 import { useParams } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query';
 import { Article } from '@/interfaces/article.interface';
@@ -33,7 +32,7 @@ export default function ArticlePage() {
   return (
     <>
       {isContentVisible ? (
-        <div className="page article-page">
+        <div className="page">
           <div className="content">
             {article ? (
               <>
