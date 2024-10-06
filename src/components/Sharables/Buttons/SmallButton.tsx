@@ -1,4 +1,4 @@
-import CardButtonLoadingSpinner from '../Spinners/CardButtonLoadingSpinner';
+import { SmallButtonLoadingSpinner } from '../Spinners/SmallButtonLoadingSpinner';
 import './SmallButton.css';
 
 interface SmallButtonProps {
@@ -15,8 +15,11 @@ export default function SmallButton({
   isLoading,
 }: SmallButtonProps) {
   return (
-    <button className={`small-button ${addedClassName}`} onClick={onClick}>
-      {isLoading ? <CardButtonLoadingSpinner /> : <p>{label}</p>}
+    <button
+      className={`small-button ${addedClassName} ${isLoading ? 'loading' : ''}`}
+      onClick={onClick}
+    >
+      {isLoading ? <SmallButtonLoadingSpinner /> : <p>{label}</p>}
     </button>
   );
 }

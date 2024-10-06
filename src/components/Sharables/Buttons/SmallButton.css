@@ -9,6 +9,10 @@
     hover:bg-accent hover:text-whiteRelief hover:border-accent;
 }
 
+.loading {
+  @apply bg-accent border-accent;
+}
+
 .limited-width {
   @apply max-w-28;
 }

@@ -1,8 +1,8 @@
-import './CardButtonLoadingSpinner.scss';
+import './SmallButtonLoadingSpinner.css';
 
-export default function CardButtonLoadingSpinner() {
+export function SmallButtonLoadingSpinner() {
   return (
-    <div className="card-button-loading-spinner">
+    <div className="small-button-loading-spinner">
       <div className="lds-ring">
         <div></div>
         <div></div>

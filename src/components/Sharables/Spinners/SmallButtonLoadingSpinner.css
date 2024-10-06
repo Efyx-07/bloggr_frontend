@@ -1,0 +1,40 @@
+@tailwind utilities;
+
+.card-button-loading-spinner {
+  @apply flex items-center justify-center;
+}
+
+.lds-ring {
+  @apply flex items-center justify-center
+  relative
+  w-8 h-8;
+}
+
+.lds-ring div {
+  @apply box-border
+  block
+  absolute
+  w-4 h-4
+  border-2 border-t-whiteRelief border-r-transparent border-b-transparent border-l-transparent border-solid;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
