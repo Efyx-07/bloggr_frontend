@@ -1,0 +1,30 @@
+@tailwind utilities;
+
+.article-full {
+  @apply w-full max-w-[50rem]
+    flex flex-col items-center gap-8;
+}
+
+.article-text-container {
+  @apply flex flex-col gap-8;
+}
+
+.article-header {
+  @apply flex flex-col gap-4;
+}
+
+.article-title {
+  font-size: clamp(2rem, 8vw, 3rem);
+  @apply font-black;
+}
+
+.keywords-container {
+  @apply flex flex-wrap gap-2;
+}
+
+.keyword {
+  @apply bg-accent text-whiteRelief
+    text-sm font-semibold
+    py-1 px-2
+    rounded-2xl;
+}

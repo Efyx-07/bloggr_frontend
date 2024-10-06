@@ -1,4 +1,4 @@
-import './ArticleFull.scss';
+import './ArticleFull.css';
 import { Article } from '@/interfaces/article.interface';
 import Image from 'next/image';
 import Separator from '../Sharables/Others/Separator';
@@ -10,9 +10,9 @@ interface ArticleFullProps {
 export default function ArticleFull({ article }: ArticleFullProps) {
   return (
     <div className="article-full">
-      <div className="image-container">
+      <div className="image-container aspect-video">
         <Image
-          className="img"
+          className="image"
           src={article.imageUrl}
           alt={article.title}
           sizes="100%"
