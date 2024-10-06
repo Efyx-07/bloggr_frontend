@@ -12,10 +12,10 @@ export default function Header() {
 
   return (
     <>
-      <header className="w-full h-[5rem] bg-white flex justify-center items-center">
+      <header className="w-full h-20 bg-white flex justify-center items-center">
         <div
-          className={`w-full max-w-[90rem] px-[1rem] flex items-center 
-            ${pathName === '/' ? 'justify-center' : 'justify-between'} lgInter:px-[2rem]`}
+          className={`w-full max-w-[90rem] px-4 flex items-center 
+            ${pathName === '/' ? 'justify-center' : 'justify-between'} lgInter:px-8`}
         >
           <SiteName />
           {/* Cache l'icone du menu sur la page de connexion */}
