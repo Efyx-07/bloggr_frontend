@@ -1,0 +1,32 @@
+@tailwind utilities;
+
+.custom-button {
+  @apply w-full
+    flex justify-center items-center
+    text-base font-semibold
+    rounded
+    cursor-pointer;
+  transition: transform 0.1s ease;
+}
+
+.custom-button:hover,
+.custom-button.clicked {
+  transform: translate(4px, 5px);
+}
+
+.button-large {
+  @apply max-w-36 h-10;
+}
+
+.button-medium {
+  @apply max-w-28 h-9;
+}
+
+.primary {
+  @apply bg-accent text-whiteRelief;
+}
+
+.secondary {
+  @apply border border-black border-solid
+    text-black;
+}

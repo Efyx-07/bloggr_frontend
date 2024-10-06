@@ -1,7 +1,7 @@
 'use client';
 
 import { FormEvent, useState } from 'react';
-import PrimaryButton from '../Sharables/Buttons/PrimaryButton';
+import Button from '../Sharables/Buttons/Button';
 import { Admin } from '@/interfaces/admin.interface';
 import { updatePassword } from '@/services/update-password.service';
 import useLogoutAdmin from '@/hooks/useLogoutAdmin';
@@ -93,11 +93,13 @@ export default function UpdatePasswordForm() {
         />
       ) : (
         <div className="buttons-container">
-          <PrimaryButton
+          <Button
+            addedClassName="button-large primary"
             type="submit"
             name="Modifier"
             isLoading={isLoading}
             isClicked={isClicked}
+            primary
           />
         </div>
       )}

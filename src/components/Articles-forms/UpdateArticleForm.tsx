@@ -5,8 +5,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
 import { FormEvent, useEffect, useRef, useState } from 'react';
 import InputField from '../Form-fields/InputField';
-import PrimaryButton from '../Sharables/Buttons/PrimaryButton';
-import SecondaryButton from '../Sharables/Buttons/SecondaryButton';
+import Button from '../Sharables/Buttons/Button';
 import ImageInputField from '../Form-fields/ImageInputField';
 import TextEditorField from '../Form-fields/TextEditorField';
 import KeywordsField from '../Form-fields/KeywordsField';
@@ -200,16 +199,19 @@ export default function UpdateArticleForm({
         />
       ) : (
         <div className="buttons-container">
-          <SecondaryButton
+          <Button
+            addedClassName="button-large secondary"
             type="reset"
             name="Annuler"
             onClick={handleResetForm}
           />
-          <PrimaryButton
+          <Button
+            addedClassName="button-large primary"
             type="submit"
             name="Mettre à jour"
             isLoading={isLoading}
             isClicked={isClicked}
+            primary
           />
         </div>
       )}

@@ -8,7 +8,7 @@ import HeadTitle from '@/components/Sharables/Others/HeadTitle';
 import FakeArticleCard from '@/components/FakeComponents/FakeArticleCard';
 import LoadingPage from '@/components/LoadingPage';
 import NoArticle from '@/components/NoArticle';
-import PrimaryButton from '@/components/Sharables/Buttons/PrimaryButton';
+import Button from '@/components/Sharables/Buttons/Button';
 import { loadingPageDelay } from '@/config';
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
@@ -67,12 +67,14 @@ export default function ArticlesPage() {
             {articles && articles.length > 0 ? (
               <>
                 <HeadTitle title="Mes articles">
-                  <PrimaryButton
+                  <Button
+                    addedClassName="button-large primary"
                     type="button"
                     name="Nouvel article"
                     onClick={handleNavToNouvelArticle}
                     isLoading={isButtonLoading}
                     isClicked={isClicked}
+                    primary
                   />
                 </HeadTitle>
                 <div className="article-cards-container">

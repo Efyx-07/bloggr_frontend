@@ -1,28 +1,32 @@
 import ButtonLoadingSpinner from '../Spinners/ButtonLoadingSpinner';
-import './MainButton.scss';
+import './Button.css';
 
-interface ModalPrimaryButtonProps {
+interface ButtonProps {
   type: 'submit' | 'reset' | 'button' | undefined;
   name: string;
+  addedClassName?: string;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  primary?: boolean;
   isLoading?: boolean;
   isClicked?: boolean;
 }
 
-export default function ModalPrimaryButton({
+export default function Button({
   type,
   name,
+  addedClassName,
   onClick,
+  primary,
   isClicked,
   isLoading,
-}: ModalPrimaryButtonProps) {
+}: ButtonProps) {
   return (
     <button
-      className={`modal-button primary ${isClicked ? 'clicked' : ''}`}
+      className={`custom-button ${addedClassName} ${isClicked ? 'clicked' : ''}`}
       type={type}
       onClick={onClick}
     >
-      {isLoading ? <ButtonLoadingSpinner /> : <p>{name}</p>}
+      {primary && isLoading ? <ButtonLoadingSpinner /> : <p>{name}</p>}
     </button>
   );
 }

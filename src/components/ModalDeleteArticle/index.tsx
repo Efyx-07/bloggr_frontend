@@ -1,5 +1,5 @@
 import { Article } from '@/interfaces/article.interface';
-import ModalSecondaryButton from '../Sharables/Buttons/ModalSecondaryButton';
+import Button from '../Sharables/Buttons/Button';
 import DeleteButton from './DeleteButton';
 import { Icon } from '@iconify/react';
 import './ModalDeleteArticle.css';
@@ -36,7 +36,8 @@ export default function ModalDeleteArticle({
           <h2>{selectedArticle.title}</h2>
         </div>
         <div className="buttons-container">
-          <ModalSecondaryButton
+          <Button
+            addedClassName="button-medium secondary"
             type="reset"
             name="Annuler"
             onClick={closeModal}

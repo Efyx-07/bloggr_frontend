@@ -8,7 +8,7 @@ import useAdminStore from '@/stores/adminStore';
 import { useRouter } from 'next/navigation';
 import InputField from '../Form-fields/InputField';
 import PasswordField from '../Form-fields/PasswordField';
-import PrimaryButton from '../Sharables/Buttons/PrimaryButton';
+import Button from '../Sharables/Buttons/Button';
 import FormErrorAlert from '../Sharables/FormErrorAlert';
 
 export default function LoginForm() {
@@ -87,11 +87,13 @@ export default function LoginForm() {
         />
       ) : (
         <div className="buttons-container">
-          <PrimaryButton
+          <Button
+            addedClassName="button-large primary"
             type="submit"
             name="Me connecter"
             isLoading={isLoading}
             isClicked={isClicked}
+            primary
           />
         </div>
       )}

@@ -6,13 +6,12 @@ import { Article, Keyword } from '@/interfaces/article.interface';
 import { createArticle } from '@/services/articles.service';
 import { useRouter } from 'next/navigation';
 import { loadBlob } from '@/services/vercel-blob.service';
-import PrimaryButton from '../Sharables/Buttons/PrimaryButton';
-import SecondaryButton from '../Sharables/Buttons/SecondaryButton';
 import InputField from '../Form-fields/InputField';
 import ImageInputField from '../Form-fields/ImageInputField';
 import TextEditorField from '../Form-fields/TextEditorField';
 import KeywordsField from '../Form-fields/KeywordsField';
 import FormErrorAlert from '../Sharables/FormErrorAlert';
+import Button from '../Sharables/Buttons/Button';
 
 export default function CreateArticleForm() {
   const [title, setTitle] = useState<Article['title']>('');
@@ -190,16 +189,19 @@ export default function CreateArticleForm() {
         />
       ) : (
         <div className="buttons-container">
-          <SecondaryButton
+          <Button
+            addedClassName="button-large secondary"
             type="reset"
             name="Annuler"
             onClick={handleResetForm}
           />
-          <PrimaryButton
+          <Button
+            addedClassName="button-large primary"
             type="submit"
             name="Créer l'article"
             isLoading={isLoading}
             isClicked={isClicked}
+            primary
           />
         </div>
       )}

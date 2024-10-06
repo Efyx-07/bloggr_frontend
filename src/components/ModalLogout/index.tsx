@@ -1,5 +1,4 @@
-import ModalSecondaryButton from '../Sharables/Buttons/ModalSecondaryButton';
-import ModalPrimaryButton from '../Sharables/Buttons/ModalPrimaryButton';
+import Button from '../Sharables/Buttons/Button';
 import useLogoutAdmin from '@/hooks/useLogoutAdmin';
 import { useEffect, useState } from 'react';
 import './ModalLogout.css';
@@ -43,17 +42,20 @@ export default function ModalLogout({
     >
       <p>Êtes-vous sûr de vouloir vous déconnecter ?</p>
       <div className="buttons-container justify-center">
-        <ModalSecondaryButton
+        <Button
+          addedClassName="button-medium secondary"
           type="button"
           name="Annuler"
           onClick={toggleModal}
         />
-        <ModalPrimaryButton
+        <Button
+          addedClassName="button-medium primary"
           type="button"
           name="Confirmer"
           onClick={logoutAdminAndCloseModals}
           isLoading={isLoading}
           isClicked={isClicked}
+          primary
         />
       </div>
     </div>
