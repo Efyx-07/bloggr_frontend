@@ -51,6 +51,10 @@ a {
   relative
   overflow-hidden;
 }
+/* For article-card */
+.aspect-ratio {
+  aspect-ratio: 3 / 2;
+}
 
 .image {
   @apply inline-block
