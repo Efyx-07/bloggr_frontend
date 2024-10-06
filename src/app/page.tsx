@@ -1,6 +1,5 @@
 'use client';
 
-import '../styles/page.scss';
 import LoginForm from '@/components/User-forms/LoginForm';
 import FormContainer from '@/components/FormContainer';
 import LoadingPage from '@/components/LoadingPage';

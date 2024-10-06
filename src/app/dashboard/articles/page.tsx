@@ -1,6 +1,5 @@
 'use client';
 
-import '@/styles/page.scss';
 import './ArticlePage.scss';
 import { useQuery } from '@tanstack/react-query';
 import { fetchArticles } from '@/services/articles.service';

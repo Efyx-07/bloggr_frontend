@@ -1,6 +1,5 @@
 'use client';
 
-import '@/styles/page.scss';
 import './ArticlePage.scss';
 import { useParams } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query';

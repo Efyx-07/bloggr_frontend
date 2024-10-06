@@ -1,6 +1,5 @@
 'use client';
 
-import '@/styles/page.scss';
 import FakeArticleForm from '@/components/FakeComponents/FakeArticleForm';
 import LoadingPage from '@/components/LoadingPage';
 import { loadingPageDelay } from '@/config';

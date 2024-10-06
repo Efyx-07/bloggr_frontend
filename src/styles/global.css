@@ -28,6 +28,21 @@ a {
   hover:text-accent;
 }
 
+/* Global Pages style
+===========================================================================================*/
+.page {
+  @apply w-full h-full
+  flex flex-col items-center
+  bg-whiteBackground;
+}
+
+.content {
+  min-height: calc(100dvh - 12rem);
+  @apply w-full max-w-[90rem]
+  p-4 lgInter:py-4 px-8
+  flex flex-col items-center justify-center gap-8;
+}
+
 /* Images
 ===========================================================================================*/
 .image-container {
