@@ -1,4 +1,3 @@
-import './LoadingPage.scss';
 import LoadingSpinner from '../Sharables/Spinners/LoadingSpinner';
 
 interface LoadingPageProps {
@@ -7,12 +6,15 @@ interface LoadingPageProps {
 
 export default function LoadingPage({ mention }: LoadingPageProps) {
   return (
-    <div className="loading-page">
-      {mention ? (
-        <p className="loading-page-mention">{mention}</p>
-      ) : (
-        <LoadingSpinner />
-      )}
+    <div
+      className="
+      absolute top-0 left-0 z-50
+      w-[100vw] h-[100dvh]
+      bg-black text-whiteRelief
+      flex flex-col justify-center items-center gap-4
+    "
+    >
+      {mention ? <p>{mention}</p> : <LoadingSpinner />}
     </div>
   );
 }

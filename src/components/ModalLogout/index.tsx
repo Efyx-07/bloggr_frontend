@@ -34,7 +34,8 @@ export default function ModalLogout({
   }, [isModalLogoutOpen]);
 
   return (
-    <div className={`
+    <div
+      className={`
         modal-logout 
         transition-transform duration-200 ease 
         ${!isModalLogoutOpen ? 'translate-x-full' : 'translate-x-0'}
