@@ -1,8 +1,8 @@
-import './ModalLogout.scss';
 import ModalSecondaryButton from '../Sharables/Buttons/ModalSecondaryButton';
 import ModalPrimaryButton from '../Sharables/Buttons/ModalPrimaryButton';
 import useLogoutAdmin from '@/hooks/useLogoutAdmin';
 import { useEffect, useState } from 'react';
+import './ModalLogout.css';
 
 interface ModalLogoutProps {
   isModalLogoutOpen: boolean;
@@ -34,9 +34,14 @@ export default function ModalLogout({
   }, [isModalLogoutOpen]);
 
   return (
-    <div className={`modal-logout ${!isModalLogoutOpen ? 'hidden-modal' : ''}`}>
+    <div className={`
+        modal-logout 
+        transition-transform duration-200 ease 
+        ${!isModalLogoutOpen ? 'translate-x-full' : 'translate-x-0'}
+      `}
+    >
       <p>Êtes-vous sûr de vouloir vous déconnecter ?</p>
-      <div className="buttons-container">
+      <div className="buttons-container justify-center">
         <ModalSecondaryButton
           type="button"
           name="Annuler"

@@ -1,0 +1,10 @@
+@tailwind utilities;
+
+.modal-logout {
+    @apply absolute
+    w-full h-full
+    bg-whiteRelief 
+    text-black text-center
+    p-4
+    flex flex-col items-center justify-center gap-4
+}
