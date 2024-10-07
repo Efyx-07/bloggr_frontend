@@ -62,7 +62,7 @@ export default function ModalPublishArticle() {
             name="Annuler"
             onClick={closePublishArticleModal}
           />
-          <PublishArticleButton selectedArticle={article} />
+          <PublishArticleButton selectedArticle={article} closeModal={closePublishArticleModal} />
         </div>
       </div>
     </div>
