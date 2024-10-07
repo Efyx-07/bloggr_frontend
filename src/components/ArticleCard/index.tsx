@@ -2,6 +2,7 @@ import { Article } from '@/interfaces/article.interface';
 import Image from 'next/image';
 import ArticleCardActionsBar from './ArticleCardActionsBar';
 import ArticleDate from '../ArticleDate';
+import PublishedStatus from './PublishedStatus';
 
 interface ArticleCardProps {
   article: Article;
@@ -25,13 +26,7 @@ export default function ArticleCard({ article }: ArticleCardProps) {
           <h3>{article.title}</h3>
           <div className="date-status">
             <ArticleDate article={article} />
-            <div className="published-status">
-              {article.published ? (
-                <p>Publié</p>
-              ) : (
-                <p>En attente de publication</p>
-              )}
-            </div>
+            <PublishedStatus article={article} />
           </div>
         </div>
         <ArticleCardActionsBar article={article} />

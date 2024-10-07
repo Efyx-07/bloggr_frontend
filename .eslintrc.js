@@ -2,8 +2,14 @@ import tailwind from 'eslint-plugin-tailwindcss';
 
 export default [
   {
-    extends: ['next/core-web-vitals', 'prettier'],
-    plugins: ['prettier', 'tailwindcss'],
+    extends: [
+      'next/core-web-vitals',
+      'prettier',
+      'plugin:prettier/recommended',
+      'plugin:@typescript-eslint/recommended',
+    ],
+    plugins: ['prettier', 'tailwindcss', '@typescript-eslint'], // Ajout du plugin TypeScript
+    parser: '@typescript-eslint/parser', // Ajout du parser pour TypeScript
     rules: {
       'prettier/prettier': [
         'error',
@@ -24,5 +30,13 @@ export default [
       ],
       ...tailwind.configs['flat/recommended'],
     },
+    overrides: [
+      {
+        files: ['*.ts', '*.tsx'],
+        rules: {
+          '@typescript-eslint/no-unused-vars': 'warn',
+        },
+      },
+    ],
   },
 ];
