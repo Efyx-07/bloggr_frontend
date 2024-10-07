@@ -1,0 +1,16 @@
+@tailwind utilities;
+
+.overlay {
+  @apply fixed top-0 left-0 z-50
+    w-[100vw] h-[100dvh]
+    bg-black75
+    flex justify-center items-center;
+}
+
+.publish-article-modal {
+  @apply w-full max-w-[27rem]
+    bg-white
+    border rounded-lg
+    flex flex-col gap-8
+    pt-4 pr-4 pb-6 pl-6;
+}

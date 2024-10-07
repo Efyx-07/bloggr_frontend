@@ -1,4 +1,5 @@
 import { AuthGuard } from '@/auth-guards';
+import ModalPublishArticle from '@/components/ModalPublishArticle';
 
 export default function DashboardLayout({
   children,
@@ -9,6 +10,7 @@ export default function DashboardLayout({
     <>
       <AuthGuard redirectPath="/" shouldBeLoggedIn={true}>
         {children}
+        <ModalPublishArticle />
       </AuthGuard>
     </>
   );
