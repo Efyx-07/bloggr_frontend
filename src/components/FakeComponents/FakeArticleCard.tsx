@@ -1,9 +1,14 @@
-import './FakeArticleCard.scss';
 import LoadingSpinner from '../Sharables/Spinners/LoadingSpinner';
 
 export default function FakeArticleCard() {
   return (
-    <div className="fake-article-card">
+    <div 
+      className="
+        w-full h-[25rem]
+        bg-black75
+        flex items-center justify-center
+      "
+    >
       <LoadingSpinner className="large-ring" />
     </div>
   );
