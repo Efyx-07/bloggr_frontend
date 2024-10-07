@@ -43,7 +43,7 @@ export default function ArticlePageHead({ article }: ArticlePageHeadProps) {
         <Button
           addedClassName="button-large tertiary"
           type="button"
-          name="Publier"
+          name={article.published ? "Dépublier" : "Publier"}
           onClick={() => openPublishArticleModal(article.id)}
         />
       </div>

@@ -48,7 +48,7 @@ export default function PublishArticleButton({
     <Button
       addedClassName="button-medium primary"
       type="button"
-      name="Publier"
+      name={selectedArticle.published ? "Dépublier" : "Publier"}
       onClick={handlePublishedStatusToggle}
       //isLoading={isLoading}
       //isClicked={isClicked}
