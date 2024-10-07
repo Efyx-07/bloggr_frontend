@@ -2,7 +2,7 @@ import LoadingSpinner from '../Sharables/Spinners/LoadingSpinner';
 
 export default function FakeArticleForm() {
   return (
-    <div 
+    <div
       className="
         w-full max-w-[50rem] h-[100dvh]
         bg-black75
