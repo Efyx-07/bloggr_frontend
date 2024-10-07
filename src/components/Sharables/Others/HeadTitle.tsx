@@ -8,7 +8,7 @@ interface HeadTitleProps {
 export default function HeadTitle({ title, children }: HeadTitleProps) {
   return (
     <div className="w-full flex flex-col gap-4">
-      <div 
+      <div
         className="
           flex flex-col gap-2
           s:flex-row s:justify-between s:items-center

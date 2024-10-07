@@ -37,7 +37,7 @@ export default function ArticlePage() {
           <div className="content">
             {article ? (
               <>
-                <ArticlePageHead article={article}/>
+                <ArticlePageHead article={article} />
                 <ArticleFull article={article} />
               </>
             ) : (

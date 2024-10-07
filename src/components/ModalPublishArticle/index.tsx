@@ -1,5 +1,3 @@
-export default function ModalPublishArticle () {
-    return (
-        <div>ModalPublishArticle</div>
-    )
+export default function ModalPublishArticle() {
+  return <div>ModalPublishArticle</div>;
 }

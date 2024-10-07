@@ -117,3 +117,28 @@ export async function deleteArticleById(
     throw new Error('Failed to delete article: ' + error);
   }
 }
+
+// Change le statut de publication d'un article par son id,, retourne un message de succès
+// ===========================================================================================
+export async function updateArticlePublishedStatus(
+  id: Article['id'],
+  published: Article['published'],
+): Promise<{ message: string }> {
+  try {
+    const response = await fetch(`${backendUrl}/articles/publish-article/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify({published})
+    });
+    if (response.ok) {
+      const data = await response.json();
+      return data;
+    } else {
+      throw new Error('Failed to update article published status: ' + response.statusText);
+    }
+  } catch (error) {
+    throw new Error('Failed to update article published status: ' + error);
+  }
+}

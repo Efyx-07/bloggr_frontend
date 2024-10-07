@@ -8,7 +8,7 @@ interface ArticlePageHeadProps {
   article: Article;
 }
 
-export default function ArticlePageHead({article}: ArticlePageHeadProps) {
+export default function ArticlePageHead({ article }: ArticlePageHeadProps) {
   const [isButtonLoading, setIsButtonLoading] = useState<boolean>(false);
   const [isClicked, setIsClicked] = useState<boolean>(false);
   const router = useRouter();
@@ -17,12 +17,11 @@ export default function ArticlePageHead({article}: ArticlePageHeadProps) {
     router.push(`/dashboard/modifier-article/${article.id}`);
     setIsButtonLoading(true);
     setIsClicked(true);
-  }
-
+  };
 
   return (
     <HeadTitle title="Mon article">
-      <div 
+      <div
         className="
           w-full s:w-3/6
           flex justify-start s:justify-end gap-2
