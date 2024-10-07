@@ -30,3 +30,7 @@
   @apply border border-black border-solid
     text-black;
 }
+
+.tertiary {
+  @apply bg-green-600 text-whiteRelief;
+}

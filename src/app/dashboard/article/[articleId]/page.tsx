@@ -7,6 +7,7 @@ import { fetchArticleById } from '@/services/articles.service';
 import LoadingPage from '@/components/LoadingPage';
 import { loadingPageDelay } from '@/config';
 import { useState } from 'react';
+import ArticlePageHead from '@/components/PageHeads/ArticlePageHead';
 import ArticleFull from '@/components/ArticleFull';
 
 export default function ArticlePage() {
@@ -36,6 +37,7 @@ export default function ArticlePage() {
           <div className="content">
             {article ? (
               <>
+                <ArticlePageHead article={article}/>
                 <ArticleFull article={article} />
               </>
             ) : (
