@@ -23,7 +23,7 @@ export default function ArticleFull({ article }: ArticleFullProps) {
       <div className="article-text-container">
         <div className="article-header">
           <h1 className="article-title">{article.title}</h1>
-          <div className='flex justify-between items-center'>
+          <div className='flex flex-wrap justify-between items-center gap-4'>
             <p className='text-sm italic opacity-75'>Par Efyxdev, le 05 octobre 2024</p>
             {article.keywords && (
               <div className="keywords-container">
