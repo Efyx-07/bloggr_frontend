@@ -22,7 +22,12 @@ export default function ArticlePageHead({article}: ArticlePageHeadProps) {
 
   return (
     <HeadTitle title="Mon article">
-      <div className="w-3/6 flex justify-end gap-2">
+      <div 
+        className="
+          w-full s:w-3/6
+          flex justify-start s:justify-end gap-2
+        "
+      >
         <Button
           addedClassName="button-large primary"
           type="button"
