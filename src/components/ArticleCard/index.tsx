@@ -23,11 +23,11 @@ export default function ArticleCard({ article }: ArticleCardProps) {
       </div>
       <div className="flex flex-col gap-4 p-4">
         <div className="flex flex-col gap-2">
+          <PublishedStatus article={article} />
           <h3>{article.title}</h3>
-          <div className="date-status">
+          {/* <div className="date-status">
             <ArticleDate article={article} />
-            <PublishedStatus article={article} />
-          </div>
+          </div> */}
         </div>
         <ArticleCardActionsBar article={article} />
       </div>
