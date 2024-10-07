@@ -6,10 +6,11 @@ import { fetchArticleById } from '@/services/articles.service';
 import { Article } from '@/interfaces/article.interface';
 import useModalStore from '@/stores/modalStore';
 import Button from '../Sharables/Buttons/Button';
+import PublishArticleButton from './PublishArticleButton';
 import { Icon } from '@iconify/react';
 
 export default function ModalPublishArticle() {
-    // Récupère les états et méthodes du store
+  // Récupère les états et méthodes du store pour la modale
   // ===========================================================================================
   const {
     isPublishArticleModalOpen,
@@ -29,6 +30,12 @@ export default function ModalPublishArticle() {
   });
   if (isLoading) return <p>Chargement...</p>;
   if (error) return <p>An error occurred: {error.message}</p>;
+
+  // Gère la mention de la modale selon le statut de publication de l'article
+  // ===========================================================================================
+  const mention: string = article?.published
+    ? 'Etes-vous sûr de vouloir dépublier cet article ?'
+    : 'Etes-vous sûr de vouloir publier cet article ?';
   // ===========================================================================================
 
   return (
@@ -45,7 +52,7 @@ export default function ModalPublishArticle() {
           />
         </div>
         <div className="flex flex-col gap-2">
-          <p>Etes-vous sûr de vouloir publier cet article ?</p>
+          <p>{mention}</p>
           <h2>{article?.title}</h2>
         </div>
         <div className="buttons-container">
@@ -55,7 +62,7 @@ export default function ModalPublishArticle() {
             name="Annuler"
             onClick={closePublishArticleModal}
           />
-          {/* <DeleteButton selectedArticle={selectedArticle} /> */}
+          <PublishArticleButton selectedArticle={article} />
         </div>
       </div>
     </div>
