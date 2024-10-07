@@ -125,18 +125,23 @@ export async function updateArticlePublishedStatus(
   published: Article['published'],
 ): Promise<{ message: string }> {
   try {
-    const response = await fetch(`${backendUrl}/articles/publish-article/${id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-type': 'application/json',
+    const response = await fetch(
+      `${backendUrl}/articles/publish-article/${id}`,
+      {
+        method: 'PUT',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify({ published }),
       },
-      body: JSON.stringify({published})
-    });
+    );
     if (response.ok) {
       const data = await response.json();
       return data;
     } else {
-      throw new Error('Failed to update article published status: ' + response.statusText);
+      throw new Error(
+        'Failed to update article published status: ' + response.statusText,
+      );
     }
   } catch (error) {
     throw new Error('Failed to update article published status: ' + error);
