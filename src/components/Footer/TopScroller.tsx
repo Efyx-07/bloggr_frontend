@@ -28,7 +28,7 @@ export default function TopScroller() {
           onClick={scrollToTop}
           className="
                 absolute right-0 w-10 h-10
-                bg-accent rounded-full
+                bg-accent hover:bg-black rounded-full
                 flex justify-center items-center
                 text-whiteRelief
                 cursor-pointer
