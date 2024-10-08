@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import SiteName from './SiteName';
 import MobileMenuIcon from './MobileMenuIcon';
+import MessageIcon from './MessageIcon';
 import BurgerMenu from './BurgerMenu';
 
 export default function Header() {
@@ -30,7 +31,10 @@ export default function Header() {
           <SiteName />
           {/* Cache l'icone du menu sur la page de connexion */}
           {pathName !== '/' && (
-            <MobileMenuIcon toggleMenu={() => setIsOpen(!isOpen)} />
+            <div className="flex items-center gap-8">
+              <MessageIcon />
+              <MobileMenuIcon toggleMenu={() => setIsOpen(!isOpen)} />
+            </div>
           )}
         </div>
       </header>

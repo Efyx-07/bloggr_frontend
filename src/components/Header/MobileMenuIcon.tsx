@@ -10,7 +10,7 @@ export default function MobileMenuIcon({ toggleMenu }: MobileMenuIconProps) {
       <Icon
         icon="material-symbols:menu"
         onClick={toggleMenu}
-        className="text-3xl text-accent hover:text-black cursor-pointer"
+        className="text-3xl text-black hover:text-accent cursor-pointer"
       />
     </>
   );
