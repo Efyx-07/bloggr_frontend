@@ -1,6 +1,6 @@
 import { Icon } from '@iconify/react';
 import Navigator from './Navigator';
-import ModalLogout from '../ModalLogout';
+import ModalLogout from '../Modals/ModalLogout';
 import { useState } from 'react';
 import './BurgerMenu.css';
 

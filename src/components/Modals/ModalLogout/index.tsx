@@ -1,4 +1,4 @@
-import Button from '../Sharables/Buttons/Button';
+import Button from '@/components/Sharables/Buttons/Button';
 import useLogoutAdmin from '@/hooks/useLogoutAdmin';
 import { useEffect, useState } from 'react';
 import './ModalLogout.css';
