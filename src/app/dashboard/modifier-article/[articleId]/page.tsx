@@ -27,7 +27,7 @@ export default function UpdateArticlePage() {
 
   // Utilise le hook pour le chargement de la page
   // ===========================================================================================
-  const isContentVisible  = usePageLoader();
+  const isContentVisible = usePageLoader();
 
   // Fetch les données de l'article séléctionné par son ID avec useQuery
   // ===========================================================================================

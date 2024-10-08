@@ -9,7 +9,7 @@ import { AuthGuard } from '@/auth-guards';
 export default function LoginPage() {
   // Utilise le hook pour le chargement de la page
   // ===========================================================================================
-  const isContentVisible  = usePageLoader();
+  const isContentVisible = usePageLoader();
   // ===========================================================================================
 
   return (

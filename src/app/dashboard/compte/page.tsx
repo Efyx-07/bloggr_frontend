@@ -8,7 +8,7 @@ import usePageLoader from '@/hooks/usePageLoader';
 export default function AccountSettings() {
   // Utilise le hook pour le chargement de la page
   // ===========================================================================================
-  const isContentVisible  = usePageLoader();
+  const isContentVisible = usePageLoader();
   // ===========================================================================================
 
   return (

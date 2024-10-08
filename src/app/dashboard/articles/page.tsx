@@ -33,7 +33,7 @@ export default function ArticlesPage() {
 
   // Utilise le hook pour le chargement de la page
   // ===========================================================================================
-  const isContentVisible  = usePageLoader();
+  const isContentVisible = usePageLoader();
 
   // Fetch les données de tous les articles avec useQuery
   // ===========================================================================================
