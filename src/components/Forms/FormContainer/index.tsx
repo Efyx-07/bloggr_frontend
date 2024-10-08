@@ -1,6 +1,6 @@
 'use client';
 
-import HeadTitle from '../Sharables/Others/HeadTitle';
+import HeadTitle from '@/components/Sharables/Others/HeadTitle';
 import { usePathname } from 'next/navigation';
 
 interface FormContainerProps {

@@ -9,7 +9,7 @@ import dynamic from 'next/dynamic';
 // Import dynamique des composants
 // ================================================================================================
 const DynamicFormContainer = dynamic(
-  () => import('@/components/FormContainer'),
+  () => import('@/components/Forms/FormContainer'),
   {
     loading: () => <FakeArticleForm />,
   },

@@ -8,8 +8,8 @@ import useAdminStore from '@/stores/adminStore';
 import { useRouter } from 'next/navigation';
 import InputField from '../Form-fields/InputField';
 import PasswordField from '../Form-fields/PasswordField';
-import Button from '../Sharables/Buttons/Button';
-import FormErrorAlert from '../Sharables/FormErrorAlert';
+import Button from '@/components/Sharables/Buttons/Button';
+import FormErrorAlert from '@/components/Sharables/FormErrorAlert';
 
 export default function LoginForm() {
   const [email, setEmail] = useState<Admin['email']>('');

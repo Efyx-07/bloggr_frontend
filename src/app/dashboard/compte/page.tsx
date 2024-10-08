@@ -1,7 +1,7 @@
 'use client';
 
-import UpdatePasswordForm from '@/components/User-forms/UpdatePasswordForm';
-import FormContainer from '@/components/FormContainer';
+import UpdatePasswordForm from '@/components/Forms/User-forms/UpdatePasswordForm';
+import FormContainer from '@/components/Forms/FormContainer';
 import LoadingPage from '@/components/LoadingPage';
 import { loadingPageDelay } from '@/config';
 import { useState } from 'react';

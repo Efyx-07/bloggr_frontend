@@ -1,7 +1,7 @@
 'use client';
 
-import LoginForm from '@/components/User-forms/LoginForm';
-import FormContainer from '@/components/FormContainer';
+import LoginForm from '@/components/Forms/User-forms/LoginForm';
+import FormContainer from '@/components/Forms/FormContainer';
 import LoadingPage from '@/components/LoadingPage';
 import { loadingPageDelay } from '@/config';
 import { useState } from 'react';

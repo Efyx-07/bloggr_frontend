@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic';
 import './field-common-styles.css';
 
 const CKEditorComponent = dynamic(
-  () => import('@/components/Form-fields/CKEditorComponent'),
+  () => import('@/components/Forms/Form-fields/CKEditorComponent'),
   { ssr: false },
 );
 

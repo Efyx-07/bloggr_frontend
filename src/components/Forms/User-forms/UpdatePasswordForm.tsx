@@ -1,13 +1,13 @@
 'use client';
 
 import { FormEvent, useState } from 'react';
-import Button from '../Sharables/Buttons/Button';
+import Button from '@/components/Sharables/Buttons/Button';
 import { Admin } from '@/interfaces/admin.interface';
 import { updatePassword } from '@/services/update-password.service';
 import useLogoutAdmin from '@/hooks/useLogoutAdmin';
 import { decodeTokenAndGetAdminId } from '@/utils/decodeTokenAndGetAdminId';
 import PasswordField from '../Form-fields/PasswordField';
-import FormErrorAlert from '../Sharables/FormErrorAlert';
+import FormErrorAlert from '@/components/Sharables/FormErrorAlert';
 
 export default function UpdatePasswordForm() {
   const [currentPassword, setCurrentPassword] = useState<Admin['password']>('');

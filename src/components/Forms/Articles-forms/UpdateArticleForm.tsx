@@ -4,11 +4,11 @@ import { deleteFromVercelBlob, loadBlob } from '@/services/vercel-blob.service';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
 import { FormEvent, useEffect, useRef, useState } from 'react';
-import InputField from '../../Form-fields/InputField';
+import InputField from '../Form-fields/InputField';
 import Button from '@/components/Sharables/Buttons/Button';
-import ImageInputField from '../../Form-fields/ImageInputField';
-import TextEditorField from '../../Form-fields/TextEditorField';
-import KeywordsField from '../../Form-fields/KeywordsField';
+import ImageInputField from '../Form-fields/ImageInputField';
+import TextEditorField from '../Form-fields/TextEditorField';
+import KeywordsField from '../Form-fields/KeywordsField';
 import FormErrorAlert from '../../Sharables/FormErrorAlert';
 
 interface UpdateArticleFormProps {

@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import CKEditorComponent from '@/components/Form-fields/CKEditorComponent';
+import CKEditorComponent from '@/components/Forms/Form-fields/CKEditorComponent';
 
 describe('CKEditorComponent', () => {
   it('should render CKEditor correctly', () => {
