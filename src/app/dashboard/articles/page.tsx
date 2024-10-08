@@ -9,10 +9,10 @@ import SkeletonArticleCard from '@/components/SkeletonComponents/SkeletonArticle
 import LoadingPage from '@/components/LoadingPage';
 import NoArticle from '@/components/NoArticle';
 import Button from '@/components/Sharables/Buttons/Button';
-import { loadingPageDelay } from '@/config';
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
 import './ArticlesPage.css';
+import usePageLoader from '@/hooks/usePageLoader';
 
 // Import dynamique des composants
 // ================================================================================================
@@ -22,16 +22,21 @@ const DynamicArticleCard = dynamic(() => import('@/components/ArticleCard'), {
 
 // Inverse l'ordre des articles pour obtenir le récent en 1er
 // ================================================================================================
-const reverseArticles = (articles: readonly Article[]) => {
-  return [...articles].reverse();
-};
+const reverseArticles = (articles: readonly Article[]) =>
+  [...articles].reverse();
 // ================================================================================================
 
 export default function ArticlesPage() {
-  const [isContentVisible, setIsContentVisible] = useState<boolean>(false);
   const [isButtonLoading, setIsButtonLoading] = useState<boolean>(false);
   const [isClicked, setIsClicked] = useState<boolean>(false);
   const router = useRouter();
+
+  // Utilise le hook pour le chargement de la page
+  // ===========================================================================================
+  const isContentVisible  = usePageLoader();
+
+  // Fetch les données de tous les articles avec useQuery
+  // ===========================================================================================
   const {
     data: articles,
     error,
@@ -44,18 +49,19 @@ export default function ArticlesPage() {
   if (isLoading) return <LoadingPage />;
   if (error) return <p>An error occurred: {error.message}</p>;
 
+  // Utilise la fonction pour inverser l'ordre des articles et les stocke dans cet état
+  // ===========================================================================================
   const reversedArticles: Article[] | undefined =
     articles && articles.length > 0 ? reverseArticles(articles) : undefined;
 
+  // Navigue vers la page Nouvel-article
+  // ===========================================================================================
   const handleNavToNouvelArticle = () => {
     router.push('/dashboard/nouvel-article');
     setIsButtonLoading(true);
     setIsClicked(true);
   };
-
-  setTimeout(() => {
-    setIsContentVisible(true);
-  }, loadingPageDelay);
+  // ===========================================================================================
 
   return (
     <>

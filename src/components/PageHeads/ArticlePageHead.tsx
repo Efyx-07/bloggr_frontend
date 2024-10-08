@@ -39,7 +39,7 @@ export default function ArticlePageHead({ article }: ArticlePageHeadProps) {
           isClicked={isClicked}
           primary
         />
-        {/* Ouvre la modale de changement de statut de publication de l'article */}
+        {/* Ouvre la modale de changement de statut de publication de l'article et transmets son ID en paramètre */}
         <Button
           addedClassName="button-large tertiary"
           type="button"

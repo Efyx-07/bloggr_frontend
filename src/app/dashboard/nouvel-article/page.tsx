@@ -22,9 +22,12 @@ const DynamicCreateArticleForm = dynamic(
 export default function NewArticlePage() {
   const [isContentVisible, setIsContentVisible] = useState<boolean>(false);
 
+  // Gère le chargement de la page avec le delay défini dans config.ts
+  // ===========================================================================================
   setTimeout(() => {
     setIsContentVisible(true);
   }, loadingPageDelay);
+  // ===========================================================================================
 
   return (
     <>

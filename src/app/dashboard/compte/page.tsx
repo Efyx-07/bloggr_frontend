@@ -3,15 +3,13 @@
 import UpdatePasswordForm from '@/components/Forms/User-forms/UpdatePasswordForm';
 import FormContainer from '@/components/Forms/FormContainer';
 import LoadingPage from '@/components/LoadingPage';
-import { loadingPageDelay } from '@/config';
-import { useState } from 'react';
+import usePageLoader from '@/hooks/usePageLoader';
 
 export default function AccountSettings() {
-  const [isContentVisible, setIsContentVisible] = useState<boolean>(false);
-
-  setTimeout(() => {
-    setIsContentVisible(true);
-  }, loadingPageDelay);
+  // Utilise le hook pour le chargement de la page
+  // ===========================================================================================
+  const isContentVisible  = usePageLoader();
+  // ===========================================================================================
 
   return (
     <>

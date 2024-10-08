@@ -5,8 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 import { Article } from '@/interfaces/article.interface';
 import { fetchArticleById } from '@/services/articles.service';
 import LoadingPage from '@/components/LoadingPage';
-import { loadingPageDelay } from '@/config';
-import { useState } from 'react';
+import usePageLoader from '@/hooks/usePageLoader';
 import dynamic from 'next/dynamic';
 import SkeletonArticleForm from '@/components/SkeletonComponents/SkeletonArticleForm';
 
@@ -25,8 +24,13 @@ const DynamicUpdateArticleForm = dynamic(
 
 export default function UpdateArticlePage() {
   const { articleId } = useParams();
-  const [isContentVisible, setIsContentVisible] = useState<boolean>(false);
 
+  // Utilise le hook pour le chargement de la page
+  // ===========================================================================================
+  const isContentVisible  = usePageLoader();
+
+  // Fetch les données de l'article séléctionné par son ID avec useQuery
+  // ===========================================================================================
   const {
     data: article,
     error,
@@ -38,10 +42,7 @@ export default function UpdateArticlePage() {
 
   if (isLoading) return <LoadingPage />;
   if (error) return <p>An error occurred: {error.message}</p>;
-
-  setTimeout(() => {
-    setIsContentVisible(true);
-  }, loadingPageDelay);
+  // ===========================================================================================
 
   return (
     <>

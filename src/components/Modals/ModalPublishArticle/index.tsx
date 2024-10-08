@@ -18,7 +18,7 @@ export default function ModalPublishArticle() {
     closePublishArticleModal,
   } = useModalStore();
 
-  // Fetch les données de l'article sélectionné avec useQuery
+  // Fetch les données de l'article sélectionné par son ID avec useQuery
   // ===========================================================================================
   const {
     data: article,
