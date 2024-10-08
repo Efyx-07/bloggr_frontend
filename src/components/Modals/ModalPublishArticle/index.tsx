@@ -96,10 +96,13 @@ export default function ModalPublishArticle() {
                 name="Annuler"
                 onClick={closePublishArticleModal}
               />
-              <PublishArticleButton
-                selectedArticle={article}
-                onSuccess={handleSuccess}
-              />
+              {/* Evite d'inclure une conditionnelle dans le composant du bouton */}
+              {article && 
+                <PublishArticleButton
+                  selectedArticle={article}
+                  onSuccess={handleSuccess}
+                />
+              }
             </div>
           </>
         )}
