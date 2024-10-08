@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 import { fetchArticleById } from '@/services/articles.service';
 import { Article } from '@/interfaces/article.interface';
 import useModalStore from '@/stores/modalStore';
-import Button from '../Sharables/Buttons/Button';
+import Button from '@/components/Sharables/Buttons/Button';
 import PublishArticleButton from './PublishArticleButton';
 import { Icon } from '@iconify/react';
 
@@ -62,7 +62,10 @@ export default function ModalPublishArticle() {
             name="Annuler"
             onClick={closePublishArticleModal}
           />
-          <PublishArticleButton selectedArticle={article} closeModal={closePublishArticleModal} />
+          <PublishArticleButton
+            selectedArticle={article}
+            closeModal={closePublishArticleModal}
+          />
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 import { Article } from '@/interfaces/article.interface';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { updateArticlePublishedStatus } from '@/services/articles.service';
-import Button from '../Sharables/Buttons/Button';
+import Button from '@/components/Sharables/Buttons/Button';
 
 interface PublishArticleButtonProps {
   selectedArticle: Article | undefined;
@@ -22,7 +22,10 @@ export default function PublishArticleButton({
   // ===========================================================================================
   const mutation = useMutation({
     mutationFn: async () => {
-      await updateArticlePublishedStatus(selectedArticle.id, !selectedArticle.published);
+      await updateArticlePublishedStatus(
+        selectedArticle.id,
+        !selectedArticle.published,
+      );
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['article'] });

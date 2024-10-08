@@ -1,5 +1,5 @@
 import { AuthGuard } from '@/auth-guards';
-import ModalPublishArticle from '@/components/ModalPublishArticle';
+import ModalPublishArticle from '@/components/Modals/ModalPublishArticle';
 
 export default function DashboardLayout({
   children,
