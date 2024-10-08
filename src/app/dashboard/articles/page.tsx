@@ -5,7 +5,7 @@ import { fetchArticles } from '@/services/articles.service';
 import { Article } from '@/interfaces/article.interface';
 import { useRouter } from 'next/navigation';
 import HeadTitle from '@/components/Sharables/Others/HeadTitle';
-import FakeArticleCard from '@/components/FakeComponents/FakeArticleCard';
+import SkeletonArticleCard from '@/components/SkeletonComponents/SkeletonArticleCard';
 import LoadingPage from '@/components/LoadingPage';
 import NoArticle from '@/components/NoArticle';
 import Button from '@/components/Sharables/Buttons/Button';
@@ -17,7 +17,7 @@ import './ArticlesPage.css';
 // Import dynamique des composants
 // ================================================================================================
 const DynamicArticleCard = dynamic(() => import('@/components/ArticleCard'), {
-  loading: () => <FakeArticleCard />,
+  loading: () => <SkeletonArticleCard />,
 });
 
 // Inverse l'ordre des articles pour obtenir le récent en 1er

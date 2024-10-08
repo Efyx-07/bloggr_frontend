@@ -1,10 +1,10 @@
 import LoadingSpinner from '../Sharables/Spinners/LoadingSpinner';
 
-export default function FakeArticleForm() {
+export default function SkeletonArticleCard() {
   return (
     <div
       className="
-        w-full max-w-[50rem] h-[100dvh]
+        w-full h-[25rem]
         bg-black75
         flex items-center justify-center
       "

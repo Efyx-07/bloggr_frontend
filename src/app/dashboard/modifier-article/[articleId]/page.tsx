@@ -8,14 +8,14 @@ import LoadingPage from '@/components/LoadingPage';
 import { loadingPageDelay } from '@/config';
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
-import FakeArticleForm from '@/components/FakeComponents/FakeArticleForm';
+import SkeletonArticleForm from '@/components/SkeletonComponents/SkeletonArticleForm';
 
 // Import dynamique des composants
 // ================================================================================================
 const DynamicFormContainer = dynamic(
   () => import('@/components/Forms/FormContainer'),
   {
-    loading: () => <FakeArticleForm />,
+    loading: () => <SkeletonArticleForm />,
   },
 );
 const DynamicUpdateArticleForm = dynamic(

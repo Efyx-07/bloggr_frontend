@@ -1,6 +1,6 @@
 'use client';
 
-import FakeArticleForm from '@/components/FakeComponents/FakeArticleForm';
+import SkeletonArticleForm from '@/components/SkeletonComponents/SkeletonArticleForm';
 import LoadingPage from '@/components/LoadingPage';
 import { loadingPageDelay } from '@/config';
 import { useState } from 'react';
@@ -11,7 +11,7 @@ import dynamic from 'next/dynamic';
 const DynamicFormContainer = dynamic(
   () => import('@/components/Forms/FormContainer'),
   {
-    loading: () => <FakeArticleForm />,
+    loading: () => <SkeletonArticleForm />,
   },
 );
 const DynamicCreateArticleForm = dynamic(
