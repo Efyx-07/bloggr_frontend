@@ -5,12 +5,12 @@ import Button from '@/components/Sharables/Buttons/Button';
 
 interface PublishArticleButtonProps {
   selectedArticle: Article | undefined;
-  closeModal: () => void;
+  onSuccess: () => void;
 }
 
 export default function PublishArticleButton({
   selectedArticle,
-  closeModal,
+  onSuccess,
 }: PublishArticleButtonProps) {
   const queryClient = useQueryClient();
 
@@ -29,7 +29,7 @@ export default function PublishArticleButton({
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['article'] });
-      closeModal();
+      onSuccess();
       console.log('article published status changed');
     },
     onError: (error: Error) => {
