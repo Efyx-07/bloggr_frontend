@@ -159,7 +159,7 @@ function ActionView({
     <>
       <div className="flex flex-col gap-2">
         <p>{mention}</p>
-        <h2>{article?.title}</h2>
+        <p className='text-xl font font-bold'>{article?.title}</p>
       </div>
       <div className="buttons-container">
         <Button

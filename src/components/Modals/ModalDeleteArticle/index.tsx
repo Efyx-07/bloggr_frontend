@@ -19,7 +19,7 @@ export default function ModalDeleteArticle({
     <div
       className={`
         overlay 
-        transition-opacity duration-200 ease 
+        transition-opacity duration-200 ease
         ${!isModalOpen ? 'invisible opacity-0' : 'visible opacity-100'}
       `}
     >
@@ -33,7 +33,7 @@ export default function ModalDeleteArticle({
         </div>
         <div className="flex flex-col gap-2">
           <p>Etes-vous sûr de vouloir supprimer cet article ?</p>
-          <h2>{selectedArticle.title}</h2>
+          <p className='text-xl font font-bold'>{selectedArticle.title}</p>
         </div>
         <div className="buttons-container">
           <Button

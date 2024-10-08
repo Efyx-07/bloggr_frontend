@@ -44,7 +44,7 @@ export default function DeleteButton({ selectedArticle }: DeleteButtonProps) {
     <Button
       addedClassName="button-medium primary"
       type="button"
-      name="Confirmer"
+      name="Supprimer"
       onClick={handleDeleteArticle}
       isLoading={isLoading}
       isClicked={isClicked}
