@@ -30,7 +30,7 @@ export default function ModalDeleteArticle({
         </div>
         <div className="modal-text-container">
           <p>Etes-vous sûr de vouloir supprimer cet article ?</p>
-          <p className='modal-article-title'>{selectedArticle.title}</p>
+          <p className="modal-article-title">{selectedArticle.title}</p>
         </div>
         <div className="buttons-container">
           <Button

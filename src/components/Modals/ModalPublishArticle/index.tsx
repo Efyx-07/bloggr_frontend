@@ -159,7 +159,7 @@ function ActionView({
     <>
       <div className="modal-text-container">
         <p>{mention}</p>
-        <p className='modal-article-title'>{article?.title}</p>
+        <p className="modal-article-title">{article?.title}</p>
       </div>
       <div className="buttons-container">
         <Button
