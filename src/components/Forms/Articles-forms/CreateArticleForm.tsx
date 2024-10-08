@@ -10,7 +10,7 @@ import InputField from '../Form-fields/InputField';
 import ImageInputField from '../Form-fields/ImageInputField';
 import TextEditorField from '../Form-fields/TextEditorField';
 import KeywordsField from '../Form-fields/KeywordsField';
-import FormErrorAlert from '../../Sharables/FormErrorAlert';
+import FormErrorAlert from '../FormErrorAlert';
 import Button from '@/components/Sharables/Buttons/Button';
 
 export default function CreateArticleForm() {

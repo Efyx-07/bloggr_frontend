@@ -9,7 +9,7 @@ import { useRouter } from 'next/navigation';
 import InputField from '../Form-fields/InputField';
 import PasswordField from '../Form-fields/PasswordField';
 import Button from '@/components/Sharables/Buttons/Button';
-import FormErrorAlert from '@/components/Sharables/FormErrorAlert';
+import FormErrorAlert from '../FormErrorAlert';
 
 export default function LoginForm() {
   const [email, setEmail] = useState<Admin['email']>('');

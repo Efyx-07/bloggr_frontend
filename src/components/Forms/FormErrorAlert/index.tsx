@@ -1,4 +1,4 @@
-import SmallButton from '../Buttons/SmallButton';
+import SmallButton from "@/components/Sharables/Buttons/SmallButton";
 
 interface FormErrorAlertProps {
   errorMention: string;
