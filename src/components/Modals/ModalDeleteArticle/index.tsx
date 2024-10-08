@@ -1,8 +1,8 @@
+import '../Modal-common-style.css';
 import { Article } from '@/interfaces/article.interface';
 import Button from '@/components/Sharables/Buttons/Button';
 import DeleteButton from './DeleteButton';
 import { Icon } from '@iconify/react';
-import './ModalDeleteArticle.css';
 
 interface ModalDeleteArticleProps {
   selectedArticle: Article;
@@ -17,23 +17,20 @@ export default function ModalDeleteArticle({
 }: ModalDeleteArticleProps) {
   return (
     <div
-      className={`
-        overlay 
-        transition-opacity duration-200 ease
-        ${!isModalOpen ? 'invisible opacity-0' : 'visible opacity-100'}
-      `}
+      className={`overlay transition-opacity duration-200 ease
+        ${!isModalOpen ? 'invisible opacity-0' : 'visible opacity-100'}`}
     >
-      <div className="delete-modal">
-        <div className="flex justify-end">
+      <div className="modal">
+        <div className="modal-close-icon-container">
           <Icon
             icon="fa:close"
             onClick={closeModal}
-            className="text-sm hover:text-accent cursor-pointer"
+            className="modal-close-icon"
           />
         </div>
-        <div className="flex flex-col gap-2">
+        <div className="modal-text-container">
           <p>Etes-vous sûr de vouloir supprimer cet article ?</p>
-          <p className='text-xl font font-bold'>{selectedArticle.title}</p>
+          <p className='modal-article-title'>{selectedArticle.title}</p>
         </div>
         <div className="buttons-container">
           <Button

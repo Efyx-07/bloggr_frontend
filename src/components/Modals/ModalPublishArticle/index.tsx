@@ -1,6 +1,6 @@
 'use client';
 
-import './ModalPublishArticle.css';
+import '../Modal-common-style.css';
 import { useQuery } from '@tanstack/react-query';
 import { fetchArticleById } from '@/services/articles.service';
 import { Article } from '@/interfaces/article.interface';
@@ -64,12 +64,12 @@ export default function ModalPublishArticle() {
       className={`overlay transition-opacity duration-200 ease 
         ${!isPublishArticleModalOpen ? 'invisible opacity-0' : 'visible opacity-100'}`}
     >
-      <div className="publish-article-modal">
-        <div className="flex justify-end">
+      <div className="modal">
+        <div className="modal-close-icon-container">
           <Icon
             icon="fa:close"
             onClick={closeAndResetModal}
-            className="text-sm hover:text-accent cursor-pointer"
+            className="modal-close-icon"
           />
         </div>
         {hasSucceed ? (
@@ -157,9 +157,9 @@ function ActionView({
 }: ActionViewProps) {
   return (
     <>
-      <div className="flex flex-col gap-2">
+      <div className="modal-text-container">
         <p>{mention}</p>
-        <p className='text-xl font font-bold'>{article?.title}</p>
+        <p className='modal-article-title'>{article?.title}</p>
       </div>
       <div className="buttons-container">
         <Button
