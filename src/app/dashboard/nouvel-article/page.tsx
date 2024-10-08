@@ -15,7 +15,7 @@ const DynamicFormContainer = dynamic(
   },
 );
 const DynamicCreateArticleForm = dynamic(
-  () => import('@/components/Articles-forms/CreateArticleForm'),
+  () => import('@/components/Forms/Articles-forms/CreateArticleForm'),
 );
 // ================================================================================================
 
