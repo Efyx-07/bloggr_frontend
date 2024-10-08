@@ -42,13 +42,13 @@ export default function ArticlePage() {
               <>
                 <div className="w-full flex flex-col gap-2">
                   <ArticlePageHead article={article} />
-                  <Link 
+                  <Link
                     href="/dashboard/articles"
-                    className='
+                    className="
                       flex items-center gap-1 
-                      text-black hover:text-accent'
+                      text-black hover:text-accent"
                   >
-                    <Icon icon="fe:arrow-left"/>
+                    <Icon icon="fe:arrow-left" />
                     <p>Retour à mes articles</p>
                   </Link>
                 </div>

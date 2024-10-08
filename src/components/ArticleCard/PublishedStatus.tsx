@@ -24,10 +24,10 @@ export default function PublishedStatus({ article }: PublishedStatusProps) {
         text-xs font-semibold
         border rounded
         p-1
-        ${article.published ? 
-          'text-greenColor border-greenColor hover:text-white hover:bg-greenColor' 
-          : 
-          'text-accent border-accent hover:text-white hover:bg-accent'
+        ${
+          article.published
+            ? 'text-greenColor border-greenColor hover:text-white hover:bg-greenColor'
+            : 'text-accent border-accent hover:text-white hover:bg-accent'
         }
         cursor-pointer
       `}
