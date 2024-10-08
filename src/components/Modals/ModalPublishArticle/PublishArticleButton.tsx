@@ -7,11 +7,13 @@ import { useState } from 'react';
 interface PublishArticleButtonProps {
   selectedArticle: Article;
   onSuccess: () => void;
+  onError: () => void;
 }
 
 export default function PublishArticleButton({
   selectedArticle,
   onSuccess,
+  onError,
 }: PublishArticleButtonProps) {
   const queryClient = useQueryClient();
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -35,7 +37,7 @@ export default function PublishArticleButton({
     onError: (error: Error) => {
       setIsLoading(false);
       setIsClicked(false);
-      console.error('Error:', error.message);
+      onError();
     },
   });
 

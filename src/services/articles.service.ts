@@ -126,7 +126,7 @@ export async function updateArticlePublishedStatus(
 ): Promise<{ message: string }> {
   try {
     const response = await fetch(
-      `${backendUrl}/articles/publish-article/${id}`,
+      `${backendUrl}/articles/publish-article!/${id}`,
       {
         method: 'PUT',
         headers: {

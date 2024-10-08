@@ -12,6 +12,7 @@ import { useState } from 'react';
 
 export default function ModalPublishArticle() {
   const [hasSucceed, setHasSucceed] = useState<boolean>(false);
+  const [hasFailed, setHasFailed] = useState<boolean>(false);
 
   // Récupère les états et méthodes du store pour la modale
   // ===========================================================================================
@@ -32,7 +33,7 @@ export default function ModalPublishArticle() {
     queryFn: () => fetchArticleById(Number(modalArticleId)),
   });
   if (isLoading) return <p>Chargement...</p>;
-  if (error) return <p>An error occurred: {error.message}</p>;
+  if (error) return <p>Une erreur est survenue: {error.message}</p>;
 
   // Gère les mentions de la modale selon le statut de publication de l'article
   // ===========================================================================================
@@ -44,17 +45,17 @@ export default function ModalPublishArticle() {
     ? `Votre article: <strong>"${article?.title}"</strong> a été correctement publié !`
     : `Votre article: <strong>"${article?.title}"</strong> est désormais invisible !`;
 
-  // Gère l'état en cas de succès de l'opération
+  // Gère les états en cas de succès ou d'échec de l'opération
   // ===========================================================================================
-  const handleSuccess = () => {
-    setHasSucceed(true);
-  };
+  const handleSuccess = () => setHasSucceed(true);
+  const handleFailure = () => setHasFailed(true);
 
   // Ferme et réinitialise la modale
   // ===========================================================================================
   const closeAndResetModal = () => {
     closePublishArticleModal();
     setHasSucceed(false);
+    setHasFailed(false);
   };
   // ===========================================================================================
 
@@ -72,41 +73,107 @@ export default function ModalPublishArticle() {
           />
         </div>
         {hasSucceed ? (
-          <>
-            <div dangerouslySetInnerHTML={{ __html: successMention }} />
-            <div className="buttons-container">
-              <Button
-                addedClassName="button-medium primary"
-                type="reset"
-                name="Fermer"
-                onClick={closeAndResetModal}
-              />
-            </div>
-          </>
+          <SuccessView
+            successMention={successMention}
+            closeAndResetModal={closeAndResetModal}
+          />
+        ) : hasFailed ? (
+          <ErrorView closeAndResetModal={closeAndResetModal} />
         ) : (
-          <>
-            <div className="flex flex-col gap-2">
-              <p>{mention}</p>
-              <h2>{article?.title}</h2>
-            </div>
-            <div className="buttons-container">
-              <Button
-                addedClassName="button-medium secondary"
-                type="reset"
-                name="Annuler"
-                onClick={closePublishArticleModal}
-              />
-              {/* Evite d'inclure une conditionnelle dans le composant du bouton */}
-              {article && 
-                <PublishArticleButton
-                  selectedArticle={article}
-                  onSuccess={handleSuccess}
-                />
-              }
-            </div>
-          </>
+          // S'assure que article est défini afin de ne pas mettre de conditionnelle dans le composant bouton
+          article && (
+            <ActionView
+              mention={mention}
+              article={article}
+              closePublishArticleModal={closePublishArticleModal}
+              handleSuccess={handleSuccess}
+              handleFailure={handleFailure}
+            />
+          )
         )}
       </div>
     </div>
+  );
+}
+
+// Composant local pour la vue de la modale en cas de succès
+// ===========================================================================================
+interface SuccessViewProps {
+  successMention: string;
+  closeAndResetModal: () => void;
+}
+function SuccessView({ successMention, closeAndResetModal }: SuccessViewProps) {
+  return (
+    <>
+      <div dangerouslySetInnerHTML={{ __html: successMention }} />
+      <div className="buttons-container">
+        <Button
+          addedClassName="button-medium primary"
+          type="reset"
+          name="Fermer"
+          onClick={closeAndResetModal}
+        />
+      </div>
+    </>
+  );
+}
+
+// Composant local pour la vue de la modale en cas d'erreur
+// ===========================================================================================
+interface ErrorViewProps {
+  closeAndResetModal: () => void;
+}
+function ErrorView({ closeAndResetModal }: ErrorViewProps) {
+  return (
+    <>
+      <p>Une erreur est survenue, merci de rééssayer plus tard...</p>
+      <div className="buttons-container">
+        <Button
+          addedClassName="button-medium primary"
+          type="reset"
+          name="Fermer"
+          onClick={closeAndResetModal}
+        />
+      </div>
+    </>
+  );
+}
+
+// Composant local pour la vue de la modale pour l'action Publier / Dépublier
+// ===========================================================================================
+interface ActionViewProps {
+  mention: string;
+  article: Article;
+  closePublishArticleModal: () => void;
+  handleSuccess: () => void;
+  handleFailure: () => void;
+}
+function ActionView({
+  mention,
+  article,
+  closePublishArticleModal,
+  handleSuccess,
+  handleFailure,
+}: ActionViewProps) {
+  return (
+    <>
+      <div className="flex flex-col gap-2">
+        <p>{mention}</p>
+        <h2>{article?.title}</h2>
+      </div>
+      <div className="buttons-container">
+        <Button
+          addedClassName="button-medium secondary"
+          type="reset"
+          name="Annuler"
+          onClick={closePublishArticleModal}
+        />
+        <PublishArticleButton
+          selectedArticle={article}
+          onSuccess={handleSuccess}
+          onError={handleFailure}
+        />
+      </div>
+    </>
   );
 }
