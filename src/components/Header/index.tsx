@@ -2,10 +2,10 @@
 
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
-import SiteName from './SiteName';
-import MobileMenuIcon from './MobileMenuIcon';
-import MessageIcon from './MessageIcon';
-import BurgerMenu from './BurgerMenu';
+import SiteName from './SiteName/SiteName';
+import MobileMenuIcon from './BurgerMenu/MobileMenuIcon';
+import MessageIcon from './MessageWindow/MessageIcon';
+import BurgerMenu from './BurgerMenu/BurgerMenu';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
