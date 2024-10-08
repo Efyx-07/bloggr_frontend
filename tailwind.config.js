@@ -12,6 +12,7 @@ module.exports = {
         black75: 'rgba(29, 29, 29, 0.75)',
         black25: 'rgba(29, 29, 29, 0.25)',
         black10: 'rgba(29, 29, 29, 0.1)',
+        greenColor: 'rgba(22, 163, 74)',
         errorColor: 'red',
       },
       screens: {
