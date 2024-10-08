@@ -34,7 +34,7 @@ export default function PublishArticleButton({
       setIsClicked(false);
       onSuccess();
     },
-    onError: (error: Error) => {
+    onError: () => {
       setIsLoading(false);
       setIsClicked(false);
       onError();
