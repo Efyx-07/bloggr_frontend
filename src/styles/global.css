@@ -50,7 +50,7 @@ a {
 .content {
   min-height: calc(100dvh - 12rem);
   @apply w-full max-w-[90rem]
-  p-4 lgInter:py-4 lgInter:px-8
+  p-4 lgInter:pt-8 pb-16 lgInter:px-8
   flex flex-col items-center justify-center gap-8;
 }
 
