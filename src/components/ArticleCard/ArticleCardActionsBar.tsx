@@ -1,7 +1,7 @@
 import { Article } from '@/interfaces/article.interface';
 import { useRouter } from 'next/navigation';
 import SmallButton from '../Sharables/Buttons/SmallButton';
-import ModalDeleteArticle from '../ModalDeleteArticle';
+import ModalDeleteArticle from '../Modals/ModalDeleteArticle';
 import { useState } from 'react';
 
 interface ArticleCardActionsBarProps {

@@ -1,5 +1,5 @@
 import { Article } from '@/interfaces/article.interface';
-import Button from '../Sharables/Buttons/Button';
+import Button from '@/components/Sharables/Buttons/Button';
 import DeleteButton from './DeleteButton';
 import { Icon } from '@iconify/react';
 import './ModalDeleteArticle.css';

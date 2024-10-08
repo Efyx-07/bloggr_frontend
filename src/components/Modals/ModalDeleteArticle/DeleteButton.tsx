@@ -2,7 +2,7 @@ import { Article } from '@/interfaces/article.interface';
 import { deleteArticleById } from '@/services/articles.service';
 import { deleteFromVercelBlob } from '@/services/vercel-blob.service';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import Button from '../Sharables/Buttons/Button';
+import Button from '@/components/Sharables/Buttons/Button';
 import { useState } from 'react';
 
 interface DeleteButtonProps {
