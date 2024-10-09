@@ -11,7 +11,7 @@ export default function Header() {
     <>
       <header
         className="
-          w-full h-16 bg-white 
+          w-full h-16 bg-whiteBackground border-b border-black10 
           flex justify-center items-center 
           sticky top-0 z-30
           "

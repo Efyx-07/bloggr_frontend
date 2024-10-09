@@ -8,8 +8,6 @@ import LoadingPage from '@/components/LoadingPage';
 import usePageLoader from '@/hooks/usePageLoader';
 import ArticlePageHead from '@/components/PageHeads/ArticlePageHead';
 import ArticleFull from '@/components/ArticleFull';
-import { Icon } from '@iconify/react';
-import Link from 'next/link';
 
 export default function ArticlePage() {
   const { articleId } = useParams();
@@ -40,18 +38,7 @@ export default function ArticlePage() {
           <div className="content">
             {article ? (
               <>
-                <div className="w-full flex flex-col gap-2">
-                  <ArticlePageHead article={article} />
-                  <Link
-                    href="/dashboard/articles"
-                    className="
-                      flex items-center gap-1 
-                      text-black hover:text-accent"
-                  >
-                    <Icon icon="fe:arrow-left" />
-                    <p>Retour à mes articles</p>
-                  </Link>
-                </div>
+                <ArticlePageHead article={article} />
                 <ArticleFull article={article} />
               </>
             ) : (
