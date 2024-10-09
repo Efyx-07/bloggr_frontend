@@ -15,14 +15,6 @@ module.exports = {
         greenColor: 'rgba(22, 163, 74)',
         errorColor: 'red',
       },
-      /*screens: {
-        s: '516px',
-        sm: '640px',
-        smInter: '770px',
-        lg: '950px',
-        lgInter: '1180px',
-        xxl: '1440px',
-      },*/
     },
   },
   plugins: [],

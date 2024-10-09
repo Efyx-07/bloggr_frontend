@@ -4,14 +4,10 @@ import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import SiteName from './SiteName/SiteName';
 import MobileMenuIcon from './BurgerMenu/MobileMenuIcon';
-import MessageIcon from './MessageWindow/MessageIcon';
 import BurgerMenu from './BurgerMenu/BurgerMenu';
-import MessageWindow from './MessageWindow/MessageWindow';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [isMessageWindowOpen, setIsMessageWindowOpen] =
-    useState<boolean>(false);
   const pathName: string = usePathname();
 
   return (
@@ -34,18 +30,11 @@ export default function Header() {
           <SiteName />
           {/* Cache l'icone du menu sur la page de connexion */}
           {pathName !== '/' && (
-            <div className="flex items-center gap-8">
-              <MessageIcon toggleMessageWindow={() => setIsMessageWindowOpen(!isMessageWindowOpen)} />
-              <MobileMenuIcon toggleMenu={() => setIsOpen(!isOpen)} />
-            </div>
+            <MobileMenuIcon toggleMenu={() => setIsOpen(!isOpen)} />
           )}
         </div>
       </header>
       <BurgerMenu isOpen={isOpen} toggleMenu={() => setIsOpen(!isOpen)} />
-      <MessageWindow
-        isMessageWindowOpen={isMessageWindowOpen}
-        toggleMessageWindow={() => setIsMessageWindowOpen(!isMessageWindowOpen)}
-      />
     </>
   );
 }
