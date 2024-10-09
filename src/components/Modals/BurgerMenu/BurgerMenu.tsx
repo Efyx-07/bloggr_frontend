@@ -1,6 +1,7 @@
 'use client';
 
 import { Icon } from '@iconify/react';
+import ModalCloseIcon from '../ModalComponents/ModalCloseIcon';
 import Navigator from './Navigator';
 import ModalLogout from '../ModalLogout';
 import useModalStore from '@/stores/modalStore';
@@ -18,14 +19,7 @@ export default function BurgerMenu() {
         transition-transform duration-200 ease
         ${!isBurgerMenuOpen ? 'translate-x-full' : 'translate-x-0'}`}
     >
-      <div className="flex justify-end">
-        <div onClick={closeBurgerMenu} className="close-icon-container">
-          <Icon
-            icon="weui:close-outlined"
-            className="close-icon text-2xl text-accent"
-          />
-        </div>
-      </div>
+      <ModalCloseIcon onClick={closeBurgerMenu}/>
       <Navigator
         closeBurgerMenu={closeBurgerMenu}
         toggleModal={() => setIsModalLogoutOpen(!isModalLogoutOpen)}

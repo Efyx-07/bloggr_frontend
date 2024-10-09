@@ -8,7 +8,7 @@ export default function Footer() {
       className="w-full h-28 bg-whiteRelief
         flex justify-center items-center relative"
     >
-       <div className="w-full h-10 absolute bottom-[9.5rem]">
+      <div className="w-full h-10 absolute bottom-[9.5rem]">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 1440 230"

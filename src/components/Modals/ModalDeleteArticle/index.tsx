@@ -1,9 +1,9 @@
 'use client';
 
 import '../Modal-common-style.css';
+import ModalCloseIcon from '../ModalComponents/ModalCloseIcon';
 import Button from '@/components/Sharables/Buttons/Button';
 import DeleteButton from './DeleteButton';
-import { Icon } from '@iconify/react';
 import useModalStore from '@/stores/modalStore';
 import { useQuery } from '@tanstack/react-query';
 import { Article } from '@/interfaces/article.interface';
@@ -11,10 +11,13 @@ import { fetchArticleById } from '@/services/articles.service';
 import { useState } from 'react';
 
 export default function ModalDeleteArticle() {
-  const { isDeleteArticleModalOpen, modalArticleId, closeDeleteArticleModal } =
-    useModalStore();
   const [hasSucceed, setHasSucceed] = useState<boolean>(false);
   const [hasFailed, setHasFailed] = useState<boolean>(false);
+
+  // Récupère les états et méthodes du store pour la modale
+  // ===========================================================================================
+  const { isDeleteArticleModalOpen, modalArticleId, closeDeleteArticleModal } =
+    useModalStore();
 
   // Fetch les données de l'article sélectionné par son ID avec useQuery
   // ===========================================================================================
@@ -49,13 +52,7 @@ export default function ModalDeleteArticle() {
         ${!isDeleteArticleModalOpen ? 'invisible opacity-0' : 'visible opacity-100'}`}
     >
       <div className="modal">
-        <div className="modal-close-icon-container">
-          <Icon
-            icon="fa:close"
-            onClick={closeAndResetModal}
-            className="modal-close-icon"
-          />
-        </div>
+        <ModalCloseIcon onClick={closeAndResetModal} />
         {hasSucceed ? (
           <SuccessView closeModal={closeAndResetModal} />
         ) : hasFailed ? (

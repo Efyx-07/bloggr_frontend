@@ -1,13 +1,13 @@
 'use client';
 
 import '../Modal-common-style.css';
+import ModalCloseIcon from '../ModalComponents/ModalCloseIcon';
 import { useQuery } from '@tanstack/react-query';
 import { fetchArticleById } from '@/services/articles.service';
 import { Article } from '@/interfaces/article.interface';
 import useModalStore from '@/stores/modalStore';
 import Button from '@/components/Sharables/Buttons/Button';
 import PublishArticleButton from './PublishArticleButton';
-import { Icon } from '@iconify/react';
 import { useState } from 'react';
 
 export default function ModalPublishArticle() {
@@ -65,13 +65,7 @@ export default function ModalPublishArticle() {
         ${!isPublishArticleModalOpen ? 'invisible opacity-0' : 'visible opacity-100'}`}
     >
       <div className="modal">
-        <div className="modal-close-icon-container">
-          <Icon
-            icon="fa:close"
-            onClick={closeAndResetModal}
-            className="modal-close-icon"
-          />
-        </div>
+        <ModalCloseIcon onClick={closeAndResetModal} />
         {hasSucceed ? (
           <SuccessView
             successMention={successMention}

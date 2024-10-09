@@ -14,15 +14,6 @@
     pt-4 pr-4 pb-6 pl-6;
 }
 
-.modal-close-icon-container {
-  @apply flex justify-end;
-}
-
-.modal-close-icon {
-  @apply text-sm hover:text-accent 
-  cursor-pointer;
-}
-
 .modal-text-container {
   @apply flex flex-col gap-2;
 }
