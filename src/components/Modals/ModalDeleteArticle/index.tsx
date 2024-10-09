@@ -53,7 +53,7 @@ export default function ModalDeleteArticle() {
                 name="Annuler"
                 onClick={closeDeleteArticleModal}
               />
-              <DeleteButton selectedArticle={article} />
+              <DeleteButton selectedArticle={article} closeModal={closeDeleteArticleModal}/>
             </div>
           </>
         )}
