@@ -12,6 +12,7 @@ export default function Header() {
       <header
         className="
           w-full h-20 bg-white 
+          shadow-lg
           flex justify-center items-center 
           sticky top-0 z-30
           "
