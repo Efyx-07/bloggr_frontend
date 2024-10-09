@@ -1,5 +1,5 @@
 import { Article } from '@/interfaces/article.interface';
-import { format, formatDistanceToNow } from 'date-fns';
+import { formatDate, timeAgo } from '@/utils/formatDate';
 
 interface ArticleDateProps {
   article: Article;
@@ -9,12 +9,8 @@ export default function ArticleDate({ article }: ArticleDateProps) {
   const creationDate: Date = new Date(article.creationDate);
   const lastUpdate: Date = new Date(article.lastUpdate);
 
-  const formatDate = (date: Date): string => format(date, 'yyyy-MM-dd');
-  const timeAgo = (date: Date): string =>
-    formatDistanceToNow(date, { addSuffix: false });
-
   return (
-    <div className="flex gap-1 text-xs">
+    <div className="flex items-center gap-1 text-xs">
       <p>créé: {formatDate(creationDate)}</p>
       {creationDate.getTime() !== lastUpdate.getTime() && (
         <>

@@ -1,7 +1,7 @@
 import { Article } from '@/interfaces/article.interface';
 import Image from 'next/image';
 import ArticleCardActionsBar from './ArticleCardActionsBar';
-import ArticleDate from '../ArticleDate';
+import ArticleDate from './ArticleDate';
 import PublishedStatus from './PublishedStatus';
 
 interface ArticleCardProps {
