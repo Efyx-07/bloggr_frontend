@@ -22,7 +22,6 @@ export default function ArticleCard({ article }: ArticleCardProps) {
         />
       </div>
       <div className="flex flex-col gap-6 p-4">
-        <PublishedStatus article={article} />
         <div className="flex flex-col gap-2">
           <h3 className="text-ellipsis overflow-hidden whitespace-nowrap">
             {article.title}
@@ -31,6 +30,7 @@ export default function ArticleCard({ article }: ArticleCardProps) {
             <ArticleDate article={article} />
           </div>
         </div>
+        <PublishedStatus article={article} />
         <ArticleCardActionsBar article={article} />
       </div>
     </div>
