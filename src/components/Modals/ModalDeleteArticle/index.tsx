@@ -2,6 +2,7 @@
 
 import '../Modal-common-style.css';
 import ModalCloseIcon from '../ModalComponents/ModalCloseIcon';
+import ErrorView from '../ModalComponents/ErrorView';
 import Button from '@/components/Sharables/Buttons/Button';
 import DeleteButton from './DeleteButton';
 import useModalStore from '@/stores/modalStore';
@@ -82,27 +83,6 @@ function SuccessView({ closeModal }: SuccessViewProps) {
   return (
     <>
       <p>Article supprimé avec succès !</p>
-      <div className="buttons-container">
-        <Button
-          addedClassName="button-medium primary"
-          type="reset"
-          name="Fermer"
-          onClick={closeModal}
-        />
-      </div>
-    </>
-  );
-}
-
-// Composant local pour la vue de la modale en cas d'erreur
-// ===========================================================================================
-interface ErrorViewProps {
-  closeModal: () => void;
-}
-function ErrorView({ closeModal }: ErrorViewProps) {
-  return (
-    <>
-      <p>Une erreur est survenue, merci de rééssayer plus tard...</p>
       <div className="buttons-container">
         <Button
           addedClassName="button-medium primary"

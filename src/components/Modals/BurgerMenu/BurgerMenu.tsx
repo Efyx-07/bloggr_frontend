@@ -18,7 +18,7 @@ export default function BurgerMenu() {
         transition-transform duration-200 ease
         ${!isBurgerMenuOpen ? 'translate-x-full' : 'translate-x-0'}`}
     >
-      <ModalCloseIcon onClick={closeBurgerMenu}/>
+      <ModalCloseIcon onClick={closeBurgerMenu} />
       <Navigator
         closeBurgerMenu={closeBurgerMenu}
         toggleModal={() => setIsModalLogoutOpen(!isModalLogoutOpen)}

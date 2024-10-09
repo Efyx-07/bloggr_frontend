@@ -72,7 +72,7 @@ export default function ModalPublishArticle() {
             closeAndResetModal={closeAndResetModal}
           />
         ) : hasFailed ? (
-          <ErrorView closeAndResetModal={closeAndResetModal} />
+          <ErrorView closeModal={closeAndResetModal} />
         ) : (
           // S'assure que article est défini afin de ne pas mettre de conditionnelle dans le composant bouton
           article && (
@@ -115,9 +115,9 @@ function SuccessView({ successMention, closeAndResetModal }: SuccessViewProps) {
 // Composant local pour la vue de la modale en cas d'erreur
 // ===========================================================================================
 interface ErrorViewProps {
-  closeAndResetModal: () => void;
+  closeModal: () => void;
 }
-function ErrorView({ closeAndResetModal }: ErrorViewProps) {
+function ErrorView({ closeModal }: ErrorViewProps) {
   return (
     <>
       <p>Une erreur est survenue, merci de rééssayer plus tard...</p>
@@ -126,7 +126,7 @@ function ErrorView({ closeAndResetModal }: ErrorViewProps) {
           addedClassName="button-medium primary"
           type="reset"
           name="Fermer"
-          onClick={closeAndResetModal}
+          onClick={closeModal}
         />
       </div>
     </>
