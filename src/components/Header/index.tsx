@@ -13,7 +13,7 @@ export default function Header() {
         className="
           w-full h-20 bg-white 
           flex justify-center items-center 
-          sticky top-0 z-50
+          sticky top-0 z-30
           "
       >
         <div

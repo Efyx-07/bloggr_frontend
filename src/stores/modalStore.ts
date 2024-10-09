@@ -1,6 +1,8 @@
 import { create } from 'zustand';
 
 interface State {
+  // State pour l'overlay des modales
+  isOverlayVisible: boolean;
   // State pour la modale publish-article
   isPublishArticleModalOpen: boolean;
   openPublishArticleModal: (articleId: number) => void;
@@ -13,6 +15,7 @@ interface State {
 }
 
 const useModalStore = create<State>((set) => ({
+  isOverlayVisible: false,
   // State et methodes pour modale publish-article
   //==============================================
   isPublishArticleModalOpen: false,
@@ -30,10 +33,10 @@ const useModalStore = create<State>((set) => ({
   //==============================================
   isBurgerMenuOpen: false,
   openBurgerMenu() {
-    set({ isBurgerMenuOpen: true });
+    set({ isBurgerMenuOpen: true, isOverlayVisible: true });
   },
   closeBurgerMenu() {
-    set({ isBurgerMenuOpen: false });
+    set({ isBurgerMenuOpen: false, isOverlayVisible: false });
   },
 }));
 
