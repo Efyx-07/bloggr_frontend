@@ -12,7 +12,7 @@ export default function HeadTitle({ title, children }: HeadTitleProps) {
         className="flex flex-col  gap-2
           sm:flex-row sm:justify-between sm:items-center"
       >
-        <h2 className="whitespace-nowrap">{title}</h2>
+        <h2>{title}</h2>
         {children}
       </div>
       <Separator />

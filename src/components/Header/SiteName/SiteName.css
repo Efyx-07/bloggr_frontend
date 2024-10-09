@@ -2,5 +2,5 @@
 
 .site-name {
   @apply text-accent;
-  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-size: clamp(2rem, 5vw, 2.25rem);
 }
