@@ -1,7 +1,7 @@
 import { AuthGuard } from '@/auth-guards';
 import ModalPublishArticle from '@/components/Modals/ModalPublishArticle';
 import ModalDeleteArticle from '@/components/Modals/ModalDeleteArticle';
-import BurgerMenu from '@/components/Modals/BurgerMenu/BurgerMenu';
+import BurgerMenu from '@/components/Modals/BurgerMenu';
 import ModalOverlay from '@/components/Modals/ModalOverlay';
 
 export default function DashboardLayout({

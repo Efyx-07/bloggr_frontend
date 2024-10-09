@@ -3,6 +3,7 @@
 import '../Modal-common-style.css';
 import ModalCloseIcon from '../ModalComponents/ModalCloseIcon';
 import ErrorView from '../ModalComponents/ErrorView';
+import SuccessView from '../ModalComponents/SuccessView';
 import { useQuery } from '@tanstack/react-query';
 import { fetchArticleById } from '@/services/articles.service';
 import { Article } from '@/interfaces/article.interface';
@@ -88,28 +89,6 @@ export default function ModalPublishArticle() {
         )}
       </div>
     </div>
-  );
-}
-
-// Composant local pour la vue de la modale en cas de succès
-// ===========================================================================================
-interface SuccessViewProps {
-  successMention: string;
-  closeAndResetModal: () => void;
-}
-function SuccessView({ successMention, closeAndResetModal }: SuccessViewProps) {
-  return (
-    <>
-      <div dangerouslySetInnerHTML={{ __html: successMention }} />
-      <div className="buttons-container">
-        <Button
-          addedClassName="button-medium primary"
-          type="reset"
-          name="Fermer"
-          onClick={closeAndResetModal}
-        />
-      </div>
-    </>
   );
 }
 

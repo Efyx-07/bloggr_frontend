@@ -3,6 +3,7 @@
 import '../Modal-common-style.css';
 import ModalCloseIcon from '../ModalComponents/ModalCloseIcon';
 import ErrorView from '../ModalComponents/ErrorView';
+import SuccessView from '../ModalComponents/SuccessView';
 import Button from '@/components/Sharables/Buttons/Button';
 import DeleteButton from './DeleteButton';
 import useModalStore from '@/stores/modalStore';
@@ -33,6 +34,10 @@ export default function ModalDeleteArticle() {
   if (isLoading) return <p>Chargement...</p>;
   if (error) return <p>Une erreur est survenue: {error.message}</p>;
 
+  // Mention de la modale en cas de succès
+  // ===========================================================================================
+  const successMention: string = `Votre article: <strong>"${article?.title}"</strong> a été correctement supprimé !`;
+
   // Gère les états en cas de succès ou d'échec de l'opération
   // ===========================================================================================
   const handleSuccess = () => setHasSucceed(true);
@@ -55,7 +60,10 @@ export default function ModalDeleteArticle() {
       <div className="modal">
         <ModalCloseIcon onClick={closeAndResetModal} />
         {hasSucceed ? (
-          <SuccessView closeModal={closeAndResetModal} />
+          <SuccessView
+            successMention={successMention}
+            closeAndResetModal={closeAndResetModal}
+          />
         ) : hasFailed ? (
           <ErrorView closeModal={closeAndResetModal} />
         ) : (
@@ -71,27 +79,6 @@ export default function ModalDeleteArticle() {
         )}
       </div>
     </div>
-  );
-}
-
-// Composant local pour la vue de la modale en cas de succès
-// ===========================================================================================
-interface SuccessViewProps {
-  closeModal: () => void;
-}
-function SuccessView({ closeModal }: SuccessViewProps) {
-  return (
-    <>
-      <p>Article supprimé avec succès !</p>
-      <div className="buttons-container">
-        <Button
-          addedClassName="button-medium primary"
-          type="reset"
-          name="Fermer"
-          onClick={closeModal}
-        />
-      </div>
-    </>
   );
 }
 
