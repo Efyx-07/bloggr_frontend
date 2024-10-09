@@ -61,26 +61,14 @@ export default function ModalDeleteArticle() {
         ) : hasFailed ? (
           <ErrorView closeModal={closeAndResetModal} />
         ) : (
+          // S'assure que article est défini
           article && (
-            <>
-              <div className="modal-text-container">
-                <p>Etes-vous sûr de vouloir supprimer cet article ?</p>
-                <p className="modal-article-title">{article.title}</p>
-              </div>
-              <div className="buttons-container">
-                <Button
-                  addedClassName="button-medium secondary"
-                  type="reset"
-                  name="Annuler"
-                  onClick={closeDeleteArticleModal}
-                />
-                <DeleteButton
-                  selectedArticle={article}
-                  onSuccess={handleSuccess}
-                  onError={handleFailure}
-                />
-              </div>
-            </>
+            <ActionView
+              article={article}
+              closeDeleteArticleModal={closeDeleteArticleModal}
+              handleSuccess={handleSuccess}
+              handleFailure={handleFailure}
+            />
           )
         )}
       </div>
@@ -124,6 +112,43 @@ function ErrorView({ closeModal }: ErrorViewProps) {
           type="reset"
           name="Fermer"
           onClick={closeModal}
+        />
+      </div>
+    </>
+  );
+}
+
+// Composant local pour la vue de la modale pour l'action Publier / Dépublier
+// ===========================================================================================
+interface ActionViewProps {
+  article: Article;
+  closeDeleteArticleModal: () => void;
+  handleSuccess: () => void;
+  handleFailure: () => void;
+}
+function ActionView({
+  article,
+  closeDeleteArticleModal,
+  handleSuccess,
+  handleFailure,
+}: ActionViewProps) {
+  return (
+    <>
+      <div className="modal-text-container">
+        <p>Etes-vous sûr de vouloir supprimer cet article ?</p>
+        <p className="modal-article-title">{article?.title}</p>
+      </div>
+      <div className="buttons-container">
+        <Button
+          addedClassName="button-medium secondary"
+          type="reset"
+          name="Annuler"
+          onClick={closeDeleteArticleModal}
+        />
+        <DeleteButton
+          selectedArticle={article}
+          onSuccess={handleSuccess}
+          onError={handleFailure}
         />
       </div>
     </>
