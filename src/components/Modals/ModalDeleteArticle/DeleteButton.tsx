@@ -7,10 +7,15 @@ import { useState } from 'react';
 
 interface DeleteButtonProps {
   selectedArticle: Article;
-  closeModal: () => void;
+  onSuccess: () => void;
+  onError: () => void;
 }
 
-export default function DeleteButton({ selectedArticle, closeModal }: DeleteButtonProps) {
+export default function DeleteButton({
+  selectedArticle,
+  onSuccess,
+  onError,
+}: DeleteButtonProps) {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isClicked, setIsClicked] = useState<boolean>(false);
   const queryClient = useQueryClient();
@@ -24,12 +29,14 @@ export default function DeleteButton({ selectedArticle, closeModal }: DeleteButt
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['articles'] });
-      closeModal();
+      setIsLoading(false);
+      setIsClicked(false);
+      onSuccess();
     },
     onError: (error: any) => {
       setIsLoading(false);
       setIsClicked(false);
-      console.error('Error removing article:', error);
+      onError();
     },
   });
 
