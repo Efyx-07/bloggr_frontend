@@ -5,7 +5,7 @@ interface State {
   isOverlayVisible: boolean;
 
   // State pour l'id de l'article selectionné
-  modalArticleId: number | null
+  modalArticleId: number | null;
 
   // State pour la modale publish-article
   isPublishArticleModalOpen: boolean;

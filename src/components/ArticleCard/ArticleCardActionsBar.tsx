@@ -8,7 +8,7 @@ interface ArticleCardActionsBarProps {
   article: Article;
 }
 
-// Gestion des boutons d'actions de la carte 
+// Gestion des boutons d'actions de la carte
 // ===========================================================================================
 export default function ArticleCardActionsBar({
   article,

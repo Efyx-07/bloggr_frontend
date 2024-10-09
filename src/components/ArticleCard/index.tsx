@@ -21,13 +21,15 @@ export default function ArticleCard({ article }: ArticleCardProps) {
           fill
         />
       </div>
-      <div className="flex flex-col gap-4 p-4">
+      <div className="flex flex-col gap-6 p-4">
+        <PublishedStatus article={article} />
         <div className="flex flex-col gap-2">
-          <PublishedStatus article={article} />
-          <h3>{article.title}</h3>
-          {/* <div className="date-status">
+          <h3 className="text-ellipsis overflow-hidden whitespace-nowrap">
+            {article.title}
+          </h3>
+          <div className="date-status">
             <ArticleDate article={article} />
-          </div> */}
+          </div>
         </div>
         <ArticleCardActionsBar article={article} />
       </div>
