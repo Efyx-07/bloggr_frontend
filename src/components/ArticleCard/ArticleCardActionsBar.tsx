@@ -1,31 +1,30 @@
 import { Article } from '@/interfaces/article.interface';
 import { useRouter } from 'next/navigation';
 import SmallButton from '../Sharables/Buttons/SmallButton';
-import ModalDeleteArticle from '../Modals/ModalDeleteArticle';
 import { useState } from 'react';
+import useModalStore from '@/stores/modalStore';
 
 interface ArticleCardActionsBarProps {
   article: Article;
 }
 
-// Gestion des boutons d'actions de la carte + gestion modale de suppression d'un article
+// Gestion des boutons d'actions de la carte 
 // ===========================================================================================
 export default function ArticleCardActionsBar({
   article,
 }: ArticleCardActionsBarProps) {
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [isLoadingModify, setIsLoadingModify] = useState<boolean>(false);
   const [isLoadingView, setIsLoadingView] = useState<boolean>(false);
+  const { openDeleteArticleModal } = useModalStore();
   const router = useRouter();
-
-  const openDeleteModal = () => setIsModalOpen(true);
-
-  const closeDeleteModal = () => setIsModalOpen(false);
 
   return (
     <>
       <div className="flex flex-wrap gap-2 sm:grid grid-cols-3">
-        <SmallButton onClick={openDeleteModal} label="Supprimer" />
+        <SmallButton
+          onClick={() => openDeleteArticleModal(article.id)}
+          label="Supprimer"
+        />
         <SmallButton
           onClick={() => {
             router.push(`/dashboard/modifier-article/${article.id}`);
@@ -43,11 +42,6 @@ export default function ArticleCardActionsBar({
           isLoading={isLoadingView}
         />
       </div>
-      <ModalDeleteArticle
-        isModalOpen={isModalOpen}
-        selectedArticle={article}
-        closeModal={closeDeleteModal}
-      />
     </>
   );
 }
