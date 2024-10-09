@@ -1,6 +1,5 @@
 'use client';
 
-import { Icon } from '@iconify/react';
 import ModalCloseIcon from '../ModalComponents/ModalCloseIcon';
 import Navigator from './Navigator';
 import ModalLogout from '../ModalLogout';
