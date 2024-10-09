@@ -1,13 +1,10 @@
 'use client';
 
-import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import SiteName from './SiteName/SiteName';
-import MobileMenuIcon from './BurgerMenu/MobileMenuIcon';
-import BurgerMenu from './BurgerMenu/BurgerMenu';
+import MobileMenuIcon from '../Modals/BurgerMenu/MobileMenuIcon';
 
 export default function Header() {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
   const pathName: string = usePathname();
 
   return (
@@ -30,11 +27,10 @@ export default function Header() {
           <SiteName />
           {/* Cache l'icone du menu sur la page de connexion */}
           {pathName !== '/' && (
-            <MobileMenuIcon toggleMenu={() => setIsOpen(!isOpen)} />
+            <MobileMenuIcon />
           )}
         </div>
       </header>
-      <BurgerMenu isOpen={isOpen} toggleMenu={() => setIsOpen(!isOpen)} />
     </>
   );
 }

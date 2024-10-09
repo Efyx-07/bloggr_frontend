@@ -2,11 +2,11 @@ import { MouseEventHandler } from 'react';
 import { useRouter } from 'next/navigation';
 
 interface NavigatorProps {
-  toggleMenu: () => void;
+  closeBurgerMenu: () => void;
   toggleModal: () => void;
 }
 
-export default function Navigator({ toggleMenu, toggleModal }: NavigatorProps) {
+export default function Navigator({ closeBurgerMenu, toggleModal }: NavigatorProps) {
   const router = useRouter();
 
   interface Navitem {
@@ -21,21 +21,21 @@ export default function Navigator({ toggleMenu, toggleModal }: NavigatorProps) {
       name: 'Mes articles',
       onClick: () => {
         router.push('/dashboard/articles');
-        toggleMenu();
+        closeBurgerMenu();
       },
     },
     {
       name: 'Nouvel article',
       onClick: () => {
         router.push('/dashboard/nouvel-article');
-        toggleMenu();
+        closeBurgerMenu();
       },
     },
     {
       name: 'Compte',
       onClick: () => {
         router.push('/dashboard/compte');
-        toggleMenu();
+        closeBurgerMenu();
       },
     },
     {

@@ -1,15 +1,13 @@
 import { Icon } from '@iconify/react';
+import useModalStore from '@/stores/modalStore';
 
-interface MobileMenuIconProps {
-  toggleMenu: () => void;
-}
-
-export default function MobileMenuIcon({ toggleMenu }: MobileMenuIconProps) {
+export default function MobileMenuIcon() {
+  const {openBurgerMenu} = useModalStore();
   return (
     <>
       <Icon
         icon="material-symbols:menu"
-        onClick={toggleMenu}
+        onClick={openBurgerMenu}
         className="text-3xl text-black hover:text-accent cursor-pointer"
       />
     </>

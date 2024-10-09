@@ -6,12 +6,12 @@ import './ModalLogout.css';
 interface ModalLogoutProps {
   isModalLogoutOpen: boolean;
   toggleModal: () => void;
-  toggleMenu: () => void;
+  closeBurgerMenu: () => void;
 }
 export default function ModalLogout({
   isModalLogoutOpen,
   toggleModal,
-  toggleMenu,
+  closeBurgerMenu,
 }: ModalLogoutProps) {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isClicked, setIsClicked] = useState<boolean>(false);
@@ -22,7 +22,7 @@ export default function ModalLogout({
     setIsClicked(true);
     logoutAdmin();
     toggleModal();
-    toggleMenu();
+    closeBurgerMenu();
   };
 
   useEffect(() => {
