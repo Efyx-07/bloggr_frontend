@@ -2,6 +2,7 @@
 
 import '../Modal-common-style.css';
 import ModalCloseIcon from '../ModalComponents/ModalCloseIcon';
+import ErrorView from '../ModalComponents/ErrorView';
 import { useQuery } from '@tanstack/react-query';
 import { fetchArticleById } from '@/services/articles.service';
 import { Article } from '@/interfaces/article.interface';
@@ -106,27 +107,6 @@ function SuccessView({ successMention, closeAndResetModal }: SuccessViewProps) {
           type="reset"
           name="Fermer"
           onClick={closeAndResetModal}
-        />
-      </div>
-    </>
-  );
-}
-
-// Composant local pour la vue de la modale en cas d'erreur
-// ===========================================================================================
-interface ErrorViewProps {
-  closeModal: () => void;
-}
-function ErrorView({ closeModal }: ErrorViewProps) {
-  return (
-    <>
-      <p>Une erreur est survenue, merci de rééssayer plus tard...</p>
-      <div className="buttons-container">
-        <Button
-          addedClassName="button-medium primary"
-          type="reset"
-          name="Fermer"
-          onClick={closeModal}
         />
       </div>
     </>
