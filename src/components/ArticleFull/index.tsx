@@ -44,7 +44,7 @@ export default function ArticleFull({ article }: ArticleFullProps) {
           dangerouslySetInnerHTML={{ __html: article.body }}
         />
       </div>
-      <p className='text-2xl'>.&nbsp;&nbsp;.&nbsp;&nbsp;.</p>
+      <p className="text-2xl">.&nbsp;&nbsp;.&nbsp;&nbsp;.</p>
     </div>
   );
 }
