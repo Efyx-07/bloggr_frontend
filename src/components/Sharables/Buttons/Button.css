@@ -32,5 +32,5 @@
 }
 
 .tertiary {
-  @apply bg-green-600 text-whiteRelief;
+  @apply bg-greenColor text-whiteRelief;
 }

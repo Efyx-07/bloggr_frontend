@@ -4,7 +4,7 @@ export default function SkeletonArticleCard() {
   return (
     <div
       className="
-        w-full h-[25rem]
+        w-full h-96
         bg-black75
         flex items-center justify-center
       "

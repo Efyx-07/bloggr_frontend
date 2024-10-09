@@ -16,7 +16,6 @@ export default function BurgerMenu({ isOpen, toggleMenu }: BurgerMenuProps) {
     <div
       className={`
         burger-menu
-        custom-shadow
         transition-transform duration-200 ease
         ${!isOpen ? 'translate-x-full' : 'translate-x-0'}`}
     >

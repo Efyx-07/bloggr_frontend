@@ -17,9 +17,9 @@ label {
 }
 
 input {
-  @apply w-full h-[3rem] 
+  @apply w-full h-12 
     text-base 
-    pl-[1rem] 
+    pl-4
     border border-black25 focus:border-accent
     outline-none;
 }
@@ -40,7 +40,7 @@ input {
 /* Only Keywords fields 
 ===========================================================================================*/
 .plus-container {
-  @apply w-full max-w-[2.25rem] h-[2.25rem]
+  @apply w-full max-w-9 h-9
     flex items-center justify-center
     border border-black25 rounded-full
     cursor-pointer
@@ -53,7 +53,7 @@ input {
 
 .field-keyword-container {
   @apply flex items-center gap-1
-    p-[.25rem]
+    p-1
     border border-black25 border-solid;
 }
 
@@ -70,5 +70,5 @@ input {
 }
 
 .preview-image-container-size {
-  @apply max-w-[18.75rem] h-[12.5rem];
+  @apply w-full max-w-96 h-64;
 }

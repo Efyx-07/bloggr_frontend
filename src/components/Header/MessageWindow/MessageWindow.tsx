@@ -14,7 +14,6 @@ export default function MessageWindow({
     <div
       className={`
         message-window
-        custom-shadow
         transition-transform duration-200 ease
         ${!isMessageWindowOpen ? 'translate-x-full' : 'translate-x-0'}`}
     >

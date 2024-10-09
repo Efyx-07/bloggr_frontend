@@ -8,7 +8,7 @@ export default function NoArticle() {
     <div
       className="
         container-style
-        w-full max-w-[30rem]
+        w-full max-w-lg
         p-8
         items-center gap-4
         text-center

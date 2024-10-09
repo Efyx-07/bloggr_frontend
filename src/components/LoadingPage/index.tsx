@@ -9,7 +9,7 @@ export default function LoadingPage({ mention }: LoadingPageProps) {
     <div
       className="
       absolute top-0 left-0 z-50
-      w-[100vw] h-[100dvh]
+      w-screen h-dvh
       bg-black text-whiteRelief
       flex flex-col justify-center items-center gap-4
     "

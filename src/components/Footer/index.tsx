@@ -10,7 +10,7 @@ export default function Footer() {
     >
       <div
         className="w-full max-w-[86rem] 
-          mx-4 lgInter:mx-8
+          mx-4 lg:mx-8
           flex justify-center items-center
           relative
         "

@@ -48,12 +48,12 @@
   @apply w-8 h-8;
 }
 .medium-ring div {
-  @apply w-[1.25rem] h-[1.25rem] border-2;
+  @apply w-5 h-5 border-2;
 }
 
 .large-ring {
-  @apply w-[60px] h-[60px];
+  @apply w-16 h-16;
 }
 .large-ring div {
-  @apply w-[2.75rem] h-[2.75rem] border-4;
+  @apply w-11 h-11 border-4;
 }
