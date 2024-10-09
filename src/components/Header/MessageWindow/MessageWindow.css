@@ -2,7 +2,7 @@
 
 .message-window {
   @apply fixed top-0 right-0 z-50
-    w-full sm:max-w-[50vw] lgInter:max-w-[25vw] 
+    w-full sm:max-w-[50vw] lg:max-w-[25vw] 
     h-[100dvh]
     pt-4 pr-4 pb-8 pl-8
     bg-white

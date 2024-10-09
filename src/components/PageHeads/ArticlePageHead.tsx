@@ -27,8 +27,8 @@ export default function ArticlePageHead({ article }: ArticlePageHeadProps) {
   return (
     <HeadTitle title="Mon article">
       <div
-        className="w-full s:w-3/6
-          flex justify-start s:justify-end gap-2"
+        className="w-full sm:w-3/6
+          flex justify-start sm:justify-end gap-2"
       >
         <Button
           addedClassName="button-large primary"
