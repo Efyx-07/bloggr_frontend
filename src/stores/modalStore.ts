@@ -8,6 +8,7 @@ interface State {
   openPublishArticleModal: (articleId: number) => void;
   closePublishArticleModal: () => void;
   modalArticleId: number | null;
+  // State pour la modale delete-article
   // State pour burger-menu
   isBurgerMenuOpen: boolean;
   openBurgerMenu: () => void;
@@ -15,7 +16,9 @@ interface State {
 }
 
 const useModalStore = create<State>((set) => ({
+  // State pour l'overlay des modales
   isOverlayVisible: false,
+
   // State et methodes pour modale publish-article
   //==============================================
   isPublishArticleModalOpen: false,

@@ -6,7 +6,10 @@ interface NavigatorProps {
   toggleModal: () => void;
 }
 
-export default function Navigator({ closeBurgerMenu, toggleModal }: NavigatorProps) {
+export default function Navigator({
+  closeBurgerMenu,
+  toggleModal,
+}: NavigatorProps) {
   const router = useRouter();
 
   interface Navitem {

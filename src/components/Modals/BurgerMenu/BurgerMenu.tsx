@@ -8,8 +8,8 @@ import { useState } from 'react';
 import './BurgerMenu.css';
 
 export default function BurgerMenu() {
-const {isBurgerMenuOpen, closeBurgerMenu} = useModalStore();
-const [isModalLogoutOpen, setIsModalLogoutOpen] = useState<boolean>(false);
+  const { isBurgerMenuOpen, closeBurgerMenu } = useModalStore();
+  const [isModalLogoutOpen, setIsModalLogoutOpen] = useState<boolean>(false);
 
   return (
     <div

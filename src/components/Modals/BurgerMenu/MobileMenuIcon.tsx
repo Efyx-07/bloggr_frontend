@@ -2,7 +2,7 @@ import { Icon } from '@iconify/react';
 import useModalStore from '@/stores/modalStore';
 
 export default function MobileMenuIcon() {
-  const {openBurgerMenu} = useModalStore();
+  const { openBurgerMenu } = useModalStore();
   return (
     <>
       <Icon

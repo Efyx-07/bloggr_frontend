@@ -26,9 +26,7 @@ export default function Header() {
         >
           <SiteName />
           {/* Cache l'icone du menu sur la page de connexion */}
-          {pathName !== '/' && (
-            <MobileMenuIcon />
-          )}
+          {pathName !== '/' && <MobileMenuIcon />}
         </div>
       </header>
     </>
