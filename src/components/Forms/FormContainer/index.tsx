@@ -22,7 +22,7 @@ export default function FormContainer({
       className={`
         container-style
         w-full
-        p-4 smInter:p-8
+        p-4 md:p-8
         gap-8
         ${loginPathname || comptePathname ? 'max-w-[30rem]' : 'max-w-[50rem]'}
       `}

@@ -79,6 +79,7 @@ a {
 .container-style {
   @apply bg-whiteRelief
   border border-black10 border-solid rounded-lg
+  shadow-lg
   flex flex-col;
 }
 

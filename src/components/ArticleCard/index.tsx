@@ -11,7 +11,7 @@ interface ArticleCardProps {
 export default function ArticleCard({ article }: ArticleCardProps) {
   return (
     <div className="w-full container-style">
-      <div className="image-container aspect-ratio">
+      <div className="image-container aspect-ratio rounded-t-lg">
         <Image
           className="image"
           src={article.imageUrl}
