@@ -1,9 +1,8 @@
 @tailwind utilities;
 
-.overlay {
+.modal-container {
   @apply fixed top-0 left-0 z-50
     w-screen h-dvh
-    bg-black75
     flex justify-center items-center;
 }
 

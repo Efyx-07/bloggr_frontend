@@ -17,7 +17,7 @@ export default function ModalDeleteArticle({
 }: ModalDeleteArticleProps) {
   return (
     <div
-      className={`overlay transition-opacity duration-200 ease
+      className={`modal-container transition-opacity duration-200 ease
         ${!isModalOpen ? 'invisible opacity-0' : 'visible opacity-100'}`}
     >
       <div className="modal">

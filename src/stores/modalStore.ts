@@ -22,11 +22,11 @@ const useModalStore = create<State>((set) => ({
   modalArticleId: null,
   openPublishArticleModal(articleId) {
     set({ modalArticleId: articleId });
-    set({ isPublishArticleModalOpen: true });
+    set({ isPublishArticleModalOpen: true, isOverlayVisible: true });
   },
   closePublishArticleModal() {
     set({ modalArticleId: null });
-    set({ isPublishArticleModalOpen: false });
+    set({ isPublishArticleModalOpen: false, isOverlayVisible: false });
   },
 
   // State et methodes pour modale publish-article

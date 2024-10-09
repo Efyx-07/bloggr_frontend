@@ -61,7 +61,7 @@ export default function ModalPublishArticle() {
 
   return (
     <div
-      className={`overlay transition-opacity duration-200 ease 
+      className={`modal-container transition-opacity duration-200 ease 
         ${!isPublishArticleModalOpen ? 'invisible opacity-0' : 'visible opacity-100'}`}
     >
       <div className="modal">
