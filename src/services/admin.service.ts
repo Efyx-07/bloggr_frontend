@@ -1,4 +1,4 @@
-import { Admin } from '@/interfaces/admin.interface';
+import { Admin, AdminResponse } from '@/interfaces/admin.interface';
 import { backendUrl } from '@/config';
 
 // Connecte l'Admin avec son email et son mot de passe, retourne les datas admin en réponse
@@ -6,7 +6,7 @@ import { backendUrl } from '@/config';
 export async function login(
   email: Admin['email'],
   password: Admin['password'],
-): Promise<Admin> {
+): Promise<AdminResponse> {
   try {
     const response: Response = await fetch(`${backendUrl}/admins/login`, {
       method: 'POST',
@@ -19,8 +19,8 @@ export async function login(
       }),
     });
     if (response.ok) {
-      const adminData: Admin = await response.json();
-      return adminData;
+      const data: AdminResponse = await response.json();
+      return data;
     } else {
       throw new Error('Error while connecting: ' + response.statusText);
     }

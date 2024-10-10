@@ -8,6 +8,7 @@ interface ArticleFullProps {
 }
 
 export default function ArticleFull({ article }: ArticleFullProps) {
+
   return (
     <div className="article-full">
       <div className="image-container aspect-video">
@@ -25,7 +26,7 @@ export default function ArticleFull({ article }: ArticleFullProps) {
           <h1 className="article-title">{article.title}</h1>
           <div className="flex flex-wrap justify-between items-center gap-4">
             <p className="text-sm italic opacity-75">
-              Par Efyxdev, le 05 octobre 2024
+              Par admin, le 05 octobre 2024
             </p>
             {article.keywords && (
               <div className="keywords-container">

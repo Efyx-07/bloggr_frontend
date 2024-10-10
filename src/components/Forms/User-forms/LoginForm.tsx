@@ -1,7 +1,7 @@
 'use client';
 
 import { FormEvent, useState } from 'react';
-import { Admin } from '@/interfaces/admin.interface';
+import { Admin, AdminResponse } from '@/interfaces/admin.interface';
 import validateLoginData from '@/utils/validateLoginData';
 import { login } from '@/services/admin.service';
 import useAdminStore from '@/stores/adminStore';
@@ -36,9 +36,9 @@ export default function LoginForm() {
     if (!validateLoginData(email, password)) return;
     try {
       // Connecte l'admin avec le service, gère les datas et navigue vers la page articles
-      const result: Admin = await login(email, password);
+      const result: AdminResponse = await login(email, password);
       adminStore.setAdminData(result);
-      const token: Admin['token'] = result.token;
+      const token: AdminResponse['token'] = result.token;
       if (token) localStorage.setItem('token', token);
       router.push('/dashboard/articles');
     } catch (error) {
