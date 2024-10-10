@@ -1,14 +1,14 @@
-import { Admin } from '@/interfaces/admin.interface';
+import { Admin, AdminResponse } from '@/interfaces/admin.interface';
 import { backendUrl } from '@/config';
 
 // Met à jour le mot de passe Admin et retourne un message de succès
 // ===========================================================================================
 export async function updatePassword(
-  token: Admin['token'],
+  token: AdminResponse['token'],
   adminId: Admin['id'],
   currentPassword: Admin['password'],
   newPassword: Admin['password'],
-): Promise<Admin['message']> {
+): Promise<AdminResponse['message']> {
   try {
     const response = await fetch(`${backendUrl}/passwords/update-password`, {
       method: 'PUT',
