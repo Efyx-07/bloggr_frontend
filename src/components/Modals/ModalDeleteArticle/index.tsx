@@ -4,7 +4,7 @@ import '../Modal-common-style.css';
 import ModalCloseIcon from '../ModalComponents/ModalCloseIcon';
 import ErrorView from '../ModalComponents/ErrorView';
 import SuccessView from '../ModalComponents/SuccessView';
-import Button from '@/components/Sharables/Buttons/Button';
+import ActionView from '../ModalComponents/ActionView';
 import DeleteButton from './DeleteButton';
 import useModalStore from '@/stores/modalStore';
 import { useQuery } from '@tanstack/react-query';
@@ -34,8 +34,9 @@ export default function ModalDeleteArticle() {
   if (isLoading) return <p>Chargement...</p>;
   if (error) return <p>Une erreur est survenue: {error.message}</p>;
 
-  // Mention de la modale en cas de succès
+  // Gère les mentions de la modale
   // ===========================================================================================
+  const mention: string = 'Etes-vous sûr de vouloir supprimer cet article ?';
   const successMention: string = `Votre article: <strong>"${article?.title}"</strong> a été correctement supprimé !`;
 
   // Gère les états en cas de succès ou d'échec de l'opération
@@ -70,51 +71,16 @@ export default function ModalDeleteArticle() {
           // S'assure que article est défini
           article && (
             <ActionView
+              mention={mention}
               article={article}
-              closeDeleteArticleModal={closeDeleteArticleModal}
+              closeModal={closeDeleteArticleModal}
               handleSuccess={handleSuccess}
               handleFailure={handleFailure}
+              ActionButton={DeleteButton}
             />
           )
         )}
       </div>
     </div>
-  );
-}
-
-// Composant local pour la vue de la modale pour l'action Publier / Dépublier
-// ===========================================================================================
-interface ActionViewProps {
-  article: Article;
-  closeDeleteArticleModal: () => void;
-  handleSuccess: () => void;
-  handleFailure: () => void;
-}
-function ActionView({
-  article,
-  closeDeleteArticleModal,
-  handleSuccess,
-  handleFailure,
-}: ActionViewProps) {
-  return (
-    <>
-      <div className="modal-text-container">
-        <p>Etes-vous sûr de vouloir supprimer cet article ?</p>
-        <p className="modal-article-title">{article?.title}</p>
-      </div>
-      <div className="buttons-container">
-        <Button
-          addedClassName="button-medium secondary"
-          type="reset"
-          name="Annuler"
-          onClick={closeDeleteArticleModal}
-        />
-        <DeleteButton
-          selectedArticle={article}
-          onSuccess={handleSuccess}
-          onError={handleFailure}
-        />
-      </div>
-    </>
   );
 }

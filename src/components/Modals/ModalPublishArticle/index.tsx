@@ -4,11 +4,11 @@ import '../Modal-common-style.css';
 import ModalCloseIcon from '../ModalComponents/ModalCloseIcon';
 import ErrorView from '../ModalComponents/ErrorView';
 import SuccessView from '../ModalComponents/SuccessView';
+import ActionView from '../ModalComponents/ActionView';
 import { useQuery } from '@tanstack/react-query';
 import { fetchArticleById } from '@/services/articles.service';
 import { Article } from '@/interfaces/article.interface';
 import useModalStore from '@/stores/modalStore';
-import Button from '@/components/Sharables/Buttons/Button';
 import PublishArticleButton from './PublishArticleButton';
 import { useState } from 'react';
 
@@ -81,52 +81,14 @@ export default function ModalPublishArticle() {
             <ActionView
               mention={mention}
               article={article}
-              closePublishArticleModal={closePublishArticleModal}
+              closeModal={closePublishArticleModal}
               handleSuccess={handleSuccess}
               handleFailure={handleFailure}
+              ActionButton={PublishArticleButton}
             />
           )
         )}
       </div>
     </div>
-  );
-}
-
-// Composant local pour la vue de la modale pour l'action Publier / Dépublier
-// ===========================================================================================
-interface ActionViewProps {
-  mention: string;
-  article: Article;
-  closePublishArticleModal: () => void;
-  handleSuccess: () => void;
-  handleFailure: () => void;
-}
-function ActionView({
-  mention,
-  article,
-  closePublishArticleModal,
-  handleSuccess,
-  handleFailure,
-}: ActionViewProps) {
-  return (
-    <>
-      <div className="modal-text-container">
-        <p>{mention}</p>
-        <p className="modal-article-title">{article?.title}</p>
-      </div>
-      <div className="buttons-container">
-        <Button
-          addedClassName="button-medium secondary"
-          type="reset"
-          name="Annuler"
-          onClick={closePublishArticleModal}
-        />
-        <PublishArticleButton
-          selectedArticle={article}
-          onSuccess={handleSuccess}
-          onError={handleFailure}
-        />
-      </div>
-    </>
   );
 }
