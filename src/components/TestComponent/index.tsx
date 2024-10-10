@@ -6,7 +6,7 @@ export default function TestComponent() {
   return (
     <div
       className="
-            fixed bottom-0 left-0 z-50 max-w-[15rem] bg-black text-whiteRelief overflow-hidden p-4 text-sm"
+            fixed bottom-0 left-0 z-50 max-w-[15rem] bg-black75 text-whiteRelief overflow-hidden p-4 text-sm"
     >
       {admin && (
         <div className="flex flex-col gap-2">
