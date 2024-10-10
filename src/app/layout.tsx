@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Providers from './providers';
+import { AppInitializer } from '@/app-initializer';
 import { Inter } from 'next/font/google';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -21,12 +22,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Providers>
-          <Header />
-          {children}
-          <Footer />
-          <TestComponent />
-        </Providers>
+        <AppInitializer>
+          <Providers>
+            <Header />
+            {children}
+            <Footer />
+            <TestComponent />
+          </Providers>
+        </AppInitializer>
       </body>
     </html>
   );

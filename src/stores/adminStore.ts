@@ -22,7 +22,7 @@ const useAdminStore = create<State>((set, get) => ({
     localStorage.setItem('admin', JSON.stringify(get().admin));
   },
   setAdminData: (admin) => {
-    set({ admin: admin.admin, token: admin.token , isLogged: true });
+    set({ admin: admin.admin, token: admin.token, isLogged: true });
     get().saveAdminDataInLocalStorage();
   },
   logoutAdmin: () => {

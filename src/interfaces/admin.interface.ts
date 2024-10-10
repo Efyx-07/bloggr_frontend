@@ -7,7 +7,7 @@ export interface Admin {
 }
 
 export interface AdminResponse {
-  admin: Admin,
+  admin: Admin;
   success?: boolean;
   message?: string;
   token?: string | null;

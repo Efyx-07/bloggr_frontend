@@ -8,7 +8,6 @@ interface ArticleFullProps {
 }
 
 export default function ArticleFull({ article }: ArticleFullProps) {
-
   return (
     <div className="article-full">
       <div className="image-container aspect-video">
