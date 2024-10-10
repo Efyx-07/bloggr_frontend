@@ -2,7 +2,7 @@
 
 import { usePathname } from 'next/navigation';
 import SiteName from './SiteName/SiteName';
-import MobileMenuIcon from '../Modals/BurgerMenu/MobileMenuIcon';
+import MobileMenuIcon from './MobileMenuIcon';
 
 export default function Header() {
   const pathName: string = usePathname();
