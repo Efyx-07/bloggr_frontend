@@ -15,7 +15,7 @@ export function AppInitializer({ children }: { children: React.ReactNode }) {
 // Récupère les données du local storage (admin et token) et met à jour la méthode du store
 // ===========================================================================================
 function loadDataFromLocalStorage(
-  setAdminData: (data: { admin: Admin; token: AdminResponse['token']}) => void,
+  setAdminData: (data: { admin: Admin; token: AdminResponse['token'] }) => void,
 ) {
   const storedAdmin: string | null = localStorage.getItem('admin');
   const storedToken: string | null = localStorage.getItem('token');
