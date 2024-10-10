@@ -13,14 +13,16 @@ export function AppInitializer({ children }: { children: React.ReactNode }) {
   const router = useRouter();
 
   useEffect(() => {
-    const token: AdminResponse['token'] = loadDataFromLocalStorage(setAdminData);
+    const token: AdminResponse['token'] =
+      loadDataFromLocalStorage(setAdminData);
     checkTokenValidity(token, logoutAdmin, router);
   }, [setAdminData, logoutAdmin, router]);
-  
+
   return <>{children}</>;
 }
 
 // Récupère les données du local storage (admin et token) et met à jour la méthode du store
+// Retourne le token pour vérifier sa validité
 // ===========================================================================================
 function loadDataFromLocalStorage(
   setAdminData: (data: { admin: Admin; token: AdminResponse['token'] }) => void,
@@ -47,7 +49,7 @@ function checkTokenValidity(
   logoutAdmin: () => void,
   router: any,
 ): void {
-  if (!token || isTokenExpired(token)){
+  if (!token || isTokenExpired(token)) {
     logoutAdmin();
     router.push('/');
   }
