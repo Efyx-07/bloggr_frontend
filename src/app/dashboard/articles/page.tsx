@@ -8,6 +8,7 @@ import HeadTitle from '@/components/Sharables/Others/HeadTitle';
 import SkeletonArticleCard from '@/components/SkeletonComponents/SkeletonArticleCard';
 import LoadingPage from '@/components/LoadingPage';
 import NoArticle from '@/components/NoArticle';
+import ArticleSortDropdown from '@/components/ArticleSortDropdown';
 import Button from '@/components/Sharables/Buttons/Button';
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
@@ -73,15 +74,18 @@ export default function ArticlesPage() {
             {articles && articles.length > 0 ? (
               <>
                 <HeadTitle title="Mes articles">
-                  <Button
-                    addedClassName="button-large primary"
-                    type="button"
-                    name="Nouvel article"
-                    onClick={handleNavToNouvelArticle}
-                    isLoading={isButtonLoading}
-                    isClicked={isClicked}
-                    primary
-                  />
+                  <div className='w-full sm:w-3/6 flex justify-start sm:justify-end items-center gap-8'>
+                    <ArticleSortDropdown />
+                    <Button
+                      addedClassName="button-large primary"
+                      type="button"
+                      name="Nouvel article"
+                      onClick={handleNavToNouvelArticle}
+                      isLoading={isButtonLoading}
+                      isClicked={isClicked}
+                      primary
+                    />
+                  </div>
                 </HeadTitle>
                 <div className="article-cards-container">
                   {reversedArticles?.map((article) => (
