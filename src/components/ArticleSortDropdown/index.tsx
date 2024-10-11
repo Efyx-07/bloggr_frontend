@@ -3,7 +3,13 @@ import './ArticleSortDropdown.css';
 
 export default function ArticleSortDropdown() {
   return (
-    <div className="dropdown-container block w-full h-10 relative">
+    <div
+      className="
+      dropdown-container 
+      block relative
+      w-full max-w-80 h-10
+      "
+    >
       <select
         className="
           dropdown
