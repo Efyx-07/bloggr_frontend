@@ -1,19 +1,7 @@
 @tailwind utilities;
 
-.dropdown-container {
-  display: block;
-  z-index: 2;
-}
-
 .dropdown-container:hover > .dropdown-icon {
   @apply text-accent;
-}
-
-.dropdown {
-  appearance: none;
-  background: none;
-  outline: none;
-  z-index: 9;
 }
 
 option {
@@ -28,7 +16,4 @@ option {
   top: 50%;
   right: 0.5rem;
   transform: translateY(-50%) rotate(90deg);
-  font-size: 2rem;
-  z-index: 0;
-  cursor: pointer;
 }
