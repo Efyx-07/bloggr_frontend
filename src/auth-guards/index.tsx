@@ -12,6 +12,7 @@ interface AuthGuardProps {
 
 // Auth-guard, protège les pages selon le statut de connexion de l'utilisateur
 // Vérifie la présence d'un token dans le local storage et traite la redirection selon les cas
+// Wrappe le layout des pages du dashboard et la page de connexion en passant des props
 // ===========================================================================================
 export function AuthGuard({
   children,

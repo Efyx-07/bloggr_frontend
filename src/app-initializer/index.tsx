@@ -14,7 +14,7 @@ export function AppInitializer({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     const token: AdminResponse['token'] =
-      loadDataFromLocalStorage(setAdminData);
+      loadLocalStorageDataAndUpdateStore(setAdminData);
     checkTokenValidity(token, logoutAdmin, router);
   }, [setAdminData, logoutAdmin, router]);
 
@@ -24,7 +24,7 @@ export function AppInitializer({ children }: { children: React.ReactNode }) {
 // Récupère les données du local storage (admin et token) et met à jour la méthode du store
 // Retourne le token pour vérifier sa validité
 // ===========================================================================================
-function loadDataFromLocalStorage(
+function loadLocalStorageDataAndUpdateStore(
   setAdminData: (data: { admin: Admin; token: AdminResponse['token'] }) => void,
 ): string | null {
   const storedAdmin: string | null = localStorage.getItem('admin');
@@ -49,6 +49,7 @@ function checkTokenValidity(
   logoutAdmin: () => void,
   router: any,
 ): void {
+  console.log('Token is checked !')
   if (!token || isTokenExpired(token)) {
     logoutAdmin();
     router.push('/');

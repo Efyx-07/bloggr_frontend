@@ -5,7 +5,7 @@ export default function TestComponent() {
   const { admin, token, isLogged } = useAdminStore();
   return (
     <div
-      className=" invisible
+      className="visible
             fixed bottom-0 left-0 z-50 max-w-[15rem] bg-black75 text-whiteRelief overflow-hidden p-4 text-sm"
     >
       {admin && (
