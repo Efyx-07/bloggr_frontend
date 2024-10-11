@@ -4,5 +4,6 @@
   @apply w-full 
     flex flex-col gap-8
     md:grid md:grid-cols-2 md:gap-4
-    lg:grid-cols-3 lg:gap-8;
+    lg:grid-cols-3 lg:gap-4
+    2xl:grid-cols-4 2xl:gap-4;
 }
