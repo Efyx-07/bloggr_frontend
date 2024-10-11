@@ -4,17 +4,13 @@ import { useParams } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query';
 import { Article } from '@/interfaces/article.interface';
 import { fetchArticleById } from '@/services/articles.service';
+import { WithPageLoader } from '@/hoc/WithPageLoader';
 import LoadingPage from '@/components/LoadingPage';
-import usePageLoader from '@/hooks/usePageLoader';
 import ArticlePageHead from '@/components/PageHeads/ArticlePageHead';
 import ArticleFull from '@/components/ArticleFull';
 
 export default function ArticlePage() {
   const { articleId } = useParams();
-
-  // Utilise le hook pour le chargement de la page
-  // ===========================================================================================
-  const isContentVisible = usePageLoader();
 
   // Fetch les données de l'article séléctionné par son ID avec useQuery
   // ===========================================================================================
@@ -33,7 +29,9 @@ export default function ArticlePage() {
 
   return (
     <>
-      {isContentVisible ? (
+      <WithPageLoader
+        loadingPageMention={`Chargement de l'article: ${article?.title}...`}
+      >
         <div className="page">
           <div className="content">
             {article ? (
@@ -46,9 +44,7 @@ export default function ArticlePage() {
             )}
           </div>
         </div>
-      ) : (
-        <LoadingPage mention={`Accès à l'article: ${article?.title}...`} />
-      )}
+      </WithPageLoader>
     </>
   );
 }

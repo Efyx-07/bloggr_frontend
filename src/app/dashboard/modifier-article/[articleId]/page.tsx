@@ -4,8 +4,8 @@ import { useParams } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query';
 import { Article } from '@/interfaces/article.interface';
 import { fetchArticleById } from '@/services/articles.service';
+import { WithPageLoader } from '@/hoc/WithPageLoader';
 import LoadingPage from '@/components/LoadingPage';
-import usePageLoader from '@/hooks/usePageLoader';
 import dynamic from 'next/dynamic';
 import SkeletonArticleForm from '@/components/SkeletonComponents/SkeletonArticleForm';
 
@@ -25,10 +25,6 @@ const DynamicUpdateArticleForm = dynamic(
 export default function UpdateArticlePage() {
   const { articleId } = useParams();
 
-  // Utilise le hook pour le chargement de la page
-  // ===========================================================================================
-  const isContentVisible = usePageLoader();
-
   // Fetch les données de l'article séléctionné par son ID avec useQuery
   // ===========================================================================================
   const {
@@ -46,7 +42,9 @@ export default function UpdateArticlePage() {
 
   return (
     <>
-      {isContentVisible ? (
+      <WithPageLoader
+        loadingPageMention={`Accès à modifier: ${article?.title}...`}
+      >
         <div className="page">
           <div className="content">
             {article ? (
@@ -62,9 +60,7 @@ export default function UpdateArticlePage() {
             )}
           </div>
         </div>
-      ) : (
-        <LoadingPage mention={`Accès à modifier: ${article?.title}...`} />
-      )}
+      </WithPageLoader>
     </>
   );
 }

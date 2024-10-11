@@ -1,9 +1,7 @@
 'use client';
 
 import SkeletonArticleForm from '@/components/SkeletonComponents/SkeletonArticleForm';
-import LoadingPage from '@/components/LoadingPage';
-import { loadingPageDelay } from '@/config';
-import { useState } from 'react';
+import { WithPageLoader } from '@/hoc/WithPageLoader';
 import dynamic from 'next/dynamic';
 
 // Import dynamique des composants
@@ -20,18 +18,9 @@ const DynamicCreateArticleForm = dynamic(
 // ================================================================================================
 
 export default function NewArticlePage() {
-  const [isContentVisible, setIsContentVisible] = useState<boolean>(false);
-
-  // Gère le chargement de la page avec le delay défini dans config.ts
-  // ===========================================================================================
-  setTimeout(() => {
-    setIsContentVisible(true);
-  }, loadingPageDelay);
-  // ===========================================================================================
-
   return (
     <>
-      {isContentVisible ? (
+      <WithPageLoader loadingPageMention="Accès nouvel article...">
         <div className="page">
           <div className="content">
             <DynamicFormContainer title="Nouvel article">
@@ -39,9 +28,7 @@ export default function NewArticlePage() {
             </DynamicFormContainer>
           </div>
         </div>
-      ) : (
-        <LoadingPage mention="Accès nouvel article..." />
-      )}
+      </WithPageLoader>
     </>
   );
 }
