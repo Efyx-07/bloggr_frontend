@@ -49,7 +49,6 @@ function checkTokenValidity(
   logoutAdmin: () => void,
   router: any,
 ): void {
-  console.log('Token is checked !')
   if (!token || isTokenExpired(token)) {
     logoutAdmin();
     router.push('/');
