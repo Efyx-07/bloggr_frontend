@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Providers from './providers';
-import { AppInitializer } from '@/hoc/app-initializer';
+import { AppInitializer } from '@/hoc/AppInitializer';
 import { Inter } from 'next/font/google';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';

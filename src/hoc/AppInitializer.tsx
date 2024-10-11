@@ -4,7 +4,7 @@ import useAdminStore from '@/stores/adminStore';
 import { useEffect } from 'react';
 import { Admin, AdminResponse } from '@/interfaces/admin.interface';
 import { useRouter } from 'next/navigation';
-import { checkTokenPresenceAndValidity } from '../checkTokenPresenceAndValidity';
+import { checkTokenPresenceAndValidity } from '@/utils/checkTokenPresenceAndValidity';
 
 // Wrapper pour initialiser l'app avec les méthodes données
 // ===========================================================================================

@@ -1,4 +1,4 @@
-import { isTokenExpired } from '@/utils/isTokenExpired';
+import { isTokenExpired } from './isTokenExpired';
 import { AdminResponse } from '@/interfaces/admin.interface';
 
 // Vérifie la présence et la vaildité d'un token dans le local-storage et renvoie un booléen

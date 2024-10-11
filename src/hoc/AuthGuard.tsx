@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import LoadingPage from '@/components/LoadingPage';
-import { checkTokenPresenceAndValidity } from '../checkTokenPresenceAndValidity';
+import { checkTokenPresenceAndValidity } from '@/utils/checkTokenPresenceAndValidity';
 
 interface AuthGuardProps {
   children: React.ReactNode;
