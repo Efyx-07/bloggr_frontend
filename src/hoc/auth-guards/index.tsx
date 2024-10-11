@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import LoadingPage from '@/components/LoadingPage';
+import { checkTokenPresenceAndValidity } from '../checkTokenPresenceAndValidity';
 
 interface AuthGuardProps {
   children: React.ReactNode;
@@ -11,7 +12,7 @@ interface AuthGuardProps {
 }
 
 // Auth-guard, protège les pages selon le statut de connexion de l'utilisateur
-// Vérifie la présence d'un token dans le local storage et traite la redirection selon les cas
+// Vérifie la présence et la validité d'un token dans le local storage et traite la redirection selon les cas
 // Wrappe le layout des pages du dashboard et la page de connexion en passant des props
 // ===========================================================================================
 export function AuthGuard({
@@ -23,8 +24,7 @@ export function AuthGuard({
   const router = useRouter();
 
   useEffect(() => {
-    const isLoggedFromLocalStorage: boolean =
-      checkTokenPresenceInLocalStorage();
+    const isLoggedFromLocalStorage: boolean = checkTokenPresenceAndValidity();
     if (shouldBeLoggedIn && !isLoggedFromLocalStorage)
       router.replace(redirectPath);
     else if (!shouldBeLoggedIn && isLoggedFromLocalStorage)
@@ -34,11 +34,4 @@ export function AuthGuard({
 
   if (isCheckingLogin) return <LoadingPage mention="Chargement..." />;
   return <>{children}</>;
-}
-
-// Vérifie la présence d'un token dans le local-storage
-// ================================================================================================
-function checkTokenPresenceInLocalStorage(): boolean {
-  const token: string | null = localStorage.getItem('token');
-  return !!token;
 }
