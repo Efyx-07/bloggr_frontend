@@ -3,19 +3,15 @@
 import useAdminStore from '@/stores/adminStore';
 import { useEffect } from 'react';
 import { Admin, AdminResponse } from '@/interfaces/admin.interface';
-import { useRouter } from 'next/navigation';
-import { checkTokenPresenceAndValidity } from '@/utils/checkTokenPresenceAndValidity';
 
 // Wrapper pour initialiser l'app avec les méthodes données
 // ===========================================================================================
 export function AppInitializer({ children }: { children: React.ReactNode }) {
-  const { setAdminData, logoutAdmin } = useAdminStore();
-  const router = useRouter();
+  const { setAdminData } = useAdminStore();
 
   useEffect(() => {
     loadLocalStorageDataAndUpdateStore(setAdminData);
-    if (!checkTokenPresenceAndValidity(logoutAdmin, router)) return;
-  }, [setAdminData, logoutAdmin, router]);
+  }, [setAdminData]);
 
   return <>{children}</>;
 }
