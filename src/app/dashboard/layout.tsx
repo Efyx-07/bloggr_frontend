@@ -1,4 +1,4 @@
-import { AuthGuard } from '@/auth-guards';
+import { AuthGuard } from '@/hoc/auth-guards';
 import ModalPublishArticle from '@/components/Modals/ModalPublishArticle';
 import ModalDeleteArticle from '@/components/Modals/ModalDeleteArticle';
 import BurgerMenu from '@/components/Modals/BurgerMenu';
