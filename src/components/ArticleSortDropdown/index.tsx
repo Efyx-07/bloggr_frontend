@@ -7,7 +7,7 @@ export default function ArticleSortDropdown() {
       className="
       dropdown-container 
       block relative
-      w-full max-w-80 h-10
+      w-full max-w-96 h-10
       "
     >
       <select

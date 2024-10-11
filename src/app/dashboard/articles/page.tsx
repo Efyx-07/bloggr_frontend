@@ -77,7 +77,7 @@ export default function ArticlesPage() {
                   <div
                     className="
                       w-full sm:w-4/6 
-                      flex justify-start sm:justify-end items-center gap-8
+                      flex justify-start sm:justify-end items-center gap-4 md:gap-8
                     "
                   >
                     <ArticleSortDropdown />
