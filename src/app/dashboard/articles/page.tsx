@@ -74,7 +74,7 @@ export default function ArticlesPage() {
             {articles && articles.length > 0 ? (
               <>
                 <HeadTitle title="Mes articles">
-                  <div className='w-full sm:w-3/6 flex justify-start sm:justify-end items-center gap-8'>
+                  <div className="w-full sm:w-3/6 flex justify-start sm:justify-end items-center gap-8">
                     <ArticleSortDropdown />
                     <Button
                       addedClassName="button-large primary"
