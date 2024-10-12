@@ -45,10 +45,7 @@ export default function ArticleFull({ article }: ArticleFullProps) {
           </div>
         </div>
         <Separator />
-        <div
-          className="article-bbody"
-          dangerouslySetInnerHTML={{ __html: article.body }}
-        />
+        <div dangerouslySetInnerHTML={{ __html: article.body }} />
       </div>
       <p className="text-2xl">.&nbsp;&nbsp;.&nbsp;&nbsp;.</p>
     </div>
