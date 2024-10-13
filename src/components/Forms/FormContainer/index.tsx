@@ -19,24 +19,13 @@ export default function FormContainer({
   const comptePathname = pathName === '/dashboard/compte';
   return (
     <div
-      className={`
-        container-style
-        w-full
-        p-4 md:p-8
-        gap-8
+      className={`container-style w-full p-4 md:p-8 gap-8
         ${loginPathname || comptePathname ? 'max-w-[30rem]' : 'max-w-[50rem]'}
       `}
     >
       <HeadTitle title={title} />
       {additionalMention && (
-        <p
-          className="
-            w-full
-            p-4
-            border border-black border-solid 
-            text-xs font-semibold
-        "
-        >
+        <p className="w-full p-4 border border-black border-solid text-xs font-semibold">
           {additionalMention}
         </p>
       )}
