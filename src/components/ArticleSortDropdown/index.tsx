@@ -1,7 +1,7 @@
 import { Icon } from '@iconify/react';
 import useArticlesFilterStore from '@/stores/articlesFilterStore';
-import './ArticleSortDropdown.css';
 import { Article } from '@/interfaces/article.interface';
+import './ArticleSortDropdown.css';
 
 interface ArticleSortDropdownProps {
   articles: Article[];
