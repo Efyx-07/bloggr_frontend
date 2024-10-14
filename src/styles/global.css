@@ -49,7 +49,7 @@ a {
 
 .content {
   min-height: calc(100dvh - 11rem);
-  @apply w-full max-w-[90rem]
+  @apply w-full max-w-content
   p-4 lg:pt-8 pb-16 lg:px-8
   flex flex-col items-center justify-center gap-8;
 }

@@ -17,7 +17,7 @@ export default function Header() {
         flex justify-center items-center sticky top-0 z-30"
       >
         <div
-          className={`w-full max-w-[90rem] h-8 px-4 lg:px-8 flex items-center
+          className={`w-full max-w-content h-8 px-4 lg:px-8 flex items-center
             ${pathName === '/' ? 'justify-center' : 'justify-between'}
           `}
         >

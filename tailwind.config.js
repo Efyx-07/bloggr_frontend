@@ -15,6 +15,9 @@ module.exports = {
         greenColor: 'rgba(22, 163, 74)',
         errorColor: 'red',
       },
+      maxWidth: {
+        content: '90rem',
+      }
     },
   },
   plugins: [],
