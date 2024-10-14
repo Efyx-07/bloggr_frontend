@@ -6,6 +6,7 @@ import {
   fetchArticleById,
   fetchArticles,
   updateArticleById,
+  updateArticlePublishedStatus,
 } from '../articles.service';
 
 // Mock du fetch
@@ -273,8 +274,45 @@ describe('deleteArticleById', () => {
 // Test du service updateArticlePublishedStatus
 // ===========================================================================================
 describe('updateArticlePublishedStatus', () => {
+  afterEach(() => {
+    jest.resetAllMocks(); // Réinitialise les mocks après chaque test
+  });
+
+  const id: Article['id'] = 1;
+  const published: Article['published'] = false;
   // Teste le scénario succès
   // ===========================================================================================
+  it('should update the published status of an article and return a success message', async () => {
+    const mockSuccessMessage: string =
+      'Article published status successfully updated !';
+
+    (fetch as jest.Mock).mockResolvedValueOnce({
+      ok: true,
+      json: async () => mockSuccessMessage,
+    });
+    const result = await updateArticlePublishedStatus(id, published);
+    expect(fetch).toHaveBeenCalledWith(
+      `${backendUrl}/articles/publish-article/${id}`,
+      {
+        method: 'PUT',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify({ published }),
+      },
+    );
+    expect(result).toEqual(mockSuccessMessage);
+  });
+
   // Teste le scénario echec
   // ===========================================================================================
+  it('should handle failed update the published status of an article due to a server error', async () => {
+    (fetch as jest.Mock).mockResolvedValueOnce({
+      ok: false,
+      statusText: 'Server error',
+    });
+    await expect(updateArticlePublishedStatus(id, published)).rejects.toThrow(
+      'Failed to update article published status: Server error',
+    );
+  });
 });
