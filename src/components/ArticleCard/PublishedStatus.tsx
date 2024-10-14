@@ -19,17 +19,12 @@ export default function PublishedStatus({ article }: PublishedStatusProps) {
     <div
       onClick={() => router.push(`/dashboard/article/${article.id}`)}
       className={`
-        w-full max-w-[11rem]
-        flex items-center justify-center gap-1
-        text-xs font-semibold
-        border rounded
-        p-1
+        w-full max-w-[11rem] flex items-center justify-center gap-1 text-xs font-semibold border rounded p-1 cursor-pointer
         ${
           article.published
             ? 'text-greenColor border-greenColor hover:text-white hover:bg-greenColor'
             : 'text-accent border-accent hover:text-white hover:bg-accent'
         }
-        cursor-pointer
       `}
     >
       <Icon icon={iconName} />

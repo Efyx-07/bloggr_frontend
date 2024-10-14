@@ -7,6 +7,7 @@ export default [
       'prettier',
       'plugin:prettier/recommended',
       'plugin:@typescript-eslint/recommended',
+      'plugin:tailwindcss/recommended',
     ],
     plugins: ['prettier', 'tailwindcss', '@typescript-eslint'], // Ajout du plugin TypeScript
     parser: '@typescript-eslint/parser', // Ajout du parser pour TypeScript
@@ -33,6 +34,7 @@ export default [
     overrides: [
       {
         files: ['*.ts', '*.tsx'],
+        parser: '@typescript-eslint/parser',
         rules: {
           '@typescript-eslint/no-unused-vars': 'warn',
         },
