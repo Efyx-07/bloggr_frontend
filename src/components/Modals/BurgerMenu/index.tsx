@@ -13,9 +13,7 @@ export default function BurgerMenu() {
 
   return (
     <div
-      className={`
-        burger-menu
-        transition-transform duration-200 ease
+      className={`burger-menu transition-transform duration-200 ease
         ${!isBurgerMenuOpen ? 'translate-x-full' : 'translate-x-0'}`}
     >
       <ModalCloseIcon onClick={closeBurgerMenu} />

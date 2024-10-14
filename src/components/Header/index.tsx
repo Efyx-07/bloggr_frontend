@@ -13,17 +13,11 @@ export default function Header() {
   return (
     <>
       <header
-        className="
-          w-full h-16 bg-whiteBackground border-b border-black10 
-          flex justify-center items-center 
-          sticky top-0 z-30
-          "
+        className="w-full h-16 bg-whiteBackground border-b border-black10 
+        flex justify-center items-center sticky top-0 z-30"
       >
         <div
-          className={`
-            w-full max-w-[90rem] h-8
-            px-4 lg:px-8 
-            flex items-center
+          className={`w-full max-w-[90rem] h-8 px-4 lg:px-8 flex items-center
             ${pathName === '/' ? 'justify-center' : 'justify-between'}
           `}
         >
@@ -46,8 +40,7 @@ function OptionalNavitem() {
       <VerticalSeparator />
       <Link
         href="/dashboard/articles"
-        className="text-accent hover:text-black font-semibold
-                    flex items-center gap-2"
+        className="text-accent hover:text-black font-semibold flex items-center gap-2"
       >
         <Icon icon="fluent:ios-arrow-24-filled" />
         <p>retour à mes articles</p>

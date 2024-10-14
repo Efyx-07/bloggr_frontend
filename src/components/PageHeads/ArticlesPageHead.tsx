@@ -20,12 +20,7 @@ export default function ArticlesPageHead() {
 
   return (
     <HeadTitle title="Mes articles">
-      <div
-        className="
-            w-full sm:w-4/6 
-            flex justify-start sm:justify-end items-center gap-4 md:gap-8
-        "
-      >
+      <div className="w-full sm:w-4/6 flex justify-start sm:justify-end items-center gap-4 md:gap-8">
         <ArticleSortDropdown />
         <Button
           addedClassName="button-large primary"

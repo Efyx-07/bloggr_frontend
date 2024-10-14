@@ -34,11 +34,8 @@ export default function ModalLogout({
 
   return (
     <div
-      className={`
-        modal-logout 
-        transition-transform duration-200 ease 
-        ${!isModalLogoutOpen ? 'translate-x-full' : 'translate-x-0'}
-      `}
+      className={`modal-logout transition-transform duration-200 ease 
+        ${!isModalLogoutOpen ? 'translate-x-full' : 'translate-x-0'}`}
     >
       <p>Êtes-vous sûr de vouloir vous déconnecter ?</p>
       <div className="buttons-container justify-center">

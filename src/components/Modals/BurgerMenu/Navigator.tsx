@@ -52,11 +52,7 @@ export default function Navigator({
         <div
           key={navItem.name}
           onClick={navItem.onClick}
-          className="
-           text-black text-2xl font-semibold 
-           hover:text-accent
-           cursor-pointer
-          "
+          className="text-black text-2xl font-semibold hover:text-accent cursor-pointer"
         >
           {navItem.name}
         </div>
