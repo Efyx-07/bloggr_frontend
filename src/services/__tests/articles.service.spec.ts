@@ -1,6 +1,10 @@
 import { Article } from '@/interfaces/article.interface';
 import { backendUrl } from '@/config';
-import { createArticle, fetchArticles } from '../articles.service';
+import {
+  createArticle,
+  fetchArticleById,
+  fetchArticles,
+} from '../articles.service';
 
 // Mock du fetch
 global.fetch = jest.fn();
@@ -127,10 +131,49 @@ describe('fetchArticles', () => {
 // Test du service fetchArticleById
 // ===========================================================================================
 describe('fetchArticleById', () => {
+  afterEach(() => {
+    jest.resetAllMocks(); // Réinitialise les mocks après chaque test
+  });
+
+  const keywords: Article['keywords'] = [
+    { id: 1, name: 'keyword1' },
+    { id: 2, name: 'keyword2' },
+  ];
+
+  const mockArticle: Article = {
+    id: 1,
+    title: 'Article 1',
+    imageUrl: 'url1',
+    body: 'body1',
+    creationDate: new Date('2024-08-30T12:00:00Z'),
+    lastUpdate: new Date('2024-08-30T12:00:00Z'),
+    published: false,
+    publicationDate: null,
+    keywords: keywords,
+  };
+
   // Teste le scénario succès
   // ===========================================================================================
+  it('should get an article by its id and return the article details', async () => {
+    (fetch as jest.Mock).mockResolvedValueOnce({
+      ok: true,
+      json: async () => ({ article: mockArticle }),
+    });
+    const result = await fetchArticleById(mockArticle.id);
+    expect(result).toEqual(mockArticle);
+  });
+
   // Teste le scénario echec
   // ===========================================================================================
+  it('should handle failed get article by its id due to a server error', async () => {
+    (fetch as jest.Mock).mockResolvedValueOnce({
+      ok: false,
+      statusText: 'Server error',
+    });
+    await expect(fetchArticleById(mockArticle.id)).rejects.toThrow(
+      `Error while fetching article ${mockArticle.id}: Server error`,
+    );
+  });
 });
 
 // Test du service updateArticleById

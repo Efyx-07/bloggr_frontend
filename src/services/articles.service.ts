@@ -55,13 +55,15 @@ export async function fetchArticleById(id: Article['id']): Promise<Article> {
   try {
     const response = await fetch(`${backendUrl}/articles/${id}`);
     if (!response.ok) {
-      throw new Error(`Error while fetching article ${id}`);
+      throw new Error(
+        `Error while fetching article ${id}: ` + response.statusText,
+      );
     }
     const data: { article: Article } = await response.json();
     const article: Article = data.article;
     return article;
   } catch (error) {
-    throw new Error('Error while fetching article: ' + error);
+    throw new Error(`Error while fetching article ${id}: ` + error);
   }
 }
 
