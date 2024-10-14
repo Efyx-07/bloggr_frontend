@@ -2,6 +2,7 @@ import { Article } from '@/interfaces/article.interface';
 import { backendUrl } from '@/config';
 import {
   createArticle,
+  deleteArticleById,
   fetchArticleById,
   fetchArticles,
   updateArticleById,
@@ -234,10 +235,39 @@ describe('updateArticleById', () => {
 // Test du service deleteArticleById
 // ===========================================================================================
 describe('deleteArticleById', () => {
+  afterEach(() => {
+    jest.resetAllMocks(); // Réinitialise les mocks après chaque test
+  });
+
+  const id: Article['id'] = 1;
+
   // Teste le scénario succès
   // ===========================================================================================
+  it('should delete an article by its id and return a success message', async () => {
+    const mockSuccessMessage: string = 'Article successfully deleted !';
+
+    (fetch as jest.Mock).mockResolvedValueOnce({
+      ok: true,
+      json: async () => mockSuccessMessage,
+    });
+    const result = await deleteArticleById(id);
+    expect(fetch).toHaveBeenCalledWith(`${backendUrl}/articles/${id}`, {
+      method: 'DELETE',
+    });
+    expect(result).toEqual(mockSuccessMessage);
+  });
+
   // Teste le scénario echec
   // ===========================================================================================
+  it('should handle failed delete an article due to a server error', async () => {
+    (fetch as jest.Mock).mockResolvedValueOnce({
+      ok: false,
+      statusText: 'Server error',
+    });
+    await expect(deleteArticleById(id)).rejects.toThrow(
+      'Failed to delete article: Server error',
+    );
+  });
 });
 
 // Test du service updateArticlePublishedStatus
