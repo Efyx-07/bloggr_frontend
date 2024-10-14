@@ -1,4 +1,4 @@
-import { Admin } from '@/interfaces/admin.interface';
+import { Admin, AdminResponse } from '@/interfaces/admin.interface';
 import { login } from './admin.service';
 import { backendUrl } from '@/config';
 
@@ -14,14 +14,16 @@ describe('login', () => {
 
   // Teste le scénario succès
   it('should successfully login the admin and return data', async () => {
-    const mockResponse: Admin = {
+    const mockResponse: AdminResponse = {
+      admin: {
+        id: 1,
+        email: 'admin@admin.com',
+        firstName: 'first',
+        lastName: 'last',
+      },
       success: true,
       message: 'successfully logged',
       token: 'token',
-      id: 1,
-      email: 'admin@admin.com',
-      firstName: 'first',
-      lastName: 'last',
     };
 
     (fetch as jest.Mock).mockResolvedValueOnce({
