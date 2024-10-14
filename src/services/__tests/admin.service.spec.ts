@@ -1,5 +1,5 @@
 import { Admin, AdminResponse } from '@/interfaces/admin.interface';
-import { login } from './admin.service';
+import { login } from '../admin.service';
 import { backendUrl } from '@/config';
 
 // Mock du fetch
@@ -13,6 +13,7 @@ describe('login', () => {
   });
 
   // Teste le scénario succès
+  // ===========================================================================================
   it('should successfully login the admin and return data', async () => {
     const mockResponse: AdminResponse = {
       admin: {
@@ -47,6 +48,7 @@ describe('login', () => {
   });
 
   // Teste le scénario echec
+  // ===========================================================================================
   it('should handle failed login due to a server error', async () => {
     (fetch as jest.Mock).mockResolvedValueOnce({
       ok: false,
