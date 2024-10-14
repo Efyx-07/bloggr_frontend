@@ -4,6 +4,7 @@ import {
   createArticle,
   fetchArticleById,
   fetchArticles,
+  updateArticleById,
 } from '../articles.service';
 
 // Mock du fetch
@@ -28,10 +29,10 @@ describe('create-article', () => {
     keywords: [{ id: 1, name: 'keyword1' }],
   };
 
-  const title = 'title';
-  const imageUrl = 'https://imageurl.com';
-  const body = 'body';
-  const keywords = mockArticle.keywords;
+  const title: Article['title'] = 'title';
+  const imageUrl: Article['imageUrl'] = 'https://imageurl.com';
+  const body: Article['body'] = 'body';
+  const keywords: Article['keywords'] = mockArticle.keywords;
 
   // Teste le scénario succès
   // ===========================================================================================
@@ -179,10 +180,55 @@ describe('fetchArticleById', () => {
 // Test du service updateArticleById
 // ===========================================================================================
 describe('updateArticleById', () => {
+  afterEach(() => {
+    jest.resetAllMocks(); // Réinitialise les mocks après chaque test
+  });
+
+  const id: Article['id'] = 1;
+  const title: Article['title'] = 'title';
+  const imageUrl: Article['imageUrl'] = 'https://imageurl.com';
+  const body: Article['body'] = 'body';
+  const keywords: Article['keywords'] = [
+    { id: 1, name: 'keyword1' },
+    { id: 2, name: 'keyword2' },
+  ];
+
   // Teste le scénario succès
   // ===========================================================================================
+  it('should update an article by its id and return a success message', async () => {
+    const mockSuccessMessage: string = 'Article successfully updated !';
+
+    (fetch as jest.Mock).mockResolvedValueOnce({
+      ok: true,
+      json: async () => mockSuccessMessage,
+    });
+    const result = await updateArticleById(id, title, imageUrl, body, keywords);
+    expect(fetch).toHaveBeenCalledWith(`${backendUrl}/articles/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        title,
+        imageUrl,
+        body,
+        keywords,
+      }),
+    });
+    expect(result).toEqual(mockSuccessMessage);
+  });
+
   // Teste le scénario echec
   // ===========================================================================================
+  it('should handle failed update an article due to a server error', async () => {
+    (fetch as jest.Mock).mockResolvedValueOnce({
+      ok: false,
+      statusText: 'Server error',
+    });
+    await expect(
+      updateArticleById(id, title, imageUrl, body, keywords),
+    ).rejects.toThrow('Failed to update article: Server error');
+  });
 });
 
 // Test du service deleteArticleById
