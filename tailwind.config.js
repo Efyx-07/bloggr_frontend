@@ -17,7 +17,7 @@ module.exports = {
       },
       maxWidth: {
         content: '90rem',
-      }
+      },
     },
   },
   plugins: [],
