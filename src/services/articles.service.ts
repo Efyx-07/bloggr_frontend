@@ -39,7 +39,7 @@ export async function fetchArticles(): Promise<Article[]> {
   try {
     const response = await fetch(`${backendUrl}/articles`);
     if (!response.ok) {
-      throw new Error('Error while fetching articles');
+      throw new Error('Error while fetching articles: ' + response.statusText);
     }
     const data: { articles: Article[] } = await response.json();
     const articles: Article[] = data.articles;

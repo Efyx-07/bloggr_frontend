@@ -1,6 +1,6 @@
 import { Article } from '@/interfaces/article.interface';
 import { backendUrl } from '@/config';
-import { createArticle } from '../articles.service';
+import { createArticle, fetchArticles } from '../articles.service';
 
 // Mock du fetch
 global.fetch = jest.fn();
@@ -17,8 +17,8 @@ describe('create-article', () => {
     title: 'title',
     imageUrl: 'https://imageurl.com',
     body: 'body',
-    creationDate: 'date',
-    lastUpdate: 'date',
+    creationDate: new Date('2024-08-30T12:00:00Z'),
+    lastUpdate: new Date('2024-08-30T12:00:00Z'),
     published: false,
     publicationDate: null,
     keywords: [{ id: 1, name: 'keyword1' }],
@@ -36,12 +36,7 @@ describe('create-article', () => {
       ok: true,
       json: async () => ({ article: mockArticle }),
     });
-    const result = await createArticle(
-      title,
-      imageUrl,
-      body,
-      keywords,
-    );
+    const result = await createArticle(title, imageUrl, body, keywords);
     expect(fetch).toHaveBeenCalledWith(
       `${backendUrl}/articles/create-article`,
       {
@@ -70,15 +65,97 @@ describe('create-article', () => {
 
 // Test du service fetchArticles
 // ===========================================================================================
+describe('fetchArticles', () => {
+  afterEach(() => {
+    jest.resetAllMocks(); // Réinitialise les mocks après chaque test
+  });
+
+  const keywords: Article['keywords'] = [
+    { id: 1, name: 'keyword1' },
+    { id: 2, name: 'keyword2' },
+  ];
+
+  const mockArticles: Article[] = [
+    {
+      id: 1,
+      title: 'Article 1',
+      imageUrl: 'url1',
+      body: 'body1',
+      creationDate: new Date('2024-08-30T12:00:00Z'),
+      lastUpdate: new Date('2024-08-30T12:00:00Z'),
+      published: false,
+      publicationDate: null,
+      keywords: keywords,
+    },
+    {
+      id: 2,
+      title: 'Article 2',
+      imageUrl: 'url2',
+      body: 'body2',
+      creationDate: new Date('2024-08-30T12:00:00Z'),
+      lastUpdate: new Date('2024-08-30T12:00:00Z'),
+      published: false,
+      publicationDate: null,
+      keywords: keywords,
+    },
+  ];
+
+  // Teste le scénario succès
+  // ===========================================================================================
+  it('should get all the articles and return an array of articles', async () => {
+    (fetch as jest.Mock).mockResolvedValueOnce({
+      ok: true,
+      json: async () => ({ articles: mockArticles }),
+    });
+    const result = await fetchArticles();
+    expect(result).toEqual(mockArticles);
+  });
+
+  // Teste le scénario echec
+  // ===========================================================================================
+  it('should handle failed get articles due to a server error', async () => {
+    (fetch as jest.Mock).mockResolvedValueOnce({
+      ok: false,
+      statusText: 'Server error',
+    });
+    await expect(fetchArticles()).rejects.toThrow(
+      'Error while fetching articles: Server error',
+    );
+  });
+});
 
 // Test du service fetchArticleById
 // ===========================================================================================
+describe('fetchArticleById', () => {
+  // Teste le scénario succès
+  // ===========================================================================================
+  // Teste le scénario echec
+  // ===========================================================================================
+});
 
 // Test du service updateArticleById
 // ===========================================================================================
+describe('updateArticleById', () => {
+  // Teste le scénario succès
+  // ===========================================================================================
+  // Teste le scénario echec
+  // ===========================================================================================
+});
 
 // Test du service deleteArticleById
 // ===========================================================================================
+describe('deleteArticleById', () => {
+  // Teste le scénario succès
+  // ===========================================================================================
+  // Teste le scénario echec
+  // ===========================================================================================
+});
 
 // Test du service updateArticlePublishedStatus
 // ===========================================================================================
+describe('updateArticlePublishedStatus', () => {
+  // Teste le scénario succès
+  // ===========================================================================================
+  // Teste le scénario echec
+  // ===========================================================================================
+});
