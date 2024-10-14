@@ -5,7 +5,7 @@
 }
 
 option {
-  @apply text-black;
+  @apply text-black text-sm font-medium;
 }
 
 .dropdown:hover > .dropdown-icon {

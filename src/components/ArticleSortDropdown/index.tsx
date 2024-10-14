@@ -33,7 +33,7 @@ export default function ArticleSortDropdown({
     <div className="dropdown-container block relative w-full max-w-96 h-10">
       <select
         className="dropdown relative z-10 w-full h-full appearance-none outline-none
-          px-4 bg-transparent border border-black25 rounded text-black cursor-pointer"
+          px-4 bg-transparent border border-black25 rounded text-black text-sm font-medium cursor-pointer"
         onChange={handleFilterChange}
       >
         <option value="all">Tous les articles ({articles.length})</option>
