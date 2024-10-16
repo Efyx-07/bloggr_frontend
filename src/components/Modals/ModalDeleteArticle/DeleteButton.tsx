@@ -33,7 +33,7 @@ export default function DeleteButton({
       setIsClicked(false);
       onSuccess();
     },
-    onError: (error: any) => {
+    onError: () => {
       setIsLoading(false);
       setIsClicked(false);
       onError();

@@ -43,7 +43,7 @@ describe('DeleteButton', () => {
 
   // Test de rendu
   // ===========================================================================================
-  it('should render the button', async () => {
+  it('should render the button', () => {
     render(
       <QueryClientProvider client={queryClient}>
         <DeleteButton
