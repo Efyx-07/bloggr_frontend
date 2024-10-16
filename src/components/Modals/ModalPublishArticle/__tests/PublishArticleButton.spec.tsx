@@ -1,8 +1,9 @@
 import '@testing-library/jest-dom';
 import PublishArticleButton from '../PublishArticleButton';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Article } from '@/interfaces/article.interface';
+import { updateArticlePublishedStatus } from '@/services/articles.service';
 
 // Crée une instance de QueryClient
 const queryClient = new QueryClient();
@@ -76,5 +77,66 @@ describe('PublishArticleButton', () => {
     });
     expect(publishArticleButton).toBeInTheDocument();
     expect(publishArticleButton).toHaveTextContent('Dépublier');
+  });
+
+  // Test du bon fonctionnement du bouton: vérifie que le statut change
+  // ===========================================================================================
+  it('should call the mutation and toggle the publish status', async () => {
+    render(
+      <QueryClientProvider client={queryClient}>
+        <PublishArticleButton
+          selectedArticle={mockSelectedArticle}
+          onSuccess={mockOnSuccess}
+          onError={mockOnError}
+        />
+      </QueryClientProvider>,
+    );
+
+    const publishArticleButton = screen.getByRole('button', {
+      name: /Publier/i,
+    });
+
+    // Simule le click du bouton
+    fireEvent.click(publishArticleButton);
+
+    await waitFor(() => {
+      expect(updateArticlePublishedStatus).toHaveBeenCalledWith(
+        mockSelectedArticle.id,
+        !mockSelectedArticle.published,
+      );
+    });
+  });
+
+  // Test en cas d'erreur
+  // ===========================================================================================
+  it('should handle publish status toggle error', async () => {
+    const {
+      updateArticlePublishedStatus,
+    } = require('@/services/articles.service');
+
+    // Simule une erreur
+    updateArticlePublishedStatus.mockRejectedValueOnce(new Error('Error'));
+
+    render(
+      <QueryClientProvider client={queryClient}>
+        <PublishArticleButton
+          selectedArticle={mockSelectedArticle}
+          onSuccess={mockOnSuccess}
+          onError={mockOnError}
+        />
+      </QueryClientProvider>,
+    );
+
+    const publishArticleButton = screen.getByRole('button', {
+      name: /Publier/i,
+    });
+
+    // Simule le click du bouton
+    fireEvent.click(publishArticleButton);
+
+    await waitFor(() => {
+      expect(mockOnSuccess).not.toHaveBeenCalled();
+      expect(mockOnError).toHaveBeenCalledTimes(1);
+    });
   });
 });
