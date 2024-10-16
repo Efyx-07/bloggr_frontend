@@ -17,6 +17,8 @@ module.exports = {
       },
       maxWidth: {
         content: '90rem',
+        smallForm: '30rem',
+        largeForm: '60rem',
       },
     },
   },

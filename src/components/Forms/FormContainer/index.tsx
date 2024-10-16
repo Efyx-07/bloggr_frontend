@@ -20,7 +20,7 @@ export default function FormContainer({
   return (
     <div
       className={`container-style w-full p-4 md:p-8 gap-8
-        ${loginPathname || comptePathname ? 'max-w-[30rem]' : 'max-w-[50rem]'}
+        ${loginPathname || comptePathname ? 'max-w-smallForm' : 'max-w-largeForm'}
       `}
     >
       <HeadTitle title={title} />

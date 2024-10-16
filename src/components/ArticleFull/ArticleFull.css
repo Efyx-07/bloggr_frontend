@@ -1,7 +1,7 @@
 @tailwind utilities;
 
 .article-full {
-  @apply w-full max-w-[50rem]
+  @apply w-full max-w-largeForm
     flex flex-col items-center gap-8;
 }
 
