@@ -60,11 +60,26 @@ describe('DeleteButton', () => {
 
     const deleteButton = screen.getByRole('button', { name: /supprimer/i });
     expect(deleteButton).toBeInTheDocument();
+  });
 
-    // Simuler un clic sur le bouton
+  // Test du bon fonctionnement du bouton
+  // ===========================================================================================
+  it('should handle the deletion successfully', async () => {
+    render(
+      <QueryClientProvider client={queryClient}>
+        <DeleteButton
+          selectedArticle={mockSelectedArticle}
+          onSuccess={mockOnSuccess}
+          onError={mockOnError}
+        />
+      </QueryClientProvider>,
+    );
+
+    const deleteButton = screen.getByRole('button', { name: /supprimer/i });
+
+    // Simule le click du bouton
     fireEvent.click(deleteButton);
 
-    // Attendre que la mutation se termine
     await waitFor(() => {
       expect(mockOnSuccess).toHaveBeenCalledTimes(1);
       expect(mockOnError).not.toHaveBeenCalled();
