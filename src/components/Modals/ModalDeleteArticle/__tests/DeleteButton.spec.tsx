@@ -1,11 +1,7 @@
 import '@testing-library/jest-dom';
 import DeleteButton from '../DeleteButton';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
-import {
-  QueryClient,
-  QueryClientProvider,
-  useMutation,
-} from '@tanstack/react-query';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Article } from '@/interfaces/article.interface';
 
 // Crée une instance de QueryClient
