@@ -85,4 +85,35 @@ describe('DeleteButton', () => {
       expect(mockOnError).not.toHaveBeenCalled();
     });
   });
+
+  // Test en cas d'erreur
+  // ===========================================================================================
+  it('should handle the deletion error', async () => {
+    const { deleteArticleById } = require('@/services/articles.service');
+    const { deleteFromVercelBlob } = require('@/services/vercel-blob.service');
+
+    // Simule une erreur
+    deleteFromVercelBlob.mockRejectedValueOnce(new Error('Error'));
+    deleteArticleById.mockRejectedValueOnce(new Error('Error'));
+
+    render(
+      <QueryClientProvider client={queryClient}>
+        <DeleteButton
+          selectedArticle={mockSelectedArticle}
+          onSuccess={mockOnSuccess}
+          onError={mockOnError}
+        />
+      </QueryClientProvider>,
+    );
+
+    const deleteButton = screen.getByRole('button', { name: /supprimer/i });
+
+    // Simule le click du bouton
+    fireEvent.click(deleteButton);
+
+    await waitFor(() => {
+      expect(mockOnSuccess).not.toHaveBeenCalled();
+      expect(mockOnError).toHaveBeenCalledTimes(1);
+    });
+  });
 });
