@@ -12,7 +12,7 @@ Cette application permet à un utilisateur de créer et gérer ses articles de b
 - **Connexion et authentification** : L'application n'autorise qu'un seul utilisateur dont les données seront préalablement renseignées dans la base de données par l'administrateur. Possibilité de modifier le mot de passe via l'application.
 - **Création d'un article** : Formulaire de création avec les champs 'Titre', 'Image de couverture', 'Corps de l'article' et 'Mots-clé'. Ce dernier champs sera particulièrement important pour l'optimisation SEO de l'article et son référencement.  
 - **Modification d'un article** : Formulaire pré-rempli avec les données initiales de l'article. Chaque donnée pouvant être modifiée et mise à jour.
-- **Publication controlée** : Un article nouvellement créé a un statut "En attente de publication". Pour être "Publié", l'utilisateur devra le publier manuellement après contrôle. L'API à récupérer sur un site tierce devra ne concerner que les articles publiés (plus de détails concernant les API dans la partie backend).
+- **Publication controlée** : Un article nouvellement créé a un statut "En attente de publication". Pour être "Publié", l'utilisateur devra le publier manuellement après contrôle. L'API à récupérer sur un site tierce devra ne concerner que les articles publiés (plus de détails concernant les API dans la partie <a href="https://github.com/Efyx-07/bloggr_backend">backend</a>).
 - **Accueil du dashboard** : Une fois connecté, l'utilisateur aura accès à la page principale affichant la liste des articles sous forme de cartes et pilotant la majorité des actions (Voir, Modifier, Supprimer). L'entièreté du dashboard est protégée par un Auth-Guard et accessible uniquement à l'utilisateur connecté.
 - **Interface** : Entièrement responsive avec une expérience utilisateur et une interface conviviales.
 
@@ -31,7 +31,7 @@ Cette application permet à un utilisateur de créer et gérer ses articles de b
 ## Configuration
 
 ### Communication avec le backend
-La partie frontend détaillée ici communique avec un backend présent sur un autre dépôt (lien du dépôt). Pour lier le backend au frontend:
+La partie frontend détaillée ici communique avec un backend présent sur un autre dépôt (<a href="https://github.com/Efyx-07/bloggr_backend">dépôt du backend</a>). Pour lier le backend au frontend:
 
 1. Créez un fichier `.env` à la racine du projet et l'URL du backend comme suit :
    ```plaintext
