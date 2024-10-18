@@ -23,9 +23,7 @@ export default function ArticleCard({ article }: ArticleCardProps) {
       </div>
       <div className="flex flex-col gap-6 p-4">
         <div className="flex flex-col gap-2">
-          <h3 className="truncate">
-            {article.title}
-          </h3>
+          <h3 className="truncate">{article.title}</h3>
           <div className="date-status">
             <ArticleDate article={article} />
           </div>

@@ -8,8 +8,9 @@ import { WithPageLoader } from '@/hoc/WithPageLoader';
 import useArticlesFilterStore from '@/stores/articlesFilterStore';
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
 import { cardVariants } from '@/framer-motion/cardVariants';
+import { AnimatedPageWrapper } from '@/framer-motion/AnimatedPageWrapper';
 import SkeletonArticleCard from '@/components/SkeletonComponents/SkeletonArticleCard';
 import LoadingPage from '@/components/LoadingPage';
 import NoArticle from '@/components/NoArticle';
@@ -82,33 +83,35 @@ export default function ArticlesPage() {
   return (
     <>
       <WithPageLoader loadingPageMention="Chargement des articles...">
-        <div className="page">
-          <div
-            className={`${articles && articles.length > 0 ? 'content justify-start' : 'content'}`}
-          >
-            {articles && articles.length > 0 ? (
-              <>
-                <ArticlesPageHead articles={articles} />
-                <div className="article-cards-container">
-                  {reversedArticles?.map((article, index) => (
-                    <motion.div
-                      key={`${article.id}-${currentFilter}`}
-                      custom={index}
-                      initial="hidden"
-                      whileInView="visible"
-                      viewport={{ once: true }}
-                      variants={cardVariants}
-                    >
-                      <DynamicArticleCard article={article} />
-                    </motion.div>
-                  ))}
-                </div>
-              </>
-            ) : (
-              <NoArticle />
-            )}
+        <AnimatedPageWrapper>
+          <div className="page">
+            <div
+              className={`${articles && articles.length > 0 ? 'content justify-start' : 'content'}`}
+            >
+              {articles && articles.length > 0 ? (
+                <>
+                  <ArticlesPageHead articles={articles} />
+                  <div className="article-cards-container">
+                    {reversedArticles?.map((article, index) => (
+                      <motion.div
+                        key={`${article.id}-${currentFilter}`}
+                        custom={index}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                        variants={cardVariants}
+                      >
+                        <DynamicArticleCard article={article} />
+                      </motion.div>
+                    ))}
+                  </div>
+                </>
+              ) : (
+                <NoArticle />
+              )}
+            </div>
           </div>
-        </div>
+        </AnimatedPageWrapper>
       </WithPageLoader>
     </>
   );

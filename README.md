@@ -81,6 +81,7 @@ L’application utilise Vercel et son stockage d'images Vercel Blob.
 ## Tests
 
 Des tests unitaires ont été écrits pour assurer le bon fonctionnement des fonctionnalités critiques de l’application. Pour les exécuter, utilisez la commande suivante:
+
 ```bash
 # unit tests
 npm run test
@@ -91,30 +92,30 @@ npm run test:cov
 
 ## Screenshots
 
-1. Interface:  Vue du panneau de connexion "Administrateur".
+1. Interface: Vue du panneau de connexion "Administrateur".
 
 ![Screenshot 1](./screenshots/view1.png)
 
-2. Interface:  Accueil du dashboard affichant la liste des articles créés. Accès aux différentes actions possibles.
+2. Interface: Accueil du dashboard affichant la liste des articles créés. Accès aux différentes actions possibles.
 
 ![Screenshot 2](./screenshots/view2.png)
 
-3. Interface:  Formulaire "Créer un article".
+3. Interface: Formulaire "Créer un article".
 
 ![Screenshot 3](./screenshots/view3.png)
 
-4. Interface:  Formulaire "Modifier un article".
+4. Interface: Formulaire "Modifier un article".
 
 ![Screenshot 4](./screenshots/view4.png)
 
-4. Interface:  Exemple de présentation d'un article final (au sein de l'application sert principalement de vue de contrôle avant publication).
+4. Interface: Exemple de présentation d'un article final (au sein de l'application sert principalement de vue de contrôle avant publication).
 
 ![Screenshot 5](./screenshots/view5.png)
 
 ## Note
 
-Ce dépôt ne concerne que la partie frontend de l'application. Pour fonctionner celle-ci est indissociable de son backend réalisé en NodeJs / NestJs. 
- <a href="https://github.com/Efyx-07/bloggr_backend">Accéder au dépôt du backend</a>
+Ce dépôt ne concerne que la partie frontend de l'application. Pour fonctionner celle-ci est indissociable de son backend réalisé en NodeJs / NestJs.
+<a href="https://github.com/Efyx-07/bloggr_backend">Accéder au dépôt du backend</a>
 
 **Bonne découverte !**
 

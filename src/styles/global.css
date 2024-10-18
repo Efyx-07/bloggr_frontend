@@ -41,6 +41,10 @@ a {
 
 /* Global Pages style
 ===========================================================================================*/
+body {
+  @apply bg-black;
+}
+
 .page {
   @apply w-full h-full
   flex flex-col items-center
