@@ -28,6 +28,7 @@ Cette application permet à un utilisateur de créer et gérer ses articles de b
 - **TailwindCSS** : Pour le design personnalisé.
 - **Vercel-blob** : Pour la gestion des images.
 - **Browser-image-compression** : Pour l'optimisation des images.
+- **CKEditor** : Pour les champs de texte enrichis (corps de l'article).
 - **Date-fns** : Pour le formatage des dates.
 - **Iconify** : Bibliothèque d’icônes.
 - **Jest / Testing Library** : Pour les tests unitaires et d'intégration.
