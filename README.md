@@ -64,6 +64,11 @@ L’application utilise Vercel et son stockage d'images Vercel Blob.
    ```plaintext
    npm run dev
 6. Ouvrez votre navigateur et accédez à http://localhost:3000 pour voir l'application en action.
+
+## Tests
+
+Des tests unitaires ont été écrits pour assurer le bon fonctionnement des fonctionnalités critiques de l’application. Pour les exécuter, utilisez la commande suivante: 
+`npm run test`
    
 **Bonne découverte !**
 
