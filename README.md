@@ -104,6 +104,11 @@ Des tests unitaires ont été écrits pour assurer le bon fonctionnement des fon
 
 ![Screenshot 5](./screenshots/view5.png)
 
+## Note
+
+Ce dépôt ne concerne que la partie frontend de l'application. Pour fonctionner celle-ci est indissociable de son backend réalisé en NodeJs / NestJs. 
+ <a href="https://github.com/Efyx-07/bloggr_backend">Accéder au dépôt du backend</a>
+
 **Bonne découverte !**
 
 FX.
