@@ -80,7 +80,13 @@ L’application utilise Vercel et son stockage d'images Vercel Blob.
 ## Tests
 
 Des tests unitaires ont été écrits pour assurer le bon fonctionnement des fonctionnalités critiques de l’application. Pour les exécuter, utilisez la commande suivante:
-`npm run test`
+```bash
+# unit tests
+npm run test
+
+# test coverage
+npm run test:cov
+```
 
 ## Screenshots
 
