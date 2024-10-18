@@ -10,10 +10,10 @@ Cette application permet à un utilisateur de créer et gérer ses articles de b
 
 ## Fonctionnalités
 - **Connexion et authentification** : L'application n'autorise qu'un seul utilisateur dont les données seront préalablement renseignées dans la base de données par l'administrateur. Possibilité de modifier le mot de passe via l'application.
+- **Accueil du dashboard** : Une fois connecté, l'utilisateur aura accès à la page principale affichant la liste des articles sous forme de cartes et pilotant la majorité des actions (Voir, Modifier, Supprimer). L'entièreté du dashboard est protégée par un Auth-Guard et accessible uniquement à l'utilisateur connecté.
 - **Création d'un article** : Formulaire de création avec les champs 'Titre', 'Image de couverture', 'Corps de l'article' et 'Mots-clé'. Ce dernier champs sera particulièrement important pour l'optimisation SEO de l'article et son référencement.  
 - **Modification d'un article** : Formulaire pré-rempli avec les données initiales de l'article. Chaque donnée pouvant être modifiée et mise à jour.
 - **Publication controlée** : Un article nouvellement créé a un statut "En attente de publication". Pour être "Publié", l'utilisateur devra le publier manuellement après contrôle. L'API à récupérer sur un site tierce ne concernera que les articles publiés (plus de détails concernant les API dans la partie <a href="https://github.com/Efyx-07/bloggr_backend">backend</a>).
-- **Accueil du dashboard** : Une fois connecté, l'utilisateur aura accès à la page principale affichant la liste des articles sous forme de cartes et pilotant la majorité des actions (Voir, Modifier, Supprimer). L'entièreté du dashboard est protégée par un Auth-Guard et accessible uniquement à l'utilisateur connecté.
 - **Interface** : Entièrement responsive avec une expérience utilisateur et une interface conviviales.
 
 ## Technologies utilisées
