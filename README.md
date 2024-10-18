@@ -82,6 +82,28 @@ L’application utilise Vercel et son stockage d'images Vercel Blob.
 Des tests unitaires ont été écrits pour assurer le bon fonctionnement des fonctionnalités critiques de l’application. Pour les exécuter, utilisez la commande suivante:
 `npm run test`
 
+## Screenshots
+
+1. Interface:  Vue du panneau de connexion "Administrateur".
+
+![Screenshot 1](./screenshots/view1.png)
+
+2. Interface:  Accueil du dashboard affichant la liste des articles créés. Accès aux différentes actions possibles.
+
+![Screenshot 2](./screenshots/view2.png)
+
+3. Interface:  Formulaire "Créer un article".
+
+![Screenshot 3](./screenshots/view3.png)
+
+4. Interface:  Formulaire "Modifier un article".
+
+![Screenshot 4](./screenshots/view4.png)
+
+4. Interface:  Exemple de présentation d'un article final (au sein de l'application sert principalement de vue de contrôle avant publication).
+
+![Screenshot 5](./screenshots/view5.png)
+
 **Bonne découverte !**
 
 FX.
