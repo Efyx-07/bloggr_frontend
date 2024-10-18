@@ -4,14 +4,16 @@ import './ArticlesPage.css';
 import { useQuery } from '@tanstack/react-query';
 import { fetchArticles } from '@/services/articles.service';
 import { Article } from '@/interfaces/article.interface';
-import SkeletonArticleCard from '@/components/SkeletonComponents/SkeletonArticleCard';
 import { WithPageLoader } from '@/hoc/WithPageLoader';
 import useArticlesFilterStore from '@/stores/articlesFilterStore';
+import dynamic from 'next/dynamic';
+import { useEffect, useState } from 'react';
+import { motion } from "framer-motion";
+import { cardVariants } from '@/framer-motion/cardVariants';
+import SkeletonArticleCard from '@/components/SkeletonComponents/SkeletonArticleCard';
 import LoadingPage from '@/components/LoadingPage';
 import NoArticle from '@/components/NoArticle';
 import ArticlesPageHead from '@/components/PageHeads/ArticlesPageHead';
-import dynamic from 'next/dynamic';
-import { useEffect } from 'react';
 
 // Import dynamique des composants
 // ================================================================================================
@@ -30,6 +32,15 @@ export default function ArticlesPage() {
   // ===========================================================================================
   const { filter, setFilter } = useArticlesFilterStore();
 
+  // Etat pour le filtre courant (à utiliser pour re-rendre les cartes pou framer-motion)
+  // ===========================================================================================
+  const [currentFilter, setCurrentFilter] = useState(filter);
+
+  // Met à jour l'état du filtre à chaque changement
+  useEffect(() => {
+    setCurrentFilter(filter);
+  }, [filter]);
+
   // Fetch les données de tous les articles avec useQuery
   // ===========================================================================================
   const {
@@ -44,8 +55,8 @@ export default function ArticlesPage() {
   // Récupère l'état filter stocké dans le store
   // ===========================================================================================
   const filteredArticles = articles?.filter((article) => {
-    if (filter === 'published') return article.published;
-    if (filter === 'unpublished') return !article.published;
+    if (currentFilter === 'published') return article.published;
+    if (currentFilter === 'unpublished') return !article.published;
     return true; // Définit 'all' par défaut, retourne tous les articles
   });
 
@@ -79,8 +90,17 @@ export default function ArticlesPage() {
               <>
                 <ArticlesPageHead articles={articles} />
                 <div className="article-cards-container">
-                  {reversedArticles?.map((article) => (
-                    <DynamicArticleCard key={article.id} article={article} />
+                  {reversedArticles?.map((article, index) => (
+                    <motion.div
+                      key={`${article.id}-${currentFilter}`}
+                      custom={index}
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ once: true }}
+                      variants={cardVariants}
+                    >
+                      <DynamicArticleCard article={article} />
+                    </motion.div>
                   ))}
                 </div>
               </>
