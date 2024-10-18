@@ -2,6 +2,7 @@
 
 import SkeletonArticleForm from '@/components/SkeletonComponents/SkeletonArticleForm';
 import { WithPageLoader } from '@/hoc/WithPageLoader';
+import { AnimatedPageWrapper } from '@/framer-motion/AnimatedPageWrapper';
 import dynamic from 'next/dynamic';
 
 // Import dynamique des composants
@@ -21,13 +22,15 @@ export default function NewArticlePage() {
   return (
     <>
       <WithPageLoader loadingPageMention="Accès nouvel article...">
-        <div className="page">
-          <div className="content">
-            <DynamicFormContainer title="Nouvel article">
-              <DynamicCreateArticleForm />
-            </DynamicFormContainer>
+        <AnimatedPageWrapper>
+          <div className="page">
+            <div className="content">
+              <DynamicFormContainer title="Nouvel article">
+                <DynamicCreateArticleForm />
+              </DynamicFormContainer>
+            </div>
           </div>
-        </div>
+        </AnimatedPageWrapper>
       </WithPageLoader>
     </>
   );

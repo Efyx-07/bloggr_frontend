@@ -42,7 +42,7 @@ a {
 /* Global Pages style
 ===========================================================================================*/
 body {
-  @apply bg-black;
+  @apply bg-black overflow-x-hidden;
 }
 
 .page {
