@@ -46,7 +46,7 @@ L’application utilise Vercel et son stockage d'images Vercel Blob.
    ```plaintext
    BLOB_READ_WRITE_TOKEN=VercelBlobToken
 3. Assurez-vous que votre fichier `.env` est ignoré par Git. Le fichier .gitignore  doit inclure .env pour éviter que la clé ne soit exposée publiquement.
-4. Pour optimiser le stockage, une compression d'image est appliquée avec la bibliothèque <a href="https://www.npmjs.com/package/browser-image-compression">Browser-image-compression</a>
+4. Pour optimiser le stockage, une compression d'image est appliquée avec la bibliothèque <a href="https://www.npmjs.com/package/browser-image-compression">Browser-image-compression</a>. Une image non utilisée (dans le cas d'un remplacement ou d'un article supprimé) sera automatiquement effacée.
 
 
 ## Installation
