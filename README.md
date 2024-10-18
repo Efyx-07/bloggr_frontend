@@ -41,11 +41,12 @@ La partie frontend détaillée ici communique avec un backend présent sur un au
 ### Utilisation de Vercel Blob
 L’application utilise Vercel et son stockage d'images Vercel Blob.
 
-1. Assurez-vous d'avoir un compte créé sur Vercel https://vercel.com/ et selectionnez le stockage Vercel-blob pour lier la partie frontend de l'application. Cela générera une variable d'environnement pour le stockage avec un token à renseigner comme suit: 
+1. Assurez-vous d'avoir un compte créé sur Vercel https://vercel.com/ et selectionnez le stockage Vercel-blob pour lier le projet frontend de l'application. Cela générera une variable d'environnement pour le stockage avec un token à renseigner comme suit: 
 2. Créez un fichier `.env.development.local` à la racine du projet et ajoutez-y la clé comme suit :
    ```plaintext
    BLOB_READ_WRITE_TOKEN=VercelBlobToken
 3. Assurez-vous que votre fichier `.env` est ignoré par Git. Le fichier .gitignore  doit inclure .env pour éviter que la clé ne soit exposée publiquement.
+4. Pour optimiser le stockage, une compression d'image est appliquée avec la bibliothèque <a href="https://www.npmjs.com/package/browser-image-compression">Browser-image-compression</a>
 
 
 ## Installation
