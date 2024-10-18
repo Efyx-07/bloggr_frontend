@@ -5,6 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 import { Article } from '@/interfaces/article.interface';
 import { fetchArticleById } from '@/services/articles.service';
 import { WithPageLoader } from '@/hoc/WithPageLoader';
+import { AnimatedPageWrapper } from '@/framer-motion/AnimatedPageWrapper';
 import LoadingPage from '@/components/LoadingPage';
 import dynamic from 'next/dynamic';
 import SkeletonArticleForm from '@/components/SkeletonComponents/SkeletonArticleForm';
@@ -45,21 +46,23 @@ export default function UpdateArticlePage() {
       <WithPageLoader
         loadingPageMention={`Accès à modifier: ${article?.title}...`}
       >
-        <div className="page">
-          <div className="content">
-            {article ? (
-              <>
-                <DynamicFormContainer
-                  title={`Modifier article: ${article?.title}`}
-                >
-                  <DynamicUpdateArticleForm selectedArticle={article} />
-                </DynamicFormContainer>
-              </>
-            ) : (
-              <p>No article found</p>
-            )}
+        <AnimatedPageWrapper>
+          <div className="page">
+            <div className="content">
+              {article ? (
+                <>
+                  <DynamicFormContainer
+                    title={`Modifier article: ${article?.title}`}
+                  >
+                    <DynamicUpdateArticleForm selectedArticle={article} />
+                  </DynamicFormContainer>
+                </>
+              ) : (
+                <p>No article found</p>
+              )}
+            </div>
           </div>
-        </div>
+        </AnimatedPageWrapper>
       </WithPageLoader>
     </>
   );
