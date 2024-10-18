@@ -30,8 +30,7 @@ export default function ArticleFull({ article }: ArticleFullProps) {
           <h1 className="article-title">{article.title}</h1>
           <div className="flex flex-wrap justify-between items-center gap-4">
             <p className="text-sm italic opacity-75">
-              Par {admin?.firstName} {admin?.lastName}, le
-              {formatDate(creationDate)}
+              Par {admin?.firstName} {admin?.lastName}, le {formatDate(creationDate)}
             </p>
             {article.keywords && (
               <div className="keywords-container">
