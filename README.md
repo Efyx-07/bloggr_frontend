@@ -76,7 +76,7 @@ L’application utilise Vercel et son stockage d'images Vercel Blob.
    ```plaintext
    npm run dev
    ```
-6. Ouvrez votre navigateur et accédez à http://localhost:3000 pour voir l'application en action.
+6. Ouvrez votre navigateur et accédez à http://localhost:3000 (ou [3001](http://localhost:3001) si le backend est executé en local sur le port 3000) pour voir l'application en action.
 
 ## Tests
 
