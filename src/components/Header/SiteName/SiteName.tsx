@@ -1,5 +1,6 @@
 import { siteName } from '@/config';
 import { Fredoka } from 'next/font/google';
+import { useRouter } from 'next/navigation';
 import './SiteName.css';
 
 const font = Fredoka({
@@ -8,5 +9,13 @@ const font = Fredoka({
 });
 
 export default function SiteName() {
-  return <h1 className={`${font.className} site-name`}>{siteName}</h1>;
+  const router = useRouter();
+  return (
+    <h1
+      onClick={() => router.push('/')}
+      className={`${font.className} site-name cursor-pointer`}
+    >
+      {siteName}
+    </h1>
+  );
 }
