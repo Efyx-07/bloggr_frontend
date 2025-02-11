@@ -25,7 +25,7 @@ export default function ArticlePageHead({ article }: ArticlePageHeadProps) {
   // ===========================================================================================
 
   return (
-    <HeadTitle title="Mon article">
+    <HeadTitle title={article.title}>
       <div className="w-full sm:w-3/6 flex justify-start sm:justify-end gap-2">
         <Button
           addedClassName="button-large primary"
