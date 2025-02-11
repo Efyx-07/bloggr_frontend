@@ -7,7 +7,7 @@ module.exports = {
         black: '#1d1d1d',
         whiteRelief: '#ffffff',
         whiteBackground: '#F3F4F6',
-        accent: '#e11e22',
+        accent: '#CA244D',
         white25: 'rgba(255, 255, 255, 0.25)',
         black75: 'rgba(29, 29, 29, 0.75)',
         black25: 'rgba(29, 29, 29, 0.25)',
