@@ -8,7 +8,7 @@ export default function AccountSettings() {
   return (
     <>
       <WithPageLoader loadingPageMention="Accès aux paramètres du compte...">
-        <div className="page">
+        <div className="page page_with-form">
           <div className="content">
             <FormContainer
               title="Modifier votre mot de passe"

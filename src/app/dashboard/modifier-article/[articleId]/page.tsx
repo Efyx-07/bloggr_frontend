@@ -45,7 +45,7 @@ export default function UpdateArticlePage() {
       <WithPageLoader
         loadingPageMention={`Accès à modifier: ${article?.title}...`}
       >
-        <div className="page">
+        <div className="page page_with-form">
           <div className="content">
             {article ? (
               <>

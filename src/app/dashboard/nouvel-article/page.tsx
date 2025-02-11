@@ -21,7 +21,7 @@ export default function NewArticlePage() {
   return (
     <>
       <WithPageLoader loadingPageMention="Accès nouvel article...">
-        <div className="page">
+        <div className="page page_with-form">
           <div className="content">
             <DynamicFormContainer title="Nouvel article">
               <DynamicCreateArticleForm />

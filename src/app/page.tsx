@@ -10,7 +10,7 @@ export default function LoginPage() {
     <>
       <AuthGuard redirectPath="/dashboard/articles" shouldBeLoggedIn={false}>
         <WithPageLoader loadingPageMention="Accès à la page d'accueil...">
-          <div className="page">
+          <div className="page page_with-form">
             <div className="content">
               <FormContainer title="Connexion">
                 <LoginForm />

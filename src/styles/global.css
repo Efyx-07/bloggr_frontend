@@ -47,6 +47,10 @@ a {
   bg-whiteBackground;
 }
 
+.page_with-form {
+  @apply bg-accent;
+}
+
 .content {
   min-height: calc(100dvh - 11rem);
   @apply w-full max-w-content
